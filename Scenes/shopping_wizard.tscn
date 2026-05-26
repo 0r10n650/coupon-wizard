@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://cfsmos5rhswc"]
+
+[ext_resource type="Script" uid="uid://4kua64x2f77y" path="res://Scripts/shopping_wizard.gd" id="1_fe242"]
+[ext_resource type="Script" uid="uid://dcc4rfcyx225u" path="res://Scripts/Helpers/MovementComponent.gd" id="2_g1rcx"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_tiada"]
+size = Vector3(1.5, 1.3, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fe242"]
+size = Vector3(1.5, 1.3, 2)
+
+[node name="ShoppingWizard" type="CharacterBody3D" unique_id=948979824]
+script = ExtResource("1_fe242")
+
+[node name="CartMesh" type="MeshInstance3D" parent="." unique_id=182801659]
+mesh = SubResource("BoxMesh_tiada")
+
+[node name="CartCollider" type="CollisionShape3D" parent="." unique_id=340323353]
+shape = SubResource("BoxShape3D_fe242")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1644543237]
+transform = Transform3D(1, 0, 0, 0, 0.9112093, 0.41194382, 0, -0.41194382, 0.9112093, 0, 2.6885562, 4.105855)
+current = true
+
+[node name="MovementComponent" type="Node" parent="." unique_id=1443513065 node_paths=PackedStringArray("parent")]
+script = ExtResource("2_g1rcx")
+parent = NodePath("..")
+base_acceleration = 1.0
+metadata/_custom_type_script = "uid://dcc4rfcyx225u"
