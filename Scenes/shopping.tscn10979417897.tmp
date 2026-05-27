@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://jub3eiibx1ln"]
 
 [ext_resource type="PackedScene" uid="uid://cfsmos5rhswc" path="res://Scenes/shopping_wizard.tscn" id="1_e6x87"]
+[ext_resource type="Script" uid="uid://c2m0rjcr72d4q" path="res://Scripts/followCamera.gd" id="2_84pa7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fhba7"]
 size = Vector3(100, 1, 100)
@@ -64,3 +65,8 @@ mesh = SubResource("BoxMesh_84pa7")
 
 [node name="ShoppingWizard" parent="." unique_id=948979824 instance=ExtResource("1_e6x87")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0060009956, 1.809822, 1.1347561)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1922927819 node_paths=PackedStringArray("target")]
+transform = Transform3D(1, 0, 0, 0, 0.89614594, 0.44375953, 0, -0.44375953, 0.89614594, 0, 4.3304424, 4.9848957)
+script = ExtResource("2_84pa7")
+target = NodePath("../ShoppingWizard")
