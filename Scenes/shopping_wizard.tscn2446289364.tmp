@@ -75,4 +75,4 @@ metadata/_custom_type_script = "uid://dt8gnroytki7d"
 [connection signal="mouse_entered" from="LeftLeanButton" to="." method="_on_left_lean_button_mouse_entered"]
 [connection signal="mouse_exited" from="LeftLeanButton" to="." method="_on_lean_button_mouse_exited"]
 [connection signal="mouse_entered" from="RightLeanButton" to="." method="_on_right_lean_button_mouse_entered"]
-[connection signal="mouse_exited" from="RightLeanButton" to="." method="_on_lean_button_mouse_exited"]
+[connection signal="mouse_exited" from="RightLeanButton" to="." method="_on_right_lean_button_mouse_exited"]
