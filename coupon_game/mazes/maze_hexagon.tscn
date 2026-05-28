@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://dnv2kxsouqsxu"]
 
+[ext_resource type="Texture2D" uid="uid://ccql5vc528dp1" path="res://coupon_game/mazes/coupon_couponshape_hex.png" id="1_2xghd"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4k5sl"]
 size = Vector2(50, 50)
 
@@ -57,3 +59,8 @@ shape = SubResource("RectangleShape2D_4k5sl")
 
 [node name="StartPos" type="Marker2D" parent="." unique_id=357438946]
 position = Vector2(352, 486)
+
+[node name="CouponCouponshapeHex" type="Sprite2D" parent="." unique_id=105938276]
+position = Vector2(403, 290.00003)
+scale = Vector2(0.8900376, 0.89003754)
+texture = ExtResource("1_2xghd")
