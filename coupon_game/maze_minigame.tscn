@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://c0h1f5g24fq80"]
+
+[ext_resource type="Script" uid="uid://sid8sf6dpaew" path="res://coupon_game/maze_minigame.gd" id="1_script"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_goal"]
+size = Vector2(80, 80)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cur"]
+radius = 4.0
+
+[node name="MazeGame" type="ColorRect" unique_id=77501162]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.8)
+script = ExtResource("1_script")
+
+[node name="StartButton" type="Button" parent="." unique_id=1295576854]
+top_level = true
+z_index = 1
+y_sort_enabled = true
+layout_mode = 0
+offset_left = 218.0
+offset_top = 524.0
+offset_right = 298.0
+offset_bottom = 564.0
+text = "Start"
+
+[node name="TitleLabel" type="Label" parent="." unique_id=242135268]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = 50.0
+offset_right = 200.0
+offset_bottom = 80.0
+grow_horizontal = 2
+text = "Cut out the coupon without touching the red walls!"
+horizontal_alignment = 1
+
+[node name="BackButton" type="Button" parent="." unique_id=1676328216]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -100.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 60.0
+grow_horizontal = 0
+text = "Back"
+
+[node name="CursorTracker" type="Area2D" parent="." unique_id=417192767]
+z_index = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CursorTracker" unique_id=1604650551]
+shape = SubResource("CircleShape2D_cur")
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
