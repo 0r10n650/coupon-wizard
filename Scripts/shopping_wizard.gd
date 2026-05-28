@@ -20,9 +20,15 @@ func attempt_grab_right():
 
 func grab(direction):
 	if direction == "left":
-		pass
+		if leftCast.is_colliding():
+			var colliding_object = leftCast.get_collider()
+			var item = colliding_object.get_parent().item
+			print("You have picked up one ", item.item_name, ". It costs: ", item.price)
 	else:
-		pass
+		if rightCast.is_colliding():
+			var colliding_object = rightCast.get_collider()
+			var item = colliding_object.get_parent().item
+			print("You have picked up one ", item.item_name, ". It costs: ", item.price)
 	
 func _on_left_lean_button_mouse_entered():
 	leaningC.lean(-1)
