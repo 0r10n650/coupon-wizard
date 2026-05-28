@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dkoqvo2ta35nw"]
+
+[ext_resource type="Script" uid="uid://cw05a46vm8thc" path="res://Scripts/start_page.gd" id="1_wk4w2"]
+
+[node name="StartPage" type="Node2D" unique_id=793455948]
+script = ExtResource("1_wk4w2")
+
+[node name="Title" type="Label" parent="." unique_id=722614990]
+offset_left = 198.0
+offset_top = 67.0
+offset_right = 545.0
+offset_bottom = 136.0
+theme_override_font_sizes/font_size = 45
+text = "Coupon Wizard "
+
+[node name="JordosButton" type="Button" parent="." unique_id=1652523747]
+offset_left = 518.0
+offset_top = 241.0
+offset_right = 658.0
+offset_bottom = 292.0
+text = "Jordos demo"
+
+[node name="OButton" type="Button" parent="." unique_id=1339372570]
+offset_left = 109.0
+offset_top = 232.0
+offset_right = 249.0
+offset_bottom = 283.0
+text = "Orion's Shopping
+"
+
+[connection signal="pressed" from="JordosButton" to="." method="_on_jordos_button_pressed"]
+[connection signal="pressed" from="OButton" to="." method="_on_o_button_pressed"]
