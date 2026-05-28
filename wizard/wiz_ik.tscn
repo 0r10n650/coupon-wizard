@@ -1,0 +1,132 @@
+[gd_scene format=3 uid="uid://f0rc7hpsuxb1"]
+
+[ext_resource type="PackedScene" uid="uid://0mwxoliualx0" path="res://wizard/Crouch Idle.fbx" id="1_17kth"]
+[ext_resource type="Animation" uid="uid://dex724bxayaix" path="res://wizard/animations/crouch.anim" id="2_3he5w"]
+[ext_resource type="Animation" uid="uid://dsno4lvel534k" path="res://wizard/animations/cart_push.tres" id="2_n8nhb"]
+[ext_resource type="Animation" uid="uid://dxy4ogavo5vq4" path="res://wizard/animations/idle.anim" id="3_7n8sa"]
+[ext_resource type="Animation" uid="uid://db4u14rnf4pgk" path="res://wizard/animations/jump.anim" id="4_n8nhb"]
+[ext_resource type="Animation" uid="uid://cbkwrr8hljtik" path="res://wizard/animations/run.anim" id="5_8x3oy"]
+[ext_resource type="Animation" uid="uid://caarl58ylmf7n" path="res://wizard/animations/run_jump.anim" id="6_byhnj"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mppho"]
+_data = {
+&"cart_push": ExtResource("2_n8nhb"),
+&"crouch": ExtResource("2_3he5w"),
+&"idle": ExtResource("3_7n8sa"),
+&"jump": ExtResource("4_n8nhb"),
+&"run": ExtResource("5_8x3oy"),
+&"run_jump": ExtResource("6_byhnj")
+}
+
+[node name="WizIK" type="Node3D" unique_id=427355988]
+
+[node name="Crouch Idle" parent="." unique_id=601109509 instance=ExtResource("1_17kth")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Crouch Idle" index="0" unique_id=1010775887]
+bones/0/position = Vector3(0.006008665, 4.8335524, -0.04159585)
+bones/0/rotation = Quaternion(0.073465265, -0.04789681, -0.03842744, 0.99540555)
+bones/1/rotation = Quaternion(0.12774304, 0.09694158, 0.03775286, 0.9863361)
+bones/2/rotation = Quaternion(-0.031521257, 0.012784657, 0.010100093, 0.99937034)
+bones/3/rotation = Quaternion(-0.031328466, 0.012922802, 0.009736957, 0.9993782)
+bones/4/rotation = Quaternion(0.02238741, -0.015060284, -0.027649647, 0.9992536)
+bones/5/rotation = Quaternion(-0.176772, -0.031677548, 0.0005632367, 0.98374176)
+bones/7/rotation = Quaternion(-0.64163667, -0.373555, 0.53585505, -0.4020179)
+bones/8/rotation = Quaternion(0.36516014, 0.3178922, -0.29821682, 0.82259923)
+bones/9/rotation = Quaternion(0.005061188, 2.0222738e-05, 0.5357935, 0.8443339)
+bones/11/rotation = Quaternion(0.6209465, -0.37919015, 0.5578223, 0.39934263)
+bones/12/rotation = Quaternion(0.3179254, 0.03630642, -0.09890733, 0.9422434)
+bones/13/rotation = Quaternion(0.0032916325, 2.387911e-05, -0.6378818, 0.7701273)
+bones/15/rotation = Quaternion(0.077673905, 0.29833564, 0.94810414, -0.077854864)
+bones/16/rotation = Quaternion(-0.9364435, -0.018022219, 0.079515524, 0.34121278)
+bones/17/rotation = Quaternion(0.53365004, -0.029540056, 0.067477524, 0.8424914)
+bones/18/rotation = Quaternion(0.23862524, -0.15103902, 0.037380338, 0.95856565)
+bones/20/rotation = Quaternion(-0.034018602, 0.149246, 0.9862202, -0.06275531)
+bones/21/rotation = Quaternion(-0.38420036, -0.07159873, 0.007853679, 0.9204358)
+bones/22/rotation = Quaternion(0.608823, -0.057875562, -0.06807827, 0.78825784)
+bones/23/rotation = Quaternion(0.38940203, 0.17281568, -0.02365367, 0.9044011)
+
+[node name="RightArmIK" type="TwoBoneIK3D" parent="Crouch Idle/Skeleton3D" index="2" unique_id=220737110]
+setting_count = 1
+settings/0/target_node = NodePath("../../../RightArmIKTarget")
+settings/0/pole_node = NodePath("../../../RightArmIKPole")
+settings/0/root_bone_name = "mixamorig_RightArm"
+settings/0/root_bone = 12
+settings/0/middle_bone_name = "mixamorig_RightForeArm"
+settings/0/middle_bone = 13
+settings/0/pole_direction = 6
+settings/0/end_bone_name = "mixamorig_RightHand"
+settings/0/end_bone = 14
+settings/0/use_virtual_end = false
+settings/0/extend_end_bone = false
+
+[node name="LeftArmIK" type="TwoBoneIK3D" parent="Crouch Idle/Skeleton3D" index="3" unique_id=582667822]
+setting_count = 1
+settings/0/target_node = NodePath("../../../LeftArmIKTarget")
+settings/0/pole_node = NodePath("../../../LeftArmIKPole")
+settings/0/root_bone_name = "mixamorig_LeftArm"
+settings/0/root_bone = 8
+settings/0/middle_bone_name = "mixamorig_LeftForeArm"
+settings/0/middle_bone = 9
+settings/0/pole_direction = 6
+settings/0/end_bone_name = "mixamorig_LeftHand"
+settings/0/end_bone = 10
+settings/0/use_virtual_end = false
+settings/0/extend_end_bone = false
+
+[node name="RightLegIK" type="TwoBoneIK3D" parent="Crouch Idle/Skeleton3D" index="4" unique_id=394428729]
+setting_count = 1
+settings/0/target_node = NodePath("../../../RightLegIKTarget")
+settings/0/pole_node = NodePath("../../../RightLegIKPole")
+settings/0/root_bone_name = "mixamorig_RightUpLeg"
+settings/0/root_bone = 20
+settings/0/middle_bone_name = "mixamorig_RightLeg"
+settings/0/middle_bone = 21
+settings/0/pole_direction = 0
+settings/0/end_bone_name = "mixamorig_RightFoot"
+settings/0/end_bone = 22
+settings/0/use_virtual_end = false
+settings/0/extend_end_bone = false
+
+[node name="LeftLegIK" type="TwoBoneIK3D" parent="Crouch Idle/Skeleton3D" index="5" unique_id=750871775]
+setting_count = 1
+settings/0/target_node = NodePath("../../../LeftLegIKTarget")
+settings/0/pole_node = NodePath("../../../LeftLegIKPole")
+settings/0/root_bone_name = "mixamorig_LeftUpLeg"
+settings/0/root_bone = 15
+settings/0/middle_bone_name = "mixamorig_LeftLeg"
+settings/0/middle_bone = 16
+settings/0/pole_direction = 0
+settings/0/end_bone_name = "mixamorig_LeftFoot"
+settings/0/end_bone = 17
+settings/0/use_virtual_end = false
+settings/0/extend_end_bone = false
+
+[node name="AnimationPlayer" parent="Crouch Idle" index="1" unique_id=50155254]
+libraries/wiz_anim_lib = SubResource("AnimationLibrary_mppho")
+
+[node name="RightArmIKPole" type="Marker3D" parent="." unique_id=1466250202]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3025, 1.1829305, -0.5630595)
+
+[node name="RightArmIKTarget" type="Marker3D" parent="." unique_id=161610486]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21697164, 1.0661671, 0.3744384)
+
+[node name="LeftArmIKPole" type="Marker3D" parent="." unique_id=954575280]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3619938, 1.1829305, -0.5630595)
+
+[node name="LeftArmIKTarget" type="Marker3D" parent="." unique_id=1379972132]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1935451, 1.0661671, 0.3744384)
+
+[node name="RightLegIKPole" type="Marker3D" parent="." unique_id=411853710]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07918227, 1.1910791, 0.5754247)
+
+[node name="RightLegIKTarget" type="Marker3D" parent="." unique_id=617447598]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.34928215, 0, 0.65122783)
+
+[node name="LeftLegIKPole" type="Marker3D" parent="." unique_id=1914133258]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19125664, 1.1043837, 0.49429095)
+
+[node name="LeftLegIKTarget" type="Marker3D" parent="." unique_id=1182172008]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23774743, 0, 0.6570716)
+
+[editable path="Crouch Idle"]

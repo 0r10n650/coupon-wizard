@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bsyyc5sgjiy2i"]
+
+[ext_resource type="Script" uid="uid://dwk6wwjkp07w0" path="res://coupon_game/coupon_book.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://c15lho5g04nbf" path="res://coupon_game/coupon_magazine_4_1.png" id="2_7qjg8"]
+[ext_resource type="Material" uid="uid://c1y6rn3e8ai51" path="res://coupon_game/coupon_book_mat.tres" id="2_e7tke"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cb"]
+size = Vector3(0.5, 0.1, 0.3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cb"]
+size = Vector3(0.5, 0.1, 0.3)
+
+[node name="CouponBook" type="StaticBody3D" unique_id=1274948602]
+script = ExtResource("1_script")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=227403666]
+transform = Transform3D(-1.181216e-08, 0.2926689, -1.3113417e-08, 0, -1.2792964e-08, -0.3, -0.27023074, -1.2792964e-08, 5.7320567e-16, 0, 0.050971985, 0)
+flip_v = true
+texture = ExtResource("2_7qjg8")
+metadata/psx_disable = true
+metadata/psx_disable_children = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=311146401]
+shape = SubResource("BoxShape3D_cb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1654778746]
+mesh = SubResource("BoxMesh_cb")
+surface_material_override/0 = ExtResource("2_e7tke")

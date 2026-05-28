@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://cihoe27xflji3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_baako"]
+size = Vector2(50, 50)
+
+[node name="Maze" type="Node2D" unique_id=1855852095]
+
+[node name="Walls" type="Area2D" parent="." unique_id=1771668922]
+
+[node name="Polygon2D_Outer" type="Polygon2D" parent="Walls" unique_id=233808886]
+color = Color(1, 0, 0, 0.3)
+invert_enabled = true
+invert_border = 1000.0
+polygon = PackedVector2Array(150, 150, 650, 150, 650, 450, 150, 450)
+
+[node name="CollisionPolygon2D_Outer" type="CollisionPolygon2D" parent="Walls" unique_id=41108091]
+build_mode = 1
+polygon = PackedVector2Array(150, 150, 650, 150, 650, 450, 150, 450)
+
+[node name="Polygon2D_Inner" type="Polygon2D" parent="Walls" unique_id=109233455]
+color = Color(1, 0, 0, 0.3)
+polygon = PackedVector2Array(200, 200, 600, 200, 600, 400, 200, 400)
+
+[node name="CollisionPolygon2D_Inner" type="CollisionPolygon2D" parent="Walls" unique_id=689629544]
+polygon = PackedVector2Array(200, 200, 600, 200, 600, 400, 200, 400)
+
+[node name="BlockerVisual" type="Polygon2D" parent="Walls" unique_id=589932637]
+color = Color(1, 0, 0, 0.3)
+polygon = PackedVector2Array(390, 400, 410, 400, 410, 450, 390, 450)
+
+[node name="BlockerCollision" type="CollisionPolygon2D" parent="Walls" unique_id=6086427]
+polygon = PackedVector2Array(390, 400, 410, 400, 410, 450, 390, 450)
+
+[node name="Goal" type="ColorRect" parent="." unique_id=1894517824]
+offset_left = 416.0
+offset_top = 401.0
+offset_right = 466.0
+offset_bottom = 451.0
+color = Color(0, 1, 0, 0.5)
+
+[node name="Label" type="Label" parent="Goal" unique_id=2036264423]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Goal"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GoalArea" type="Area2D" parent="Goal" unique_id=1202249615]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal/GoalArea" unique_id=11137544]
+position = Vector2(25, 25)
+shape = SubResource("RectangleShape2D_baako")
+
+[node name="StartPos" type="Marker2D" parent="." unique_id=1971971050]
+position = Vector2(344, 427)
