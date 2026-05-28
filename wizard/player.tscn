@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://itxl4vxb5umm"]
+
+[ext_resource type="Script" uid="uid://vprk37uh26ea" path="res://wizard/player.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://f0rc7hpsuxb1" path="res://wizard/wiz_ik.tscn" id="8_wizik"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_player"]
+
+[node name="Player" type="CharacterBody3D" unique_id=1299237393 node_paths=PackedStringArray("animation_player") groups=["player"]]
+script = ExtResource("1_script")
+animation_player = NodePath("WizIK/Crouch Idle/AnimationPlayer")
+jump_anim = "wiz_anim_lib/run_jump"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1519785743]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_player")
+
+[node name="Head" type="Node3D" parent="." unique_id=1662820606]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="Head" unique_id=458392104]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4571805, 0, 0)
+margin = 0.5
+
+[node name="Camera3D" type="Camera3D" parent="Head/SpringArm3D" unique_id=1838280673]
+
+[node name="InteractRaycast" type="RayCast3D" parent="Head/SpringArm3D/Camera3D" unique_id=517022295]
+target_position = Vector3(0, 0, -10)
+collide_with_areas = true
+
+[node name="CrosshairUI" type="CanvasLayer" parent="." unique_id=1234567890]
+
+[node name="CenterContainer" type="CenterContainer" parent="CrosshairUI" unique_id=1234567891]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Dot" type="ColorRect" parent="CrosshairUI/CenterContainer" unique_id=1234567892]
+custom_minimum_size = Vector2(4, 4)
+layout_mode = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0.8)
+
+[node name="InteractLabel" type="Label" parent="CrosshairUI" unique_id=1234567893]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = 16.0
+offset_right = 28.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "Push E"
+horizontal_alignment = 1
+
+[node name="WizIK" parent="." unique_id=298427177 instance=ExtResource("8_wizik")]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0, 0)

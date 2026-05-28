@@ -1,0 +1,12 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" uid="uid://4lfdgsmfsajn" path="res://coupon_game/ui_manager.gd" id="1_script"]
+[ext_resource type="PackedScene" path="res://coupon_game/magazine.tscn" id="2_mag"]
+[ext_resource type="PackedScene" uid="uid://c0h1f5g24fq80" path="res://coupon_game/maze_minigame.tscn" id="3_maze"]
+
+[node name="UIManager" type="CanvasLayer"]
+script = ExtResource("1_script")
+
+[node name="Magazine" parent="." instance=ExtResource("2_mag")]
+
+[node name="MazeGame" parent="." instance=ExtResource("3_maze")]

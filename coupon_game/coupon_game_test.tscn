@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://jub3eiibx1ln"]
+
+[ext_resource type="PackedScene" uid="uid://itxl4vxb5umm" path="res://wizard/player.tscn" id="1_e8km1"]
+[ext_resource type="PackedScene" uid="uid://bsyyc5sgjiy2i" path="res://coupon_game/coupon_book.tscn" id="2_xp8p8"]
+[ext_resource type="PackedScene" path="res://coupon_game/ui_manager.tscn" id="3_p0sxq"]
+[ext_resource type="PackedScene" uid="uid://dshon3x7yokg" path="res://cart/cart.tscn" id="4_ojtpd"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_x"]
+
+[sub_resource type="Sky" id="Sky_y"]
+sky_material = SubResource("ProceduralSkyMaterial_x")
+
+[sub_resource type="Environment" id="Environment_z"]
+background_mode = 2
+sky = SubResource("Sky_y")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_floor"]
+size = Vector3(20, 1, 20)
+
+[sub_resource type="BoxMesh" id="BoxMesh_floor"]
+size = Vector3(20, 1, 20)
+
+[node name="Shopping" type="Node3D" unique_id=850646565]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1362638752]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=226277644]
+environment = SubResource("Environment_z")
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=859396802]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=2013720991]
+shape = SubResource("BoxShape3D_floor")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=2012378125]
+mesh = SubResource("BoxMesh_floor")
+
+[node name="Player" parent="." unique_id=1360989732 instance=ExtResource("1_e8km1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="CouponBook" parent="." unique_id=920449297 instance=ExtResource("2_xp8p8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -2)
+
+[node name="UIManager" parent="." unique_id=950885443 instance=ExtResource("3_p0sxq")]
+
+[node name="Cart" parent="." unique_id=1058743137 instance=ExtResource("4_ojtpd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1090517, 0.7727251, 0)
