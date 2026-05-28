@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Ingredient" format=3 uid="uid://dfgsehdlokeiq"]
+
+[ext_resource type="Script" uid="uid://nkht70761teq" path="res://scripts/ingredients/ingredient.gd" id="1_3q3jc"]
+[ext_resource type="Texture2D" uid="uid://b7vxl1i1p3kdd" path="res://assets/whos_in_whoville.png" id="1_x831j"]
+
+[resource]
+script = ExtResource("1_3q3jc")
+name = "Whovillians"
+price = 1.0
+image = ExtResource("1_x831j")
+metadata/_custom_type_script = "uid://nkht70761teq"

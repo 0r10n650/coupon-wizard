@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://c8kgf853o0pbf"]
+
+[ext_resource type="Script" uid="uid://cowktg5f6hnuc" path="res://tests/shoppingfordummies.gd" id="1_w6wre"]
+
+[node name="Shoppingfordummies" type="Control" unique_id=1985381664]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w6wre")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=43139629]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemsRow" type="HBoxContainer" parent="VBoxContainer" unique_id=1859231912]
+layout_mode = 2
+
+[node name="CouponsRow" type="HBoxContainer" parent="VBoxContainer" unique_id=161891534]
+layout_mode = 2
+
+[node name="ButtonsRow" type="HBoxContainer" parent="VBoxContainer" unique_id=964833535]
+layout_mode = 2
+
+[node name="ApplyButton" type="Button" parent="VBoxContainer/ButtonsRow" unique_id=617118171]
+layout_mode = 2
+text = "Apply"
+
+[node name="ResetButton" type="Button" parent="VBoxContainer/ButtonsRow" unique_id=1425235864]
+layout_mode = 2
+text = "Reset Scene"
+
+[node name="ResultLabel" type="Label" parent="VBoxContainer" unique_id=496722792]
+layout_mode = 2
+text = "Thanks for shopping at ShopCo"
+
+[connection signal="pressed" from="VBoxContainer/ButtonsRow/ApplyButton" to="." method="_on_apply_pressed"]
+[connection signal="pressed" from="VBoxContainer/ButtonsRow/ResetButton" to="." method="_on_reset_pressed"]

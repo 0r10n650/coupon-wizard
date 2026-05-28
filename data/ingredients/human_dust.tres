@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Ingredient" format=3 uid="uid://3vhsfo6hu08i"]
+
+[ext_resource type="Script" uid="uid://nkht70761teq" path="res://scripts/ingredients/ingredient.gd" id="1_000qh"]
+[ext_resource type="Texture2D" uid="uid://ys0a5b64pd4v" path="res://assets/human_dust.png" id="1_xbn70"]
+
+[resource]
+script = ExtResource("1_000qh")
+name = "Human Dust"
+price = 5.0
+image = ExtResource("1_xbn70")
+metadata/_custom_type_script = "uid://nkht70761teq"
