@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Ingredient" format=3 uid="uid://bje67gtderi75"]
+
+[ext_resource type="Texture2D" uid="uid://bw8ecrcjh0krg" path="res://assets/unicorn_hair.png" id="1_2yv3a"]
+[ext_resource type="Script" uid="uid://nkht70761teq" path="res://scripts/ingredients/ingredient.gd" id="1_tawvk"]
+
+[resource]
+script = ExtResource("1_tawvk")
+name = "Unicorn Hair"
+price = 50.0
+image = ExtResource("1_2yv3a")
+tags = Array[String](["Animal"])
+metadata/_custom_type_script = "uid://nkht70761teq"
