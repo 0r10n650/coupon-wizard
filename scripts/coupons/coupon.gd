@@ -1,12 +1,15 @@
 class_name Coupon
 extends Resource
 
+@export var name: String
+@export var description: String
 @export var gates: Array[Condition]
-# @export var target: TargetSelector
+@export var target: Selector
 @export var discount: Discount
 
 func quick_apply(cart: Dictionary) -> float:
-	return discount.apply(cart)
+	var targeted = target.select(cart) if target else cart
+	return discount.apply(targeted)
 	
 func apply(cart: Array, applied_coupons: Array) -> CouponResult:
 	var result = CouponResult.new()

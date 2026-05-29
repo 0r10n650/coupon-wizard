@@ -8,3 +8,6 @@ func apply(filtered_cart: Dictionary) -> float:
 	for count in filtered_cart.values():
 		total_items += count
 	return amount * total_items
+
+func describe() -> String:
+	return "-%.2fg each" % amount

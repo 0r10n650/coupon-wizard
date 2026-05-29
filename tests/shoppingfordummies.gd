@@ -38,8 +38,30 @@ func _setup_coupons() -> void:
 
 	var coupon_b = Coupon.new()
 	coupon_b.discount = flat2
+	
+	var discount_25p = PercentageDiscount.new()
+	discount_25p.percentage = 0.25
+	
+	var animal_sel = TagSelector.new()
+	animal_sel.target = "Animal"
+	
+	var coupon_c = Coupon.new()
+	coupon_c.name = "All Animals Must Go"
+	coupon_c.discount = discount_25p
+	coupon_c.target = animal_sel
+	
+	var discount_10p = PercentageDiscount.new()
+	discount_10p.percentage = 0.1
+	
+	var human_sel = TagSelector.new()
+	human_sel.target = "Human"
+	
+	var coupon_d = Coupon.new()
+	coupon_d.name = "Humanoid Fire Sale"
+	coupon_d.discount = discount_10p
+	coupon_d.target = human_sel
 
-	all_coupons = [coupon_a, coupon_b]
+	all_coupons = [coupon_a, coupon_b, coupon_c, coupon_d]
 
 func _build_item_buttons() -> void:
 	for ingredient in all_ingredients:
@@ -62,7 +84,7 @@ func _build_coupon_buttons() -> void:
 	for i in all_coupons.size():
 		var coupon = all_coupons[i]
 		var btn = Button.new()
-		btn.text = "Coupon %d (-%.2fg each)" % [i + 1, coupon.discount.amount]
+		btn.text = "%s (%s)" % [coupon.name, coupon.discount.describe()]
 		btn.pressed.connect(_on_coupon_clicked.bind(coupon, btn))
 		coupons_container.add_child(btn)
 

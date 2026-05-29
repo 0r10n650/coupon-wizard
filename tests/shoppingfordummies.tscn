@@ -27,6 +27,7 @@ layout_mode = 2
 
 [node name="ButtonsRow" type="HBoxContainer" parent="VBoxContainer" unique_id=964833535]
 layout_mode = 2
+alignment = 1
 
 [node name="ApplyButton" type="Button" parent="VBoxContainer/ButtonsRow" unique_id=617118171]
 layout_mode = 2
@@ -39,6 +40,7 @@ text = "Reset Scene"
 [node name="ResultLabel" type="Label" parent="VBoxContainer" unique_id=496722792]
 layout_mode = 2
 text = "Thanks for shopping at ShopCo"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="VBoxContainer/ButtonsRow/ApplyButton" to="." method="_on_apply_pressed"]
 [connection signal="pressed" from="VBoxContainer/ButtonsRow/ResetButton" to="." method="_on_reset_pressed"]

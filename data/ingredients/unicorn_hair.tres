@@ -8,4 +8,5 @@ script = ExtResource("1_tawvk")
 name = "Unicorn Hair"
 price = 50.0
 image = ExtResource("1_2yv3a")
+tags = Array[String](["Animal"])
 metadata/_custom_type_script = "uid://nkht70761teq"

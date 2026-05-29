@@ -8,4 +8,5 @@ script = ExtResource("1_xlrph")
 name = "Dragon Scale"
 price = 20.0
 image = ExtResource("1_wskw3")
+tags = Array[String](["Animal"])
 metadata/_custom_type_script = "uid://nkht70761teq"
