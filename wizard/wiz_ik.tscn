@@ -23,7 +23,7 @@ _data = {
 [node name="Crouch Idle" parent="." unique_id=601109509 instance=ExtResource("1_17kth")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 
-[node name="Skeleton3D" parent="Crouch Idle" index="0" unique_id=1010775887]
+[node name="Skeleton3D" parent="Crouch Idle" index="0" unique_id=2128289875]
 bones/0/position = Vector3(0.006008665, 4.8335524, -0.04159585)
 bones/0/rotation = Quaternion(0.073465265, -0.04789681, -0.03842744, 0.99540555)
 bones/1/rotation = Quaternion(0.12774304, 0.09694158, 0.03775286, 0.9863361)
@@ -102,7 +102,12 @@ settings/0/end_bone = 17
 settings/0/use_virtual_end = false
 settings/0/extend_end_bone = false
 
-[node name="AnimationPlayer" parent="Crouch Idle" index="1" unique_id=50155254]
+[node name="HeadLookAtModifier3D" type="LookAtModifier3D" parent="Crouch Idle/Skeleton3D" index="6" unique_id=584089670]
+target_node = NodePath("../../../HeadTarget")
+bone_name = "mixamorig_Head"
+bone = 5
+
+[node name="AnimationPlayer" parent="Crouch Idle" index="1" unique_id=1607298387]
 libraries/wiz_anim_lib = SubResource("AnimationLibrary_mppho")
 
 [node name="RightArmIKPole" type="Marker3D" parent="." unique_id=1466250202]
@@ -128,5 +133,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19125664, 1.1043837, 0.4942
 
 [node name="LeftLegIKTarget" type="Marker3D" parent="." unique_id=1182172008]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23774743, 0, 0.6570716)
+
+[node name="HeadTarget" type="Marker3D" parent="." unique_id=565674797]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.011235118, 1.5427818, 0.70451236)
 
 [editable path="Crouch Idle"]

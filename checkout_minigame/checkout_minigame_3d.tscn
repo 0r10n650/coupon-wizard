@@ -1,0 +1,385 @@
+[gd_scene format=3 uid="uid://testuid"]
+
+[ext_resource type="Script" uid="uid://chp41r61qllaa" path="res://checkout_minigame/checkout_minigame_3d.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://0mwxoliualx0" path="res://wizard/Crouch Idle.fbx" id="2_qqfdj"]
+[ext_resource type="Material" uid="uid://c1y6rn3e8ai51" path="res://coupon_game/coupon_book_mat.tres" id="3_bw6vx"]
+[ext_resource type="PackedScene" uid="uid://f0rc7hpsuxb1" path="res://wizard/wiz_ik.tscn" id="4_31rlj"]
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_pn2rc"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_bw6vx"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_31rlj"]
+
+[sub_resource type="Animation" id="Animation_31rlj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CineCamera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.9653343, 0.91503596, 2.1344423)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CineCamera3D:current")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GameCamera3D:current")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/VBoxContainer2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/VBoxContainer:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CineCamera3D:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.2941927, -3.1415925, -2.6487754e-08)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("WizIK/LeftArmIKTarget:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.1935451, 1.3663902, 0.3744383)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("WizIK/RightArmIKTarget:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.21697164, 1.0661671, 0.3744384)]
+}
+
+[sub_resource type="Animation" id="Animation_bw6vx"]
+resource_name = "CheckoutStartAnimation"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CineCamera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5000001, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.31360233, 0.91503596, 2.1344423), Vector3(-0.49152857, 0.96986365, 2.389795), Vector3(-0.9653343, 0.91503596, 2.1344423)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 0.7, 2.7, 3, 3.3010182),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CineCamera3D:current")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GameCamera3D:current")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/VBoxContainer:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 3.3000002),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/VBoxContainer2:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 3.3000002),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CineCamera3D:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1.5000001, 3.0000002),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.1405863, -3.1415925, -3.1547325e-09), Vector3(-0.2941927, -3.1415925, -2.6487754e-08), Vector3(-0.1405863, -3.1415925, -3.1547325e-09)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("WizIK/RightArmIKTarget:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.21697164, 1.0661671, 0.3744384)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("WizIK/LeftArmIKTarget:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1, 2.0333335),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.19354516, 0.8551949, -0.07884598), Vector3(0.23302042, 1.6162087, 0.14469767), Vector3(0.23302042, 1.3214364, 0.45001674)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_muuro"]
+_data = {
+&"RESET": SubResource("Animation_31rlj"),
+&"start_cutscene": SubResource("Animation_bw6vx")
+}
+
+[node name="CheckoutMinigame3D" type="Node3D" unique_id=145500156]
+script = ExtResource("1_script")
+arrow_spacing = 0.2
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=238308720]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="GameCamera3D" type="Camera3D" parent="." unique_id=1461574860]
+transform = Transform3D(0.8509488, -0.11741328, 0.5119573, 0.00090913154, 0.9750229, 0.22210255, -0.5252478, -0.18853247, 0.8298013, 0.61882377, 1.5460082, 3.1449811)
+current = true
+
+[node name="HitParticles3D" type="CPUParticles3D" parent="." unique_id=880841980]
+emitting = false
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("RibbonTrailMesh_pn2rc")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1979433291]
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer" unique_id=1144005933]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_right = 200.0
+offset_bottom = 200.0
+grow_horizontal = 2
+
+[node name="PriceLabel" type="Label" parent="CanvasLayer/VBoxContainer2" unique_id=1605502701]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "Total: $100.00"
+horizontal_alignment = 1
+
+[node name="ComboLabel" type="Label" parent="CanvasLayer" unique_id=573294515]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -11.5
+offset_right = 200.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 30
+text = "Press SPACE to start"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=330132788]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -200.0
+offset_right = 200.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 2
+
+[node name="DiscountLabel" type="Label" parent="CanvasLayer/VBoxContainer" unique_id=1439087598]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "Discount: -$0.00"
+horizontal_alignment = 1
+
+[node name="ComboBar" type="ProgressBar" parent="CanvasLayer/VBoxContainer" unique_id=30460245]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+max_value = 2.0
+value = 2.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer" unique_id=748630507]
+layout_mode = 2
+alignment = 1
+metadata/psx_disable = true
+metadata/psx_disable_children = true
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=789327428]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1637843149]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 2)
+mesh = SubResource("PlaneMesh_bw6vx")
+skeleton = NodePath("")
+
+[node name="ArrowAnchor" type="Marker3D" parent="." unique_id=1178609346]
+transform = Transform3D(1.9168026, 0, 4.617994, 0, 5, 0, -4.617994, 0, 1.9168026, -0.06536162, 1.8288281, 1.6772056)
+
+[node name="Crouch Idle" parent="." unique_id=2043132252 instance=ExtResource("2_qqfdj")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.22929913, 0, 1.2541809)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=795167420]
+transform = Transform3D(3.651461, 0, 0, 0, 1.4028056, 0, 0, 0, 0.6777836, -0.79344124, 0, 2.3477795)
+material_override = ExtResource("3_bw6vx")
+mesh = SubResource("BoxMesh_31rlj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1517732313]
+libraries/ = SubResource("AnimationLibrary_muuro")
+
+[node name="CineCamera3D" type="Camera3D" parent="." unique_id=835367102]
+transform = Transform3D(-1, 1.7296095e-08, -1.445085e-07, -2.5349749e-08, 0.95703655, 0.28996733, 1.4331522e-07, 0.28996733, -0.95703655, -0.9653343, 0.91503596, 2.1344423)
+current = true
+
+[node name="WizIK" parent="." unique_id=427355988 instance=ExtResource("4_31rlj")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.67514265, -0.5037718, 3.0019348)
+
+[node name="LeftArmIKTarget" parent="WizIK" index="4" unique_id=1379972132]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1935451, 1.3663902, 0.3744383)
+
+[node name="RightLegIKPole" parent="WizIK" index="5" unique_id=411853710]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4024084, 1.1910791, 0.5754247)
+
+[node name="RightLegIKTarget" parent="WizIK" index="6" unique_id=617447598]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.34928203, 0.5234084, 0.011954784)
+
+[node name="LeftLegIKPole" parent="WizIK" index="7" unique_id=1914133258]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8651534, 1.1043837, 0.49429107)
+
+[node name="LeftLegIKTarget" parent="WizIK" index="8" unique_id=1182172008]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23774767, 0.6040336, 0.09362316)
+
+[editable path="WizIK"]
+[editable path="WizIK/Crouch Idle"]
