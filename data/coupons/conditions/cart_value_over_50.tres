@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CartValueCondition" format=3 uid="uid://cnk0gtgim5rmj"]
+
+[ext_resource type="Script" uid="uid://d3im2u2p3pcwy" path="res://scripts/coupons/conditions/cart_value_condition.gd" id="1_o2gnb"]
+
+[resource]
+script = ExtResource("1_o2gnb")
+mode = 1
+value = 50.0
+metadata/_custom_type_script = "uid://d3im2u2p3pcwy"

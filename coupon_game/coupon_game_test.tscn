@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://jub3eiibx1ln"]
+[gd_scene format=3 uid="uid://cdq1k83746qb6"]
 
 [ext_resource type="PackedScene" uid="uid://itxl4vxb5umm" path="res://wizard/player.tscn" id="1_e8km1"]
 [ext_resource type="PackedScene" uid="uid://bsyyc5sgjiy2i" path="res://coupon_game/coupon_book.tscn" id="2_xp8p8"]

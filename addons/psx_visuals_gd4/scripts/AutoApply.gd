@@ -21,6 +21,8 @@ func _on_node_added(node):
 			return
 			
 		if node is SpriteBase3D:
+	
+		if node is Sprite3D:
 			return
 
 		# Check if this node specifically is disabled

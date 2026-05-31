@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://jub3eiibx1ln"]
 
 [ext_resource type="PackedScene" uid="uid://cfsmos5rhswc" path="res://Scenes/shopping_wizard.tscn" id="1_e6x87"]
+[ext_resource type="PackedScene" uid="uid://m0wfkfv7rv67" path="res://Scenes/3D_grocery_item.tscn" id="2_84pa7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fhba7"]
 size = Vector3(100, 1, 100)
@@ -26,41 +27,46 @@ size = Vector3(1, 3, 10)
 shape = SubResource("BoxShape3D_fhba7")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=1259497027]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17010736, 0.272614, -0.0133423805)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.24949741, 0.29863024, -0.03952551)
 mesh = SubResource("BoxMesh_menrd")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=650162933]
 transform = Transform3D(1, 0, 0, 0, -0.09848606, 0.9951384, 0, -0.9951384, -0.09848606, 0, 33.14582, 0)
 
-[node name="StaticBody3D3" type="StaticBody3D" parent="." unique_id=1210978175]
+[node name="ShoppingWizard" parent="." unique_id=948979824 instance=ExtResource("1_e6x87")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0060009956, 1.809822, 1.1347561)
+
+[node name="Shelves" type="Node" parent="." unique_id=1828699073]
+
+[node name="Shelf" type="StaticBody3D" parent="Shelves" unique_id=1210978175]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.157032, 2.1576095, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3" unique_id=677801549]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Shelves/Shelf" unique_id=677801549]
 shape = SubResource("BoxShape3D_e6x87")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D3" unique_id=1054911904]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Shelves/Shelf" unique_id=1054911904]
 mesh = SubResource("BoxMesh_84pa7")
-skeleton = NodePath("../../StaticBody3D3")
 
-[node name="StaticBody3D2" type="StaticBody3D" parent="." unique_id=1659171721]
+[node name="Shelf2" type="StaticBody3D" parent="Shelves" unique_id=1659171721]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.944561, 2.0490632, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2" unique_id=1130858918]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Shelves/Shelf2" unique_id=1130858918]
 shape = SubResource("BoxShape3D_e6x87")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2" unique_id=629920165]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Shelves/Shelf2" unique_id=629920165]
 mesh = SubResource("BoxMesh_84pa7")
-skeleton = NodePath("../../StaticBody3D2")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1660641626]
+[node name="Shelf3" type="StaticBody3D" parent="Shelves" unique_id=1660641626]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9722805, 1.8408833, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=638739461]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Shelves/Shelf3" unique_id=638739461]
 shape = SubResource("BoxShape3D_e6x87")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1000269103]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Shelves/Shelf3" unique_id=1000269103]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.30991268, 0)
 mesh = SubResource("BoxMesh_84pa7")
 
-[node name="ShoppingWizard" parent="." unique_id=948979824 instance=ExtResource("1_e6x87")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0060009956, 1.809822, 1.1347561)
+[node name="Items" type="Node" parent="." unique_id=1896359673]
+
+[node name="3DGroceryItem" parent="Items" unique_id=1328174304 instance=ExtResource("2_84pa7")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -10.948143, 2.5449944, 1.2393117)
