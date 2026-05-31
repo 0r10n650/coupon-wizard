@@ -21,6 +21,7 @@ func _on_node_added(node):
 			return
 			
 		if node is SpriteBase3D:
+			return
 	
 		if node is Sprite3D:
 			return

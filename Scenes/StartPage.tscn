@@ -35,17 +35,15 @@ offset_right = 460.0
 offset_bottom = 457.0
 text = "Checkout demo"
 
-[connection signal="pressed" from="JordosButton" to="." method="_on_jordos_button_pressed"]
-[connection signal="pressed" from="OButton" to="." method="_on_o_button_pressed"]
-[connection signal="pressed" from="CheckoutGame" to="." method="_on_checkout_game_pressed"]
 [node name="CarpyDemo" type="Button" parent="." unique_id=622919032]
-offset_left = 305.0
-offset_top = 408.0
-offset_right = 450.0
-offset_bottom = 460.0
+offset_left = 311.0
+offset_top = 312.0
+offset_right = 456.0
+offset_bottom = 364.0
 text = "Carpy Demo
 "
 
 [connection signal="pressed" from="JordosButton" to="." method="_on_jordos_button_pressed"]
 [connection signal="pressed" from="OButton" to="." method="_on_o_button_pressed"]
+[connection signal="pressed" from="CheckoutGame" to="." method="_on_checkout_game_pressed"]
 [connection signal="pressed" from="CarpyDemo" to="." method="_on_carpy_demo_pressed"]
