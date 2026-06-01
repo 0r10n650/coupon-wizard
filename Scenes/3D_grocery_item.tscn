@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://c8e23din1bjcu" path="res://Scripts/grocery_item_3D.gd" id="1_cr1ww"]
 [ext_resource type="Texture2D" uid="uid://cmfvkpv1fwvwt" path="res://icon.svg" id="2_7oui6"]
 [ext_resource type="Script" uid="uid://bqfynvbhlq5bl" path="res://Scripts/item_data.gd" id="2_cr1ww"]
+[ext_resource type="PackedScene" uid="uid://d3jilek8i1cpk" path="res://Assets/3D Assets/Shelf.glb" id="4_7oui6"]
+[ext_resource type="Material" path="res://Assets/Materials/ShelfMaterial.tres" id="5_l7ske"]
 
 [sub_resource type="Resource" id="Resource_7oui6"]
 script = ExtResource("2_cr1ww")
@@ -11,19 +13,38 @@ sprite = ExtResource("2_7oui6")
 metadata/_custom_type_script = "uid://bqfynvbhlq5bl"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mc6ra"]
-size = Vector3(4.9375, 3.83667, 1)
+size = Vector3(5.1113586, 2.9014282, 1.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7oui6"]
+size = Vector3(5, 3.2, 2)
 
 [node name="3DGroceryItem" type="Node3D" unique_id=1328174304]
 script = ExtResource("1_cr1ww")
 item = SubResource("Resource_7oui6")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=1338113551]
-transform = Transform3D(1, 0, 0, 0, 0.9863489, 0.16466889, 0, -0.16466889, 0.9863489, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.9863489, 0.16466889, 0, -0.16466889, 0.9863489, 0, 1.6459526, 0.31082952)
 texture = ExtResource("2_7oui6")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=221058842]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5181832, 0)
 monitoring = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1126723909]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0048065186, -0.04928589, 0)
 shape = SubResource("BoxShape3D_mc6ra")
 debug_color = Color(0.7537842, 0.00031458258, 0.7227236, 1)
+
+[node name="Shelf" parent="." unique_id=1099486274 instance=ExtResource("4_7oui6")]
+transform = Transform3D(-1.3113417e-08, 0, -0.3, 0, 0.3, 0, 0.3, 0, -1.3113417e-08, 0, 0, 0)
+
+[node name="Cube" parent="Shelf" index="0" unique_id=1097366819]
+surface_material_override/0 = ExtResource("5_l7ske")
+
+[node name="CollisionShape" type="StaticBody3D" parent="." unique_id=594675336]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionShape" unique_id=1959903556]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5130452, -0.8420212)
+shape = SubResource("BoxShape3D_7oui6")
+
+[editable path="Shelf"]

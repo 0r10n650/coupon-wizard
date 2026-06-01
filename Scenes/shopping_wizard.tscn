@@ -33,18 +33,18 @@ parent = NodePath("..")
 metadata/_custom_type_script = "uid://dcc4rfcyx225u"
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1176369]
-transform = Transform3D(1, 0, 0, 0, 0.95323294, 0.3022368, 0, -0.3022368, 0.95323294, 0, 1.9884253, 2.6367888)
+transform = Transform3D(1, 0, 0, 0, 0.95323294, 0.3022368, 0, -0.3022368, 0.95323294, 0, 1.9132063, 2.2223866)
 
 [node name="RightCast" type="RayCast3D" parent="." unique_id=1217983020]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.73781157, 0, 0)
-target_position = Vector3(3, 0, -0.89)
+target_position = Vector3(4, 0, -0.89)
 collide_with_areas = true
 collide_with_bodies = false
 debug_shape_custom_color = Color(0.910021, 0, 0.1501086, 1)
 
 [node name="LeftCast" type="RayCast3D" parent="." unique_id=1249292947]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7530099, 0, 0)
-target_position = Vector3(-3, 0, -0.89)
+target_position = Vector3(-4, 0, -0.89)
 collide_with_areas = true
 collide_with_bodies = false
 debug_shape_custom_color = Color(0.910021, 0, 0.1501086, 1)
