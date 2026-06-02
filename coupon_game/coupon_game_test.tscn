@@ -1,9 +1,13 @@
 [gd_scene format=3 uid="uid://cdq1k83746qb6"]
 
+[ext_resource type="Script" path="res://Scripts/coupon_game_test.gd" id="1_cgt_main"]
 [ext_resource type="PackedScene" uid="uid://itxl4vxb5umm" path="res://wizard/player.tscn" id="1_e8km1"]
 [ext_resource type="PackedScene" uid="uid://bsyyc5sgjiy2i" path="res://coupon_game/coupon_book.tscn" id="2_xp8p8"]
 [ext_resource type="PackedScene" path="res://coupon_game/ui_manager.tscn" id="3_p0sxq"]
 [ext_resource type="PackedScene" uid="uid://dshon3x7yokg" path="res://cart/cart.tscn" id="4_ojtpd"]
+[ext_resource type="PackedScene" uid="uid://ups3t31" path="res://Scenes/upgrade_station_3d.tscn" id="5_ups"]
+[ext_resource type="PackedScene" path="res://Scenes/shopping_door_3d.tscn" id="6_shop_door"]
+[ext_resource type="AudioStream" uid="uid://dip1ltitlw8ci" path="res://coupon_game/May31CouponWizard - Chill.wav" id="7_wgsbt"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_x"]
 
@@ -21,6 +25,7 @@ size = Vector3(20, 1, 20)
 size = Vector3(20, 1, 20)
 
 [node name="Shopping" type="Node3D" unique_id=850646565]
+script = ExtResource("1_cgt_main")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1362638752]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
@@ -48,3 +53,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -2)
 
 [node name="Cart" parent="." unique_id=1058743137 instance=ExtResource("4_ojtpd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1090517, 0.7727251, 0)
+
+[node name="UpgradeStation3D" parent="." unique_id=764729609 instance=ExtResource("5_ups")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+
+[node name="ShoppingDoor3D" parent="." unique_id=1960151272 instance=ExtResource("6_shop_door")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1743520432]
+stream = ExtResource("7_wgsbt")
+autoplay = true

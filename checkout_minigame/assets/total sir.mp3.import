@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://f23x4v5pxth3"
+path="res://.godot/imported/total sir.mp3-d7536493628ef7c0dd5c9565d0544a38.mp3str"
+
+[deps]
+
+source_file="res://checkout_minigame/assets/total sir.mp3"
+dest_files=["res://.godot/imported/total sir.mp3-d7536493628ef7c0dd5c9565d0544a38.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

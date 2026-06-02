@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dip1ltitlw8ci"
+path="res://.godot/imported/May31CouponWizard - Chill.wav-862f8ca73802a17623ad237600f4da19.sample"
+
+[deps]
+
+source_file="res://coupon_game/May31CouponWizard - Chill.wav"
+dest_files=["res://.godot/imported/May31CouponWizard - Chill.wav-862f8ca73802a17623ad237600f4da19.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=820000
+edit/loop_end=-1
+compress/mode=2

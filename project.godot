@@ -23,6 +23,7 @@ config/icon="res://icon.svg"
 
 PsxVisualsGd4AutoLoad="*uid://gr30ktbgmp1i"
 PsxVisualsGd4AutoApply="*uid://d38enjrc45wvo"
+GameState="*res://Scripts/game_state.gd"
 
 [display]
 
@@ -113,7 +114,7 @@ psx_affine_strength={
 }
 psx_bit_depth={
 "type": "int",
-"value": 40
+"value": 10
 }
 psx_fog_color={
 "type": "color",

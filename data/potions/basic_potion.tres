@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PotionRecipe" format=3 uid="uid://basic_potion_1"]
+
+[ext_resource type="Script" path="res://Scripts/potion_recipe.gd" id="1_recipe"]
+[ext_resource type="Resource" uid="uid://3vhsfo6hu08i" path="res://data/ingredients/human_dust.tres" id="2_human"]
+
+[resource]
+script = ExtResource("1_recipe")
+potion_name = "Basic Potion"
+sell_price = 50.0
+ingredients_required = [ExtResource("2_human")]
+counts_required = [3]

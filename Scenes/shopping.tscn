@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://jub3eiibx1ln"]
 
+[ext_resource type="Script" path="res://Scripts/shopping.gd" id="1_shop_main"]
 [ext_resource type="PackedScene" uid="uid://cfsmos5rhswc" path="res://Scenes/shopping_wizard.tscn" id="1_e6x87"]
 [ext_resource type="PackedScene" uid="uid://m0wfkfv7rv67" path="res://Scenes/3D_grocery_item.tscn" id="2_84pa7"]
+[ext_resource type="PackedScene" uid="uid://debug_shop_ui_1" path="res://Scenes/debug_shopping_ui.tscn" id="3_debug"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fhba7"]
 size = Vector3(100, 1, 100)
@@ -20,6 +22,7 @@ size = Vector3(1, 3, 10)
 size = Vector3(1, 3, 10)
 
 [node name="Shopping" type="Node3D" unique_id=358266539]
+script = ExtResource("1_shop_main")
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=2119924584]
 
@@ -70,3 +73,5 @@ mesh = SubResource("BoxMesh_84pa7")
 
 [node name="3DGroceryItem" parent="Items" unique_id=1328174304 instance=ExtResource("2_84pa7")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -10.948143, 2.5449944, 1.2393117)
+
+[node name="DebugShoppingUI" parent="." instance=ExtResource("3_debug")]
