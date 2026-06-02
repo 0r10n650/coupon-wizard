@@ -4,7 +4,7 @@ const SAVE_PATH = "user://save_game.save"
 
 var current_day: int = 2
 var gold: int = 0
-var debt: int = 1000000
+var debt: int = 500
 var last_scene_path: String = "res://Scenes/shopping.tscn"
 
 var upgrades = {
@@ -76,7 +76,7 @@ func save_current_scene(path: String):
 func reset_game():
 	current_day = 2
 	gold = 0
-	debt = 1000000
+	debt = 500
 	for key in upgrades:
 		upgrades[key] = 0
 	daily_state = {
@@ -92,9 +92,8 @@ func reset_game():
 	print("Game reset to Day 2 defaults.")
 
 func advance_day():
-	# Apply interest (100% daily interest!)
 	if debt > 0:
-		debt *= 2
+		debt = int(debt * 1.30)
 	current_day += 1
 	# Reset daily state
 	daily_state = {

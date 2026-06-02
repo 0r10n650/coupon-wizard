@@ -29,12 +29,12 @@ var retries_label: Label
 func _setup_hud():
 	hud_panel = Panel.new()
 	hud_panel.position = Vector2(20, 20)
-	hud_panel.size = Vector2(200, 120)
-	hud_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	hud_panel.size = Vector2(200, 160)
+	hud_panel.mouse_filter = Control.MOUSE_FILTER_PASS
 	
 	var vbox = VBoxContainer.new()
 	vbox.position = Vector2(10, 10)
-	vbox.size = Vector2(180, 100)
+	vbox.size = Vector2(180, 140)
 	
 	day_label = Label.new()
 	debt_label = Label.new()
@@ -49,8 +49,54 @@ func _setup_hud():
 	vbox.add_child(gold_label)
 	vbox.add_child(retries_label)
 	
+	var payoff_btn = Button.new()
+	payoff_btn.text = "Pay Debt"
+	payoff_btn.mouse_filter = Control.MOUSE_FILTER_STOP
+	payoff_btn.pressed.connect(_on_payoff_pressed)
+	vbox.add_child(payoff_btn)
+	
 	hud_panel.add_child(vbox)
 	add_child(hud_panel)
+
+func _on_payoff_pressed():
+	if GameState.gold > 0 and GameState.debt > 0:
+		var amount = min(GameState.gold, GameState.debt)
+		GameState.pay_debt(amount)
+		if GameState.debt <= 0:
+			_show_win_screen()
+
+func _show_win_screen():
+	var win_panel = Panel.new()
+	win_panel.custom_minimum_size = Vector2(400, 200)
+	
+	var vbox = VBoxContainer.new()
+	vbox.set_anchors_preset(Control.PRESET_FULL_RECT)
+	vbox.alignment = BoxContainer.ALIGNMENT_CENTER
+	
+	var title = Label.new()
+	title.text = "VICTORY!"
+	title.add_theme_font_size_override("font_size", 48)
+	title.add_theme_color_override("font_color", Color.GOLD)
+	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	vbox.add_child(title)
+	
+	var desc = Label.new()
+	desc.text = "You paid off all your debt!\nYou are a true Coupon Wizard!"
+	desc.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	vbox.add_child(desc)
+	
+	var close_btn = Button.new()
+	close_btn.text = "Keep Playing"
+	close_btn.custom_minimum_size = Vector2(120, 40)
+	close_btn.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	close_btn.pressed.connect(func(): win_panel.queue_free())
+	vbox.add_child(close_btn)
+	
+	win_panel.add_child(vbox)
+	add_child(win_panel)
+	
+	var vp_size = get_viewport().get_visible_rect().size
+	win_panel.position = (vp_size - win_panel.custom_minimum_size) / 2.0
 
 func _process(_delta):
 	if is_instance_valid(day_label):
