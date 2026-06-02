@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cx5xj1hbvxjyq"
+path="res://.godot/imported/Domain Expansion (Quiet) 1.mp3-78ff1d794e833ce2546d8963d4271d05.mp3str"
+
+[deps]
+
+source_file="res://checkout_minigame/assets/Domain Expansion (Quiet) 1.mp3"
+dest_files=["res://.godot/imported/Domain Expansion (Quiet) 1.mp3-78ff1d794e833ce2546d8963d4271d05.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

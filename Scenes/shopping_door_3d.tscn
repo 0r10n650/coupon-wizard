@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://shop_door_1"]
+
+[ext_resource type="Script" path="res://Scripts/shopping_door.gd" id="1_shop"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_shop"]
+size = Vector3(1, 2, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_shop"]
+albedo_color = Color(0.8, 0.4, 0.1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_shop"]
+material = SubResource("StandardMaterial3D_shop")
+size = Vector3(1, 2, 0.2)
+
+[node name="ShoppingDoor3D" type="StaticBody3D"]
+script = ExtResource("1_shop")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_shop")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("BoxMesh_shop")

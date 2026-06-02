@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://djgjob1l0titd"
+path="res://.godot/imported/oh boy do i 1.mp3-75f220a9f4af3fb05a38966299bd8de0.mp3str"
+
+[deps]
+
+source_file="res://checkout_minigame/assets/oh boy do i 1.mp3"
+dest_files=["res://.godot/imported/oh boy do i 1.mp3-75f220a9f4af3fb05a38966299bd8de0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

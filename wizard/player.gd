@@ -94,6 +94,16 @@ func _process(_delta):
 			interact_label.visible = false
 
 func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		else:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+			
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE and can_move:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
 	if in_cart_mode:
 		if event.is_action_pressed("interact"):
 			exit_cart()
@@ -126,8 +136,12 @@ func _physics_process(delta):
 		return
 
 	if not can_move:
+		velocity.x = 0
+		velocity.z = 0
 		if not is_on_floor():
 			velocity.y -= gravity * delta
+		else:
+			_play_anim(idle_anim)
 		move_and_slide()
 		return
 

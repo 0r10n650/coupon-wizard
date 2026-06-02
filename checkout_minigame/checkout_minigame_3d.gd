@@ -3,6 +3,7 @@ extends Node3D
 @export var debug_only_up: bool = false
 @export var combo_time_limit: float = 2.0
 @export var fire_combo_threshold: int = 20
+@export var decaying_timer_mode: bool = true
 @export var arrow_spacing: float = 3.0:
 	set(value):
 		arrow_spacing = value
@@ -18,30 +19,45 @@ extends Node3D
 @onready var combo_bar = $CanvasLayer/VBoxContainer/ComboBar
 @onready var combo_label = $CanvasLayer/ComboLabel
 @onready var camera = $GameCamera3D
+@onready var cine_camera = $CineCamera3D
+@onready var vbox_container = $CanvasLayer/VBoxContainer
+@onready var vbox_container_2 = $CanvasLayer/VBoxContainer2
 @onready var hit_particles = $HitParticles3D
 
 var up_rune = preload("res://checkout_minigame/assets/coupon_icon_uparrow.png")
 var down_rune = preload("res://checkout_minigame/assets/coupon_icon_downarrow.png")
 var left_rune = preload("res://checkout_minigame/assets/coupon_icon_leftarrow.png")
 var right_rune = preload("res://checkout_minigame/assets/coupon_icon_rightarrow.png")
+var click_sound = preload("res://checkout_minigame/assets/click.mp3")
+
+@export var click_start_time: float = 0.0
+@export var click_duration: float = 0.1
+var click_timer_remaining: float = 0.0
+var click_player: AudioStreamPlayer
 
 var arrow_types = []
 var arrow_queue = []
 var active_sprites = []
-var base_price = 100.00
-var total_discount = 0.0
+var combos_for_max_discount: int = 20
+
+var base_price: int = 0
+var total_discount: float = 0.0
+var combo_bonus_earned: int = 0
 var combo_count = 0
 var combo_timer = 0.0
-enum GameState { WAITING_TO_START, INTRO_CUTSCENE, PLAYING, END_CUTSCENE }
-var current_state: GameState = GameState.WAITING_TO_START
+enum MinigameState { WAITING_TO_START, INTRO_CUTSCENE, PLAYING, END_CUTSCENE }
+var current_state: MinigameState = MinigameState.WAITING_TO_START
 @onready var anim_player = $AnimationPlayer
-var camera_shake_trauma = 0.0
 
 var left_fire_particles: CPUParticles2D
 var right_fire_particles: CPUParticles2D
 @onready var arrow_anchor = $ArrowAnchor
 
 func _ready():
+	if get_tree().current_scene:
+		GameState.save_current_scene(get_tree().current_scene.scene_file_path)
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	
 	arrow_types = [
 		{"name": "up", "texture": up_rune, "action": "ui_up"},
 		{"name": "down", "texture": down_rune, "action": "ui_down"},
@@ -52,7 +68,15 @@ func _ready():
 	combo_bar.max_value = combo_time_limit
 	combo_bar.value = combo_time_limit
 	
+	click_player = AudioStreamPlayer.new()
+	click_player.stream = click_sound
+	add_child(click_player)
+	
 	_setup_fire_particles()
+	
+	base_price = GameState.get_cart_total()
+	if base_price <= 0:
+		base_price = 100 # Fallback for testing without cart
 	
 	update_ui()
 	play_start_cutscene()
@@ -95,20 +119,52 @@ func _create_fire_emitter() -> CPUParticles2D:
 
 
 func play_start_cutscene():
-	current_state = GameState.INTRO_CUTSCENE
+	current_state = MinigameState.INTRO_CUTSCENE
 	combo_label.text = ""
+	
+	# Keep cinematic camera active and hide gameplay UI during cutscene sequence
+	if cine_camera:
+		cine_camera.current = true
+	if vbox_container:
+		vbox_container.visible = false
+	if vbox_container_2:
+		vbox_container_2.visible = false
 	
 	if anim_player and anim_player.has_animation("start_cutscene"):
 		anim_player.play("start_cutscene")
 		await anim_player.animation_finished
 	
-	current_state = GameState.WAITING_TO_START
+	# Find all response_[x] animations and pick a random one
+	var response_anims = []
+	if anim_player:
+		for anim_name in anim_player.get_animation_list():
+			if anim_name.begins_with("response_"):
+				response_anims.append(anim_name)
+	
+	if not response_anims.is_empty():
+		var random_anim = response_anims[randi() % response_anims.size()]
+		anim_player.play(random_anim)
+		await anim_player.animation_finished
+	
+	# Transition to gameplay camera and show UI once everything completes
+	if camera:
+		camera.current = true
+	if vbox_container:
+		vbox_container.visible = true
+	if vbox_container_2:
+		vbox_container_2.visible = true
+	
+	current_state = MinigameState.WAITING_TO_START
 	update_ui()
 
 func start_game():
-	current_state = GameState.PLAYING
+	current_state = MinigameState.PLAYING
+	combos_for_max_discount = max(1, GameState.get_total_discount_percent())
+	combo_time_limit = GameState.get_combo_time_limit()
+	combo_bar.max_value = combo_time_limit
 	combo_count = 0
 	total_discount = 0.0
+	combo_bonus_earned = 0
 	combo_timer = combo_time_limit
 	combo_bar.scale = Vector2(1.0, 1.0)
 	combo_bar.modulate = Color.WHITE
@@ -143,8 +199,20 @@ func spawn_arrow():
 	active_sprites.push_back(sprite)
 
 func _process(delta):
-	if current_state == GameState.PLAYING and combo_count > 0:
-		combo_timer -= delta
+	if click_timer_remaining > 0:
+		click_timer_remaining -= delta
+		if click_timer_remaining <= 0:
+			click_player.stop()
+
+	if current_state == MinigameState.PLAYING and combo_count > 0:
+		var decay_rate = 1.0
+		if decaying_timer_mode:
+			var threshold = GameState.get_decay_delay_threshold()
+			var increment = GameState.get_decay_increment()
+			var effective_combo = max(0, combo_count - threshold)
+			decay_rate = 1.0 + float(effective_combo) * increment
+			
+		combo_timer -= delta * decay_rate
 		combo_bar.value = combo_timer
 		
 		var time_ratio = combo_timer / combo_time_limit
@@ -164,13 +232,13 @@ func _process(delta):
 			drop_combo()
 
 	# Process camera shake
-	camera_shake_trauma = max(0.0, camera_shake_trauma - delta)
-	var trauma_shake = camera_shake_trauma * camera_shake_trauma
-	var continuous_shake = 0.0
-	if combo_count > 10:
-		continuous_shake = min((combo_count - 10) * 0.02, 1.0)
-		
-	var total_shake = min(trauma_shake + continuous_shake, 2.0)
+	var max_shake_threshold = GameState.get_shake_delay()
+	var shake_ratio = 0.0
+	if current_state == MinigameState.PLAYING and combo_count > 0 and not decaying_timer_mode:
+		shake_ratio = min(float(combo_count) / float(max_shake_threshold), 1.0)
+	
+	var shake_reduction = GameState.get_shake_reduction()
+	var total_shake = shake_ratio * 2.0 * (1.0 - shake_reduction)
 	
 	if total_shake > 0:
 		var x_shake = randf_range(-total_shake, total_shake)
@@ -184,11 +252,9 @@ func _process(delta):
 		camera.v_offset = 0.0
 		$CanvasLayer.offset = Vector2.ZERO
 		
-	if current_state == GameState.PLAYING and total_discount >= 50.0:
-		play_end_cutscene()
 
 func play_end_cutscene():
-	current_state = GameState.END_CUTSCENE
+	current_state = MinigameState.END_CUTSCENE
 	
 	for child in active_sprites:
 		if is_instance_valid(child):
@@ -199,11 +265,103 @@ func play_end_cutscene():
 		anim_player.play("end_cutscene")
 		await anim_player.animation_finished
 	
-	print("Minigame Complete! Total Discount: $", total_discount)
+	_show_payment_ui()
+
+func _show_payment_ui():
+	var panel = Panel.new()
+	panel.custom_minimum_size = Vector2(480, 360)
+	
+	var vbox = VBoxContainer.new()
+	vbox.set_anchors_preset(Control.PRESET_FULL_RECT)
+	vbox.offset_left = 20
+	vbox.offset_top = 20
+	vbox.offset_right = -20
+	vbox.offset_bottom = -20
+	vbox.add_theme_constant_override("separation", 12)
+	
+	var title = Label.new()
+	title.text = "Checkout Complete"
+	title.add_theme_font_size_override("font_size", 24)
+	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	vbox.add_child(title)
+	
+	var details_grid = GridContainer.new()
+	details_grid.columns = 2
+	details_grid.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	details_grid.add_theme_constant_override("h_separation", 40)
+	details_grid.add_theme_constant_override("v_separation", 8)
+	
+	var create_row = func(label_text: String, val_text: String, color_mode: int = 0):
+		# color_mode: 0 = default, 1 = gold, 2 = red, 3 = green
+		var lbl = Label.new()
+		lbl.text = label_text
+		lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		var val = Label.new()
+		val.text = val_text
+		val.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+		if color_mode == 1:
+			val.add_theme_color_override("font_color", Color.GOLD)
+		elif color_mode == 2:
+			val.add_theme_color_override("font_color", Color.RED)
+		elif color_mode == 3:
+			val.add_theme_color_override("font_color", Color.GREEN)
+		details_grid.add_child(lbl)
+		details_grid.add_child(val)
+		
+	var add_separator = func():
+		var sep1 = HSeparator.new()
+		sep1.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		var sep2 = HSeparator.new()
+		sep2.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		details_grid.add_child(sep1)
+		details_grid.add_child(sep2)
+
+	var total_pct = GameState.get_total_discount_percent()
+	var final_total = int(max(0, base_price - int(round(total_discount))))
+	var discount_earned = int(round(total_discount))
+	var total_saved = discount_earned + combo_bonus_earned
+	
+	create_row.call("The Total", "$%d" % int(base_price))
+	add_separator.call()
+	
+	var combo_status = "Success" if combo_count >= combos_for_max_discount else "Failed"
+	var status_color = 3 if combo_status == "Success" else 2
+	var combo_display_count = min(combo_count, combos_for_max_discount)
+	
+	create_row.call("Combo for %d%% off (%d/%d)" % [total_pct, combo_display_count, combos_for_max_discount], combo_status, status_color)
+	create_row.call("Discount earned", "$%d" % discount_earned, 1)
+	create_row.call("Bonus money", "$%d" % combo_bonus_earned, 1)
+	create_row.call("Added to debt", "$%d" % final_total)
+	
+	add_separator.call()
+	create_row.call("Total saved", "$%d" % total_saved, 1)
+	
+	vbox.add_child(details_grid)
+	
+	var credit_btn = Button.new()
+	credit_btn.text = "Pay with Credit Card ($%d)" % final_total
+	credit_btn.custom_minimum_size = Vector2(0, 50)
+	credit_btn.pressed.connect(func(): _process_payment(final_total, panel))
+	vbox.add_child(credit_btn)
+	
+	panel.add_child(vbox)
+	$CanvasLayer.add_child(panel)
+	
+	# Center panel
+	var vp_size = get_viewport().get_visible_rect().size
+	panel.position = (vp_size - panel.custom_minimum_size) / 2.0
+
+func _process_payment(credit_amount: int, ui_panel: Control):
+	GameState.gold += int(round(total_discount)) + combo_bonus_earned
+	GameState.debt += credit_amount
+	GameState.advance_day()
+	
+	ui_panel.queue_free()
+	print("Payment complete. Moving to day ", GameState.current_day)
+	
+	get_tree().change_scene_to_file("res://coupon_game/coupon_game_test.tscn")
 
 func drop_combo():
-	combo_count = 0
-	combo_timer = combo_time_limit
 	combo_bar.value = 0
 	combo_bar.scale = Vector2(1.0, 1.0)
 	combo_bar.modulate = Color.WHITE
@@ -214,20 +372,28 @@ func drop_combo():
 	
 	left_fire_particles.emitting = false
 	right_fire_particles.emitting = false
-	camera_shake_trauma = 0.0
+	
+	# End the game when the combo is broken
+	play_end_cutscene()
 
 func hit_arrow():
 	combo_count += 1
 	combo_timer = combo_time_limit
 	combo_bar.value = combo_timer
 	
-	var discount_increase = 0.5 + (0.1 * combo_count)
-	total_discount += discount_increase
+	var target_discount = float(base_price * (GameState.get_total_discount_percent() / 100.0))
+	var discount_increase = 0.0
+	var is_bonus_hit = false
+	
+	if combo_count <= combos_for_max_discount:
+		discount_increase = target_discount / float(combos_for_max_discount)
+		total_discount = min(total_discount + discount_increase, target_discount)
+	else:
+		is_bonus_hit = true
+		combo_bonus_earned += GameState.get_bonus_arrow_value()
 	
 	hit_particles.restart()
 	hit_particles.emitting = true
-	
-	camera_shake_trauma = min(camera_shake_trauma + 0.3 + (combo_count * 0.01), 1.5)
 	
 	var target_scale = 1.0 + min(combo_count * 0.05, 1.5)
 	discount_label.pivot_offset = discount_label.size / 2.0
@@ -245,8 +411,17 @@ func hit_arrow():
 	
 	# Juiciness: Floating text
 	var floating_text = Label.new()
-	floating_text.text = "+$%.2f" % discount_increase
-	floating_text.add_theme_color_override("font_color", Color.GOLD)
+	if is_bonus_hit:
+		floating_text.text = "+$%d Combo Bonus!" % GameState.get_bonus_arrow_value()
+		floating_text.add_theme_color_override("font_color", Color.CYAN)
+	else:
+		var display_val = snapped(discount_increase, 0.01)
+		if int(round(display_val * 100)) % 100 == 0:
+			floating_text.text = "+$%d" % int(round(display_val))
+		else:
+			floating_text.text = "+$%.2f" % display_val
+		floating_text.add_theme_color_override("font_color", Color.GOLD)
+		
 	floating_text.add_theme_font_size_override("font_size", 32 + min(combo_count, 20))
 	$CanvasLayer.add_child(floating_text)
 	
@@ -283,25 +458,35 @@ func hit_arrow():
 	update_ui()
 
 func _input(event):
+	if Input.mouse_mode != Input.MOUSE_MODE_VISIBLE:
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		
 	match current_state:
-		GameState.WAITING_TO_START:
+		MinigameState.WAITING_TO_START:
 			if event.is_action_pressed("ui_accept"):
 				start_game()
-		GameState.PLAYING:
+		MinigameState.PLAYING:
 			if arrow_queue.is_empty():
 				return
 				
 			var expected_action = arrow_queue[0]["action"]
 			
-			if event.is_action_pressed(expected_action):
-				hit_arrow()
-			elif event.is_action_pressed("ui_up") or event.is_action_pressed("ui_down") or event.is_action_pressed("ui_left") or event.is_action_pressed("ui_right"):
-				drop_combo()
+			if event.is_action_pressed("ui_up") or event.is_action_pressed("ui_down") or event.is_action_pressed("ui_left") or event.is_action_pressed("ui_right"):
+				click_player.play(click_start_time)
+				click_timer_remaining = click_duration
+				
+				if event.is_action_pressed(expected_action):
+					hit_arrow()
+				else:
+					drop_combo()
 
 func update_ui():
-	#price_label.text = "Total: $%.2f" % max(0, base_price - total_discount)
-	discount_label.text = "Discount: -$%.2f" % total_discount
+	price_label.text = "Total: $%d" % int(max(0, base_price))
+	discount_label.text = "Discount: -$%d" % int(round(total_discount))
 	if combo_count > 0:
-		combo_label.text = "Combo x%d!" % combo_count
-	elif current_state == GameState.WAITING_TO_START:
+		if combo_count > combos_for_max_discount:
+			combo_label.text = "Combo x%d!\n(+%d G Bonus)" % [combo_count, combo_bonus_earned]
+		else:
+			combo_label.text = "Combo x%d!" % combo_count
+	elif current_state == MinigameState.WAITING_TO_START:
 		combo_label.text = "Press SPACE to start"
