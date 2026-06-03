@@ -1,0 +1,33 @@
+[gd_resource type="AudioBusLayout" format=3 uid="uid://dxcvho01iaatn"]
+
+[sub_resource type="AudioEffectEQ" id="AudioEffectEQ_j3pel"]
+resource_name = "EQ"
+band_db/32_hz = -39.7
+band_db/100_hz = -40.4
+band_db/320_hz = -41.2
+band_db/10000_hz = -39.7
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_j3pel"]
+resource_name = "Reverb"
+room_size = 0.45
+damping = 0.24
+wet = 0.36
+
+[sub_resource type="AudioEffectDistortion" id="AudioEffectDistortion_j3pel"]
+resource_name = "Distortion"
+keep_hf_hz = 3054.0
+drive = 0.2
+
+[resource]
+bus/1/name = &"StoreSpeakers"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.0
+bus/1/send = &"Master"
+bus/1/effect/0/effect = SubResource("AudioEffectEQ_j3pel")
+bus/1/effect/0/enabled = true
+bus/1/effect/1/effect = SubResource("AudioEffectReverb_j3pel")
+bus/1/effect/1/enabled = true
+bus/1/effect/2/effect = SubResource("AudioEffectDistortion_j3pel")
+bus/1/effect/2/enabled = true

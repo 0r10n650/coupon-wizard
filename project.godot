@@ -114,7 +114,7 @@ psx_affine_strength={
 }
 psx_bit_depth={
 "type": "int",
-"value": 10
+"value": 20
 }
 psx_fog_color={
 "type": "color",

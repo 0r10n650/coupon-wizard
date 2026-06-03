@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://jub3eiibx1ln"]
 
 [ext_resource type="PackedScene" uid="uid://cfsmos5rhswc" path="res://Scenes/shopping_wizard.tscn" id="1_e6x87"]
-[ext_resource type="Material" uid="uid://b6744u5f660r0" path="res://Assets/Materials/FloorMaterial.tres" id="1_iuu1m"]
-[ext_resource type="Material" uid="uid://2gvt3age3vb2" path="res://Assets/Materials/WallMaterial.tres" id="2_2pk5u"]
+[ext_resource type="Material" uid="uid://b6744u5f660r0" path="res://assets/Materials/FloorMaterial.tres" id="1_iuu1m"]
+[ext_resource type="Material" uid="uid://2gvt3age3vb2" path="res://assets/Materials/WallMaterial.tres" id="2_2pk5u"]
 [ext_resource type="PackedScene" uid="uid://m0wfkfv7rv67" path="res://Scenes/3D_grocery_item.tscn" id="2_84pa7"]
 [ext_resource type="PackedScene" uid="uid://bjcariora8lss" path="res://Scenes/3DAssets/extended_pillar.tscn" id="5_kapfu"]
 [ext_resource type="PackedScene" uid="uid://x6mdetw2dlkq" path="res://Scenes/3DAssets/bridge_1.tscn" id="6_j85m5"]
@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://dk6jampu7x60x" path="res://Scenes/3DAssets/floor_32.tscn" id="11_uccpx"]
 [ext_resource type="PackedScene" uid="uid://bajwh2wh3p8lv" path="res://Scenes/3DAssets/roof.tscn" id="12_qwgoe"]
 [ext_resource type="PackedScene" uid="uid://cegxcbikisok3" path="res://Scenes/3DAssets/pillar.tscn" id="13_o0m22"]
+[ext_resource type="AudioStream" uid="uid://rvsmkqcitpv" path="res://assets/Songs/CouponWizard - Shopping.wav" id="15_ewwds"]
+[ext_resource type="Script" uid="uid://bhtpym5gsckys" path="res://Scenes/ceiling_speakers.gd" id="15_uccpx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iuu1m"]
 size = Vector3(1, 15, 85)
@@ -822,3 +824,61 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 6.02
 light_energy = 15.8
 spot_range = 23.956
 spot_angle = 73.35
+
+[node name="CeilingSpeakers" type="Node3D" parent="." unique_id=1819290928]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.158266, 0)
+script = ExtResource("15_uccpx")
+
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="CeilingSpeakers" unique_id=903209867]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.254438, 0, -14.708608)
+stream = ExtResource("15_ewwds")
+volume_db = -7.452
+unit_size = 5.33
+autoplay = true
+max_distance = 20.0
+bus = &"StoreSpeakers"
+
+[node name="AudioStreamPlayer3D5" type="AudioStreamPlayer3D" parent="CeilingSpeakers" unique_id=1260958078]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.985803, 0, -27.25652)
+stream = ExtResource("15_ewwds")
+volume_db = -7.452
+unit_size = 5.33
+autoplay = true
+max_distance = 20.0
+bus = &"StoreSpeakers"
+
+[node name="AudioStreamPlayer3D6" type="AudioStreamPlayer3D" parent="CeilingSpeakers" unique_id=1953052241]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.283134, 0, -38.22723)
+stream = ExtResource("15_ewwds")
+volume_db = -7.452
+unit_size = 5.33
+autoplay = true
+max_distance = 20.0
+bus = &"StoreSpeakers"
+
+[node name="AudioStreamPlayer3D3" type="AudioStreamPlayer3D" parent="CeilingSpeakers" unique_id=2056511652]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.186855, 0, 0)
+stream = ExtResource("15_ewwds")
+volume_db = -7.452
+unit_size = 5.33
+autoplay = true
+max_distance = 20.0
+bus = &"StoreSpeakers"
+
+[node name="AudioStreamPlayer3D4" type="AudioStreamPlayer3D" parent="CeilingSpeakers" unique_id=178196609]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.353859, 0, 12.581544)
+stream = ExtResource("15_ewwds")
+volume_db = -7.452
+unit_size = 5.33
+autoplay = true
+max_distance = 20.0
+bus = &"StoreSpeakers"
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="CeilingSpeakers" unique_id=204194654]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 24.053486)
+stream = ExtResource("15_ewwds")
+volume_db = -7.452
+unit_size = 5.33
+autoplay = true
+max_distance = 20.0
+bus = &"StoreSpeakers"
