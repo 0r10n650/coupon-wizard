@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://jub3eiibx1ln"]
 
+[ext_resource type="Script" uid="uid://5qc8q4eeh3cd" path="res://Scenes/shopping.gd" id="1_81cbo"]
 [ext_resource type="PackedScene" uid="uid://cfsmos5rhswc" path="res://Scenes/shopping_wizard.tscn" id="1_e6x87"]
-[ext_resource type="Material" uid="uid://b6744u5f660r0" path="res://Assets/Materials/FloorMaterial.tres" id="1_iuu1m"]
-[ext_resource type="Material" uid="uid://2gvt3age3vb2" path="res://Assets/Materials/WallMaterial.tres" id="2_2pk5u"]
+[ext_resource type="Material" uid="uid://b6744u5f660r0" path="res://assets/Materials/FloorMaterial.tres" id="1_iuu1m"]
+[ext_resource type="Material" uid="uid://2gvt3age3vb2" path="res://assets/Materials/WallMaterial.tres" id="2_2pk5u"]
 [ext_resource type="PackedScene" uid="uid://m0wfkfv7rv67" path="res://Scenes/3D_grocery_item.tscn" id="2_84pa7"]
+[ext_resource type="AudioStream" uid="uid://rvsmkqcitpv" path="res://assets/Songs/CouponWizard - Shopping.wav" id="5_p50fx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iuu1m"]
 size = Vector3(1, 15, 85)
@@ -22,6 +24,7 @@ material = ExtResource("1_iuu1m")
 size = Vector3(150, 1, 150)
 
 [node name="Shopping" type="Node3D" unique_id=358266539]
+script = ExtResource("1_81cbo")
 
 [node name="ShoppingWizard" parent="." unique_id=948979824 instance=ExtResource("1_e6x87")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.030275, 1.809822, -12.95023)
@@ -423,3 +426,8 @@ omni_attenuation = 0.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.215801, 7.0883446, -15.38773)
 omni_range = 14.453774
 omni_attenuation = 0.0
+
+[node name="BackgroundMusic" type="AudioStreamPlayer3D" parent="." unique_id=540210396]
+stream = ExtResource("5_p50fx")
+attenuation_model = 3
+autoplay = true
