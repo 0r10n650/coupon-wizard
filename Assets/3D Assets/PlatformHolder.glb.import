@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://b5x5ycoqhsex5"
-path="res://.godot/imported/PlatformHolder.glb-31ce18e3278fde15c714dcc702caaf47.scn"
+path="res://.godot/imported/PlatformHolder.glb-14dd87b0958ff1c270c15f269ec5bc34.scn"
 
 [deps]
 
-source_file="res://assets/3D Assets/PlatformHolder.glb"
-dest_files=["res://.godot/imported/PlatformHolder.glb-31ce18e3278fde15c714dcc702caaf47.scn"]
+source_file="res://Assets/3D Assets/PlatformHolder.glb"
+dest_files=["res://.godot/imported/PlatformHolder.glb-14dd87b0958ff1c270c15f269ec5bc34.scn"]
 
 [params]
 
