@@ -27,7 +27,7 @@ points = PackedVector3Array(-0.5000019, 0.014012337, -0.5, -0.5000019, 0.0140123
 
 [node name="Pillar" unique_id=2017322984 instance=ExtResource("1_xodxk")]
 
-[node name="Cube_001" parent="." index="0" unique_id=252088598]
+[node name="Cube_001" parent="." index="0" unique_id=2108650512]
 material_override = SubResource("StandardMaterial3D_5lq8o")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Cube_001" index="0" unique_id=1681231409]

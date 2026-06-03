@@ -24,5 +24,5 @@ uv1_scale = Vector3(20, 20, 20)
 
 [node name="Roof" unique_id=1788009986 instance=ExtResource("1_diwxj")]
 
-[node name="Cube" parent="." index="0" unique_id=1871387964]
+[node name="Cube" parent="." index="0" unique_id=1474627636]
 material_override = SubResource("StandardMaterial3D_4yu1m")

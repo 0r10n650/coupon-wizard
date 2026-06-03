@@ -18,7 +18,7 @@ data = PackedVector3Array(-2.6620998, 1, 0.4781, -3.6724, 1, 1.1213, -3.5384, 1,
 
 [node name="Floor2pt32" unique_id=1549766946 instance=ExtResource("1_uh1da")]
 
-[node name="Floor2pt3" parent="." index="0" unique_id=1974254156]
+[node name="Floor2pt3" parent="." index="0" unique_id=732334407]
 material_override = SubResource("StandardMaterial3D_pbfbu")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Floor2pt3" index="0" unique_id=477247510]
