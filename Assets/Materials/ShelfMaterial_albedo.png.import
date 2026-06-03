@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b7hlrtedr2e3v"
-path.s3tc="res://.godot/imported/ShelfMaterial_albedo.png-e967a2bf43d42cba78f6bc5e53c5300a.s3tc.ctex"
+path.s3tc="res://.godot/imported/ShelfMaterial_albedo.png-612c024e0f7cb41a39b8529e365a6381.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/Materials/ShelfMaterial_albedo.png"
-dest_files=["res://.godot/imported/ShelfMaterial_albedo.png-e967a2bf43d42cba78f6bc5e53c5300a.s3tc.ctex"]
+source_file="res://Assets/Materials/ShelfMaterial_albedo.png"
+dest_files=["res://.godot/imported/ShelfMaterial_albedo.png-612c024e0f7cb41a39b8529e365a6381.s3tc.ctex"]
 
 [params]
 

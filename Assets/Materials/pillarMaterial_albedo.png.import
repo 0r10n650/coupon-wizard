@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://qfywxlivms8o"
-path.s3tc="res://.godot/imported/pillarMaterial_albedo.png-4d4777a655812f12651c892c879508bb.s3tc.ctex"
+path.s3tc="res://.godot/imported/pillarMaterial_albedo.png-651a7c4363ec11caa0ab6521c47ea6ce.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/Materials/pillarMaterial_albedo.png"
-dest_files=["res://.godot/imported/pillarMaterial_albedo.png-4d4777a655812f12651c892c879508bb.s3tc.ctex"]
+source_file="res://Assets/Materials/pillarMaterial_albedo.png"
+dest_files=["res://.godot/imported/pillarMaterial_albedo.png-651a7c4363ec11caa0ab6521c47ea6ce.s3tc.ctex"]
 
 [params]
 
