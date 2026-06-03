@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://rvsmkqcitpv"
-path="res://.godot/imported/CouponWizard - Shopping.wav-400cc025d820b66fb0079a32f52e571e.sample"
+path="res://.godot/imported/CouponWizard - Shopping.wav-0a3298afe0fe8f93c4852d362079da8b.sample"
 
 [deps]
 
-source_file="res://Assets/Songs/CouponWizard - Shopping.wav"
-dest_files=["res://.godot/imported/CouponWizard - Shopping.wav-400cc025d820b66fb0079a32f52e571e.sample"]
+source_file="res://assets/Songs/CouponWizard - Shopping.wav"
+dest_files=["res://.godot/imported/CouponWizard - Shopping.wav-0a3298afe0fe8f93c4852d362079da8b.sample"]
 
 [params]
 

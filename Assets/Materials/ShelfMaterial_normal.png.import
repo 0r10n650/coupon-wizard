@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://txds72ms2nay"
-path.s3tc="res://.godot/imported/ShelfMaterial_normal.png-95f17084a9aed9b21da2f8186fcf2c2d.s3tc.ctex"
+path.s3tc="res://.godot/imported/ShelfMaterial_normal.png-4866ca5e87c7c481ca4aa5297bfde37b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Materials/ShelfMaterial_normal.png"
-dest_files=["res://.godot/imported/ShelfMaterial_normal.png-95f17084a9aed9b21da2f8186fcf2c2d.s3tc.ctex"]
+source_file="res://assets/Materials/ShelfMaterial_normal.png"
+dest_files=["res://.godot/imported/ShelfMaterial_normal.png-4866ca5e87c7c481ca4aa5297bfde37b.s3tc.ctex"]
 
 [params]
 

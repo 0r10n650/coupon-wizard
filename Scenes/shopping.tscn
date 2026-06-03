@@ -185,17 +185,14 @@ transform = Transform3D(0.9996237, 0, 0.027433187, 0, 1, 0, -0.027433187, 0, 0.9
 [node name="3DGroceryItem4" parent="Items/Floor2" unique_id=1676960748 instance=ExtResource("2_84pa7")]
 transform = Transform3D(0.99838966, 0, -0.056727648, 0, 1, 0, 0.056727648, 0, 0.99838966, 19.880178, 4.7667236, -1.7440376)
 
-[node name="3DGroceryItem9" parent="Items/Floor2" unique_id=1819407914 instance=ExtResource("2_84pa7")]
-transform = Transform3D(-0.836267, 0, 0.5483225, 0, 1, 0, -0.5483225, 0, -0.836267, 25.14331, 4.7667236, -2.6677814)
-
 [node name="3DGroceryItem8" parent="Items/Floor2" unique_id=83344554 instance=ExtResource("2_84pa7")]
 transform = Transform3D(-0.28316188, 0, 0.9590723, 0, 1, 0, -0.9590723, 0, -0.28316188, -26.186434, 4.7667255, 19.071339)
 
 [node name="3DGroceryItem5" parent="Items/Floor2" unique_id=1430429073 instance=ExtResource("2_84pa7")]
-transform = Transform3D(-0.74245554, 0, 0.6698956, 0, 1, 0, -0.6698956, 0, -0.74245554, 7.826721, 4.7667255, -11.734801)
+transform = Transform3D(-0.9804194, 0, 0.19692156, 0, 1, 0, -0.19692156, 0, -0.9804194, 10.101311, 4.7667255, -14.617174)
 
 [node name="3DGroceryItem6" parent="Items/Floor2" unique_id=1472597304 instance=ExtResource("2_84pa7")]
-transform = Transform3D(-0.12017138, 0, -0.9927533, 0, 1, 0, 0.9927533, 0, -0.12017138, -10.232284, 4.7667255, -19.9846)
+transform = Transform3D(0.9278234, 0, -0.37302017, 0, 1, 0, 0.37302017, 0, 0.9278234, -17.677954, 4.7667255, -22.49347)
 
 [node name="3DGroceryItem7" parent="Items/Floor2" unique_id=192095733 instance=ExtResource("2_84pa7")]
 transform = Transform3D(-0.46936363, 0, -0.88300514, 0, 1, 0, 0.88300514, 0, -0.46936363, 24.627642, 4.7667255, -30.416925)
@@ -545,7 +542,7 @@ transform = Transform3D(-0.9169766, 0, -0.3989411, 0, 1, 0, 0.3989411, 0, -0.916
 [node name="Floor2" type="Node" parent="Walls/pillars" unique_id=2053698380]
 
 [node name="Pillar13" parent="Walls/pillars/Floor2" unique_id=1418371485 instance=ExtResource("13_o0m22")]
-transform = Transform3D(0.92812884, 0, 0.37225896, 0, 1, 0, -0.37225896, 0, 0.92812884, 10.208269, 4.641468, -10.872537)
+transform = Transform3D(0.92812884, 0, 0.37225896, 0, 1, 0, -0.37225896, 0, 0.92812884, 10.478695, 4.641468, -11.708215)
 
 [node name="ExtendePillar68" parent="Walls/pillars/Floor2" unique_id=1271970994 instance=ExtResource("5_kapfu")]
 transform = Transform3D(0.34966782, 0, 0.9368737, 0, 1, 0, -0.9368737, 0, 0.34966782, -22.279648, 4.6712165, 14.127636)
@@ -555,12 +552,6 @@ transform = Transform3D(-0.7045598, 0, 0.70964456, 0, 1, 0, -0.70964456, 0, -0.7
 
 [node name="ExtendePillar83" parent="Walls/pillars/Floor2" unique_id=941616965 instance=ExtResource("5_kapfu")]
 transform = Transform3D(-0.97937834, 0, -0.20203514, 0, 1, 0, 0.20203514, 0, -0.97937834, -16.935345, 4.6712165, 19.829248)
-
-[node name="ExtendePillar129" parent="Walls/pillars/Floor2" unique_id=40455887 instance=ExtResource("5_kapfu")]
-transform = Transform3D(-0.9990627, 0, 0.043288186, 0, 1, 0, -0.043288186, 0, -0.9990627, -15.600312, 4.6712165, 14.610475)
-
-[node name="ExtendePillar130" parent="Walls/pillars/Floor2" unique_id=709225876 instance=ExtResource("5_kapfu")]
-transform = Transform3D(-0.6935779, 0, 0.7203818, 0, 1, 0, -0.7203818, 0, -0.6935779, -19.379313, 4.6712165, 13.340836)
 
 [node name="ExtendePillar84" parent="Walls/pillars/Floor2" unique_id=459039001 instance=ExtResource("5_kapfu")]
 transform = Transform3D(-0.3696658, 0, -0.9291649, 0, 1, 0, 0.9291649, 0, -0.3696658, -13.873818, 4.6712165, 16.966837)
@@ -613,33 +604,6 @@ transform = Transform3D(1.2624763, 0, -0.6278447, 0, 1, 0, 0.92074883, 0, 0.8608
 [node name="ExtendePillar97" parent="Walls/pillars/Floor2" unique_id=199936054 instance=ExtResource("5_kapfu")]
 transform = Transform3D(0.27447945, 0, -0.96159303, 0, 1, 0, 0.96159303, 0, 0.27447945, 1.0852971, 4.6712165, -0.9573164)
 
-[node name="ExtendePillar117" parent="Walls/pillars/Floor2" unique_id=2095322883 instance=ExtResource("5_kapfu")]
-transform = Transform3D(-0.56562936, 0, -0.8246596, 0, 1, 0, 0.8246596, 0, -0.56562936, 6.985845, 4.6712146, -15.352014)
-
-[node name="ExtendePillar118" parent="Walls/pillars/Floor2" unique_id=713781237 instance=ExtResource("5_kapfu")]
-transform = Transform3D(-0.8536598, 0, 0.5208309, 0, 1, 0, -0.5208309, 0, -0.8536598, 6.401923, 4.6712146, -18.491543)
-
-[node name="ExtendePillar119" parent="Walls/pillars/Floor2" unique_id=753071594 instance=ExtResource("5_kapfu")]
-transform = Transform3D(-0.9998799, 0, 0.015497975, 0, 1, 0, -0.015497975, 0, -0.9998799, 1.4654703, 4.6712165, -19.922827)
-
-[node name="ExtendePillar121" parent="Walls/pillars/Floor2" unique_id=555743341 instance=ExtResource("5_kapfu")]
-transform = Transform3D(-0.66892296, 0, 0.7433317, 0, 1, 0, -0.7433317, 0, -0.66892296, -13.637847, 4.6712165, -16.640612)
-
-[node name="ExtendePillar122" parent="Walls/pillars/Floor2" unique_id=866941265 instance=ExtResource("5_kapfu")]
-transform = Transform3D(-0.41472495, 0, 0.9099468, 0, 1, 0, -0.9099468, 0, -0.41472495, -16.234568, 4.6712165, -20.7537)
-
-[node name="ExtendePillar123" parent="Walls/pillars/Floor2" unique_id=768219003 instance=ExtResource("5_kapfu")]
-transform = Transform3D(-0.62246, 0, 0.7826517, 0, 1, 0, -0.7826517, 0, -0.62246, -15.330868, 4.6712165, -21.020096)
-
-[node name="ExtendePillar124" parent="Walls/pillars/Floor2" unique_id=1075218082 instance=ExtResource("5_kapfu")]
-transform = Transform3D(-0.80346215, 0, 0.5953559, 0, 1, 0, -0.5953559, 0, -0.80346215, -11.38552, 4.6712165, -17.32102)
-
-[node name="ExtendePillar125" parent="Walls/pillars/Floor2" unique_id=189222608 instance=ExtResource("5_kapfu")]
-transform = Transform3D(-0.296225, 0, -0.9551183, 0, 1, 0, 0.9551183, 0, -0.296225, -5.727681, 4.6712165, -20.149048)
-
-[node name="ExtendePillar126" parent="Walls/pillars/Floor2" unique_id=1267500129 instance=ExtResource("5_kapfu")]
-transform = Transform3D(0.65269357, 0, -0.75762206, 0, 1, 0, 0.75762206, 0, 0.65269357, -5.8039026, 4.6712165, -17.079773)
-
 [node name="ExtendePillar98" parent="Walls/pillars/Floor2" unique_id=2131524939 instance=ExtResource("5_kapfu")]
 transform = Transform3D(0.99521214, 0, 0.09773916, 0, 1, 0, -0.09773916, 0, 0.99521214, 4.6379147, 4.6712165, 1.6559949)
 
@@ -688,9 +652,6 @@ transform = Transform3D(-0.5936281, 0, -0.8920223, 0, 1, 0, 2.1829557, 0, -0.242
 [node name="ExtendePillar87" parent="Walls/pillars/Floor2" unique_id=39390575 instance=ExtResource("5_kapfu")]
 transform = Transform3D(-2.262165, 0, -0.007066671, 0, 1, 0, 0.017293371, 0, -0.92438966, -5.090827, 4.6712165, -9.899941)
 
-[node name="ExtendePillar120" parent="Walls/pillars/Floor2" unique_id=1094926712 instance=ExtResource("5_kapfu")]
-transform = Transform3D(-2.262165, 0, -0.007066671, 0, 1, 0, 0.017293371, 0, -0.92438966, -6.0959215, 4.6712165, -14.925262)
-
 [node name="ExtendePillar81" parent="Walls/pillars/Floor2" unique_id=159901804 instance=ExtResource("5_kapfu")]
 transform = Transform3D(0.9930705, 0, 0.117520005, 0, 1, 0, -0.117520005, 0, 0.9930705, -26.443357, 4.6712165, 8.972815)
 
@@ -711,12 +672,6 @@ transform = Transform3D(0.23112535, 0, 0.87326396, 0, 1, 0, -0.62477934, 0, 0.32
 
 [node name="ExtendePillar73" parent="Walls/pillars/Floor2" unique_id=1181485303 instance=ExtResource("5_kapfu")]
 transform = Transform3D(0.66454786, 0, 0.06472339, 0, 0.99999994, 0, -0.046306476, 0, 0.92884904, -1.0808468, 4.6712165, -38.7428)
-
-[node name="ExtendePillar127" parent="Walls/pillars/Floor2" unique_id=1090667838 instance=ExtResource("5_kapfu")]
-transform = Transform3D(0.66454786, 0, 0.06472339, 0, 0.99999994, 0, -0.046306476, 0, 0.92884904, -6.86718, 4.6712146, -22.006538)
-
-[node name="ExtendePillar128" parent="Walls/pillars/Floor2" unique_id=1323613653 instance=ExtResource("5_kapfu")]
-transform = Transform3D(0.66454786, 0, 0.06472339, 0, 0.99999994, 0, -0.046306476, 0, 0.92884904, -0.92761517, 4.6712146, -3.0007)
 
 [node name="ExtendePillar74" parent="Walls/pillars/Floor2" unique_id=664366940 instance=ExtResource("5_kapfu")]
 transform = Transform3D(0.95323074, 0, -0.78308254, 0, 0.9999999, 0, 1.3386525, 0, 0.5576193, 2.7668633, 4.6712165, -35.322617)
@@ -740,7 +695,6 @@ transform = Transform3D(-0.030748911, 0, 1.0216987, 0, 1, 0, -2.8833568, 0, -0.0
 
 [node name="Floor2pt1" parent="Floor and platforms" unique_id=1106956158 instance=ExtResource("11_j85m5")]
 transform = Transform3D(4.9, 0, 0, 0, 4.9, 0, 0, 0, 4.9, 6.625, -0.25, -15)
-visible = false
 
 [node name="Bridge1" parent="Floor and platforms" unique_id=65023851 instance=ExtResource("6_j85m5")]
 transform = Transform3D(4.9, 0, 0, 0, 4.9, 0, 0, 0, 4.9, 6.625, -0.25, -15)
@@ -822,8 +776,17 @@ metadata/_edit_lock_ = true
 
 [node name="Lights" type="Node" parent="." unique_id=1146698960]
 
+[node name="OmniLight3D2" type="OmniLight3D" parent="Lights" unique_id=1297924992]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.86625, 2.4899192, 3.3149014)
+light_energy = 2.723
+omni_range = 10.548559
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="Lights" unique_id=877759933]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3301439, 2.4899192, 31.415123)
+light_energy = 2.723
+omni_range = 10.548559
+
 [node name="OmniLight3D5" type="OmniLight3D" parent="Lights" unique_id=2043724952]
-<<<<<<< Updated upstream
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.315964, 2.4899192, 25.323467)
 light_energy = 2.723
 omni_range = 10.548559
@@ -919,12 +882,3 @@ unit_size = 5.33
 autoplay = true
 max_distance = 20.0
 bus = &"StoreSpeakers"
-=======
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.832632, 2.4899192, 22.100203)
-light_energy = 3.954
-shadow_enabled = true
-distance_fade_enabled = true
-distance_fade_begin = 15.0
-distance_fade_shadow = 10.0
-omni_range = 10.477365
->>>>>>> Stashed changes
