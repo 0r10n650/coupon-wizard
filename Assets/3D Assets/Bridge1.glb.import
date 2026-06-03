@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://b0skjy658d16p"
-path="res://.godot/imported/Bridge1.glb-6273fc2c5bfcfd64fd2ceadc9be5fbb2.scn"
+path="res://.godot/imported/Bridge1.glb-435815f4df293b8e5dd6761f8437793e.scn"
 
 [deps]
 
-source_file="res://assets/3D Assets/Bridge1.glb"
-dest_files=["res://.godot/imported/Bridge1.glb-6273fc2c5bfcfd64fd2ceadc9be5fbb2.scn"]
+source_file="res://Assets/3D Assets/Bridge1.glb"
+dest_files=["res://.godot/imported/Bridge1.glb-435815f4df293b8e5dd6761f8437793e.scn"]
 
 [params]
 
