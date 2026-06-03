@@ -19,7 +19,8 @@ var upgrades = {
 	"checkout_combo_time": 0,
 	"checkout_shake_reduction": 0,
 	"checkout_shake_delay": 0,
-	"checkout_bonus_arrow": 0
+	"checkout_bonus_arrow": 0,
+	"shopping_time": 0
 }
 
 var daily_state = {
@@ -177,6 +178,10 @@ var upgrade_tiers = {
 	"checkout_bonus_arrow": {
 		"costs": [100, 500, 1500, 4000, 10000, 25000],
 		"values": [1, 2, 3, 4, 5, 6, 7]
+	},
+	"shopping_time": {
+		"costs": [50, 200, 1000, 5000],
+		"values": [30.0, 45.0, 60.0, 90.0, 120.0]
 	}
 }
 
@@ -203,6 +208,7 @@ func get_decay_increment() -> float: return get_upgrade_value("checkout_shake_re
 func get_decay_delay_threshold() -> int: return get_upgrade_value("checkout_shake_delay")
 func get_maze_time_limit() -> float: return get_upgrade_value("coupon_time")
 func get_bonus_arrow_value() -> int: return int(get_upgrade_value("checkout_bonus_arrow"))
+func get_shopping_time_limit() -> float: return get_upgrade_value("shopping_time")
 
 func get_coupon_percent(coupon_id: int) -> int:
 	var maze_type = (coupon_id - 1) % 6
@@ -248,3 +254,7 @@ func get_cart_total() -> int:
 		if item and "price" in item:
 			total += int(round(item.price))
 	return total
+	
+func add_cart_item(item) -> void:
+		cart_items.append(item)
+		return

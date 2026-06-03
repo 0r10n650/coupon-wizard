@@ -1,0 +1,70 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Scripts/fire_effect_3d.gd" id="1_oauhe"]
+
+[sub_resource type="Gradient" id="Gradient_cn8wj"]
+offsets = PackedFloat32Array(0, 0, 0.1, 0.4, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 0.8, 0, 1, 1, 0.3, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_e30g5"]
+gradient = SubResource("Gradient_cn8wj")
+
+[sub_resource type="Curve" id="Curve_kaqw6"]
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_bmy1u"]
+curve = SubResource("Curve_kaqw6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v0bh1"]
+resource_local_to_scene = true
+emission_shape = 1
+emission_sphere_radius = 0.3
+angle_min = -360.0
+angle_max = 360.0
+gravity = Vector3(0, 4, 0)
+scale_min = 0.5
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_bmy1u")
+color_ramp = SubResource("GradientTexture1D_e30g5")
+
+[sub_resource type="Gradient" id="Gradient_4qk6l"]
+offsets = PackedFloat32Array(0, 0, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fprh2"]
+gradient = SubResource("Gradient_4qk6l")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2x8tc"]
+resource_local_to_scene = true
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("GradientTexture2D_fprh2")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_y46c2"]
+material = SubResource("StandardMaterial3D_2x8tc")
+
+[node name="FireEffect3D" type="Node3D" unique_id=1460721600]
+script = ExtResource("1_oauhe")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=731177153]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+light_color = Color(1, 0.5, 0.1, 1)
+light_energy = 2.0
+shadow_enabled = true
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1267964789]
+amount = 64
+randomness = 0.5
+draw_order = 3
+process_material = SubResource("ParticleProcessMaterial_v0bh1")
+draw_pass_1 = SubResource("QuadMesh_y46c2")

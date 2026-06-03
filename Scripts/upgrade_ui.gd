@@ -15,7 +15,8 @@ var upgrade_definitions = [
 	{"id": "checkout_combo_time", "name": "Combo Timer", "desc": "Slows down combo expiration in checkout."},
 	{"id": "checkout_shake_reduction", "name": "Steady Rhythm", "desc": "Reduces timer decay acceleration per combo hit."},
 	{"id": "checkout_shake_delay", "name": "Nerves of Steel", "desc": "Delays the start of timer decay acceleration by more combo hits."},
-	{"id": "checkout_bonus_arrow", "name": "Bonus Arrow Value", "desc": "Increases money earned for each arrow hit after reaching max combo."}
+	{"id": "checkout_bonus_arrow", "name": "Bonus Arrow Value", "desc": "Increases money earned for each arrow hit after reaching max combo."},
+	{"id": "shopping_time", "name": "Shopping Time", "desc": "Increases the time limit for shopping."}
 ]
 
 func _ready():

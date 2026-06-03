@@ -8,9 +8,25 @@ class_name ShoppingWizard
 @onready var leftCast = $LeftCast
 @onready var rightCast = $RightCast
 
+var shopping_timer: float
+var timer_ui: ShoppingTimerUI
+var has_transitioned: bool = false
+
+func _ready():
+	shopping_timer = GameState.get_shopping_time_limit()
+	
+	timer_ui = ShoppingTimerUI.new(shopping_timer)
+	timer_ui.timer_finished.connect(_on_timer_finished)
+	add_child(timer_ui)
+
 func _physics_process(delta):
 	movementC.move(delta)
 	move_and_slide()
+
+func _on_timer_finished():
+	if not has_transitioned:
+		has_transitioned = true
+		get_tree().change_scene_to_file("res://checkout_minigame/checkout_minigame_3d.tscn")
 
 func attempt_grab_left():
 	grab("left")
