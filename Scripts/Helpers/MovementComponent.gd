@@ -27,7 +27,7 @@ func move(delta):
 		parent.rotate_y(-rotation_speed * delta)
 	
 	if Input.is_action_just_pressed("move_jump") and parent.is_on_floor():
-		parent.velocity.y = 7
+		parent.velocity.y = 6
 	
 	if not parent.is_on_floor():
 		parent.velocity.y = parent.velocity.y - (9.8 * delta)

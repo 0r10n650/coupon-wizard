@@ -177,7 +177,7 @@ transform = Transform3D(-0.03170738, 0, 0.9994972, 0, 1, 0, -0.9994972, 0, -0.03
 [node name="Floor2" type="Node" parent="Items" unique_id=1350580850]
 
 [node name="3DGroceryItem28" parent="Items/Floor2" unique_id=1328174304 instance=ExtResource("2_84pa7")]
-transform = Transform3D(0.9852231, 0, -0.17127551, 0, 1, 0, 0.17127551, 0, 0.9852231, 22.236572, 10.599794, -15.55746)
+transform = Transform3D(0.9852231, 0, -0.17127551, 0, 1, 0, 0.17127551, 0, 0.9852231, 22.236572, 10.145043, -15.55746)
 
 [node name="3DGroceryItem3" parent="Items/Floor2" unique_id=571335023 instance=ExtResource("2_84pa7")]
 transform = Transform3D(0.9996237, 0, 0.027433187, 0, 1, 0, -0.027433187, 0, 0.9996237, 4.0823936, 4.7667255, 33.61405)
@@ -650,7 +650,7 @@ transform = Transform3D(-0.6496565, 0, -0.04671292, 0, 1, 0, 0.033114716, 0, -0.
 transform = Transform3D(-0.62733793, 0, 0.7787472, 0, 1, 0, -0.7787472, 0, -0.62733793, -6.301879, 4.6712165, -16.318304)
 
 [node name="ExtendePillar98" parent="Walls/pillars/Floor2" unique_id=2131524939 instance=ExtResource("5_kapfu")]
-transform = Transform3D(0.99521214, 0, 0.09773916, 0, 1, 0, -0.09773916, 0, 0.99521214, 4.6379147, 4.6712165, 1.6559949)
+transform = Transform3D(0.9203821, 0, -0.3910204, 0, 1, 0, 0.3910204, 0, 0.9203821, 2.6101809, 4.6712165, 1.5031743)
 
 [node name="ExtendePillar101" parent="Walls/pillars/Floor2" unique_id=547457010 instance=ExtResource("5_kapfu")]
 transform = Transform3D(0.45361817, 0, 1.3505548, 0, 1, 0, -1.5799767, 0, 0.38775018, 11.7905035, 4.6712165, 1.9299662)
@@ -677,7 +677,7 @@ transform = Transform3D(2.3304186, 0, 0.4132521, 0, 1, 0, -0.6904337, 0, 1.39484
 transform = Transform3D(1.1218495, 0, 1.2905447, 0, 1, 0, -2.1561546, 0, 0.67147183, 16.313236, 4.6712165, 20.128958)
 
 [node name="ExtendePillar99" parent="Walls/pillars/Floor2" unique_id=1717092220 instance=ExtResource("5_kapfu")]
-transform = Transform3D(2.1723173, 0, 0.88637036, 0, 1, 0, -2.0818667, 0, 0.9248803, 1.4305167, 4.6712165, 7.017646)
+transform = Transform3D(1.659872, 0, 0.9432397, 0, 0.99999994, 0, -2.0467737, 0, 0.7649391, 0.4882605, 4.6712165, 7.471039)
 
 [node name="ExtendePillar100" parent="Walls/pillars/Floor2" unique_id=1993268309 instance=ExtResource("5_kapfu")]
 transform = Transform3D(2.1723173, 0, 0.88637036, 0, 1, 0, -2.0818667, 0, 0.9248803, 5.168235, 4.6712165, 11.227888)
@@ -766,11 +766,10 @@ transform = Transform3D(4.025728, 0, -2.7934759, 0, 4.9, 0, 2.7934759, 0, 4.0257
 transform = Transform3D(4.8995376, 0, -0.06730306, 0, 4.9, 0, 0.06730306, 0, 4.8995376, 8.977072, -3.950079, -10.148287)
 
 [node name="Floor3" parent="Floor and platforms" unique_id=1963474527 instance=ExtResource("11_uccpx")]
-transform = Transform3D(4.9, 0, 0, 0, 4.9, 0, 0, 0, 4.9, 8.84614, -3.6688719, -7.128271)
+transform = Transform3D(4.9, 0, 0, 0, 4.9, 0, 0, 0, 4.9, 8.84614, -4.1031456, -7.128271)
 
 [node name="Roof" parent="Floor and platforms" unique_id=1788009986 instance=ExtResource("12_qwgoe")]
 transform = Transform3D(4.9, 0, 0, 0, 4.9, 0, 0, 0, 4.9, 6.380455, -15.963444, -14.974659)
-visible = false
 
 [node name="BaseFloor" type="Node" parent="Floor and platforms" unique_id=1304619738]
 
@@ -825,53 +824,120 @@ metadata/_edit_lock_ = true
 [node name="Lights" type="Node" parent="." unique_id=1146698960]
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="Lights" unique_id=1297924992]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.86625, 2.4899192, 3.3149014)
-light_energy = 2.723
-omni_range = 10.548559
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.795829, 2.6330884, 3.2737153)
+light_energy = 5.0
+distance_fade_enabled = true
+distance_fade_begin = 30.0
+distance_fade_shadow = 10.0
+distance_fade_length = 5.0
+omni_range = 21.968193
+omni_attenuation = 0.6
 
-[node name="OmniLight3D4" type="OmniLight3D" parent="Lights" unique_id=877759933]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3301439, 2.4899192, 31.415123)
-light_energy = 2.723
-omni_range = 10.548559
+[node name="OmniLight3D3" type="OmniLight3D" parent="Lights" unique_id=781317650]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.060102, 2.6330884, 22.893568)
+light_energy = 5.0
+distance_fade_enabled = true
+distance_fade_begin = 30.0
+distance_fade_shadow = 10.0
+distance_fade_length = 5.0
+omni_range = 21.968193
+omni_attenuation = 0.6
 
-[node name="OmniLight3D5" type="OmniLight3D" parent="Lights" unique_id=2043724952]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.315964, 2.4899192, 25.323467)
-light_energy = 2.723
-omni_range = 10.548559
+[node name="OmniLight3D4" type="OmniLight3D" parent="Lights" unique_id=643285815]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5201771, 2.6330903, 32.364067)
+light_energy = 5.0
+distance_fade_enabled = true
+distance_fade_begin = 30.0
+distance_fade_shadow = 10.0
+distance_fade_length = 5.0
+omni_range = 21.968193
+omni_attenuation = 0.6
 
-[node name="OmniLight3D6" type="OmniLight3D" parent="Lights" unique_id=1560097986]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.12924, 2.4899192, 13.074654)
-light_energy = 2.723
-omni_range = 10.548559
+[node name="OmniLight3D5" type="OmniLight3D" parent="Lights" unique_id=1589643671]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2765284, 2.6330903, 13.215836)
+light_energy = 5.0
+distance_fade_enabled = true
+distance_fade_begin = 30.0
+distance_fade_shadow = 10.0
+distance_fade_length = 5.0
+omni_range = 21.968193
+omni_attenuation = 0.6
 
-[node name="OmniLight3D8" type="OmniLight3D" parent="Lights" unique_id=1604829483]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.871515, 2.4899192, 20.869354)
-light_energy = 2.723
-omni_range = 10.548559
+[node name="OmniLight3D6" type="OmniLight3D" parent="Lights" unique_id=266013665]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.087491, 2.6330903, 7.443877)
+light_energy = 5.0
+distance_fade_enabled = true
+distance_fade_begin = 30.0
+distance_fade_shadow = 10.0
+distance_fade_length = 5.0
+omni_range = 21.968193
+omni_attenuation = 0.6
 
-[node name="SpotLight3D" type="SpotLight3D" parent="Lights" unique_id=1544624051]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 13.702232, 14.512058, -17.753403)
-light_energy = 15.8
-spot_range = 23.956
-spot_angle = 73.35
+[node name="OmniLight3D10" type="OmniLight3D" parent="Lights" unique_id=1469829482]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.50392, 2.6330903, -10.795496)
+light_energy = 5.0
+distance_fade_enabled = true
+distance_fade_begin = 30.0
+distance_fade_shadow = 10.0
+distance_fade_length = 5.0
+omni_range = 21.968193
+omni_attenuation = 0.6
 
-[node name="SpotLight3D2" type="SpotLight3D" parent="Lights" unique_id=1501688136]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -14.893595, 14.512058, -38.12284)
-light_energy = 15.8
-spot_range = 23.956
-spot_angle = 73.35
+[node name="OmniLight3D11" type="OmniLight3D" parent="Lights" unique_id=34105927]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.761864, 2.6330912, -46.80699)
+light_energy = 5.0
+distance_fade_enabled = true
+distance_fade_begin = 30.0
+distance_fade_shadow = 10.0
+distance_fade_length = 5.0
+omni_range = 21.968193
+omni_attenuation = 0.6
 
-[node name="SpotLight3D3" type="SpotLight3D" parent="Lights" unique_id=1815785946]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -16.20388, 14.512058, -2.355423)
-light_energy = 15.8
-spot_range = 23.956
-spot_angle = 73.35
+[node name="OmniLight3D7" type="OmniLight3D" parent="Lights" unique_id=826886723]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.488255, 2.6330905, -20.558271)
+light_energy = 5.0
+distance_fade_enabled = true
+distance_fade_begin = 30.0
+distance_fade_shadow = 10.0
+distance_fade_length = 5.0
+omni_range = 21.968193
+omni_attenuation = 0.6
 
-[node name="SpotLight3D4" type="SpotLight3D" parent="Lights" unique_id=269806083]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 6.0223846, 14.512058, 15.36899)
-light_energy = 15.8
-spot_range = 23.956
-spot_angle = 73.35
+[node name="OmniLight3D8" type="OmniLight3D" parent="Lights" unique_id=156705473]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.832672, 2.6330905, -35.547977)
+light_energy = 5.0
+distance_fade_enabled = true
+distance_fade_begin = 30.0
+distance_fade_shadow = 10.0
+distance_fade_length = 5.0
+omni_range = 21.968193
+omni_attenuation = 0.6
+
+[node name="OmniLight3D9" type="OmniLight3D" parent="Lights" unique_id=1561061607]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.694576, 2.6330905, -20.167645)
+light_energy = 5.0
+distance_fade_enabled = true
+distance_fade_begin = 30.0
+distance_fade_shadow = 10.0
+distance_fade_length = 5.0
+omni_range = 21.968193
+omni_attenuation = 0.6
+
+[node name="BigLight1" type="OmniLight3D" parent="Lights" unique_id=1355573243]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9454889, 12.538012, 14.240648)
+light_energy = 8.0
+distance_fade_enabled = true
+distance_fade_shadow = 10.0
+omni_range = 34.71175
+omni_attenuation = 0.5
+
+[node name="BigLight2" type="OmniLight3D" parent="Lights" unique_id=1387685537]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6747904, 12.538012, -23.957409)
+light_energy = 8.0
+distance_fade_enabled = true
+distance_fade_shadow = 10.0
+omni_range = 34.71175
+omni_attenuation = 0.5
 
 [node name="CeilingSpeakers" type="Node3D" parent="." unique_id=1819290928]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.158266, 0)

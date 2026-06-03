@@ -59,12 +59,14 @@ visible = false
 mesh = SubResource("CapsuleMesh_k0vdd")
 
 [node name="LeftLeanButton" type="Button" parent="." unique_id=78489363]
+modulate = Color(1, 1, 1, 0)
 anchors_preset = -1
 anchor_right = 0.25694445
 anchor_bottom = 1.0015432
 metadata/_edit_use_anchors_ = true
 
 [node name="RightLeanButton" type="Button" parent="." unique_id=23958319]
+modulate = Color(1, 1, 1, 0)
 anchors_preset = -1
 anchor_left = 0.7413194
 anchor_top = 0.0015432099
@@ -80,7 +82,7 @@ metadata/_custom_type_script = "uid://dt8gnroytki7d"
 [node name="WizIK" parent="." unique_id=427355988 instance=ExtResource("4_onab3")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.06685907, 1.4546797)
 
-[node name="Skeleton3D" parent="WizIK/Crouch Idle" parent_id_path=PackedInt32Array(427355988, 601109509) index="0" unique_id=2128289875]
+[node name="Skeleton3D" parent="WizIK/Crouch Idle" parent_id_path=PackedInt32Array(427355988, 601109509) index="0" unique_id=321288847]
 bones/0/position = Vector3(0.03789495, 4.7635517, -0.09493167)
 bones/0/rotation = Quaternion(0.10454172, 0.06676355, 0.05472988, 0.9907665)
 bones/1/rotation = Quaternion(0.04098251, -0.11619949, -0.08573667, 0.9886695)
