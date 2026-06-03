@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bf0872fkjr834"
-path="res://.godot/imported/dragon_scale.png-fc9872d19665fd3fcbbd1d64c40f5bec.ctex"
+path="res://.godot/imported/dragon_scale.png-88ed1966af2a940d15337fa051b70440.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/dragon_scale.png"
-dest_files=["res://.godot/imported/dragon_scale.png-fc9872d19665fd3fcbbd1d64c40f5bec.ctex"]
+source_file="res://assets/dragon_scale.png"
+dest_files=["res://.godot/imported/dragon_scale.png-88ed1966af2a940d15337fa051b70440.ctex"]
 
 [params]
 
