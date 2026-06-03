@@ -22,27 +22,33 @@ func _ready():
 
 var hud_panel: Panel
 var day_label: Label
-var debt_label: Label
-var gold_label: Label
+var debt_label: RichTextLabel
+var gold_label: RichTextLabel
 var retries_label: Label
 
 func _setup_hud():
 	hud_panel = Panel.new()
 	hud_panel.position = Vector2(20, 20)
-	hud_panel.size = Vector2(200, 160)
+	hud_panel.size = Vector2(240, 200)
 	hud_panel.mouse_filter = Control.MOUSE_FILTER_PASS
 	
 	var vbox = VBoxContainer.new()
 	vbox.position = Vector2(10, 10)
-	vbox.size = Vector2(180, 140)
+	vbox.size = Vector2(220, 180)
 	
 	day_label = Label.new()
-	debt_label = Label.new()
-	gold_label = Label.new()
+	debt_label = RichTextLabel.new()
+	debt_label.bbcode_enabled = true
+	debt_label.fit_content = true
+	debt_label.autowrap_mode = TextServer.AUTOWRAP_OFF
+	gold_label = RichTextLabel.new()
+	gold_label.bbcode_enabled = true
+	gold_label.fit_content = true
+	gold_label.autowrap_mode = TextServer.AUTOWRAP_OFF
 	retries_label = Label.new()
 	
-	gold_label.add_theme_color_override("font_color", Color.GOLD)
-	debt_label.add_theme_color_override("font_color", Color.RED)
+	gold_label.add_theme_color_override("default_color", Color.GOLD)
+	debt_label.add_theme_color_override("default_color", Color.RED)
 	
 	vbox.add_child(day_label)
 	vbox.add_child(debt_label)
@@ -101,8 +107,8 @@ func _show_win_screen():
 func _process(_delta):
 	if is_instance_valid(day_label):
 		day_label.text = "Day: %d" % GameState.current_day
-		debt_label.text = "Debt: $%d" % int(GameState.debt)
-		gold_label.text = "Gold: $%d" % int(GameState.gold)
+		debt_label.text = "Debt: [img=16]res://Assets/gold_coin.png[/img]%d" % int(GameState.debt)
+		gold_label.text = "Gold: [img=16]res://Assets/gold_coin.png[/img]%d" % int(GameState.gold)
 		
 		var max_r = GameState.get_max_retries()
 		var used_r = GameState.daily_state["retries_used"]

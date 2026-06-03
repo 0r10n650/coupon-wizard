@@ -90,6 +90,11 @@ text = "Checkout demo"
 layout_mode = 2
 text = "Carpy Demo"
 
+[node name="ResetSaveButton" type="Button" parent="DebugContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.2, 0.2, 1)
+text = "Reset Save (Day 1)"
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1782721983]
 stream = ExtResource("2_aot1s")
 autoplay = true
@@ -100,3 +105,4 @@ autoplay = true
 [connection signal="pressed" from="DebugContainer/OButton" to="." method="_on_o_button_pressed"]
 [connection signal="pressed" from="DebugContainer/CheckoutGame" to="." method="_on_checkout_game_pressed"]
 [connection signal="pressed" from="DebugContainer/CarpyDemo" to="." method="_on_carpy_demo_pressed"]
+[connection signal="pressed" from="DebugContainer/ResetSaveButton" to="." method="_on_reset_save_pressed"]

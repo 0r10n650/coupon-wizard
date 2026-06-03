@@ -28,6 +28,7 @@ buses/default_bus_layout="uid://dxcvho01iaatn"
 PsxVisualsGd4AutoLoad="*uid://gr30ktbgmp1i"
 PsxVisualsGd4AutoApply="*uid://d38enjrc45wvo"
 GameState="*res://Scripts/game_state.gd"
+PauseMenu="*res://Scenes/ui/pause_menu.tscn"
 
 [display]
 
@@ -42,6 +43,10 @@ movie_writer/fps=30
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/psx_visuals_gd4/plugin.cfg")
+
+[gui]
+
+theme/custom="res://main_theme.tres"
 
 [input]
 

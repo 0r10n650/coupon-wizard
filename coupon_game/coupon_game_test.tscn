@@ -10,10 +10,10 @@
 [ext_resource type="PackedScene" path="res://Scenes/shopping_door_3d.tscn" id="6_shop_door"]
 [ext_resource type="AudioStream" uid="uid://dip1ltitlw8ci" path="res://coupon_game/May31CouponWizard - Chill.wav" id="7_wgsbt"]
 [ext_resource type="PackedScene" uid="uid://27yb3bcmv72" path="res://Assets/3D Assets/Pillar.glb" id="10_fgw4j"]
-[ext_resource type="Material" path="res://Assets/Materials/pillarMaterial.tres" id="11_5o118"]
+[ext_resource type="Material" uid="uid://xbyd6ahx687t" path="res://Assets/Materials/pillarMaterial.tres" id="11_5o118"]
 [ext_resource type="PackedScene" uid="uid://cr7omwug4svoq" path="res://Assets/3D Assets/ExtendePillar.glb" id="12_nxy4y"]
 [ext_resource type="PackedScene" uid="uid://d3jilek8i1cpk" path="res://Assets/3D Assets/Shelf.glb" id="13_kjj4a"]
-[ext_resource type="Material" path="res://Assets/Materials/ShelfMaterial.tres" id="14_hmybx"]
+[ext_resource type="Material" uid="uid://84fm7yfybnc7" path="res://Assets/Materials/ShelfMaterial.tres" id="14_hmybx"]
 [ext_resource type="PackedScene" path="res://Scenes/fire_effect_3d.tscn" id="15_fgw4j"]
 [ext_resource type="PackedScene" path="res://Scenes/dark_energy_effect_3d.tscn" id="16_5o118"]
 
@@ -245,7 +245,7 @@ skeleton = NodePath("../../Wall12")
 
 [node name="Pillar" parent="Node3D" unique_id=769127662 instance=ExtResource("10_fgw4j")]
 
-[node name="Cube_001" parent="Node3D/Pillar" index="0" unique_id=200358399]
+[node name="Cube_001" parent="Node3D/Pillar" index="0" unique_id=1197592826]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -11.7)
 surface_material_override/0 = ExtResource("11_5o118")
 
@@ -264,7 +264,7 @@ surface_material_override/0 = ExtResource("11_5o118")
 [node name="ExtendePillar" parent="Node3D" unique_id=768579927 instance=ExtResource("12_nxy4y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -6)
 
-[node name="Cube_002" parent="Node3D/ExtendePillar" index="0" unique_id=782092177]
+[node name="Cube_002" parent="Node3D/ExtendePillar" index="0" unique_id=602907520]
 transform = Transform3D(-2.9802322e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.9802322e-08, -2, 1.8030614, -8.642088)
 surface_material_override/0 = ExtResource("11_5o118")
 
@@ -307,7 +307,7 @@ surface_material_override/0 = ExtResource("11_5o118")
 [node name="Shelf" parent="Node3D" unique_id=410156068 instance=ExtResource("13_kjj4a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 5, -8)
 
-[node name="Cube" parent="Node3D/Shelf" index="0" unique_id=2032958535]
+[node name="Cube" parent="Node3D/Shelf" index="0" unique_id=139851837]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -11.853135, -4.9381084, -4.9522066)
 material_override = ExtResource("14_hmybx")
 

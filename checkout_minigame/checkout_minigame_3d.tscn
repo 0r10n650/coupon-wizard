@@ -367,13 +367,14 @@ offset_right = 200.0
 offset_bottom = 200.0
 grow_horizontal = 2
 
-[node name="PriceLabel" type="Label" parent="CanvasLayer/VBoxContainer2" unique_id=1605502701]
+[node name="PriceLabel" type="RichTextLabel" parent="CanvasLayer/VBoxContainer2" unique_id=1605502701]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
-theme_override_font_sizes/font_size = 24
-text = "Total: $100.00"
-horizontal_alignment = 1
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+fit_content = true
+text = "[center]Total: [img=24]res://Assets/gold_coin.png[/img]100.00[/center]"
 
 [node name="ComboLabel" type="Label" parent="CanvasLayer" unique_id=573294515]
 anchors_preset = 8
@@ -407,13 +408,14 @@ grow_horizontal = 2
 grow_vertical = 0
 alignment = 2
 
-[node name="DiscountLabel" type="Label" parent="CanvasLayer/VBoxContainer" unique_id=1439087598]
+[node name="DiscountLabel" type="RichTextLabel" parent="CanvasLayer/VBoxContainer" unique_id=1439087598]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
-theme_override_font_sizes/font_size = 24
-text = "Discount: -$0.00"
-horizontal_alignment = 1
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+fit_content = true
+text = "[center]Discount: -[img=24]res://Assets/gold_coin.png[/img]0.00[/center]"
 
 [node name="ComboBar" type="ProgressBar" parent="CanvasLayer/VBoxContainer" unique_id=30460245]
 layout_mode = 2

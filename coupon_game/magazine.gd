@@ -43,7 +43,8 @@ func refresh_magazine():
 	for i in range(6):
 		var coupon_id = i + 1
 		var btn = Button.new()
-		btn.custom_minimum_size = Vector2(120, 180)
+		btn.custom_minimum_size = Vector2(160, 130)
+		btn.add_theme_font_size_override("font_size", 18)
 		
 		var c_name = get_coupon_name(coupon_id)
 		var c_pct = GameState.get_coupon_percent(coupon_id)

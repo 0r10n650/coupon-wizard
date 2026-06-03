@@ -1,0 +1,88 @@
+[gd_resource type="Theme" format=3 uid="uid://bpdelj5q2myh3"]
+
+[ext_resource type="FontFile" uid="uid://c0ieoyu20x0ux" path="res://Assets/Fonts/LilitaOne-Regular.ttf" id="1_470mv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a2l2q"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0.3, 0.3, 0.3, 1)
+border_width_bottom = 6
+border_color = Color(0.2, 0.2, 0.2, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0omi4"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(1, 0.85, 0.3, 1)
+border_width_bottom = 6
+border_color = Color(0.7, 0.5, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_58jnp"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0.95, 0.75, 0.1, 1)
+border_width_bottom = 6
+border_color = Color(0.7, 0.5, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_466ly"]
+content_margin_left = 16.0
+content_margin_top = 14.0
+content_margin_right = 16.0
+content_margin_bottom = 2.0
+bg_color = Color(0.8, 0.6, 0, 1)
+border_color = Color(0.7, 0.5, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_52mx2"]
+color = Color(0.5, 0.4, 0.7, 0.5)
+thickness = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_py0i1"]
+bg_color = Color(0.15, 0.12, 0.25, 0.95)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.3, 0.2, 0.5, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0, 0, 0, 0.4)
+shadow_size = 6
+
+[resource]
+default_font = ExtResource("1_470mv")
+default_font_size = 24
+Button/colors/font_color = Color(0.1, 0.1, 0.1, 1)
+Button/colors/font_disabled_color = Color(0.6, 0.6, 0.6, 1)
+Button/colors/font_focus_color = Color(0.1, 0.1, 0.1, 1)
+Button/colors/font_hover_color = Color(0.05, 0.05, 0.05, 1)
+Button/colors/font_pressed_color = Color(0.1, 0.1, 0.1, 1)
+Button/styles/disabled = SubResource("StyleBoxFlat_a2l2q")
+Button/styles/hover = SubResource("StyleBoxFlat_0omi4")
+Button/styles/normal = SubResource("StyleBoxFlat_58jnp")
+Button/styles/pressed = SubResource("StyleBoxFlat_466ly")
+HSeparator/styles/separator = SubResource("StyleBoxLine_52mx2")
+Panel/styles/panel = SubResource("StyleBoxFlat_py0i1")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_py0i1")

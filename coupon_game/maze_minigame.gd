@@ -1,6 +1,6 @@
 extends Control
 
-signal maze_finished(won: bool, coupon_id: int)
+signal maze_finished(won: bool, coupon_id: int, cancelled: bool)
 
 @onready var cursor_tracker = $CursorTracker
 @onready var start_button = $StartButton
@@ -101,7 +101,7 @@ func _process(delta):
 			if trail_line != null:
 				trail_line.default_color = Color(0.5, 0.5, 0.5, 0.8) # Turn gray on timeout
 				trail_line.gradient = null
-			maze_finished.emit(false, current_coupon)
+			maze_finished.emit(false, current_coupon, false)
 			
 		timer_label.text = "Time: %.1f" % time_left
 		if time_left < 3.0:
@@ -127,9 +127,9 @@ func _on_start_button_pressed():
 func _on_back_button_pressed():
 	if is_playing:
 		is_playing = false
-		maze_finished.emit(false, current_coupon)
+		maze_finished.emit(false, current_coupon, false)
 	else:
-		maze_finished.emit(false, current_coupon)
+		maze_finished.emit(false, current_coupon, true)
 
 func _on_walls_hit(area):
 	if is_playing and area == cursor_tracker:
@@ -137,7 +137,7 @@ func _on_walls_hit(area):
 		if trail_line != null:
 			trail_line.default_color = Color(1.0, 0.2, 0.2, 0.8) # Turn red on failure
 			trail_line.gradient = null
-		maze_finished.emit(false, current_coupon)
+		maze_finished.emit(false, current_coupon, false)
 
 func _on_goal_reached(area):
 	if is_playing and area == cursor_tracker:
@@ -145,4 +145,4 @@ func _on_goal_reached(area):
 		if trail_line != null:
 			trail_line.default_color = Color(0.2, 1.0, 0.2, 0.8) # Turn green on success
 			trail_line.gradient = null
-		maze_finished.emit(true, current_coupon)
+		maze_finished.emit(true, current_coupon, false)

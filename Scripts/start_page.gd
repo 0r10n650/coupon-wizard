@@ -3,7 +3,7 @@ class_name StartPage
 
 const tutorial_scene_path = "res://Scenes/tutorial.tscn"
 
-const jordo_scene = preload("res://coupon_game/coupon_game_test.tscn")
+const jordo_scene = preload("res://Scenes/upgrade_screen.tscn")
 const o_scene = preload("res://Scenes/shopping.tscn")
 const checkout_scene = preload("res://checkout_minigame/checkout_minigame_3d.tscn")
 const carpy_scene = preload("res://tests/shoppingfordummies.tscn")
@@ -11,6 +11,7 @@ const carpy_scene = preload("res://tests/shoppingfordummies.tscn")
 @onready var debug_container = $DebugContainer
 
 func _ready():
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	if debug_container:
 		debug_container.hide()
 
@@ -39,3 +40,9 @@ func _on_checkout_game_pressed():
 
 func _on_carpy_demo_pressed():
 	get_tree().change_scene_to_packed(carpy_scene)
+
+func _on_reset_save_pressed():
+	GameState.reset_game()
+	GameState.current_day = 1
+	GameState.save_game()
+	print("Save reset to Day 1.")

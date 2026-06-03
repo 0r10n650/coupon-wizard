@@ -296,15 +296,18 @@ func _show_payment_ui():
 		var lbl = Label.new()
 		lbl.text = label_text
 		lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		var val = Label.new()
-		val.text = val_text
-		val.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+		var val = RichTextLabel.new()
+		val.bbcode_enabled = true
+		val.fit_content = true
+		val.autowrap_mode = TextServer.AUTOWRAP_OFF
+		val.size_flags_horizontal = Control.SIZE_SHRINK_END
+		val.text = val_text.replace("$", "[img=24]res://Assets/gold_coin.png[/img]")
 		if color_mode == 1:
-			val.add_theme_color_override("font_color", Color.GOLD)
+			val.add_theme_color_override("default_color", Color.GOLD)
 		elif color_mode == 2:
-			val.add_theme_color_override("font_color", Color.RED)
+			val.add_theme_color_override("default_color", Color.RED)
 		elif color_mode == 3:
-			val.add_theme_color_override("font_color", Color.GREEN)
+			val.add_theme_color_override("default_color", Color.GREEN)
 		details_grid.add_child(lbl)
 		details_grid.add_child(val)
 		
@@ -339,7 +342,10 @@ func _show_payment_ui():
 	vbox.add_child(details_grid)
 	
 	var credit_btn = Button.new()
-	credit_btn.text = "Pay with Credit Card ($%d)" % final_total
+	credit_btn.text = " Pay with Credit Card ( %d)" % final_total
+	credit_btn.icon = preload("res://Assets/gold_coin.png")
+	credit_btn.expand_icon = true
+	credit_btn.add_theme_constant_override("icon_max_width", 24)
 	credit_btn.custom_minimum_size = Vector2(0, 50)
 	credit_btn.pressed.connect(func(): _process_payment(final_total, panel))
 	vbox.add_child(credit_btn)
@@ -359,7 +365,7 @@ func _process_payment(credit_amount: int, ui_panel: Control):
 	ui_panel.queue_free()
 	print("Payment complete. Moving to day ", GameState.current_day)
 	
-	get_tree().change_scene_to_file("res://coupon_game/coupon_game_test.tscn")
+	get_tree().change_scene_to_file("res://Scenes/upgrade_screen.tscn")
 
 func drop_combo():
 	combo_bar.value = 0
@@ -410,19 +416,23 @@ func hit_arrow():
 	combo_tween.parallel().tween_property(combo_label, "modulate", Color.WHITE, 0.5)
 	
 	# Juiciness: Floating text
-	var floating_text = Label.new()
+	var floating_text = RichTextLabel.new()
+	floating_text.bbcode_enabled = true
+	floating_text.fit_content = true
+	floating_text.autowrap_mode = TextServer.AUTOWRAP_OFF
+	var fs = 32 + min(combo_count, 20)
+	floating_text.add_theme_font_size_override("normal_font_size", fs)
+	
 	if is_bonus_hit:
-		floating_text.text = "+$%d Combo Bonus!" % GameState.get_bonus_arrow_value()
-		floating_text.add_theme_color_override("font_color", Color.CYAN)
+		floating_text.text = "+[img=%d]res://Assets/gold_coin.png[/img]%d Combo Bonus!" % [fs, GameState.get_bonus_arrow_value()]
+		floating_text.add_theme_color_override("default_color", Color.CYAN)
 	else:
 		var display_val = snapped(discount_increase, 0.01)
 		if int(round(display_val * 100)) % 100 == 0:
-			floating_text.text = "+$%d" % int(round(display_val))
+			floating_text.text = "+[img=%d]res://Assets/gold_coin.png[/img]%d" % [fs, int(round(display_val))]
 		else:
-			floating_text.text = "+$%.2f" % display_val
-		floating_text.add_theme_color_override("font_color", Color.GOLD)
-		
-	floating_text.add_theme_font_size_override("font_size", 32 + min(combo_count, 20))
+			floating_text.text = "+[img=%d]res://Assets/gold_coin.png[/img]%.2f" % [fs, display_val]
+		floating_text.add_theme_color_override("default_color", Color.GOLD)
 	$CanvasLayer.add_child(floating_text)
 	
 	# Start floating text at the center
@@ -481,8 +491,8 @@ func _input(event):
 					drop_combo()
 
 func update_ui():
-	price_label.text = "Total: $%d" % int(max(0, base_price))
-	discount_label.text = "Discount: -$%d" % int(round(total_discount))
+	price_label.text = "[center]Total: [img=24]res://Assets/gold_coin.png[/img]%d[/center]" % int(max(0, base_price))
+	discount_label.text = "[center]Discount: -[img=24]res://Assets/gold_coin.png[/img]%d[/center]" % int(round(total_discount))
 	if combo_count > 0:
 		if combo_count > combos_for_max_discount:
 			combo_label.text = "Combo x%d!\n(+%d G Bonus)" % [combo_count, combo_bonus_earned]

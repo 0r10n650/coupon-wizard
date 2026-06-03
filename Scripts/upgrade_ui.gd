@@ -1,7 +1,9 @@
 extends Control
 
-@onready var gold_label = $Panel/VBoxContainer/Header/GoldLabel
+@onready var gold_label = $Panel/VBoxContainer/Header/GoldContainer/GoldLabel
 @onready var upgrades_container = $Panel/VBoxContainer/ScrollContainer/UpgradesList
+
+var gold_icon = preload("res://Assets/gold_coin.png")
 
 var upgrade_definitions = [
 	{"id": "coupon_time", "name": "Maze Time Limit", "desc": "Increases time to complete mazes."},
@@ -23,7 +25,7 @@ func _ready():
 	refresh_ui()
 
 func refresh_ui():
-	gold_label.text = "Gold: $%d" % int(GameState.gold)
+	gold_label.text = str(int(GameState.gold))
 	
 	# Clear existing
 	for child in upgrades_container.get_children():
@@ -53,7 +55,10 @@ func create_upgrade_item(def: Dictionary) -> Control:
 	
 	var buy_btn = Button.new()
 	var cost = GameState.get_upgrade_cost(def["id"])
-	buy_btn.text = "Buy (%d G)" % int(cost)
+	buy_btn.text = " %d" % int(cost)
+	buy_btn.icon = gold_icon
+	buy_btn.expand_icon = true
+	buy_btn.add_theme_constant_override("icon_max_width", 24)
 	buy_btn.disabled = not GameState.can_afford(def["id"])
 	
 	buy_btn.pressed.connect(func(): _on_buy_pressed(def["id"]))

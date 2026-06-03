@@ -3,14 +3,14 @@
 [ext_resource type="Script" uid="uid://ce8vt4x0pu6l4" path="res://coupon_game/magazine.gd" id="1_script"]
 
 [node name="Magazine" type="Panel"]
-custom_minimum_size = Vector2(600, 400)
+custom_minimum_size = Vector2(600, 460)
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -300.0
-offset_top = -400.0
+offset_top = -460.0
 offset_right = 300.0
 grow_horizontal = 2
 grow_vertical = 0
