@@ -1,18 +1,12 @@
-[gd_resource type="StandardMaterial3D" format=2]
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://84fm7yfybnc7"]
 
-[ext_resource type="Texture" path="./ShelfMaterial_albedo.png" id="1"]
-[ext_resource type="Texture" path="./ShelfMaterial_orm.png" id="2"]
-[ext_resource type="Texture" path="./ShelfMaterial_normal.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://b7hlrtedr2e3v" path="res://Assets/Materials/ShelfMaterial_albedo.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://mem6uc0fskx3" path="res://Assets/Materials/ShelfMaterial_orm.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://txds72ms2nay" path="res://Assets/Materials/ShelfMaterial_normal.png" id="3"]
+
 [resource]
-albedo_color = Color(1.0, 1.0, 1.0, 1.0)
-albedo_texture = ExtResource( 1 )
-metallic = 0.0
-roughness = 1.0
-roughness_texture = ExtResource( 2 )
+albedo_texture = ExtResource("1")
+roughness_texture = ExtResource("2")
 roughness_texture_channel = 1
 normal_enabled = true
-normal_scale = 1.0
-normal_texture = ExtResource( 3 )
-
-
-
+normal_texture = ExtResource("3")
