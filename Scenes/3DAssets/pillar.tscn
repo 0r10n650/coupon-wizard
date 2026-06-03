@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://cegxcbikisok3"]
+
+[ext_resource type="PackedScene" uid="uid://27yb3bcmv72" path="res://Assets/3D Assets/Pillar.glb" id="1_xodxk"]
+[ext_resource type="Texture2D" uid="uid://qfywxlivms8o" path="res://Assets/Materials/pillarMaterial_albedo.png" id="2_crot6"]
+[ext_resource type="Texture2D" uid="uid://cqih7qo3fh837" path="res://Assets/Materials/pillarMaterial_orm.png" id="3_5w56n"]
+[ext_resource type="Texture2D" uid="uid://bx8smjr6bkv87" path="res://Assets/Materials/pillarMaterial_heightmap.png" id="4_r566y"]
+[ext_resource type="Texture2D" uid="uid://db7m4npbfe41n" path="res://Assets/Materials/pillarMaterial_normal.png" id="5_jjtx8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5lq8o"]
+albedo_texture = ExtResource("2_crot6")
+roughness_texture = ExtResource("3_5w56n")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("5_jjtx8")
+ao_enabled = true
+ao_texture = ExtResource("3_5w56n")
+heightmap_enabled = true
+heightmap_scale = 25.0
+heightmap_deep_parallax = true
+heightmap_min_layers = 8
+heightmap_max_layers = 32
+heightmap_texture = ExtResource("4_r566y")
+uv1_scale = Vector3(2.71, 2.71, 2.71)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_crot6"]
+points = PackedVector3Array(-0.5000019, 0.014012337, -0.5, -0.5000019, 0.014012337, 0.5, -0.5000019, 0.9732647, -0.5, 0.4999981, 0.014012337, -0.5, 0.4999981, 0.014012337, 0.5, -0.5000019, 0.9732647, 0.5, 0.4999981, 0.9732647, -0.5, -0.4912901, 3.433315, -0.4912882, 0.4999981, 0.9732647, 0.5, -0.4912901, 3.433315, 0.4911903, 0.4911884, 3.433315, -0.4912882, 0.4911884, 3.433315, 0.4911903)
+
+[node name="Pillar" unique_id=2017322984 instance=ExtResource("1_xodxk")]
+
+[node name="Cube_001" parent="." index="0" unique_id=252088598]
+material_override = SubResource("StandardMaterial3D_5lq8o")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Cube_001" index="0" unique_id=1681231409]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cube_001/StaticBody3D" index="0" unique_id=1382232924]
+shape = SubResource("ConvexPolygonShape3D_crot6")
