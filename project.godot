@@ -19,6 +19,10 @@ run/main_scene="uid://dkoqvo2ta35nw"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://dxcvho01iaatn"
+
 [autoload]
 
 PsxVisualsGd4AutoLoad="*uid://gr30ktbgmp1i"

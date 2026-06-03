@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://f0rc7hpsuxb1" path="res://wizard/wiz_ik.tscn" id="4_31rlj"]
 [ext_resource type="AudioStream" uid="uid://djgjob1l0titd" path="res://checkout_minigame/assets/oh boy do i 1.mp3" id="4_fjqjv"]
 [ext_resource type="AudioStream" uid="uid://f23x4v5pxth3" path="res://checkout_minigame/assets/total sir.mp3" id="4_muuro"]
-[ext_resource type="Material" uid="uid://2gvt3age3vb2" path="res://assets/Materials/WallMaterial.tres" id="6_113ia"]
-[ext_resource type="Material" path="res://assets/Materials/pillarMaterial.tres" id="7_ws0pn"]
+[ext_resource type="Material" uid="uid://2gvt3age3vb2" path="res://Assets/Materials/WallMaterial.tres" id="6_113ia"]
+[ext_resource type="Material" path="res://Assets/Materials/pillarMaterial.tres" id="7_ws0pn"]
 
 [sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_pn2rc"]
 
