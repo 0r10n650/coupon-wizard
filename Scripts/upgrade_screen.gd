@@ -29,6 +29,7 @@ signal gold_changed(new_value: int)
 signal debt_changed(new_value: int)
 
 var gold_icon = preload("res://Assets/gold_coin.png")
+const COIN    = "[img=16]res://Assets/gold_coin.png[/img]"
 
 const COUPON_IMAGES = {
 	"low_pct":    "res://assets/Coupons/circle_coupon.png",
@@ -56,6 +57,8 @@ var upgrade_definitions = [
 	{"id": "checkout_bonus_arrow",    "name": "Bonus Arrow Value",  "desc": "Increases money earned for each arrow hit after reaching max combo."},
 	{"id": "shopping_time",           "name": "Shopping Time",      "desc": "Increases the time limit for shopping."},
 	{"id": "coupon_slots",            "name": "Coupon Slots",       "desc": "Unlocks an additional coupon slot (max 5)."},
+	{"id": "orders",                  "name": "Order Slots",        "desc": "Increases how many orders you can take per day (max 5)."},
+	{"id": "order_rerolls",           "name": "Order Rerolls",      "desc": "Allows rerolling the order pool once or twice per day."},
 ]
 
 const SLOT_CARD_SIZE    = Vector2(95, 110)
@@ -87,6 +90,7 @@ func _ready():
 	# start on the orders panel
 	_show_orders()
 	_update_order_count(0)
+	_update_bottom_bar()
 
 	# unlock a few coupons for testing
 	if GameState.unlocked_coupon_ids.is_empty():
@@ -129,8 +133,8 @@ func _update_order_count(count: int):
 
 func _update_bottom_bar():
 	day_label.text  = "Day: %d" % GameState.current_day
-	gold_label.text = "Gold: [img=16]res://Assets/gold_coin.png[/img]%d" % int(GameState.gold)
-	debt_label.text = "Debt: [img=16]res://Assets/gold_coin.png[/img]%d" % int(GameState.debt)
+	gold_label.text = "Gold: %s%d" % [COIN, int(GameState.gold)]
+	debt_label.text = "Debt: %s%d" % [COIN, int(GameState.debt)]
 	pay_debt_btn.disabled = GameState.gold <= 0 or GameState.debt <= 0
 
 
@@ -534,9 +538,6 @@ func _on_pay_debt():
 
 
 func _on_start_shopping():
+	if GameState.active_orders.is_empty():
+		return
 	get_tree().change_scene_to_file("res://Scenes/shopping.tscn")
-
-# bottom bar
-const COIN = "[img=16]res://Assets/gold_coin.png[/img]"
-
-# gold_label.text = "Gold: %s%d" % [COIN, int(GameState.gold)]

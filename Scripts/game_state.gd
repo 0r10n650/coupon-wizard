@@ -22,6 +22,7 @@ var upgrades = {
 	"checkout_bonus_arrow": 0,
 	"shopping_time": 0,
 	"orders": 2,
+	"order_rerolls": 0,
 	"coupon_slots": 0,
 }
 
@@ -38,6 +39,9 @@ var active_orders: Array = []
 var daily_order_pool: Array = []
 # how many orders the player can select — driven by upgrade
 var max_orders: int = 2
+var completed_order_ids: Array = []
+var rerolls_remaining: int     = 0
+var orders_generated_day: int  = -1
 
 func _ready():
 	load_game()
@@ -48,7 +52,10 @@ func save_game():
 		"gold": gold,
 		"debt": debt,
 		"last_scene_path": last_scene_path,
-		"active_orders": active_orders,
+		"active_orders":        active_orders,
+		"completed_order_ids":  completed_order_ids,
+		"orders_generated_day": orders_generated_day,
+		"rerolls_remaining":    rerolls_remaining,
 		"upgrades": upgrades,
 		"unlocked_coupon_ids": unlocked_coupon_ids,
 		"equipped_coupon_ids": equipped_coupon_ids,
@@ -73,7 +80,10 @@ func load_game():
 			gold = data.get("gold", gold)
 			debt = data.get("debt", debt)
 			last_scene_path = data.get("last_scene_path", last_scene_path)
-			active_orders = data.get("active_orders", [])
+			active_orders        = data.get("active_orders", [])
+			completed_order_ids  = data.get("completed_order_ids", [])
+			orders_generated_day = data.get("orders_generated_day", -1)
+			rerolls_remaining    = data.get("rerolls_remaining", 0)
 			unlocked_coupon_ids = data.get("unlocked_coupon_ids", [])
 			equipped_coupon_ids = data.get("equipped_coupon_ids", [])
 			coupon_slots = data.get("coupon_slots", 2)
@@ -104,7 +114,10 @@ func reset_game():
 	}
 	active_orders.clear()
 	daily_order_pool.clear()
-	max_orders = 2
+	completed_order_ids.clear()
+	orders_generated_day = -1
+	rerolls_remaining    = 0
+	max_orders           = 2
 	cart_items.clear()
 	unlocked_coupon_ids.clear()
 	equipped_coupon_ids.clear()
@@ -116,6 +129,7 @@ func reset_game():
 	print("Game reset to Day 2 defaults.")
 
 func advance_day():
+	process_incomplete_orders()
 	if debt > 0:
 		debt = int(debt * 1.30)
 	current_day += 1
@@ -209,6 +223,10 @@ var upgrade_tiers = {
 	"orders": {
 		"costs": [100, 200, 500],
 		"values": [3, 4, 5]
+	},
+	"order_rerolls": {
+		"costs": [300, 800],
+		"values": [0, 1, 2]
 	},
 	"coupon_slots": {
 		"costs": [200, 500, 1500],
@@ -415,21 +433,87 @@ func upgrade_coupon_slots() -> bool:
 		coupon_slots = int(get_upgrade_value("coupon_slots"))
 	return ok
 	
-func generate_daily_orders():
+const INCOMPLETE_REBATE = 0.5
+
+func prepare_daily_orders():
+	if orders_generated_day == current_day:
+		return
 	max_orders = int(get_upgrade_value("orders"))
-	daily_order_pool = OrderGenerator.generate_pool(max_orders)
+	rerolls_remaining = int(get_upgrade_value("order_rerolls"))
+	orders_generated_day = current_day
 	active_orders.clear()
+	completed_order_ids.clear()
+	_generate_pool()
+
+func reroll_orders():
+	if rerolls_remaining <= 0:
+		return
+	rerolls_remaining -= 1
+	active_orders.clear()
+	_generate_pool()
+
+func _generate_pool():
+	if current_day == 1:
+		daily_order_pool = [_make_tutorial_order_day1()]
+	elif current_day == 2:
+		daily_order_pool = [_make_tutorial_order_day2()]
+		if max_orders >= 2:
+			daily_order_pool.append(OrderGenerator.generate_pool(1)[0])
+	else:
+		daily_order_pool = OrderGenerator.generate_pool(max_orders)
 
 func confirm_orders(selected_indices: Array):
 	active_orders.clear()
+	completed_order_ids.clear()
 	for idx in selected_indices:
 		if idx < daily_order_pool.size():
 			active_orders.append(daily_order_pool[idx])
-	daily_order_pool.clear()
- 
+
+func mark_order_complete(order_idx: int):
+	if order_idx not in completed_order_ids:
+		completed_order_ids.append(order_idx)
+
+func process_incomplete_orders():
+	var rebate: int = 0
+	for i in range(active_orders.size()):
+		if i not in completed_order_ids:
+			rebate += int(round(active_orders[i]["raw_cost"] * INCOMPLETE_REBATE))
+	if rebate > 0:
+		gold += rebate
+	active_orders.clear()
+	completed_order_ids.clear()
+
 func get_order_total() -> int:
 	var total = 0
 	for order in active_orders:
 		for item in order["line_items"]:
 			total += item["price"] * item["quantity"]
 	return total
+
+func _make_tutorial_order_day1() -> Dictionary:
+	return {
+		"size": "small",
+		"line_items": [
+			{"name": "Bread",  "price": 4, "quantity": 2},
+			{"name": "Milk",   "price": 3, "quantity": 1},
+			{"name": "Eggs",   "price": 5, "quantity": 1},
+		],
+		"raw_cost": 15,
+		"reward":   18,
+		"categories": ["bakery", "dairy"],
+		"tutorial": true,
+	}
+
+func _make_tutorial_order_day2() -> Dictionary:
+	return {
+		"size": "small",
+		"line_items": [
+			{"name": "Butter", "price": 4, "quantity": 1},
+			{"name": "Flour",  "price": 2, "quantity": 2},
+			{"name": "Sugar",  "price": 2, "quantity": 1},
+		],
+		"raw_cost": 10,
+		"reward":   13,
+		"categories": ["bakery", "dairy"],
+		"tutorial": true,
+	}

@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://co1yxpcalv71q"
-path.s3tc="res://.godot/imported/coupon_item_dragonscale.png-7804a70480929ec4ed9660bb7fff998e.s3tc.ctex"
+path.s3tc="res://.godot/imported/coupon_item_dragonscale.png-9348c489df9bc711c1165c0e84103b99.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Ingredients/coupon_item_dragonscale.png"
-dest_files=["res://.godot/imported/coupon_item_dragonscale.png-7804a70480929ec4ed9660bb7fff998e.s3tc.ctex"]
+source_file="res://assets/Ingredients/coupon_item_dragonscale.png"
+dest_files=["res://.godot/imported/coupon_item_dragonscale.png-9348c489df9bc711c1165c0e84103b99.s3tc.ctex"]
 
 [params]
 

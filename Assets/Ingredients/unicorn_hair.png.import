@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bw8ecrcjh0krg"
-path.s3tc="res://.godot/imported/unicorn_hair.png-0a6d9a766e0941afdef305204a1d3b23.s3tc.ctex"
+path.s3tc="res://.godot/imported/unicorn_hair.png-624706e115eb059a9b6ab77322ae2bdf.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Ingredients/unicorn_hair.png"
-dest_files=["res://.godot/imported/unicorn_hair.png-0a6d9a766e0941afdef305204a1d3b23.s3tc.ctex"]
+source_file="res://assets/Ingredients/unicorn_hair.png"
+dest_files=["res://.godot/imported/unicorn_hair.png-624706e115eb059a9b6ab77322ae2bdf.s3tc.ctex"]
 
 [params]
 

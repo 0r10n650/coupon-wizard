@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ddwyotssp6ra0"
-path.s3tc="res://.godot/imported/coupon_item_jarofhumanteeth.png-85c58ff2d30d8bf8fdbe0e2493d4e2c2.s3tc.ctex"
+path.s3tc="res://.godot/imported/coupon_item_jarofhumanteeth.png-84f08ef8e1e05053e1f85be9368b62ce.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Ingredients/coupon_item_jarofhumanteeth.png"
-dest_files=["res://.godot/imported/coupon_item_jarofhumanteeth.png-85c58ff2d30d8bf8fdbe0e2493d4e2c2.s3tc.ctex"]
+source_file="res://assets/Ingredients/coupon_item_jarofhumanteeth.png"
+dest_files=["res://.godot/imported/coupon_item_jarofhumanteeth.png-84f08ef8e1e05053e1f85be9368b62ce.s3tc.ctex"]
 
 [params]
 

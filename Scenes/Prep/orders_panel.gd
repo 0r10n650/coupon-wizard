@@ -1,6 +1,5 @@
-# OrdersPanel — attach to the OrdersPanel node inside upgrade_screen.tscn
-# Expects to be a VBoxContainer with %StartShoppingBtn wired in the parent.
-# Call build() from _show_orders() in upgrade_screen.gd.
+# Attached to OrdersPanel.
+# Build from _show_orders() in upgrade_screen.gdOrdersPanel — attach to the OrdersPanel node inside upgrade_screen.tscn
 
 extends VBoxContainer
 
@@ -17,7 +16,7 @@ func build():
 	available_orders.clear()
 	selected_orders.clear()
 
-	GameState.generate_daily_orders()
+	GameState.prepare_daily_orders()
 	available_orders = GameState.daily_order_pool.duplicate()
 
 	# card row
