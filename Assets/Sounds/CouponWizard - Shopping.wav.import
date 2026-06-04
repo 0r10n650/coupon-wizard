@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://rvsmkqcitpv"
+path="res://.godot/imported/CouponWizard - Shopping.wav-f8388a14a4ece6e7244e75af9fadaa71.sample"
+
+[deps]
+
+source_file="res://assets/Sounds/CouponWizard - Shopping.wav"
+dest_files=["res://.godot/imported/CouponWizard - Shopping.wav-f8388a14a4ece6e7244e75af9fadaa71.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://c0ieoyu20x0ux"
-path="res://.godot/imported/LilitaOne-Regular.ttf-d96327124c948371cb7702c812af1722.fontdata"
+path="res://.godot/imported/LilitaOne-Regular.ttf-d9162a4b35d04fae9913f136336dcdc2.fontdata"
 
 [deps]
 
-source_file="res://Assets/Fonts/LilitaOne-Regular.ttf"
-dest_files=["res://.godot/imported/LilitaOne-Regular.ttf-d96327124c948371cb7702c812af1722.fontdata"]
+source_file="res://assets/Fonts/LilitaOne-Regular.ttf"
+dest_files=["res://.godot/imported/LilitaOne-Regular.ttf-d9162a4b35d04fae9913f136336dcdc2.fontdata"]
 
 [params]
 

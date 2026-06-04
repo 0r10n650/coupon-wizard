@@ -20,7 +20,8 @@ var upgrades = {
 	"checkout_shake_reduction": 0,
 	"checkout_shake_delay": 0,
 	"checkout_bonus_arrow": 0,
-	"shopping_time": 0
+	"shopping_time": 0,
+	"coupon_slots": 0,
 }
 
 var daily_state = {
@@ -40,7 +41,10 @@ func save_game():
 		"gold": gold,
 		"debt": debt,
 		"last_scene_path": last_scene_path,
-		"upgrades": upgrades
+		"upgrades": upgrades,
+		"unlocked_coupon_ids": unlocked_coupon_ids,
+		"equipped_coupon_ids": equipped_coupon_ids,
+		"coupon_slots": coupon_slots,
 	}
 	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	if file:
@@ -61,10 +65,14 @@ func load_game():
 			gold = data.get("gold", gold)
 			debt = data.get("debt", debt)
 			last_scene_path = data.get("last_scene_path", last_scene_path)
+			unlocked_coupon_ids = data.get("unlocked_coupon_ids", [])
+			equipped_coupon_ids = data.get("equipped_coupon_ids", [])
+			coupon_slots = data.get("coupon_slots", 2)
 			if data.has("upgrades"):
 				for key in data["upgrades"]:
 					if upgrades.has(key):
 						upgrades[key] = data["upgrades"][key]
+				coupon_slots = int(get_upgrade_value("coupon_slots"))
 		file.close()
 
 func has_save_file() -> bool:
@@ -86,7 +94,10 @@ func reset_game():
 		"successful_coupons": []
 	}
 	cart_items.clear()
-	
+	unlocked_coupon_ids.clear()
+	equipped_coupon_ids.clear()
+	coupon_slots = 2
+
 	if FileAccess.file_exists(SAVE_PATH):
 		DirAccess.remove_absolute(SAVE_PATH)
 	
@@ -182,7 +193,11 @@ var upgrade_tiers = {
 	"shopping_time": {
 		"costs": [50, 200, 1000, 5000],
 		"values": [30.0, 45.0, 60.0, 90.0, 120.0]
-	}
+	},
+	"coupon_slots": {
+		"costs": [200, 500, 1500],
+		"values": [2, 3, 4, 5]
+	},
 }
 
 func get_upgrade_cost(upgrade_name: String) -> int:
@@ -256,5 +271,130 @@ func get_cart_total() -> int:
 	return total
 	
 func add_cart_item(item) -> void:
-		cart_items.append(item)
+	cart_items.append(item)
+
+# each coupon: id, name, description, tier, type, value, required_count (opt), multiplier (opt)
+# types: percent_off | flat_off | buy_n_participating_flat | multiply_previous
+var unlocked_coupon_ids: Array = []
+var equipped_coupon_ids: Array = []
+var coupon_slots: int = 2  # upgradeable to 5
+
+const ALL_COUPONS: Array = [
+	# low tier
+	{
+		"id": "low_pct",
+		"name": "5% Off",
+		"description": "5% off scanned total",
+		"tier": "low",
+		"type": "percent_off",
+		"value": 5.0,
+	},
+	{
+		"id": "low_flat",
+		"name": "5G Off",
+		"description": "Flat 5G off",
+		"tier": "low",
+		"type": "flat_off",
+		"value": 5.0,
+	},
+	{
+		"id": "low_buy10",
+		"name": "Bulk Deal",
+		"description": "Buy 10 participating items, get 10G off",
+		"tier": "low",
+		"type": "buy_n_participating_flat",
+		"value": 10.0,
+		"required_count": 10,
+	},
+	# medium tier
+	{
+		"id": "med_pct",
+		"name": "15% Off",
+		"description": "15% off scanned total",
+		"tier": "medium",
+		"type": "percent_off",
+		"value": 15.0,
+	},
+	{
+		"id": "med_buy5",
+		"name": "5-Pack Deal",
+		"description": "Buy 5 participating items, get 5G off",
+		"tier": "medium",
+		"type": "buy_n_participating_flat",
+		"value": 5.0,
+		"required_count": 5,
+	},
+	{
+		"id": "med_double",
+		"name": "Double Up",
+		"description": "Double the effect of the previous coupon",
+		"tier": "medium",
+		"type": "multiply_previous",
+		"multiplier": 2.0,
+	},
+	# high tier
+	{
+		"id": "high_pct",
+		"name": "25% Off",
+		"description": "25% off scanned total",
+		"tier": "high",
+		"type": "percent_off",
+		"value": 25.0,
+	},
+	{
+		"id": "high_triple",
+		"name": "Triple Threat",
+		"description": "Triple the effect of the previous coupon",
+		"tier": "high",
+		"type": "multiply_previous",
+		"multiplier": 3.0,
+	},
+]
+
+
+func unlock_coupon(id: String):
+	if id not in unlocked_coupon_ids:
+		unlocked_coupon_ids.append(id)
+
+
+func equip_coupon(id: String, slot: int):
+	if slot >= coupon_slots:
+		push_warning("GameState: tried to equip coupon into locked slot %d" % slot)
 		return
+	while equipped_coupon_ids.size() <= slot:
+		equipped_coupon_ids.append("")
+	equipped_coupon_ids[slot] = id
+
+
+func unequip_coupon(slot: int):
+	if slot < equipped_coupon_ids.size():
+		equipped_coupon_ids[slot] = ""
+
+
+func get_equipped_coupons() -> Array:
+	var result = []
+	for id in equipped_coupon_ids:
+		if id == "":
+			continue
+		for c in ALL_COUPONS:
+			if c["id"] == id:
+				result.append(c)
+				break
+	return result
+
+
+func get_unlocked_coupons() -> Array:
+	var result = []
+	for id in unlocked_coupon_ids:
+		for c in ALL_COUPONS:
+			if c["id"] == id:
+				result.append(c)
+				break
+	return result
+
+
+func upgrade_coupon_slots() -> bool:
+	var ok = purchase_upgrade("coupon_slots")
+	if ok:
+		coupon_slots = int(get_upgrade_value("coupon_slots"))
+	return ok

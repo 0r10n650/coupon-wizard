@@ -1,6 +1,6 @@
 [gd_resource type="Theme" format=3 uid="uid://bpdelj5q2myh3"]
 
-[ext_resource type="FontFile" uid="uid://c0ieoyu20x0ux" path="res://Assets/Fonts/LilitaOne-Regular.ttf" id="1_470mv"]
+[ext_resource type="FontFile" uid="uid://c0ieoyu20x0ux" path="res://assets/Fonts/LilitaOne-Regular.ttf" id="1_470mv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a2l2q"]
 content_margin_left = 16.0

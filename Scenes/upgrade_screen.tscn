@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dnp4l6onl027g"]
 
-[ext_resource type="Script" uid="uid://og5dgootapkd" path="res://Scripts/upgrade_screen.gd" id="1_o5sws"]
+[ext_resource type="Script" uid="uid://h0lyogj8m768" path="res://Scripts/upgrade_screen.gd" id="1_o5sws"]
 [ext_resource type="AudioStream" uid="uid://dip1ltitlw8ci" path="res://coupon_game/May31CouponWizard - Chill.wav" id="2_g1a74"]
 
 [node name="UpgradeScreen" type="Control" unique_id=1818493471]
@@ -64,7 +64,6 @@ layout_mode = 2
 text = "Start Shopping"
 
 [node name="ContentContainer" type="Control" parent="VBoxContainer" unique_id=422880510]
-clip_contents = true
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -88,6 +87,27 @@ theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ContentContainer/ColorRect/MarginContainer" unique_id=639406371]
+layout_mode = 2
+
+[node name="UpgradesPanel" type="Panel" parent="VBoxContainer/ContentContainer/ColorRect/MarginContainer/VBoxContainer" unique_id=1255305190]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/ContentContainer/ColorRect/MarginContainer/VBoxContainer/UpgradesPanel" unique_id=1724846040]
+layout_mode = 0
+offset_top = 4.0
+offset_right = 740.0
+offset_bottom = 4.0
+
+[node name="UpgradesVBox" type="VBoxContainer" parent="VBoxContainer/ContentContainer/ColorRect/MarginContainer/VBoxContainer/UpgradesPanel/ScrollContainer" unique_id=186342601]
+layout_mode = 2
+
+[node name="CouponsPanel" type="VBoxContainer" parent="VBoxContainer/ContentContainer/ColorRect/MarginContainer/VBoxContainer" unique_id=1856203534]
+layout_mode = 2
+
+[node name="ContinueButton" type="Button" parent="VBoxContainer/ContentContainer/ColorRect/MarginContainer/VBoxContainer" unique_id=1426045638]
+layout_mode = 2
 
 [node name="BottomBar" type="PanelContainer" parent="VBoxContainer" unique_id=1129347826]
 layout_mode = 2
@@ -123,6 +143,9 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(100, 30)
 layout_mode = 2
 text = "Pay Debt"
+
+[node name="DragLayer" type="CanvasLayer" parent="." unique_id=2100000001]
+layer = 20
 
 [node name="MazeGameContainer" type="CanvasLayer" parent="." unique_id=1602361881]
 layer = 10

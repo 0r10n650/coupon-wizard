@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ups3t31"]
 
-[ext_resource type="Script" path="res://Scripts/upgrade_station.gd" id="1_ups"]
+[ext_resource type="Script" uid="uid://bbwb61d24xxfq" path="res://Scripts/upgrade_station.gd" id="1_ups"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ups"]
 size = Vector3(1, 2, 1)
@@ -12,13 +12,13 @@ albedo_color = Color(0.2, 0.8, 0.4, 1)
 material = SubResource("StandardMaterial3D_ups")
 size = Vector3(1, 2, 1)
 
-[node name="UpgradeStation3D" type="StaticBody3D"]
+[node name="UpgradeStation3D" type="StaticBody3D" unique_id=1312552308]
 script = ExtResource("1_ups")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=343516024]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_ups")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=344087781]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("BoxMesh_ups")

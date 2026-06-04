@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://f0rc7hpsuxb1" path="res://wizard/wiz_ik.tscn" id="4_31rlj"]
 [ext_resource type="AudioStream" uid="uid://djgjob1l0titd" path="res://checkout_minigame/assets/oh boy do i 1.mp3" id="4_fjqjv"]
 [ext_resource type="AudioStream" uid="uid://f23x4v5pxth3" path="res://checkout_minigame/assets/total sir.mp3" id="4_muuro"]
-[ext_resource type="Material" uid="uid://2gvt3age3vb2" path="res://Assets/Materials/WallMaterial.tres" id="6_113ia"]
-[ext_resource type="Material" path="res://Assets/Materials/pillarMaterial.tres" id="7_ws0pn"]
+[ext_resource type="Material" uid="uid://2gvt3age3vb2" path="res://assets/Materials/WallMaterial.tres" id="6_113ia"]
+[ext_resource type="Material" uid="uid://xbyd6ahx687t" path="res://assets/Materials/pillarMaterial.tres" id="7_113ia"]
 
 [sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_pn2rc"]
 
@@ -373,8 +373,8 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
-fit_content = true
 text = "[center]Total: [img=24]res://Assets/gold_coin.png[/img]100.00[/center]"
+fit_content = true
 
 [node name="ComboLabel" type="Label" parent="CanvasLayer" unique_id=573294515]
 anchors_preset = 8
@@ -414,8 +414,8 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
-fit_content = true
 text = "[center]Discount: -[img=24]res://Assets/gold_coin.png[/img]0.00[/center]"
+fit_content = true
 
 [node name="ComboBar" type="ProgressBar" parent="CanvasLayer/VBoxContainer" unique_id=30460245]
 layout_mode = 2
@@ -479,7 +479,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23774767, 0.6040336, 0.0936
 [node name="WizIK2" parent="." unique_id=279847294 instance=ExtResource("4_31rlj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1)
 
-[node name="Skeleton3D" parent="WizIK2/Crouch Idle" parent_id_path=PackedInt32Array(279847294, 601109509) index="0" unique_id=2128289875]
+[node name="Skeleton3D" parent="WizIK2/Crouch Idle" parent_id_path=PackedInt32Array(279847294, 601109509) index="0" unique_id=1737296482]
 bones/0/position = Vector3(-0.03360517, 3.0720382, -0.007881995)
 bones/0/rotation = Quaternion(0.022617018, -0.41602287, -0.049843192, 0.9077054)
 bones/1/rotation = Quaternion(0.14246531, 0.024113502, -0.014289498, 0.9894029)
@@ -561,37 +561,37 @@ mesh = SubResource("BoxMesh_rndm7")
 transform = Transform3D(-1.4104632e-08, 0.40206814, 2.1237149e-15, -0.32267636, -1.7574955e-08, 7.946628e-09, 5.128378e-09, 0, 0.5, 1.9706129, 8.8030615, -1.1309414)
 mesh = SubResource("ArrayMesh_fiixn")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("7_ws0pn")
+surface_material_override/0 = ExtResource("7_113ia")
 
 [node name="Cube_003" type="MeshInstance3D" parent="walls/Wall6" unique_id=669637697]
 transform = Transform3D(-1.4104632e-08, 0.40206814, 2.1237149e-15, -0.32267636, -1.7574955e-08, 7.946628e-09, 5.128378e-09, 0, 0.5, 1.9706128, 5.3243394, -1.1309414)
 mesh = SubResource("ArrayMesh_fiixn")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("7_ws0pn")
+surface_material_override/0 = ExtResource("7_113ia")
 
 [node name="Cube_005" type="MeshInstance3D" parent="walls/Wall6" unique_id=785004717]
 transform = Transform3D(-1.4104632e-08, 0.40206814, 2.1237149e-15, -0.32267636, -1.7574955e-08, 7.946628e-09, 5.128378e-09, 0, 0.5, 1.970613, 12.256792, -1.1309414)
 mesh = SubResource("ArrayMesh_fiixn")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("7_ws0pn")
+surface_material_override/0 = ExtResource("7_113ia")
 
 [node name="Cube_004" type="MeshInstance3D" parent="walls/Wall6" unique_id=176482234]
 transform = Transform3D(-1.4104632e-08, 0.40206814, 2.1237149e-15, -0.32267636, -1.7574955e-08, 7.946628e-09, 5.128378e-09, 0, 0.5, 1.9706126, 6.4917727, 4.8580713)
 mesh = SubResource("ArrayMesh_fiixn")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("7_ws0pn")
+surface_material_override/0 = ExtResource("7_113ia")
 
 [node name="Cube_006" type="MeshInstance3D" parent="walls/Wall6" unique_id=1204397217]
 transform = Transform3D(-1.4104632e-08, 0.40206814, 2.1237149e-15, -0.32267636, -1.7574955e-08, 7.946628e-09, 5.128378e-09, 0, 0.5, 1.9706128, 10.077882, 4.8580713)
 mesh = SubResource("ArrayMesh_fiixn")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("7_ws0pn")
+surface_material_override/0 = ExtResource("7_113ia")
 
 [node name="Cube_007" type="MeshInstance3D" parent="walls/Wall6" unique_id=2030721422]
 transform = Transform3D(-1.4104632e-08, 0.40206814, 2.1237149e-15, -0.32267636, -1.7574955e-08, 7.946628e-09, 5.128378e-09, 0, 0.5, 1.9706124, 2.9606051, 4.8580713)
 mesh = SubResource("ArrayMesh_fiixn")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("7_ws0pn")
+surface_material_override/0 = ExtResource("7_113ia")
 
 [editable path="WizIK"]
 [editable path="WizIK/Crouch Idle"]
