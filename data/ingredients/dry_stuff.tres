@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Ingredient" format=3 uid="uid://dfuht500hw6e4"]
+
+[ext_resource type="Script" uid="uid://nkht70761teq" path="res://Scripts/ingredients/ingredient.gd" id="1_0qv6a"]
+[ext_resource type="Texture2D" uid="uid://c0io3ff88r0gl" path="res://Assets/Ingredients/coupon_item_drystuff.png" id="1_2t54l"]
+
+[resource]
+script = ExtResource("1_0qv6a")
+name = "Dry Stuff"
+price = 25.0
+image = ExtResource("1_2t54l")
+metadata/_custom_type_script = "uid://nkht70761teq"

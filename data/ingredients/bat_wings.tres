@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Ingredient" format=3 uid="uid://dly6whsy50hdm"]
+
+[ext_resource type="Texture2D" uid="uid://bve4vr3ga3fqi" path="res://Assets/Ingredients/coupon_item_batwings.png" id="1_bfmo6"]
+[ext_resource type="Script" uid="uid://nkht70761teq" path="res://Scripts/ingredients/ingredient.gd" id="1_jicub"]
+
+[resource]
+script = ExtResource("1_jicub")
+name = "Bat Wings"
+price = 1.0
+image = ExtResource("1_bfmo6")
+metadata/_custom_type_script = "uid://nkht70761teq"

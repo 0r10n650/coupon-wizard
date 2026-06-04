@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Ingredient" format=3 uid="uid://dfgsehdlokeiq"]
+
+[ext_resource type="Texture2D" uid="uid://c1b4fvk8euhdx" path="res://Assets/Ingredients/coupon_item_purplewhatevers.png" id="1_x8kd4"]
+[ext_resource type="Script" uid="uid://nkht70761teq" path="res://Scripts/ingredients/ingredient.gd" id="2_4ct4b"]
+
+[resource]
+script = ExtResource("2_4ct4b")
+name = "Purple Whatevers"
+price = 30.0
+image = ExtResource("1_x8kd4")
+tags = Array[String](["Human"])
+metadata/_custom_type_script = "uid://nkht70761teq"

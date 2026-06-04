@@ -23,7 +23,7 @@ func _setup_ingredients() -> void:
 		preload("res://data/ingredients/dragon_scale.tres"),
 		preload("res://data/ingredients/human_dust.tres"),
 		preload("res://data/ingredients/unicorn_hair.tres"),
-		preload("res://data/ingredients/whos_in_whoville.tres"),
+		preload("res://data/ingredients/purple_whatevers.tres"),
 	]
 
 func _setup_coupons() -> void:

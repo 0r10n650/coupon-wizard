@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Ingredient" format=3 uid="uid://7rufcgyui8jw"]
+
+[ext_resource type="Script" uid="uid://nkht70761teq" path="res://Scripts/ingredients/ingredient.gd" id="1_bnibp"]
+[ext_resource type="Texture2D" uid="uid://cgw1r2sggf5j7" path="res://Assets/Ingredients/coupon_item_dust_shroom.png" id="1_ftdx2"]
+
+[resource]
+script = ExtResource("1_bnibp")
+name = "Shroom Dust"
+price = 8.0
+image = ExtResource("1_ftdx2")
+metadata/_custom_type_script = "uid://nkht70761teq"

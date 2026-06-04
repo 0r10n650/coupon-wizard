@@ -7,6 +7,9 @@ class_name ShoppingWizard
 @onready var leaningC = $LeaningComponent
 @onready var leftCast = $LeftCast
 @onready var rightCast = $RightCast
+@onready var cur_inventory = $Inventory
+
+var inventory : Array[inventory_item_2D]
 
 var shopping_timer: float
 var timer_ui: ShoppingTimerUI
@@ -28,31 +31,38 @@ func _on_timer_finished():
 		has_transitioned = true
 		get_tree().change_scene_to_file("res://checkout_minigame/checkout_minigame_3d.tscn")
 
-func attempt_grab_left():
-	grab("left")
+func _on_gui_input(event):
+	if event is InputEventMouseButton:
+		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+			grab("left")
+		if event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
+			grab("right")
 
-func attempt_grab_right():
-	grab("right")
 
 func grab(direction):
+	var colliding_object = null
+	
 	if direction == "left":
 		if leftCast.is_colliding():
-			var colliding_object = leftCast.get_collider()
-			var item = colliding_object.get_parent().item
-			print("You have picked up one ", item.item_name, ". It costs: ", item.price)
+			colliding_object = leftCast.get_collider()
 	else:
 		if rightCast.is_colliding():
-			var colliding_object = rightCast.get_collider()
-			var item = colliding_object.get_parent().item
-			print("You have picked up one ", item.item_name, ". It costs: ", item.price)
+			colliding_object = rightCast.get_collider()
 	
-func _on_left_lean_button_mouse_entered():
-	leaningC.lean(-1)
-
-
-func _on_right_lean_button_mouse_entered():
-	leaningC.lean(1)
-
-
-func _on_lean_button_mouse_exited():
-	leaningC.lean(0)
+	if colliding_object == null:
+		return
+	
+	var col_ob_parent = colliding_object.get_parent()
+	
+	if not col_ob_parent is grocery_Item_3D:
+		return
+	
+	var item = col_ob_parent.item
+	
+	if item == null:
+		return
+	
+	if col_ob_parent.shelf_count > 0:
+		cur_inventory.add_item(item)
+		col_ob_parent._get_item()
+	

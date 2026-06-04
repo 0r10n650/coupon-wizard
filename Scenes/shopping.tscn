@@ -1,17 +1,35 @@
 [gd_scene format=3 uid="uid://jub3eiibx1ln"]
 
 [ext_resource type="PackedScene" uid="uid://cfsmos5rhswc" path="res://Scenes/shopping_wizard.tscn" id="1_e6x87"]
-[ext_resource type="Material" uid="uid://b6744u5f660r0" path="res://assets/Materials/FloorMaterial.tres" id="1_iuu1m"]
-[ext_resource type="Material" uid="uid://2gvt3age3vb2" path="res://assets/Materials/WallMaterial.tres" id="2_2pk5u"]
-[ext_resource type="PackedScene" uid="uid://m0wfkfv7rv67" path="res://Scenes/3D_grocery_item.tscn" id="2_84pa7"]
+[ext_resource type="Material" uid="uid://b6744u5f660r0" path="res://Assets/Materials/FloorMaterial.tres" id="1_iuu1m"]
+[ext_resource type="Material" uid="uid://2gvt3age3vb2" path="res://Assets/Materials/WallMaterial.tres" id="2_2pk5u"]
+[ext_resource type="PackedScene" uid="uid://m0wfkfv7rv67" path="res://Scenes/3DAssets/3D_grocery_item.tscn" id="2_84pa7"]
+[ext_resource type="Resource" uid="uid://ukjbv1xc7shb" path="res://data/ingredients/frog_eyes.tres" id="3_58s0q"]
+[ext_resource type="Resource" uid="uid://btchnl4vpashf" path="res://data/ingredients/unicorn_eyes.tres" id="3_ayrk1"]
+[ext_resource type="Resource" uid="uid://cqflmgvna6mps" path="res://data/ingredients/partridge_in_a_pear_tree.tres" id="3_grh6o"]
+[ext_resource type="Resource" uid="uid://dwdwcf3pp4c3w" path="res://data/ingredients/frog_leg.tres" id="4_anchw"]
+[ext_resource type="Resource" uid="uid://d2srqma0vn3rl" path="res://data/ingredients/human_teeth.tres" id="4_qsjc0"]
 [ext_resource type="PackedScene" uid="uid://bjcariora8lss" path="res://Scenes/3DAssets/extended_pillar.tscn" id="5_kapfu"]
+[ext_resource type="Resource" uid="uid://3vhsfo6hu08i" path="res://data/ingredients/human_dust.tres" id="5_w0eao"]
+[ext_resource type="Resource" uid="uid://bje67gtderi75" path="res://data/ingredients/unicorn_hair.tres" id="6_2n4sd"]
 [ext_resource type="PackedScene" uid="uid://x6mdetw2dlkq" path="res://Scenes/3DAssets/bridge_1.tscn" id="6_j85m5"]
+[ext_resource type="Resource" uid="uid://bkkuqdmm4451p" path="res://data/ingredients/light_stuff.tres" id="6_oymmg"]
+[ext_resource type="Resource" uid="uid://tr83in12bmev" path="res://data/ingredients/unicorn_horn.tres" id="7_1mr5w"]
+[ext_resource type="Resource" uid="uid://dly6whsy50hdm" path="res://data/ingredients/bat_wings.tres" id="7_geuhh"]
+[ext_resource type="Resource" uid="uid://bxpi2s7t3l3ts" path="res://data/ingredients/wet_stuff.tres" id="7_iah1g"]
 [ext_resource type="PackedScene" uid="uid://673b6opkuuax" path="res://Scenes/3DAssets/bridge_2.tscn" id="7_qwgoe"]
+[ext_resource type="Resource" uid="uid://dfgsehdlokeiq" path="res://data/ingredients/purple_whatevers.tres" id="8_63xxw"]
 [ext_resource type="PackedScene" uid="uid://cgeo0ju8hu7dl" path="res://Scenes/3DAssets/floor_2_pt_22.tscn" id="8_o0m22"]
+[ext_resource type="Resource" uid="uid://7rufcgyui8jw" path="res://data/ingredients/shroom_dust.tres" id="9_5gof4"]
 [ext_resource type="PackedScene" uid="uid://blgcwyt3nmktc" path="res://Scenes/3DAssets/floor_2_pt_32.tscn" id="9_kapfu"]
+[ext_resource type="Resource" uid="uid://ns3yacly53bg" path="res://data/ingredients/hot_stuff.tres" id="9_pr3wx"]
 [ext_resource type="PackedScene" uid="uid://cqd5o6mbp7m1" path="res://Scenes/3DAssets/floor_3_jump_2.tscn" id="10_ewwds"]
+[ext_resource type="Resource" uid="uid://dfuht500hw6e4" path="res://data/ingredients/dry_stuff.tres" id="10_f4x27"]
 [ext_resource type="PackedScene" uid="uid://uilgtj6c5cxg" path="res://Scenes/3DAssets/floor_2_pt_12.tscn" id="11_j85m5"]
 [ext_resource type="PackedScene" uid="uid://dk6jampu7x60x" path="res://Scenes/3DAssets/floor_32.tscn" id="11_uccpx"]
+[ext_resource type="Resource" uid="uid://dviokqioknb1t" path="res://data/ingredients/hard_stuff.tres" id="11_uqemo"]
+[ext_resource type="Resource" uid="uid://ctgcoiacmywrg" path="res://data/ingredients/moon_dust.tres" id="12_3vh1q"]
+[ext_resource type="Resource" uid="uid://docqdhq0wgs2g" path="res://data/ingredients/angry_stuff.tres" id="12_l8kuk"]
 [ext_resource type="PackedScene" uid="uid://bajwh2wh3p8lv" path="res://Scenes/3DAssets/roof.tscn" id="12_qwgoe"]
 [ext_resource type="PackedScene" uid="uid://cegxcbikisok3" path="res://Scenes/3DAssets/pillar.tscn" id="13_o0m22"]
 [ext_resource type="AudioStream" uid="uid://rvsmkqcitpv" path="res://assets/Sounds/CouponWizard - Shopping.wav" id="15_ewwds"]
@@ -42,38 +60,60 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.030275, 1.809822, -12.9502
 
 [node name="Floor1" type="Node" parent="Items" unique_id=1640755839]
 
-[node name="3DGroceryItem2" parent="Items/Floor1" unique_id=2030197818 instance=ExtResource("2_84pa7")]
+[node name="Unicorn Eyes" parent="Items/Floor1" unique_id=2030197818 instance=ExtResource("2_84pa7")]
 transform = Transform3D(0.094316736, 0, 0.9955423, 0, 1, 0, -0.9955423, 0, 0.094316736, -7.0436306, 0.54499435, 10.717924)
+item = ExtResource("3_ayrk1")
+image_scale = 3.0
 
-[node name="3DGroceryItem4" parent="Items/Floor1" unique_id=714850541 instance=ExtResource("2_84pa7")]
-transform = Transform3D(0.34876826, 0, 0.937209, 0, 1, 0, -0.937209, 0, 0.34876826, -10.14835, 0.54499435, 19.48385)
+[node name="Human Teeth" parent="Items/Floor1" unique_id=714850541 instance=ExtResource("2_84pa7")]
+transform = Transform3D(0.35016707, -0.000110880464, 0.93668723, -0.0006660662, 0.9999997, 0.00036739727, -0.93668705, -0.0007525493, 0.35016686, -10.140193, 0.5410043, 19.485477)
+item = ExtResource("4_qsjc0")
+image_scale = 3.0
 
-[node name="3DGroceryItem5" parent="Items/Floor1" unique_id=970262286 instance=ExtResource("2_84pa7")]
+[node name="Human Dust" parent="Items/Floor1" unique_id=970262286 instance=ExtResource("2_84pa7")]
 transform = Transform3D(-0.34876817, 0, -0.937209, 0, 1, 0, 0.937209, 0, -0.34876817, -13.741969, 0.54499435, 18.146538)
+item = ExtResource("5_w0eao")
+image_scale = 3.0
 
-[node name="3DGroceryItem83" parent="Items/Floor1" unique_id=830655492 instance=ExtResource("2_84pa7")]
+[node name="Human Dust2" parent="Items/Floor1" unique_id=830655492 instance=ExtResource("2_84pa7")]
 transform = Transform3D(-0.7071069, 0, 0.70710665, 0, 1, 0, -0.70710665, 0, -0.7071069, -23.886583, 0.54499435, 8.199999)
+item = ExtResource("5_w0eao")
+image_scale = 3.0
 
-[node name="3DGroceryItem87" parent="Items/Floor1" unique_id=1215940257 instance=ExtResource("2_84pa7")]
-transform = Transform3D(-0.86615634, 0, 0.49977317, 0, 1, 0, -0.49977317, 0, -0.86615634, -15.3068905, 0.54499435, 25.897224)
+[node name="Human Teeth2" parent="Items/Floor1" unique_id=1215940257 instance=ExtResource("2_84pa7")]
+transform = Transform3D(-0.86540926, -0.000110880464, 0.50106573, -0.0004730506, 0.9999997, -0.00059569126, -0.5010655, -0.0007525493, -0.865409, -15.308302, 0.5452517, 25.89114)
+item = ExtResource("4_qsjc0")
+image_scale = 3.0
 
-[node name="3DGroceryItem88" parent="Items/Floor1" unique_id=742110806 instance=ExtResource("2_84pa7")]
+[node name="Human Teeth3" parent="Items/Floor1" unique_id=742110806 instance=ExtResource("2_84pa7")]
 transform = Transform3D(-0.86615634, 0, 0.49977317, 0, 1, 0, -0.49977317, 0, -0.86615634, -10.950094, 0.54499435, 28.294706)
+item = ExtResource("4_qsjc0")
+image_scale = 3.0
 
-[node name="3DGroceryItem7" parent="Items/Floor1" unique_id=939430494 instance=ExtResource("2_84pa7")]
+[node name="Human Dust3" parent="Items/Floor1" unique_id=939430494 instance=ExtResource("2_84pa7")]
 transform = Transform3D(-0.09431663, 0, -0.9955422, 0, 1, 0, 0.9955422, 0, -0.09431663, -11.343351, 0.54499435, 9.816725)
+item = ExtResource("5_w0eao")
+image_scale = 3.0
 
-[node name="3DGroceryItem8" parent="Items/Floor1" unique_id=362864170 instance=ExtResource("2_84pa7")]
+[node name="Human Dust4" parent="Items/Floor1" unique_id=362864170 instance=ExtResource("2_84pa7")]
 transform = Transform3D(0.936831, 0, -0.34978208, 0, 1, 0, 0.34978208, 0, 0.936831, -17.055527, 0.54499435, 3.2502522)
+item = ExtResource("5_w0eao")
+image_scale = 3.0
 
 [node name="3DGroceryItem10" parent="Items/Floor1" unique_id=724824485 instance=ExtResource("2_84pa7")]
 transform = Transform3D(-0.9999999, 0, -1.5000369e-07, 0, 1, 0, 1.5000369e-07, 0, -0.9999999, 1.082819, 0.54499435, -3.0361228)
+item = ExtResource("7_1mr5w")
+image_scale = 3.0
 
-[node name="3DGroceryItem43" parent="Items/Floor1" unique_id=1756337514 instance=ExtResource("2_84pa7")]
+[node name="Unicorn Eyes2" parent="Items/Floor1" unique_id=1756337514 instance=ExtResource("2_84pa7")]
 transform = Transform3D(1.9371505e-07, 0, -0.9999999, 0, 1, 0, 0.9999999, 0, 1.9371505e-07, -3.361573, 0.54499435, 1.4006009)
+item = ExtResource("3_ayrk1")
+image_scale = 3.0
 
 [node name="3DGroceryItem23" parent="Items/Floor1" unique_id=1780584158 instance=ExtResource("2_84pa7")]
 transform = Transform3D(-0.9999999, 0, -1.5000369e-07, 0, 1, 0, 1.5000369e-07, 0, -0.9999999, 6.082819, 0.54499435, -3.0361228)
+item = ExtResource("7_1mr5w")
+image_scale = 3.0
 
 [node name="3DGroceryItem53" parent="Items/Floor1" unique_id=523923867 instance=ExtResource("2_84pa7")]
 transform = Transform3D(-1.0629229e-07, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, -1.0629229e-07, 10.526571, 0.54499435, 7.7756095)
@@ -81,14 +121,19 @@ transform = Transform3D(-1.0629229e-07, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, -1
 [node name="3DGroceryItem55" parent="Items/Floor1" unique_id=99274926 instance=ExtResource("2_84pa7")]
 transform = Transform3D(0.38268328, 0, 0.92387944, 0, 1, 0, -0.92387944, 0, 0.38268328, 8.46923, 0.54499435, 17.922728)
 
-[node name="3DGroceryItem58" parent="Items/Floor1" unique_id=1607394941 instance=ExtResource("2_84pa7")]
+[node name="Human Teeth4" parent="Items/Floor1" unique_id=1607394941 instance=ExtResource("2_84pa7")]
 transform = Transform3D(0.21967602, 0, -0.9755726, 0, 1, 0, 0.9755726, 0, 0.21967602, -3.7229671, 0.54499435, 24.97864)
+item = ExtResource("4_qsjc0")
+image_scale = 3.0
 
-[node name="3DGroceryItem62" parent="Items/Floor1" unique_id=1461865858 instance=ExtResource("2_84pa7")]
+[node name="Dragon Scale2" parent="Items/Floor1" unique_id=1461865858 instance=ExtResource("2_84pa7")]
 transform = Transform3D(-0.23190051, 0, -0.97273934, 0, 1, 0, 0.97273934, 0, -0.23190051, 4.4024444, 0.54499435, 13.678027)
+image_scale = 3.0
 
-[node name="3DGroceryItem24" parent="Items/Floor1" unique_id=474433554 instance=ExtResource("2_84pa7")]
+[node name="BatWings" parent="Items/Floor1" unique_id=474433554 instance=ExtResource("2_84pa7")]
 transform = Transform3D(-0.9999999, 0, -1.5000369e-07, 0, 1, 0, 1.5000369e-07, 0, -0.9999999, 18.756985, 0.54499435, -3.3161054)
+item = ExtResource("7_geuhh")
+image_scale = 4.0
 
 [node name="3DGroceryItem66" parent="Items/Floor1" unique_id=938211557 instance=ExtResource("2_84pa7")]
 transform = Transform3D(0.9999999, 0, 2.3742643e-07, 0, 1, 0, -2.3742643e-07, 0, 0.9999999, 18.756985, 0.54499435, 0.90532255)
@@ -102,103 +147,161 @@ transform = Transform3D(-0.5137207, 0, -0.8579574, 0, 1, 0, 0.8579574, 0, -0.513
 [node name="3DGroceryItem75" parent="Items/Floor1" unique_id=574535850 instance=ExtResource("2_84pa7")]
 transform = Transform3D(-0.83331686, 0, -0.5527956, 0, 1, 0, 0.5527956, 0, -0.83331686, 3.7193995, 0.54499435, 31.269642)
 
-[node name="3DGroceryItem82" parent="Items/Floor1" unique_id=1064467142 instance=ExtResource("2_84pa7")]
+[node name="Dragon Scale3" parent="Items/Floor1" unique_id=1064467142 instance=ExtResource("2_84pa7")]
 transform = Transform3D(-0.40710312, 0, -0.9133822, 0, 1, 0, 0.9133822, 0, -0.40710312, 25.890072, 0.54499435, 24.82517)
+image_scale = 3.0
 
-[node name="3DGroceryItem25" parent="Items/Floor1" unique_id=1917192406 instance=ExtResource("2_84pa7")]
+[node name="BatWings2" parent="Items/Floor1" unique_id=1917192406 instance=ExtResource("2_84pa7")]
 transform = Transform3D(-0.7071066, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, -0.7071066, 23.886751, 0.54499435, -5.5638657)
+item = ExtResource("7_geuhh")
+image_scale = 4.0
 
-[node name="3DGroceryItem26" parent="Items/Floor1" unique_id=1081202086 instance=ExtResource("2_84pa7")]
+[node name="BatWings3" parent="Items/Floor1" unique_id=1081202086 instance=ExtResource("2_84pa7")]
 transform = Transform3D(1.4901161e-07, 0, -0.9999999, 0, 1, 0, 0.9999999, 0, 1.4901161e-07, 25.37903, 0.54499435, -13.855837)
+item = ExtResource("7_geuhh")
+image_scale = 4.0
 
-[node name="3DGroceryItem27" parent="Items/Floor1" unique_id=721197079 instance=ExtResource("2_84pa7")]
+[node name="BatWings4" parent="Items/Floor1" unique_id=721197079 instance=ExtResource("2_84pa7")]
 transform = Transform3D(1.4901161e-07, 0, -0.9999999, 0, 1, 0, 0.9999999, 0, 1.4901161e-07, 25.37903, 0.54499435, -18.977926)
+item = ExtResource("7_geuhh")
+image_scale = 4.0
 
-[node name="3DGroceryItem29" parent="Items/Floor1" unique_id=1506751090 instance=ExtResource("2_84pa7")]
+[node name="FrogLeg" parent="Items/Floor1" unique_id=1506751090 instance=ExtResource("2_84pa7")]
 transform = Transform3D(0.7071068, 0, -0.7071066, 0, 1, 0, 0.7071066, 0, 0.7071068, 22.743853, 0.54499435, -29.047007)
+item = ExtResource("4_anchw")
+image_scale = 5.0
 
-[node name="3DGroceryItem31" parent="Items/Floor1" unique_id=388916848 instance=ExtResource("2_84pa7")]
+[node name="FrogLeg2" parent="Items/Floor1" unique_id=388916848 instance=ExtResource("2_84pa7")]
 transform = Transform3D(0.9999999, 0, 1.4901161e-07, 0, 1, 0, -1.4901161e-07, 0, 0.9999999, 10.244131, 0.54499435, -31.087297)
+item = ExtResource("4_anchw")
+image_scale = 5.0
 
-[node name="3DGroceryItem32" parent="Items/Floor1" unique_id=1045909788 instance=ExtResource("2_84pa7")]
+[node name="FropLeg" parent="Items/Floor1" unique_id=1045909788 instance=ExtResource("2_84pa7")]
 transform = Transform3D(0.9999999, 0, 1.4901161e-07, 0, 1, 0, -1.4901161e-07, 0, 0.9999999, 5.1745014, 0.54499435, -31.087297)
+item = ExtResource("4_anchw")
+image_scale = 5.0
 
-[node name="3DGroceryItem34" parent="Items/Floor1" unique_id=2043533476 instance=ExtResource("2_84pa7")]
+[node name="Shroom Dust" parent="Items/Floor1" unique_id=2043533476 instance=ExtResource("2_84pa7")]
 transform = Transform3D(0.6487976, 0, -0.76096094, 0, 1, 0, 0.76096094, 0, 0.6487976, -7.8745365, 0.54499435, -33.790817)
+item = ExtResource("9_5gof4")
+image_scale = 3.0
 
-[node name="3DGroceryItem35" parent="Items/Floor1" unique_id=2033843025 instance=ExtResource("2_84pa7")]
+[node name="Shroom Dust2" parent="Items/Floor1" unique_id=2033843025 instance=ExtResource("2_84pa7")]
 transform = Transform3D(1.4901161e-07, 0, -0.9999999, 0, 1, 0, 0.9999999, 0, 1.4901161e-07, -9.630846, 0.54499435, -40.037117)
+item = ExtResource("9_5gof4")
+image_scale = 3.0
 
-[node name="3DGroceryItem36" parent="Items/Floor1" unique_id=256242321 instance=ExtResource("2_84pa7")]
+[node name="Dragon Scale" parent="Items/Floor1" unique_id=256242321 instance=ExtResource("2_84pa7")]
 transform = Transform3D(0.7216636, 0, -0.69224364, 0, 1, 0, 0.69224364, 0, 0.7216636, -8.923498, 0.54499435, -49.10085)
+image_scale = 3.0
 
-[node name="3DGroceryItem38" parent="Items/Floor1" unique_id=1405407399 instance=ExtResource("2_84pa7")]
+[node name="Shroom Dust3" parent="Items/Floor1" unique_id=1405407399 instance=ExtResource("2_84pa7")]
 transform = Transform3D(0.86602515, 0, 0.5000001, 0, 1, 0, -0.5000001, 0, 0.86602515, -19.646713, 0.54499626, -46.81242)
+item = ExtResource("9_5gof4")
+image_scale = 3.0
 
-[node name="3DGroceryItem46" parent="Items/Floor1" unique_id=1168894702 instance=ExtResource("2_84pa7")]
+[node name="Frog Eyes" parent="Items/Floor1" unique_id=1168894702 instance=ExtResource("2_84pa7")]
 transform = Transform3D(-0.9999999, 0, -1.4901161e-07, 0, 1, 0, 1.4901161e-07, 0, -0.9999999, -1.2037053, 0.54499626, -21.941544)
+item = ExtResource("3_58s0q")
+image_scale = 3.0
 
-[node name="3DGroceryItem47" parent="Items/Floor1" unique_id=1387829988 instance=ExtResource("2_84pa7")]
+[node name="Frog Eyes2" parent="Items/Floor1" unique_id=1387829988 instance=ExtResource("2_84pa7")]
 transform = Transform3D(-0.9999999, 0, -1.4901161e-07, 0, 1, 0, 1.4901161e-07, 0, -0.9999999, 3.7363486, 0.54499626, -21.977734)
+item = ExtResource("3_58s0q")
+image_scale = 3.0
 
-[node name="3DGroceryItem48" parent="Items/Floor1" unique_id=154975306 instance=ExtResource("2_84pa7")]
+[node name="Frog Eyes3" parent="Items/Floor1" unique_id=154975306 instance=ExtResource("2_84pa7")]
 transform = Transform3D(-0.7071068, 0, 0.7071066, 0, 1, 0, -0.7071066, 0, -0.7071068, 10.267117, 0.54499626, -19.5572)
+item = ExtResource("3_58s0q")
+image_scale = 3.0
 
-[node name="3DGroceryItem49" parent="Items/Floor1" unique_id=1975240571 instance=ExtResource("2_84pa7")]
+[node name="Unicorn Hair" parent="Items/Floor1" unique_id=1975240571 instance=ExtResource("2_84pa7")]
 transform = Transform3D(0.9659257, 0, 0.25881907, 0, 1, 0, -0.25881907, 0, 0.9659257, 7.67169, 0.54499626, -10.1299)
+item = ExtResource("6_2n4sd")
 
-[node name="3DGroceryItem65" parent="Items/Floor1" unique_id=188195915 instance=ExtResource("2_84pa7")]
+[node name="Dragon Scales" parent="Items/Floor1" unique_id=188195915 instance=ExtResource("2_84pa7")]
 transform = Transform3D(0.8660254, 0, 0.49999997, 0, 1, 0, -0.49999997, 0, 0.8660254, -14.673803, 0.54499626, -20.017544)
+image_scale = 3.0
 
-[node name="3DGroceryItem40" parent="Items/Floor1" unique_id=397571474 instance=ExtResource("2_84pa7")]
+[node name="Shroom Dust4" parent="Items/Floor1" unique_id=397571474 instance=ExtResource("2_84pa7")]
 transform = Transform3D(-1.0530023e-07, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, -1.0530023e-07, -14.443249, 0.54499626, -36.23878)
+item = ExtResource("9_5gof4")
+image_scale = 3.0
 
-[node name="3DGroceryItem41" parent="Items/Floor1" unique_id=485862093 instance=ExtResource("2_84pa7")]
+[node name="Moon Dust" parent="Items/Floor1" unique_id=485862093 instance=ExtResource("2_84pa7")]
 transform = Transform3D(1.7877461e-08, 0, -0.9999999, 0, 1, 0, 0.9999999, 0, 1.7877461e-08, -19.437721, 0.54499626, -36.23878)
+item = ExtResource("12_3vh1q")
+image_scale = 3.0
 
-[node name="3DGroceryItem12" parent="Items/Floor1" unique_id=1434233429 instance=ExtResource("2_84pa7")]
+[node name="Unicorn Hair2" parent="Items/Floor1" unique_id=1434233429 instance=ExtResource("2_84pa7")]
 transform = Transform3D(0.9999999, 0, 2.3742643e-07, 0, 1, 0, -2.3742643e-07, 0, 0.9999999, -8.157017, 0.54499435, -9.648949)
+item = ExtResource("6_2n4sd")
 
-[node name="3DGroceryItem13" parent="Items/Floor1" unique_id=374308382 instance=ExtResource("2_84pa7")]
+[node name="Unicorn Hair3" parent="Items/Floor1" unique_id=374308382 instance=ExtResource("2_84pa7")]
 transform = Transform3D(0.9999999, 0, 2.3742643e-07, 0, 1, 0, -2.3742643e-07, 0, 0.9999999, -2.7749043, 0.54499435, -9.648949)
+item = ExtResource("6_2n4sd")
 
-[node name="3DGroceryItem15" parent="Items/Floor1" unique_id=928247645 instance=ExtResource("2_84pa7")]
+[node name="Moon Dust2" parent="Items/Floor1" unique_id=928247645 instance=ExtResource("2_84pa7")]
 transform = Transform3D(0.50000006, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.50000006, -18.040752, 0.54499435, -15.385751)
+item = ExtResource("12_3vh1q")
+image_scale = 3.0
 
-[node name="3DGroceryItem92" parent="Items/Floor1" unique_id=584026778 instance=ExtResource("2_84pa7")]
+[node name="Moon Dust3" parent="Items/Floor1" unique_id=584026778 instance=ExtResource("2_84pa7")]
 transform = Transform3D(-3.5564364e-07, 0, 0.99999964, 0, 1, 0, -0.99999964, 0, -3.5564364e-07, -26.354128, 0.54499435, -21.949797)
+item = ExtResource("12_3vh1q")
+image_scale = 3.0
 
-[node name="3DGroceryItem22" parent="Items/Floor1" unique_id=973433219 instance=ExtResource("2_84pa7")]
+[node name="Moon Dust4" parent="Items/Floor1" unique_id=973433219 instance=ExtResource("2_84pa7")]
 transform = Transform3D(-3.5564364e-07, 0, 0.99999964, 0, 1, 0, -0.99999964, 0, -3.5564364e-07, -26.1745, 0.54499435, 0.68734837)
+item = ExtResource("12_3vh1q")
+image_scale = 3.0
 
-[node name="3DGroceryItem" parent="Items/Floor1" unique_id=2019472530 instance=ExtResource("2_84pa7")]
+[node name="Unicorn Eyes3" parent="Items/Floor1" unique_id=2019472530 instance=ExtResource("2_84pa7")]
 transform = Transform3D(-0.03170738, 0, 0.9994972, 0, 1, 0, -0.9994972, 0, -0.03170738, -9.373972, 0.54499435, 1.4766829)
+item = ExtResource("3_ayrk1")
+image_scale = 3.0
 
 [node name="Floor2" type="Node" parent="Items" unique_id=1350580850]
 
-[node name="3DGroceryItem28" parent="Items/Floor2" unique_id=1328174304 instance=ExtResource("2_84pa7")]
+[node name="Partridge" parent="Items/Floor2" unique_id=1328174304 instance=ExtResource("2_84pa7")]
 transform = Transform3D(0.9852231, 0, -0.17127551, 0, 1, 0, 0.17127551, 0, 0.9852231, 22.236572, 10.145043, -15.55746)
+item = ExtResource("3_grh6o")
+image_scale = 3.0
 
-[node name="3DGroceryItem3" parent="Items/Floor2" unique_id=571335023 instance=ExtResource("2_84pa7")]
+[node name="Light Stuff" parent="Items/Floor2" unique_id=571335023 instance=ExtResource("2_84pa7")]
 transform = Transform3D(0.9996237, 0, 0.027433187, 0, 1, 0, -0.027433187, 0, 0.9996237, 4.0823936, 4.7667255, 33.61405)
+item = ExtResource("6_oymmg")
+image_scale = 3.0
 
-[node name="3DGroceryItem4" parent="Items/Floor2" unique_id=1676960748 instance=ExtResource("2_84pa7")]
+[node name="Wet Stuff" parent="Items/Floor2" unique_id=1676960748 instance=ExtResource("2_84pa7")]
 transform = Transform3D(0.99838966, 0, -0.056727648, 0, 1, 0, 0.056727648, 0, 0.99838966, 19.880178, 4.7667236, -1.7440376)
+item = ExtResource("7_iah1g")
+image_scale = 3.0
 
-[node name="3DGroceryItem9" parent="Items/Floor2" unique_id=1948986154 instance=ExtResource("2_84pa7")]
+[node name="Purple Whatevers" parent="Items/Floor2" unique_id=1948986154 instance=ExtResource("2_84pa7")]
 transform = Transform3D(-0.9666269, 0, 0.25618818, 0, 1, 0, -0.25618818, 0, -0.9666269, 24.887411, 4.7667236, -3.4582276)
+item = ExtResource("8_63xxw")
+image_scale = 3.0
 
-[node name="3DGroceryItem8" parent="Items/Floor2" unique_id=83344554 instance=ExtResource("2_84pa7")]
+[node name="Hot Stuff" parent="Items/Floor2" unique_id=83344554 instance=ExtResource("2_84pa7")]
 transform = Transform3D(-0.28316188, 0, 0.9590723, 0, 1, 0, -0.9590723, 0, -0.28316188, -26.186434, 4.7667255, 19.071339)
+item = ExtResource("9_pr3wx")
+image_scale = 3.0
 
-[node name="3DGroceryItem5" parent="Items/Floor2" unique_id=1430429073 instance=ExtResource("2_84pa7")]
+[node name="Dry Stuff" parent="Items/Floor2" unique_id=1430429073 instance=ExtResource("2_84pa7")]
 transform = Transform3D(-0.6125761, 0, 0.7904117, 0, 1, 0, -0.7904117, 0, -0.6125761, 7.4534216, 4.7667255, -12.484402)
+item = ExtResource("10_f4x27")
+image_scale = 3.0
 
-[node name="3DGroceryItem6" parent="Items/Floor2" unique_id=1472597304 instance=ExtResource("2_84pa7")]
+[node name="Hard Stuff" parent="Items/Floor2" unique_id=1472597304 instance=ExtResource("2_84pa7")]
 transform = Transform3D(-0.55256265, 0, -0.83347154, 0, 1, 0, 0.83347154, 0, -0.55256265, -11.783612, 4.7667255, -22.5458)
+item = ExtResource("11_uqemo")
+image_scale = 3.0
 
-[node name="3DGroceryItem7" parent="Items/Floor2" unique_id=192095733 instance=ExtResource("2_84pa7")]
+[node name="AngryStuff" parent="Items/Floor2" unique_id=192095733 instance=ExtResource("2_84pa7")]
 transform = Transform3D(-0.46936363, 0, -0.88300514, 0, 1, 0, 0.88300514, 0, -0.46936363, 24.627642, 4.7667255, -30.416925)
+item = ExtResource("12_l8kuk")
+image_scale = 3.0
 
 [node name="Walls" type="Node" parent="." unique_id=814996671]
 
@@ -683,7 +786,7 @@ transform = Transform3D(1.659872, 0, 0.9432397, 0, 0.99999994, 0, -2.0467737, 0,
 transform = Transform3D(2.1723173, 0, 0.88637036, 0, 1, 0, -2.0818667, 0, 0.9248803, 5.168235, 4.6712165, 11.227888)
 
 [node name="ExtendePillar91" parent="Walls/pillars/Floor2" unique_id=393704553 instance=ExtResource("5_kapfu")]
-transform = Transform3D(2.7565093, 0, -0.4961772, 0, 1, 0, 1.5035225, 0, 0.90967506, -6.16176, 4.6712165, 29.156073)
+transform = Transform3D(2.7542613, -0.00011088046, -0.49753472, 0.0014400186, 0.99999964, 0.00062883657, 1.5076354, -0.00075254927, 0.908933, -6.1685047, 4.674949, 29.16053)
 
 [node name="ExtendePillar93" parent="Walls/pillars/Floor2" unique_id=900269835 instance=ExtResource("5_kapfu")]
 transform = Transform3D(-2.7556436, 0, -0.49670058, 0, 1, 0, 1.5051091, 0, -0.9093892, 13.852227, 4.6712184, 28.733202)
@@ -754,7 +857,7 @@ transform = Transform3D(4.9, 0, 0, 0, 4.9, 0, 0, 0, 4.9, 6.625, -0.25, -15)
 transform = Transform3D(4.9, 0, 0, 0, 4.9, 0, 0, 0, 4.9, 6.625, -0.25, -15)
 
 [node name="Floor2pt3" parent="Floor and platforms" unique_id=1549766946 instance=ExtResource("9_kapfu")]
-transform = Transform3D(4.9, 0, 0, 0, 4.9, 0, 0, 0, 4.9, 6.625, -0.25, -15)
+transform = Transform3D(4.9, 0, 0, 0, 4.9, 0, 0, 0, 4.9, 6.6329327, -0.25629854, -14.986435)
 
 [node name="Floor3Jump2" parent="Floor and platforms" unique_id=1416804606 instance=ExtResource("10_ewwds")]
 transform = Transform3D(4.596041, 0, -1.698942, 0, 4.9, 0, 1.698942, 0, 4.596041, 8.977072, -5.522917, -10.148287)
@@ -770,6 +873,7 @@ transform = Transform3D(4.9, 0, 0, 0, 4.9, 0, 0, 0, 4.9, 8.84614, -4.1031456, -7
 
 [node name="Roof" parent="Floor and platforms" unique_id=1788009986 instance=ExtResource("12_qwgoe")]
 transform = Transform3D(4.9, 0, 0, 0, 4.9, 0, 0, 0, 4.9, 6.380455, -15.963444, -14.974659)
+visible = false
 
 [node name="BaseFloor" type="Node" parent="Floor and platforms" unique_id=1304619738]
 

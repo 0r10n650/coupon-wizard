@@ -1,16 +1,10 @@
 [gd_scene format=3 uid="uid://m0wfkfv7rv67"]
 
-[ext_resource type="Script" uid="uid://c8e23din1bjcu" path="res://Scripts/grocery_item_3D.gd" id="1_cr1ww"]
-[ext_resource type="Texture2D" uid="uid://cmfvkpv1fwvwt" path="res://icon.svg" id="2_7oui6"]
-[ext_resource type="Script" uid="uid://bqfynvbhlq5bl" path="res://Scripts/item_data.gd" id="2_cr1ww"]
-[ext_resource type="PackedScene" uid="uid://d3jilek8i1cpk" path="res://Assets/3D Assets/Shelf.glb" id="4_7oui6"]
-[ext_resource type="Material" uid="uid://84fm7yfybnc7" path="res://Assets/Materials/ShelfMaterial.tres" id="5_l7ske"]
-
-[sub_resource type="Resource" id="Resource_7oui6"]
-script = ExtResource("2_cr1ww")
-item_name = "Placeholder"
-sprite = ExtResource("2_7oui6")
-metadata/_custom_type_script = "uid://bqfynvbhlq5bl"
+[ext_resource type="Script" uid="uid://c8e23din1bjcu" path="res://Scripts/grocery_item_3D.gd" id="1_3v5d5"]
+[ext_resource type="Resource" uid="uid://drtywmd5rv8hj" path="res://data/ingredients/dragon_scale.tres" id="2_3v5d5"]
+[ext_resource type="Texture2D" uid="uid://cmfvkpv1fwvwt" path="res://icon.svg" id="3_so1yp"]
+[ext_resource type="PackedScene" uid="uid://d3jilek8i1cpk" path="res://Assets/3D Assets/Shelf.glb" id="4_avd18"]
+[ext_resource type="Material" uid="uid://84fm7yfybnc7" path="res://Assets/Materials/ShelfMaterial.tres" id="5_i8mq5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mc6ra"]
 size = Vector3(5.1113586, 2.9014282, 1.5)
@@ -19,12 +13,13 @@ size = Vector3(5.1113586, 2.9014282, 1.5)
 size = Vector3(5, 3.2, 2)
 
 [node name="3DGroceryItem" type="Node3D" unique_id=1328174304]
-script = ExtResource("1_cr1ww")
-item = SubResource("Resource_7oui6")
+script = ExtResource("1_3v5d5")
+item = ExtResource("2_3v5d5")
+shelf_count = 10
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=1338113551]
 transform = Transform3D(1, 0, 0, 0, 0.9863489, 0.16466889, 0, -0.16466889, 0.9863489, 0, 1.6459526, 0.31082952)
-texture = ExtResource("2_7oui6")
+texture = ExtResource("3_so1yp")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=221058842]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5181832, 0)
@@ -35,16 +30,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0048065186, -0.04928589, 0
 shape = SubResource("BoxShape3D_mc6ra")
 debug_color = Color(0.7537842, 0.00031458258, 0.7227236, 1)
 
-[node name="Shelf" parent="." unique_id=1099486274 instance=ExtResource("4_7oui6")]
+[node name="Shelf" parent="." unique_id=1099486274 instance=ExtResource("4_avd18")]
 transform = Transform3D(-1.3113417e-08, 0, -0.3, 0, 0.3, 0, 0.3, 0, -1.3113417e-08, 0, 0, 0)
 
 [node name="Cube" parent="Shelf" index="0" unique_id=224660105]
-surface_material_override/0 = ExtResource("5_l7ske")
+surface_material_override/0 = ExtResource("5_i8mq5")
 
 [node name="CollisionShape" type="StaticBody3D" parent="." unique_id=594675336]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionShape" unique_id=1959903556]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5130452, -0.8420212)
 shape = SubResource("BoxShape3D_7oui6")
+
+[node name="Name" type="Label3D" parent="." unique_id=1263938382]
+transform = Transform3D(1, 0, 0, 0, 0.91799706, -0.3965872, 0, 0.3965872, 0.91799706, 0, 2.8822296, 0.40984178)
+text = "Item"
+font_size = 92
+
+[node name="Cost" type="Label3D" parent="." unique_id=157877613]
+transform = Transform3D(1, 0, 0, 0, 0.9018778, 0.43199134, 0, -0.43199134, 0.9018778, 0.034169436, 0.54424214, 0.7011752)
+modulate = Color(0.8503141, 0.5961829, 0, 1)
+text = "Cost"
+font_size = 128
 
 [editable path="Shelf"]

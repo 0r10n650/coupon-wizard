@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="Ingredient" format=3 uid="uid://drtywmd5rv8hj"]
 
-[ext_resource type="Texture2D" uid="uid://bf0872fkjr834" path="res://Assets/dragon_scale.png" id="1_wskw3"]
+[ext_resource type="Texture2D" uid="uid://co1yxpcalv71q" path="res://Assets/Ingredients/coupon_item_dragonscale.png" id="1_wskw3"]
 [ext_resource type="Script" uid="uid://nkht70761teq" path="res://Scripts/ingredients/ingredient.gd" id="1_xlrph"]
 
 [resource]
 script = ExtResource("1_xlrph")
 name = "Dragon Scale"
-price = 20.0
+price = 15.0
 image = ExtResource("1_wskw3")
 tags = Array[String](["Animal"])
 metadata/_custom_type_script = "uid://nkht70761teq"

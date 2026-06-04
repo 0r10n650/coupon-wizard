@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Ingredient" format=3 uid="uid://dviokqioknb1t"]
+
+[ext_resource type="Script" uid="uid://nkht70761teq" path="res://Scripts/ingredients/ingredient.gd" id="1_5idkj"]
+[ext_resource type="Texture2D" uid="uid://nn2rsdxsd5ax" path="res://Assets/Ingredients/coupon_item_hardstuff.png" id="1_guxs0"]
+
+[resource]
+script = ExtResource("1_5idkj")
+name = "Hard Stuff"
+price = 25.0
+image = ExtResource("1_guxs0")
+metadata/_custom_type_script = "uid://nkht70761teq"
