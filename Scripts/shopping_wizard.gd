@@ -1,7 +1,7 @@
 extends CharacterBody3D
 class_name ShoppingWizard
 
-@onready var movementC = $MovementComponent
+@onready var movementC = $DriftingMovementComponent
 @onready var wizard = $WizardMesh
 @onready var camera = $Camera3D
 @onready var leaningC = $LeaningComponent

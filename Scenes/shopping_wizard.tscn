@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://4kua64x2f77y" path="res://Scripts/shopping_wizard.gd" id="1_fe242"]
 [ext_resource type="Script" uid="uid://dcc4rfcyx225u" path="res://Scripts/Helpers/MovementComponent.gd" id="2_g1rcx"]
+[ext_resource type="Script" uid="uid://rhgwjhkic48s" path="res://Scripts/Helpers/DriftingMovementComponent.gd" id="2_r2q73"]
 [ext_resource type="Script" uid="uid://dt8gnroytki7d" path="res://Scripts/Helpers/LeaningComponent.gd" id="3_k0vdd"]
 [ext_resource type="PackedScene" uid="uid://f0rc7hpsuxb1" path="res://wizard/wiz_ik.tscn" id="4_onab3"]
 [ext_resource type="PackedScene" uid="uid://bgh2ricqbtig0" path="res://cart/cart.glb" id="5_7peig"]
@@ -31,6 +32,10 @@ mesh = SubResource("BoxMesh_tiada")
 [node name="CartCollider" type="CollisionShape3D" parent="." unique_id=340323353]
 visible = false
 shape = SubResource("BoxShape3D_fe242")
+
+[node name="DriftingMovementComponent" type="Node" parent="." unique_id=1103846768 node_paths=PackedStringArray("parent")]
+script = ExtResource("2_r2q73")
+parent = NodePath("..")
 
 [node name="MovementComponent" type="Node" parent="." unique_id=1443513065 node_paths=PackedStringArray("parent")]
 script = ExtResource("2_g1rcx")
