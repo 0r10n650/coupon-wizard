@@ -5,6 +5,7 @@ extends Control
 @onready var upgrades_btn = %UpgradesBtn
 @onready var coupons_btn = %CouponsBtn
 @onready var start_shopping_btn = %StartShoppingBtn
+@onready var order_count_label = %OrderCountLabel
 
 # content panels (only one visible at a time)
 @onready var orders_panel = %OrdersPanel
@@ -85,6 +86,7 @@ func _ready():
 
 	# start on the orders panel
 	_show_orders()
+	_update_order_count(0)
 
 	# unlock a few coupons for testing
 	if GameState.unlocked_coupon_ids.is_empty():
@@ -106,6 +108,7 @@ func _switch_to(active_btn: Button, active_panel: Control):
 
 func _show_orders():
 	_switch_to(orders_btn, orders_panel)
+	orders_panel.build()
 	
 func _show_upgrades():
 	_switch_to(upgrades_btn, upgrades_panel)
@@ -115,6 +118,14 @@ func _show_coupons():
 	_switch_to(coupons_btn, coupons_panel)
 	_build_coupons_panel()
 
+func _update_order_count(count: int):
+	order_count_label.text = "%d / %d" % [count, GameState.max_orders]
+	if count == 0:
+		start_shopping_btn.disabled = true
+		start_shopping_btn.tooltip_text = "Select at least one order first"
+	else:
+		start_shopping_btn.disabled = false
+		start_shopping_btn.tooltip_text = "Start your run"
 
 func _update_bottom_bar():
 	day_label.text  = "Day: %d" % GameState.current_day

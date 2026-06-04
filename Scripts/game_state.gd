@@ -21,6 +21,7 @@ var upgrades = {
 	"checkout_shake_delay": 0,
 	"checkout_bonus_arrow": 0,
 	"shopping_time": 0,
+	"orders": 2,
 	"coupon_slots": 0,
 }
 
@@ -31,6 +32,12 @@ var daily_state = {
 }
 
 var cart_items: Array = []
+# confirmed orders for today — populated when player hits "Start Shopping"
+var active_orders: Array = []
+# pool generated at start of each day — discarded after selection
+var daily_order_pool: Array = []
+# how many orders the player can select — driven by upgrade
+var max_orders: int = 2
 
 func _ready():
 	load_game()
@@ -41,6 +48,7 @@ func save_game():
 		"gold": gold,
 		"debt": debt,
 		"last_scene_path": last_scene_path,
+		"active_orders": active_orders,
 		"upgrades": upgrades,
 		"unlocked_coupon_ids": unlocked_coupon_ids,
 		"equipped_coupon_ids": equipped_coupon_ids,
@@ -65,6 +73,7 @@ func load_game():
 			gold = data.get("gold", gold)
 			debt = data.get("debt", debt)
 			last_scene_path = data.get("last_scene_path", last_scene_path)
+			active_orders = data.get("active_orders", [])
 			unlocked_coupon_ids = data.get("unlocked_coupon_ids", [])
 			equipped_coupon_ids = data.get("equipped_coupon_ids", [])
 			coupon_slots = data.get("coupon_slots", 2)
@@ -93,6 +102,9 @@ func reset_game():
 		"retries_used": 0,
 		"successful_coupons": []
 	}
+	active_orders.clear()
+	daily_order_pool.clear()
+	max_orders = 2
 	cart_items.clear()
 	unlocked_coupon_ids.clear()
 	equipped_coupon_ids.clear()
@@ -193,6 +205,10 @@ var upgrade_tiers = {
 	"shopping_time": {
 		"costs": [50, 200, 1000, 5000],
 		"values": [30.0, 45.0, 60.0, 90.0, 120.0]
+	},
+	"orders": {
+		"costs": [100, 200, 500],
+		"values": [3, 4, 5]
 	},
 	"coupon_slots": {
 		"costs": [200, 500, 1500],
@@ -398,3 +414,22 @@ func upgrade_coupon_slots() -> bool:
 	if ok:
 		coupon_slots = int(get_upgrade_value("coupon_slots"))
 	return ok
+	
+func generate_daily_orders():
+	max_orders = int(get_upgrade_value("orders"))
+	daily_order_pool = OrderGenerator.generate_pool(max_orders)
+	active_orders.clear()
+
+func confirm_orders(selected_indices: Array):
+	active_orders.clear()
+	for idx in selected_indices:
+		if idx < daily_order_pool.size():
+			active_orders.append(daily_order_pool[idx])
+	daily_order_pool.clear()
+ 
+func get_order_total() -> int:
+	var total = 0
+	for order in active_orders:
+		for item in order["line_items"]:
+			total += item["price"] * item["quantity"]
+	return total

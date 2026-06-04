@@ -25,10 +25,12 @@ buses/default_bus_layout="uid://dxcvho01iaatn"
 
 [autoload]
 
+GameState="*res://Scripts/game_state.gd"
+OrderGenerator="*uid://b63qcbofmvvdj"
+ShelfRegistry="*uid://dqeh25ohexeyy"
+PauseMenu="*res://Scenes/ui/pause_menu.tscn"
 PsxVisualsGd4AutoLoad="*uid://gr30ktbgmp1i"
 PsxVisualsGd4AutoApply="*uid://d38enjrc45wvo"
-GameState="*res://Scripts/game_state.gd"
-PauseMenu="*res://Scenes/ui/pause_menu.tscn"
 
 [display]
 
@@ -46,6 +48,7 @@ enabled=PackedStringArray("res://addons/psx_visuals_gd4/plugin.cfg")
 
 [gui]
 
+timers/tooltip_delay_sec=0.2
 theme/custom="res://main_theme.tres"
 
 [input]

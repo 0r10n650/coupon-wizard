@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://jub3eiibx1ln"]
 
 [ext_resource type="PackedScene" uid="uid://cfsmos5rhswc" path="res://Scenes/shopping_wizard.tscn" id="1_e6x87"]
-[ext_resource type="Material" uid="uid://b6744u5f660r0" path="res://Assets/Materials/FloorMaterial.tres" id="1_iuu1m"]
-[ext_resource type="Material" uid="uid://2gvt3age3vb2" path="res://Assets/Materials/WallMaterial.tres" id="2_2pk5u"]
+[ext_resource type="Material" uid="uid://b6744u5f660r0" path="res://assets/Materials/FloorMaterial.tres" id="1_iuu1m"]
+[ext_resource type="Material" uid="uid://2gvt3age3vb2" path="res://assets/Materials/WallMaterial.tres" id="2_2pk5u"]
 [ext_resource type="PackedScene" uid="uid://m0wfkfv7rv67" path="res://Scenes/3D_grocery_item.tscn" id="2_84pa7"]
 [ext_resource type="PackedScene" uid="uid://bjcariora8lss" path="res://Scenes/3DAssets/extended_pillar.tscn" id="5_kapfu"]
 [ext_resource type="PackedScene" uid="uid://x6mdetw2dlkq" path="res://Scenes/3DAssets/bridge_1.tscn" id="6_j85m5"]
@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dk6jampu7x60x" path="res://Scenes/3DAssets/floor_32.tscn" id="11_uccpx"]
 [ext_resource type="PackedScene" uid="uid://bajwh2wh3p8lv" path="res://Scenes/3DAssets/roof.tscn" id="12_qwgoe"]
 [ext_resource type="PackedScene" uid="uid://cegxcbikisok3" path="res://Scenes/3DAssets/pillar.tscn" id="13_o0m22"]
-[ext_resource type="AudioStream" uid="uid://rvsmkqcitpv" path="res://Assets/Songs/CouponWizard - Shopping.wav" id="15_ewwds"]
+[ext_resource type="AudioStream" uid="uid://rvsmkqcitpv" path="res://assets/Sounds/CouponWizard - Shopping.wav" id="15_ewwds"]
 [ext_resource type="Script" uid="uid://bhtpym5gsckys" path="res://Scenes/ceiling_speakers.gd" id="15_uccpx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iuu1m"]
