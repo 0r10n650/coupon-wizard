@@ -8,6 +8,8 @@ class_name ShoppingWizard
 @onready var leftCast = $LeftCast
 @onready var rightCast = $RightCast
 
+var inventory = Array[Ingredient]
+
 var shopping_timer: float
 var timer_ui: ShoppingTimerUI
 var has_transitioned: bool = false

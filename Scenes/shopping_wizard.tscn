@@ -105,6 +105,11 @@ influence = 0.0
 [node name="cart" parent="." unique_id=1108712689 instance=ExtResource("5_7peig")]
 transform = Transform3D(-3.059797e-09, 0, -0.07, 0, 0.07, 0, 0.07, 0, -3.059797e-09, 0, 0.32316363, 0.18098548)
 
+[node name="Inventory" type="VBoxContainer" parent="." unique_id=188617323]
+offset_top = 92.0
+offset_right = 180.0
+offset_bottom = 485.0
+
 [connection signal="gui_input" from="GrabButton" to="." method="_on_gui_input"]
 
 [editable path="WizIK"]

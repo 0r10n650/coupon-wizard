@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://bx5q7npel716b"]
+
+[ext_resource type="FontFile" uid="uid://c0ieoyu20x0ux" path="res://Assets/Fonts/LilitaOne-Regular.ttf" id="1_2xdjd"]
+[ext_resource type="Script" uid="uid://bn5n4ctvk8n6d" path="res://Scripts/inventory_item.gd" id="1_x6ljg"]
+[ext_resource type="Texture2D" uid="uid://bf0872fkjr834" path="res://Assets/dragon_scale.png" id="2_x6ljg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2xdjd"]
+bg_color = Color(0.6706898, 0.6706894, 0.6706895, 0.6784314)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.6706898, 0.6706894, 0.6706895, 0.6784314)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r0k7d"]
+bg_color = Color(0, 0.55145353, 0.9055337, 1)
+corner_radius_top_left = 8
+corner_radius_bottom_left = 8
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mj6mf"]
+bg_color = Color(0.641285, 0.7593774, 0.51420766, 1)
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x6ljg"]
+bg_color = Color(0.40478042, 0.47084355, 0.4220741, 1)
+border_width_left = 8
+border_width_right = 8
+border_color = Color(0.40478042, 0.47084355, 0.4220741, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mc8ov"]
+bg_color = Color(0.87495106, 0.5862966, 0.29482132, 1)
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+
+[node name="InventoryItem" type="PanelContainer" unique_id=1684245139]
+offset_right = 239.0
+offset_bottom = 40.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_2xdjd")
+script = ExtResource("1_x6ljg")
+
+[node name="PanelContainer" type="HBoxContainer" parent="." unique_id=231558749]
+layout_mode = 2
+
+[node name="Panel" type="PanelContainer" parent="PanelContainer" unique_id=1396093744]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_r0k7d")
+
+[node name="AmountLabel" type="Label" parent="PanelContainer/Panel" unique_id=1914660443]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_2xdjd")
+theme_override_font_sizes/font_size = 16
+text = "x1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel2" type="PanelContainer" parent="PanelContainer" unique_id=410974297]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_mj6mf")
+
+[node name="Image" type="TextureRect" parent="PanelContainer/Panel2" unique_id=1295418388]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("2_x6ljg")
+expand_mode = 3
+
+[node name="Panel3" type="PanelContainer" parent="PanelContainer" unique_id=292839275]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_x6ljg")
+
+[node name="Name" type="Label" parent="PanelContainer/Panel3" unique_id=1690698978]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("1_2xdjd")
+theme_override_font_sizes/font_size = 16
+text = "Dragon Scale"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel4" type="PanelContainer" parent="PanelContainer" unique_id=3473528]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_mc8ov")
+
+[node name="Price" type="Label" parent="PanelContainer/Panel4" unique_id=1032399354]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("1_2xdjd")
+theme_override_font_sizes/font_size = 16
+text = "5G"
+horizontal_alignment = 1
+vertical_alignment = 1
