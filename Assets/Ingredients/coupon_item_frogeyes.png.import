@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cbwrckq1h0lhu"
-path.s3tc="res://.godot/imported/coupon_item_frogeyes.png-ca1481beabad7114cc1f9544152a7180.s3tc.ctex"
+path.s3tc="res://.godot/imported/coupon_item_frogeyes.png-ffb3b2d1eebf6d63e5556cda07d8820a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/Ingredients/coupon_item_frogeyes.png"
-dest_files=["res://.godot/imported/coupon_item_frogeyes.png-ca1481beabad7114cc1f9544152a7180.s3tc.ctex"]
+source_file="res://Assets/Ingredients/coupon_item_frogeyes.png"
+dest_files=["res://.godot/imported/coupon_item_frogeyes.png-ffb3b2d1eebf6d63e5556cda07d8820a.s3tc.ctex"]
 
 [params]
 

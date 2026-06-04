@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://7bl2rh0rxeru"
-path.s3tc="res://.godot/imported/coupon_item_wetstuff.png-7caadf1e5d0c7556223974f7bc77f9f1.s3tc.ctex"
+path.s3tc="res://.godot/imported/coupon_item_wetstuff.png-f0810909f69c820246deb25196ac3cff.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/Ingredients/coupon_item_wetstuff.png"
-dest_files=["res://.godot/imported/coupon_item_wetstuff.png-7caadf1e5d0c7556223974f7bc77f9f1.s3tc.ctex"]
+source_file="res://Assets/Ingredients/coupon_item_wetstuff.png"
+dest_files=["res://.godot/imported/coupon_item_wetstuff.png-f0810909f69c820246deb25196ac3cff.s3tc.ctex"]
 
 [params]
 

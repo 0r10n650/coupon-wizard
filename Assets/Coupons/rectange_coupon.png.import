@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bgsv0wi3l013s"
-path="res://.godot/imported/rectange_coupon.png-647ba67a376b318b38eb9bc83871d2fa.ctex"
+path="res://.godot/imported/rectange_coupon.png-210e6aab3798fef7183260b42a1c9a11.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Coupons/rectange_coupon.png"
-dest_files=["res://.godot/imported/rectange_coupon.png-647ba67a376b318b38eb9bc83871d2fa.ctex"]
+source_file="res://Assets/Coupons/rectange_coupon.png"
+dest_files=["res://.godot/imported/rectange_coupon.png-210e6aab3798fef7183260b42a1c9a11.ctex"]
 
 [params]
 

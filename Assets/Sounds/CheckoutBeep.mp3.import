@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://6k07rs12rn0w"
-path="res://.godot/imported/CheckoutBeep.mp3-13507e65405ac9389ab895e05e847e6f.mp3str"
+path="res://.godot/imported/CheckoutBeep.mp3-a24c41d8f18a0370deab680188110d4c.mp3str"
 
 [deps]
 
-source_file="res://assets/Sounds/CheckoutBeep.mp3"
-dest_files=["res://.godot/imported/CheckoutBeep.mp3-13507e65405ac9389ab895e05e847e6f.mp3str"]
+source_file="res://Assets/Sounds/CheckoutBeep.mp3"
+dest_files=["res://.godot/imported/CheckoutBeep.mp3-a24c41d8f18a0370deab680188110d4c.mp3str"]
 
 [params]
 
