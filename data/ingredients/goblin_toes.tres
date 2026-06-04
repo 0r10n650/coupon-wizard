@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Ingredient" format=3 uid="uid://chypn8ots88a3"]
+
+[ext_resource type="Script" uid="uid://nkht70761teq" path="res://Scripts/ingredients/ingredient.gd" id="1_c7qb6"]
+[ext_resource type="Texture2D" uid="uid://eqk36kb3h5fy" path="res://Assets/Ingredients/coupon_item_goblintoes.png" id="1_l633y"]
+
+[resource]
+script = ExtResource("1_c7qb6")
+price = 3
+image = ExtResource("1_l633y")
+metadata/_custom_type_script = "uid://nkht70761teq"
