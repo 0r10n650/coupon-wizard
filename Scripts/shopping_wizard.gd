@@ -64,5 +64,5 @@ func grab(direction):
 	
 	if col_ob_parent.shelf_count > 0:
 		cur_inventory.add_item(item)
+		GameState.add_cart_item(item)
 		col_ob_parent._get_item()
-	

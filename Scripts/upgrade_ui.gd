@@ -14,10 +14,8 @@ var upgrade_definitions = [
 	{"id": "coupon_triangle_percent", "name": "Triangle Coupon %", "desc": "Increases Triangle coupon discount."},
 	{"id": "coupon_star_percent", "name": "Star Coupon %", "desc": "Increases Star coupon discount."},
 	{"id": "coupon_gear_percent", "name": "Gear Coupon %", "desc": "Increases Gear coupon discount."},
-	{"id": "checkout_combo_time", "name": "Combo Timer", "desc": "Slows down combo expiration in checkout."},
-	{"id": "checkout_shake_reduction", "name": "Steady Rhythm", "desc": "Reduces timer decay acceleration per combo hit."},
-	{"id": "checkout_shake_delay", "name": "Nerves of Steel", "desc": "Delays the start of timer decay acceleration by more combo hits."},
-	{"id": "checkout_bonus_arrow", "name": "Bonus Arrow Value", "desc": "Increases money earned for each arrow hit after reaching max combo."},
+	{"id": "checkout_time", "name": "Checkout Time", "desc": "Increases global time limit for checkout."},
+	{"id": "checkout_vision", "name": "Checkout Vision", "desc": "Allows seeing an extra upcoming arrow."},
 	{"id": "shopping_time", "name": "Shopping Time", "desc": "Increases the time limit for shopping."}
 ]
 
