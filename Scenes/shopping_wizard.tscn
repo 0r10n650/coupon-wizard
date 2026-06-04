@@ -40,14 +40,14 @@ metadata/_custom_type_script = "uid://dcc4rfcyx225u"
 transform = Transform3D(1, 0, 0, 0, 0.95323294, 0.3022368, 0, -0.3022368, 0.95323294, 0, 1.9132063, 2.2223866)
 
 [node name="RightCast" type="RayCast3D" parent="." unique_id=1217983020]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.73781157, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09452355, 0, 0)
 target_position = Vector3(4, 0, -0.89)
 collide_with_areas = true
 collide_with_bodies = false
 debug_shape_custom_color = Color(0.910021, 0, 0.1501086, 1)
 
 [node name="LeftCast" type="RayCast3D" parent="." unique_id=1249292947]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7530099, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07406795, 0, 0)
 target_position = Vector3(-4, 0, -0.89)
 collide_with_areas = true
 collide_with_bodies = false
@@ -58,20 +58,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7126013, 1.4403279)
 visible = false
 mesh = SubResource("CapsuleMesh_k0vdd")
 
-[node name="LeftLeanButton" type="Button" parent="." unique_id=78489363]
+[node name="GrabButton" type="Button" parent="." unique_id=78489363]
 modulate = Color(1, 1, 1, 0)
 anchors_preset = -1
-anchor_right = 0.25694445
+anchor_right = 1.00125
 anchor_bottom = 1.0015432
-metadata/_edit_use_anchors_ = true
-
-[node name="RightLeanButton" type="Button" parent="." unique_id=23958319]
-modulate = Color(1, 1, 1, 0)
-anchors_preset = -1
-anchor_left = 0.7413194
-anchor_top = 0.0015432099
-anchor_right = 0.9982639
-anchor_bottom = 1.0030864
 metadata/_edit_use_anchors_ = true
 
 [node name="LeaningComponent" type="Node" parent="." unique_id=803492732 node_paths=PackedStringArray("parent")]
@@ -114,12 +105,7 @@ influence = 0.0
 [node name="cart" parent="." unique_id=1108712689 instance=ExtResource("5_7peig")]
 transform = Transform3D(-3.059797e-09, 0, -0.07, 0, 0.07, 0, 0.07, 0, -3.059797e-09, 0, 0.32316363, 0.18098548)
 
-[connection signal="mouse_entered" from="LeftLeanButton" to="." method="_on_left_lean_button_mouse_entered"]
-[connection signal="mouse_exited" from="LeftLeanButton" to="." method="_on_lean_button_mouse_exited"]
-[connection signal="pressed" from="LeftLeanButton" to="." method="attempt_grab_left"]
-[connection signal="mouse_entered" from="RightLeanButton" to="." method="_on_right_lean_button_mouse_entered"]
-[connection signal="mouse_exited" from="RightLeanButton" to="." method="_on_lean_button_mouse_exited"]
-[connection signal="pressed" from="RightLeanButton" to="." method="attempt_grab_right"]
+[connection signal="gui_input" from="GrabButton" to="." method="_on_gui_input"]
 
 [editable path="WizIK"]
 [editable path="WizIK/Crouch Idle"]

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cfsmos5rhswc" path="res://Scenes/shopping_wizard.tscn" id="1_e6x87"]
 [ext_resource type="Material" uid="uid://b6744u5f660r0" path="res://Assets/Materials/FloorMaterial.tres" id="1_iuu1m"]
 [ext_resource type="Material" uid="uid://2gvt3age3vb2" path="res://Assets/Materials/WallMaterial.tres" id="2_2pk5u"]
-[ext_resource type="PackedScene" uid="uid://m0wfkfv7rv67" path="res://Scenes/3D_grocery_item.tscn" id="2_84pa7"]
+[ext_resource type="PackedScene" uid="uid://m0wfkfv7rv67" path="res://Scenes/3DAssets/3D_grocery_item.tscn" id="2_84pa7"]
 [ext_resource type="PackedScene" uid="uid://bjcariora8lss" path="res://Scenes/3DAssets/extended_pillar.tscn" id="5_kapfu"]
 [ext_resource type="PackedScene" uid="uid://x6mdetw2dlkq" path="res://Scenes/3DAssets/bridge_1.tscn" id="6_j85m5"]
 [ext_resource type="PackedScene" uid="uid://673b6opkuuax" path="res://Scenes/3DAssets/bridge_2.tscn" id="7_qwgoe"]
