@@ -7,8 +7,9 @@ class_name ShoppingWizard
 @onready var leaningC = $LeaningComponent
 @onready var leftCast = $LeftCast
 @onready var rightCast = $RightCast
+@onready var cur_inventory = $Inventory
 
-var inventory = Array[Ingredient]
+var inventory : Array[inventory_item_2D]
 
 var shopping_timer: float
 var timer_ui: ShoppingTimerUI
@@ -39,13 +40,16 @@ func _on_gui_input(event):
 
 
 func grab(direction):
+	var item
 	if direction == "left":
 		if leftCast.is_colliding():
 			var colliding_object = leftCast.get_collider()
-			var item = colliding_object.get_parent().item
+			item = colliding_object.get_parent().item
 			print("got one l")
 	else:
 		if rightCast.is_colliding():
 			var colliding_object = rightCast.get_collider()
-			var item = colliding_object.get_parent().item
+			item = colliding_object.get_parent().item
 			print("got one r")
+	if item:
+		cur_inventory.add_item(item)

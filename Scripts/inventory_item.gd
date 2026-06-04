@@ -9,9 +9,7 @@ var amount: int
 @onready var nameLabel = $PanelContainer/Panel3/Name
 @onready var priceLabel = $PanelContainer/Panel4/Price
 
-func _init(_ingredient):
-	ingredient = _ingredient
-	amount = 1
+func _ready():
 	update_ui()
 
 func increase_count():
