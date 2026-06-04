@@ -16,12 +16,10 @@ var upgrades = {
 	"coupon_triangle_percent": 0,
 	"coupon_star_percent": 0,
 	"coupon_gear_percent": 0,
-	"checkout_combo_time": 0,
-	"checkout_shake_reduction": 0,
-	"checkout_shake_delay": 0,
-	"checkout_bonus_arrow": 0,
+	"checkout_time": 0,
+	"checkout_vision": 0,
 	"shopping_time": 0,
-	"orders": 2,
+	"orders": 0,
 	"order_rerolls": 0,
 	"coupon_slots": 0,
 }
@@ -130,8 +128,9 @@ func reset_game():
 
 func advance_day():
 	process_incomplete_orders()
-	if debt > 0:
-		debt = int(debt * 1.30)
+	# interest
+	# if debt > 0:
+	# 	debt = int(debt * 1.30)
 	current_day += 1
 	# Reset daily state
 	daily_state = {
@@ -200,21 +199,13 @@ var upgrade_tiers = {
 		"costs": [2000, 7500, 20000, 45000],
 		"values": [80, 110, 145, 185, 230]
 	},
-	"checkout_combo_time": {
-		"costs": [20, 200, 2000],
-		"values": [3.0, 4.0, 5.0, 6.0]
+	"checkout_time": {
+		"costs": [500, 1500, 3000, 6000],
+		"values": [7.0, 9.0, 11.0, 15.0] # Base is 5.0
 	},
-	"checkout_shake_reduction": {
-		"costs": [50, 500, 5000],
-		"values": [0.15, 0.12, 0.09, 0.06]
-	},
-	"checkout_shake_delay": {
-		"costs": [50, 500, 5000],
-		"values": [0, 5, 10, 15]
-	},
-	"checkout_bonus_arrow": {
-		"costs": [100, 500, 1500, 4000, 10000, 25000],
-		"values": [1, 2, 3, 4, 5, 6, 7]
+	"checkout_vision": {
+		"costs": [1000],
+		"values": [1] # Base is 0 (1 arrow visible). Upgrade gives +1
 	},
 	"shopping_time": {
 		"costs": [50, 200, 1000, 5000],
@@ -250,13 +241,9 @@ func get_upgrade_value(upgrade_name: String) -> Variant:
 
 # Helpers for getting upgraded values
 func get_max_retries() -> int: return get_upgrade_value("coupon_retries")
-func get_combo_time_limit() -> float: return get_upgrade_value("checkout_combo_time")
-func get_shake_reduction() -> float: return 0.0
-func get_shake_delay() -> int: return 20
-func get_decay_increment() -> float: return get_upgrade_value("checkout_shake_reduction")
-func get_decay_delay_threshold() -> int: return get_upgrade_value("checkout_shake_delay")
+func get_checkout_time_limit() -> float: return 5.0 if upgrades.get("checkout_time", 0) == 0 else get_upgrade_value("checkout_time")
+func get_checkout_vision() -> int: return 0 if upgrades.get("checkout_vision", 0) == 0 else get_upgrade_value("checkout_vision")
 func get_maze_time_limit() -> float: return get_upgrade_value("coupon_time")
-func get_bonus_arrow_value() -> int: return int(get_upgrade_value("checkout_bonus_arrow"))
 func get_shopping_time_limit() -> float: return get_upgrade_value("shopping_time")
 
 func get_coupon_percent(coupon_id: int) -> int:
@@ -304,7 +291,7 @@ func get_cart_total() -> int:
 			total += int(round(item.price))
 	return total
 	
-func add_cart_item(item) -> void:
+func add_cart_item(item: Ingredient) -> void:
 	cart_items.append(item)
 
 # each coupon: id, name, description, tier, type, value, required_count (opt), multiplier (opt)
@@ -385,16 +372,14 @@ const ALL_COUPONS: Array = [
 	},
 ]
 
-
 func unlock_coupon(id: String):
 	if id not in unlocked_coupon_ids:
 		unlocked_coupon_ids.append(id)
 
-
 func equip_coupon(id: String, slot: int):
 	if slot >= coupon_slots:
 		push_warning("GameState: tried to equip coupon into locked slot %d" % slot)
-		return
+
 	while equipped_coupon_ids.size() <= slot:
 		equipped_coupon_ids.append("")
 	equipped_coupon_ids[slot] = id

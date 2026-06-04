@@ -1,7 +1,7 @@
 extends CharacterBody3D
 class_name ShoppingWizard
 
-@onready var movementC = $MovementComponent
+@onready var movementC = $DriftingMovementComponent
 @onready var wizard = $WizardMesh
 @onready var camera = $Camera3D
 @onready var leaningC = $LeaningComponent
@@ -64,5 +64,5 @@ func grab(direction):
 	
 	if col_ob_parent.shelf_count > 0:
 		cur_inventory.add_item(item)
+		GameState.add_cart_item(item)
 		col_ob_parent._get_item()
-	
