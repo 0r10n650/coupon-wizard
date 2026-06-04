@@ -40,16 +40,29 @@ func _on_gui_input(event):
 
 
 func grab(direction):
-	var item
+	var colliding_object = null
+	
 	if direction == "left":
 		if leftCast.is_colliding():
-			var colliding_object = leftCast.get_collider()
-			item = colliding_object.get_parent().item
-			print("got one l")
+			colliding_object = leftCast.get_collider()
 	else:
 		if rightCast.is_colliding():
-			var colliding_object = rightCast.get_collider()
-			item = colliding_object.get_parent().item
-			print("got one r")
-	if item:
+			colliding_object = rightCast.get_collider()
+	
+	if colliding_object == null:
+		return
+	
+	var col_ob_parent = colliding_object.get_parent()
+	
+	if not col_ob_parent is grocery_Item_3D:
+		return
+	
+	var item = col_ob_parent.item
+	
+	if item == null:
+		return
+	
+	if col_ob_parent.shelf_count > 0:
 		cur_inventory.add_item(item)
+		col_ob_parent._get_item()
+	

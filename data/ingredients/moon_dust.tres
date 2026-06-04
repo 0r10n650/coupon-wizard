@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Ingredient" format=3 uid="uid://ctgcoiacmywrg"]
+
+[ext_resource type="Script" uid="uid://nkht70761teq" path="res://Scripts/ingredients/ingredient.gd" id="1_d21i3"]
+[ext_resource type="Texture2D" uid="uid://dlwkli4krufai" path="res://Assets/Ingredients/coupon_item_dust_moon.png" id="1_d46rb"]
+
+[resource]
+script = ExtResource("1_d21i3")
+name = "Moon Dust"
+price = 9.0
+image = ExtResource("1_d46rb")
+metadata/_custom_type_script = "uid://nkht70761teq"

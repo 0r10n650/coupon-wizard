@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Ingredient" format=3 uid="uid://dwdwcf3pp4c3w"]
+
+[ext_resource type="Script" uid="uid://nkht70761teq" path="res://Scripts/ingredients/ingredient.gd" id="1_vwol1"]
+[ext_resource type="Texture2D" uid="uid://c3knoli0ttola" path="res://Assets/Ingredients/coupon_item_frogleg.png" id="1_yjpyl"]
+
+[resource]
+script = ExtResource("1_vwol1")
+name = "Frog Leg"
+price = 2.0
+image = ExtResource("1_yjpyl")
+metadata/_custom_type_script = "uid://nkht70761teq"

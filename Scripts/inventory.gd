@@ -15,3 +15,4 @@ func add_item(_ingredient: Ingredient):
 	new_inv_item.ingredient = _ingredient
 	_inventory.append(new_inv_item)
 	add_child(new_inv_item)
+	new_inv_item.increase_count()

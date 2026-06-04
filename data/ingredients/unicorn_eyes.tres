@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Ingredient" format=3 uid="uid://btchnl4vpashf"]
+
+[ext_resource type="Texture2D" uid="uid://bev777mk7omms" path="res://Assets/Ingredients/coupon_item_unicorneyes.png" id="1_jvo4v"]
+[ext_resource type="Script" uid="uid://nkht70761teq" path="res://Scripts/ingredients/ingredient.gd" id="1_m4xnj"]
+
+[resource]
+script = ExtResource("1_m4xnj")
+name = "Unicorn Eyes"
+price = 12.0
+image = ExtResource("1_jvo4v")
+metadata/_custom_type_script = "uid://nkht70761teq"
