@@ -1,25 +1,31 @@
 extends Control
 
-# -- top bar
-@onready var upgrades_btn       = $VBoxContainer/TopBar/HBoxContainer/UpgradesBtn
-@onready var coupons_btn        = $VBoxContainer/TopBar/HBoxContainer/CouponsBtn
-@onready var start_shopping_btn = $VBoxContainer/TopBar/HBoxContainer/StartShoppingBtn
+# top bar
+@onready var orders_btn = %OrdersBtn
+@onready var upgrades_btn = %UpgradesBtn
+@onready var coupons_btn = %CouponsBtn
+@onready var start_shopping_btn = %StartShoppingBtn
 
-# -- content panels (siblings — only one visible at a time)
-@onready var upgrades_panel = $VBoxContainer/ContentContainer/ColorRect/MarginContainer/VBoxContainer/UpgradesPanel
-@onready var coupons_panel  = $VBoxContainer/ContentContainer/ColorRect/MarginContainer/VBoxContainer/CouponsPanel
+# content panels (only one visible at a time)
+@onready var orders_panel = %OrdersPanel
+@onready var upgrades_panel = %UpgradesPanel
+@onready var coupons_panel = %CouponsPanel
 
-# -- upgrades list lives inside UpgradesPanel
-@onready var upgrades_vbox  = $VBoxContainer/ContentContainer/ColorRect/MarginContainer/VBoxContainer/UpgradesPanel/ScrollContainer/UpgradesVBox
+# upgrades list lives inside UpgradesPanel
+@onready var upgrades_vbox  = %UpgradesVBox
 
 # -- bottom bar
-@onready var day_label   = $VBoxContainer/BottomBar/HBoxContainer/DayLabel
-@onready var gold_label  = $VBoxContainer/BottomBar/HBoxContainer/GoldLabel
-@onready var debt_label  = $VBoxContainer/BottomBar/HBoxContainer/DebtLabel
-@onready var pay_debt_btn = $VBoxContainer/BottomBar/HBoxContainer/PayDebtBtn
+@onready var day_label   = %DayLabel
+@onready var gold_label  = %GoldLabel
+@onready var debt_label  = %DebtLabel
+@onready var pay_debt_btn = %PayDebtBtn
 
 # -- drag ghost lives here so it renders above everything
-@onready var drag_layer  = $DragLayer
+@onready var drag_layer  = %DragLayer
+
+# signals
+signal gold_changed(new_value: int)
+signal debt_changed(new_value: int)
 
 var gold_icon = preload("res://Assets/gold_coin.png")
 
@@ -71,13 +77,14 @@ func _ready():
 	GameState.save_current_scene(get_tree().current_scene.scene_file_path)
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
+	orders_btn.pressed.connect(_show_orders)
 	upgrades_btn.pressed.connect(_show_upgrades)
 	coupons_btn.pressed.connect(_show_coupons)
 	start_shopping_btn.pressed.connect(_on_start_shopping)
 	pay_debt_btn.pressed.connect(_on_pay_debt)
 
-	# start on the upgrades panel — coupons_panel is already visible=false in the tscn
-	_show_upgrades()
+	# start on the orders panel
+	_show_orders()
 
 	# unlock a few coupons for testing
 	if GameState.unlocked_coupon_ids.is_empty():
@@ -86,24 +93,27 @@ func _ready():
 		GameState.unlock_coupon("high_triple")
 
 
-# ── panel switching ───────────────────────────────────────────
+# ── panel switching ─────────────────────────────
+func _switch_to(active_btn: Button, active_panel: Control):
+	# hide everything
+	for panel in [orders_panel, upgrades_panel, coupons_panel]:
+		panel.visible = false
+	for btn in [orders_btn, upgrades_btn, coupons_btn]:
+		btn.modulate = Color(1, 1, 1, 0.55)
+	# show active
+	active_panel.visible = true
+	active_btn.modulate = Color.WHITE
 
+func _show_orders():
+	_switch_to(orders_btn, orders_panel)
+	
 func _show_upgrades():
-	upgrades_panel.visible = true
-	coupons_panel.visible  = false
-	upgrades_btn.modulate  = Color.WHITE
-	coupons_btn.modulate   = Color(1, 1, 1, 0.55)
+	_switch_to(upgrades_btn, upgrades_panel)
 	_refresh_upgrades()
-	_update_bottom_bar()
-
 
 func _show_coupons():
-	upgrades_panel.visible = false
-	coupons_panel.visible  = true
-	upgrades_btn.modulate  = Color(1, 1, 1, 0.55)
-	coupons_btn.modulate   = Color.WHITE
+	_switch_to(coupons_btn, coupons_panel)
 	_build_coupons_panel()
-	_update_bottom_bar()
 
 
 func _update_bottom_bar():
@@ -514,3 +524,8 @@ func _on_pay_debt():
 
 func _on_start_shopping():
 	get_tree().change_scene_to_file("res://Scenes/shopping.tscn")
+
+# bottom bar
+const COIN = "[img=16]res://Assets/gold_coin.png[/img]"
+
+# gold_label.text = "Gold: %s%d" % [COIN, int(GameState.gold)]

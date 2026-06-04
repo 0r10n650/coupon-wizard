@@ -90,33 +90,15 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ContentContainer/ColorRect/MarginContainer" unique_id=1750300451]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ContentContainer/ColorRect/MarginContainer" unique_id=639406371]
 layout_mode = 2
 
-[node name="OrdersPanel" type="Panel" parent="VBoxContainer/ContentContainer/ColorRect/MarginContainer/VBoxContainer" unique_id=2054526271]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="UpgradesPanel" type="Panel" parent="VBoxContainer/ContentContainer/ColorRect/MarginContainer/VBoxContainer" unique_id=338584356]
-unique_name_in_owner = true
+[node name="%UpgradesPanel" type="VBoxContainer" parent="VBoxContainer/ContentContainer/ColorRect/MarginContainer/VBoxContainer" unique_id=2100000002]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="UpgradesVBox" type="ScrollContainer" parent="VBoxContainer/ContentContainer/ColorRect/MarginContainer/VBoxContainer/UpgradesPanel" unique_id=1730995403]
-unique_name_in_owner = true
-clip_contents = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VScrollBar" type="VScrollBar" parent="VBoxContainer/ContentContainer/ColorRect/MarginContainer/VBoxContainer/UpgradesPanel/UpgradesVBox" unique_id=1427005949]
-layout_mode = 2
-
-[node name="CouponsPanel" type="Panel" parent="VBoxContainer/ContentContainer/ColorRect/MarginContainer/VBoxContainer" unique_id=1101321886]
-unique_name_in_owner = true
+[node name="%CouponsPanel" type="VBoxContainer" parent="VBoxContainer/ContentContainer/ColorRect/MarginContainer/VBoxContainer" unique_id=1856203534]
+visible = false
 layout_mode = 2
 
 [node name="BottomBar" type="PanelContainer" parent="VBoxContainer" unique_id=1129347826]
@@ -130,7 +112,7 @@ alignment = 1
 [node name="DayLabel" type="Label" parent="VBoxContainer/BottomBar/HBoxContainer" unique_id=1087548707]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Day:  1"
+text = "Day: 1"
 
 [node name="GoldLabel" type="RichTextLabel" parent="VBoxContainer/BottomBar/HBoxContainer" unique_id=1996195780]
 unique_name_in_owner = true
