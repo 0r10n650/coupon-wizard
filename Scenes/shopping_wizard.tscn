@@ -79,11 +79,31 @@ metadata/_custom_type_script = "uid://dt8gnroytki7d"
 [node name="WizIK" parent="." unique_id=427355988 instance=ExtResource("4_onab3")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.06685907, 1.4546797)
 
-[node name="RightLegIK" parent="WizIK/Crouch Idle/Skeleton3D" parent_id_path=PackedInt32Array(427355988, 601109509, 321288847) index="4" unique_id=394428729]
-influence = 0.0
+[node name="Skeleton3D" parent="WizIK/Crouch Idle" parent_id_path=PackedInt32Array(427355988, 601109509) index="0" unique_id=2128289875]
+bones/0/position = Vector3(0.046810094, 4.794472, 0.004404545)
+bones/0/rotation = Quaternion(0.10598671, 0.06906261, 0.043498497, 0.9910122)
+bones/1/rotation = Quaternion(0.017124288, -0.13145673, -0.07031111, 0.988677)
+bones/2/rotation = Quaternion(0.012513341, -0.018853925, 0.030167654, 0.9992887)
+bones/3/rotation = Quaternion(0.03466738, -0.01870193, 0.028965395, 0.99880403)
+bones/4/rotation = Quaternion(0.002509773, 0.009945906, -0.011671669, 0.9998793)
+bones/5/rotation = Quaternion(-0.16115154, 0.069447935, -0.012932435, 0.9843983)
+bones/7/rotation = Quaternion(-0.59426355, -0.40535516, 0.5631545, -0.40668792)
+bones/8/rotation = Quaternion(0.27578226, -0.20229767, 0.28055242, 0.8968334)
+bones/9/rotation = Quaternion(0.0073612216, 1.4849005e-05, 0.77927524, 0.62663853)
+bones/11/rotation = Quaternion(0.5701921, -0.4261434, 0.5578429, 0.42672482)
+bones/12/rotation = Quaternion(0.31005338, -0.3545552, 0.35981053, 0.8054154)
+bones/13/rotation = Quaternion(0.0036967678, 2.1450222e-05, -0.71638435, 0.6976961)
+bones/15/rotation = Quaternion(0.10968423, -0.06684414, 0.9916377, -0.01249337)
+bones/16/rotation = Quaternion(-0.22600359, 0.06368534, -0.07428838, 0.9691996)
+bones/17/rotation = Quaternion(0.54305744, 0.05075369, 0.0974629, 0.8324744)
+bones/18/rotation = Quaternion(0.3383095, -0.16262814, 0.028433505, 0.9264396)
+bones/20/rotation = Quaternion(0.040634356, 0.5059925, 0.8564993, 0.09343136)
+bones/21/rotation = Quaternion(-0.86752117, 0.06789834, -0.04453613, 0.49072748)
+bones/22/rotation = Quaternion(0.5348961, 0.0077970186, -0.069564424, 0.84201324)
+bones/23/rotation = Quaternion(0.23687558, 0.15565276, -0.038323786, 0.9582241)
 
-[node name="LeftLegIK" parent="WizIK/Crouch Idle/Skeleton3D" parent_id_path=PackedInt32Array(427355988, 601109509, 321288847) index="5" unique_id=750871775]
-influence = 0.0
+[node name="AnimationPlayer" parent="WizIK/Crouch Idle" parent_id_path=PackedInt32Array(427355988, 601109509) index="1" unique_id=1607298387]
+autoplay = &""
 
 [node name="cart" parent="." unique_id=1108712689 instance=ExtResource("5_7peig")]
 transform = Transform3D(-3.059797e-09, 0, -0.07, 0, 0.07, 0, 0.07, 0, -3.059797e-09, 0, 0.32316363, 0.18098548)
@@ -93,6 +113,24 @@ offset_top = 92.0
 offset_right = 180.0
 offset_bottom = 485.0
 script = ExtResource("6_7peig")
+
+[node name="GrabLeftTarget" type="Marker3D" parent="." unique_id=728549670]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.890051, 1.3069535, 0.9867579)
+
+[node name="GrabRightTarget" type="Marker3D" parent="." unique_id=873062372]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.89, 1.3074272, 0.987)
+
+[node name="LeftResetPoint" type="Marker3D" parent="." unique_id=1836028542]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19068253, 1.0108436, 0.9867579)
+
+[node name="RightResetPoint" type="Marker3D" parent="." unique_id=1925285887]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19665706, 1.0113173, 0.987)
+
+[node name="LeftLResetPoint" type="Marker3D" parent="." unique_id=68853325]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19068253, 0.0696522, 0.8021351)
+
+[node name="RightLResetPoint" type="Marker3D" parent="." unique_id=334607727]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19665706, 0.07012582, 0.8023772)
 
 [connection signal="gui_input" from="GrabButton" to="." method="_on_gui_input"]
 

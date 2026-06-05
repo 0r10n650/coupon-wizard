@@ -10,12 +10,6 @@ var last_scene_path: String = "res://Scenes/shopping.tscn"
 var upgrades = {
 	"coupon_time": 0,
 	"coupon_retries": 0,
-	"coupon_rect_percent": 0,
-	"coupon_circle_percent": 0,
-	"coupon_hexagon_percent": 0,
-	"coupon_triangle_percent": 0,
-	"coupon_star_percent": 0,
-	"coupon_gear_percent": 0,
 	"checkout_time": 0,
 	"checkout_vision": 0,
 	"shopping_time": 0,
@@ -175,30 +169,6 @@ var upgrade_tiers = {
 		"costs": [50, 500, 2500],
 		"values": [0, 1, 2, 3]
 	},
-	"coupon_rect_percent": {
-		"costs": [50, 250, 1200, 5000],
-		"values": [5, 10, 15, 20, 25]
-	},
-	"coupon_circle_percent": {
-		"costs": [250, 1000, 4500, 14000],
-		"values": [20, 30, 42, 55, 70]
-	},
-	"coupon_hexagon_percent": {
-		"costs": [500, 2000, 7500, 20000],
-		"values": [35, 50, 65, 85, 110]
-	},
-	"coupon_triangle_percent": {
-		"costs": [100, 500, 2500, 9000],
-		"values": [12, 18, 25, 35, 45]
-	},
-	"coupon_star_percent": {
-		"costs": [1000, 4000, 12000, 30000],
-		"values": [55, 75, 100, 130, 160]
-	},
-	"coupon_gear_percent": {
-		"costs": [2000, 7500, 20000, 45000],
-		"values": [80, 110, 145, 185, 230]
-	},
 	"checkout_time": {
 		"costs": [500, 1500, 3000, 6000],
 		"values": [7.0, 9.0, 11.0, 15.0] # Base is 5.0
@@ -239,6 +209,13 @@ func get_upgrade_value(upgrade_name: String) -> Variant:
 		return values[level]
 	return values[values.size() - 1]
 
+func get_upgrade_next_value(upgrade_name: String) -> Variant:
+	var level = upgrades.get(upgrade_name, 0) + 1
+	var values = upgrade_tiers[upgrade_name]["values"]
+	if level < values.size():
+		return values[level]
+	return null
+
 # Helpers for getting upgraded values
 func get_max_retries() -> int: return get_upgrade_value("coupon_retries")
 func get_checkout_time_limit() -> float: return 5.0 if upgrades.get("checkout_time", 0) == 0 else get_upgrade_value("checkout_time")
@@ -249,12 +226,12 @@ func get_shopping_time_limit() -> float: return get_upgrade_value("shopping_time
 func get_coupon_percent(coupon_id: int) -> int:
 	var maze_type = (coupon_id - 1) % 6
 	match maze_type:
-		1: return int(get_upgrade_value("coupon_rect_percent"))
-		4: return int(get_upgrade_value("coupon_circle_percent"))
-		3: return int(get_upgrade_value("coupon_hexagon_percent"))
-		2: return int(get_upgrade_value("coupon_triangle_percent"))
-		0: return int(get_upgrade_value("coupon_star_percent"))
-		5: return int(get_upgrade_value("coupon_gear_percent"))
+		1: return 5
+		4: return 20
+		3: return 35
+		2: return 12
+		0: return 55
+		5: return 80
 		_: return 1
 
 func record_successful_coupon(coupon_id: int):

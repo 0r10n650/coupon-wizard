@@ -45,13 +45,9 @@ const COUPON_IMAGES = {
 var upgrade_definitions = [
 	{"id": "coupon_time",             "name": "Maze Time Limit",    "desc": "Increases time to complete mazes."},
 	{"id": "coupon_retries",          "name": "Coupon Retries",     "desc": "Allows retrying a failed coupon."},
-	{"id": "coupon_rect_percent",     "name": "Rectangle Coupon %", "desc": "Increases Rectangle coupon discount."},
-	{"id": "coupon_circle_percent",   "name": "Circle Coupon %",    "desc": "Increases Circle coupon discount."},
-	{"id": "coupon_hexagon_percent",  "name": "Hexagon Coupon %",   "desc": "Increases Hexagon coupon discount."},
-	{"id": "coupon_triangle_percent", "name": "Triangle Coupon %",  "desc": "Increases Triangle coupon discount."},
-	{"id": "coupon_star_percent",     "name": "Star Coupon %",      "desc": "Increases Star coupon discount."},
-	{"id": "coupon_gear_percent",     "name": "Gear Coupon %",      "desc": "Increases Gear coupon discount."},
 	{"id": "shopping_time",           "name": "Shopping Time",      "desc": "Increases the time limit for shopping."},
+	{"id": "checkout_time",           "name": "Checkout Time",      "desc": "Increases global time limit for checkout."},
+	{"id": "checkout_vision",         "name": "Checkout Vision",    "desc": "Allows seeing an extra upcoming arrow."},
 	{"id": "coupon_slots",            "name": "Coupon Slots",       "desc": "Unlocks an additional coupon slot (max 5)."},
 	{"id": "orders",                  "name": "Order Slots",        "desc": "Increases how many orders you can take per day (max 5)."},
 	{"id": "order_rerolls",           "name": "Order Rerolls",      "desc": "Allows rerolling the order pool once or twice per day."},
@@ -153,7 +149,14 @@ func _make_upgrade_row(def: Dictionary) -> Control:
 	name_lbl.text = "%s (Lv %d)" % [def["name"], GameState.upgrades.get(def["id"], 0)]
 
 	var desc_lbl = Label.new()
-	desc_lbl.text = def["desc"]
+	var current_val = GameState.get_upgrade_value(def["id"])
+	var next_val = GameState.get_upgrade_next_value(def["id"])
+	var val_text = ""
+	if next_val != null:
+		val_text = " [%s -> %s]" % [str(current_val), str(next_val)]
+	else:
+		val_text = " [Max]"
+	desc_lbl.text = def["desc"] + val_text
 	desc_lbl.add_theme_font_size_override("font_size", 12)
 	desc_lbl.modulate = Color.GRAY
 

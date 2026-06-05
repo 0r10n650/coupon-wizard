@@ -75,6 +75,7 @@ settings/0/use_virtual_end = false
 settings/0/extend_end_bone = false
 
 [node name="RightLegIK" type="TwoBoneIK3D" parent="Crouch Idle/Skeleton3D" index="4" unique_id=394428729]
+influence = 0.0
 setting_count = 1
 settings/0/target_node = NodePath("../../../RightLegIKTarget")
 settings/0/pole_node = NodePath("../../../RightLegIKPole")
@@ -89,6 +90,7 @@ settings/0/use_virtual_end = false
 settings/0/extend_end_bone = false
 
 [node name="LeftLegIK" type="TwoBoneIK3D" parent="Crouch Idle/Skeleton3D" index="5" unique_id=750871775]
+influence = 0.0
 setting_count = 1
 settings/0/target_node = NodePath("../../../LeftLegIKTarget")
 settings/0/pole_node = NodePath("../../../LeftLegIKPole")
@@ -108,6 +110,7 @@ bone_name = "mixamorig_Head"
 bone = 5
 
 [node name="AnimationPlayer" parent="Crouch Idle" index="1" unique_id=1973819177]
+autoplay = "wiz_anim_lib/idle"
 libraries/wiz_anim_lib = SubResource("AnimationLibrary_mppho")
 
 [node name="RightArmIKPole" type="Marker3D" parent="." unique_id=1466250202]
