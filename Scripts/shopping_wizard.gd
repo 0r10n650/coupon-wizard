@@ -71,7 +71,7 @@ func _physics_process(delta):
 func _on_timer_finished():
 	if not has_transitioned:
 		has_transitioned = true
-		get_tree().change_scene_to_file("res://checkout_minigame/checkout_minigame_3d.tscn")
+		SceneLoader.load_scene("res://checkout_minigame/checkout_minigame_3d.tscn")
 
 func _on_gui_input(event):
 	if event is InputEventMouseButton:

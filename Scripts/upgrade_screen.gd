@@ -539,4 +539,4 @@ func _on_pay_debt():
 func _on_start_shopping():
 	if GameState.active_orders.is_empty():
 		return
-	get_tree().change_scene_to_file("res://Scenes/shopping.tscn")
+	SceneLoader.load_scene("res://Scenes/shopping.tscn")

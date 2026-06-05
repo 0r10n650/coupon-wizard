@@ -1,7 +1,7 @@
 extends Node3D
 
 @export var debug_only_up: bool = false
-@export var arrow_spacing: float = 3.0:
+@export var arrow_spacing: float = 120.0:
 	set(value):
 		arrow_spacing = value
 		if is_node_ready() and arrow_anchor:
@@ -40,7 +40,7 @@ var total_discount: float = 0.0
 enum MinigameState { WAITING_TO_START, INTRO_CUTSCENE, PLAYING, END_CUTSCENE }
 var current_state: MinigameState = MinigameState.WAITING_TO_START
 @onready var anim_player = $AnimationPlayer
-@onready var arrow_anchor = $ArrowAnchor
+@onready var arrow_anchor = $CanvasLayer/ArrowAnchor
 @onready var wiz_anim_player = $"Player_Wiz/Crouch Idle/AnimationPlayer"
 @onready var register = $register
 
@@ -179,29 +179,27 @@ func update_visible_arrows():
 		var sprite_index = current_item_index + active_sprites.size()
 		var arrow_data = arrow_queue[sprite_index]
 		
-		var sprite = Sprite3D.new()
+		var sprite = Sprite2D.new()
 		sprite.texture = arrow_data["texture"]
-		sprite.pixel_size = 0.002
-		sprite.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+		sprite.offset = Vector2(10, 0)
 		
 		var child_index = active_sprites.size()
-		sprite.position = Vector3(child_index * arrow_spacing, 0, 0)
-		sprite.scale = Vector3.ZERO
+		sprite.position = Vector2(child_index * arrow_spacing, 0)
+		sprite.scale = Vector2.ZERO
 		
 		if arrow_data.get("item_icon"):
-			var icon_sprite = Sprite3D.new()
+			var icon_sprite = Sprite2D.new()
 			icon_sprite.texture = arrow_data["item_icon"]
-			icon_sprite.pixel_size = 0.001 # slightly smaller than arrow
-			icon_sprite.billboard = BaseMaterial3D.BILLBOARD_ENABLED
-			# Position slightly above the arrow
-			icon_sprite.position = Vector3(0, 1.2, 0)
+			icon_sprite.scale = Vector2(0.6, 0.6)
+			# Position slightly above the arrow, adjusting X to match the arrow art offset
+			icon_sprite.position = Vector2(10, -60)
 			sprite.add_child(icon_sprite)
 		
 		arrow_anchor.add_child(sprite)
 		active_sprites.push_back(sprite)
 		
 		var spawn_tween = create_tween()
-		spawn_tween.tween_property(sprite, "scale", Vector3(1, 1, 1), 0.2).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+		spawn_tween.tween_property(sprite, "scale", Vector2(1, 1), 0.2).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 
 func _process(delta):
 	if click_timer_remaining > 0:
@@ -351,7 +349,7 @@ func _process_payment(credit_amount: int, discount_amount: int, ui_panel: Contro
 	GameState.advance_day()
 	
 	ui_panel.queue_free()
-	get_tree().change_scene_to_file("res://Scenes/upgrade_screen.tscn")
+	SceneLoader.load_scene("res://Scenes/upgrade_screen.tscn")
 
 func advance_to_next_arrow(success: bool):
 	if active_sprites.size() > 0:
@@ -360,11 +358,11 @@ func advance_to_next_arrow(success: bool):
 		var queue_tween = create_tween()
 		queue_tween.set_parallel(true)
 		if success:
-			queue_tween.tween_property(first_child, "position:y", first_child.position.y + 1.5, 0.4).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
-			queue_tween.tween_property(first_child, "scale", Vector3(2.5, 2.5, 2.5), 0.4).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+			queue_tween.tween_property(first_child, "position:y", first_child.position.y - 100, 0.4).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+			queue_tween.tween_property(first_child, "scale", Vector2(2.5, 2.5), 0.4).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 		else:
-			queue_tween.tween_property(first_child, "position:y", first_child.position.y - 1.5, 0.4).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
-			queue_tween.tween_property(first_child, "scale", Vector3(0.1, 0.1, 0.1), 0.4).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+			queue_tween.tween_property(first_child, "position:y", first_child.position.y + 100, 0.4).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+			queue_tween.tween_property(first_child, "scale", Vector2(0.1, 0.1), 0.4).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 			queue_tween.tween_property(first_child, "modulate", Color.RED, 0.2)
 			
 		queue_tween.tween_property(first_child, "modulate:a", 0.0, 0.3).set_delay(0.1)

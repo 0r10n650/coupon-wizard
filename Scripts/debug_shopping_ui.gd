@@ -31,9 +31,9 @@ func _on_debug_pressed():
 		GameState.cart_items.append(ing)
 		
 	# Go to checkout
-	get_tree().change_scene_to_file("res://checkout_minigame/checkout_minigame_3d.tscn")
+	SceneLoader.load_scene("res://checkout_minigame/checkout_minigame_3d.tscn")
 
 func _on_reset_pressed():
 	GameState.reset_game()
 	# Optional: change to main menu if you have one, or just reload current scene
-	get_tree().change_scene_to_file("res://Scenes/StartPage.tscn")
+	SceneLoader.load_scene("res://Scenes/StartPage.tscn")
