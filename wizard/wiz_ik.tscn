@@ -7,6 +7,10 @@
 [ext_resource type="Animation" uid="uid://db4u14rnf4pgk" path="res://wizard/animations/jump.anim" id="4_n8nhb"]
 [ext_resource type="Animation" uid="uid://cbkwrr8hljtik" path="res://wizard/animations/run.anim" id="5_8x3oy"]
 [ext_resource type="Animation" uid="uid://caarl58ylmf7n" path="res://wizard/animations/run_jump.anim" id="6_byhnj"]
+[ext_resource type="Animation" uid="uid://bjvjbhfq25q1m" path="res://wizard/animations/pose_down.anim" id="6_mppho"]
+[ext_resource type="Animation" uid="uid://byjkoh1fxuhbc" path="res://wizard/animations/pose_up.anim" id="7_6pv52"]
+[ext_resource type="Animation" uid="uid://ccf6qb445y1f0" path="res://wizard/animations/pose_right.anim" id="8_cltkt"]
+[ext_resource type="Animation" uid="uid://ddxr6i3g41qct" path="res://wizard/animations/pose_left.anim" id="9_8mtqd"]
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mppho"]
 _data = {
@@ -14,6 +18,10 @@ _data = {
 &"crouch": ExtResource("2_3he5w"),
 &"idle": ExtResource("3_7n8sa"),
 &"jump": ExtResource("4_n8nhb"),
+&"pose_down": ExtResource("6_mppho"),
+&"pose_left": ExtResource("9_8mtqd"),
+&"pose_right": ExtResource("8_cltkt"),
+&"pose_up": ExtResource("7_6pv52"),
 &"run": ExtResource("5_8x3oy"),
 &"run_jump": ExtResource("6_byhnj")
 }
@@ -23,7 +31,7 @@ _data = {
 [node name="Crouch Idle" parent="." unique_id=601109509 instance=ExtResource("1_17kth")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 
-[node name="Skeleton3D" parent="Crouch Idle" index="0" unique_id=321288847]
+[node name="Skeleton3D" parent="Crouch Idle" index="0" unique_id=2128289875]
 bones/0/position = Vector3(-0.03360517, 3.0720382, -0.007881995)
 bones/0/rotation = Quaternion(0.022617018, -0.41602287, -0.049843192, 0.9077054)
 bones/1/rotation = Quaternion(0.14246531, 0.024113502, -0.014289498, 0.9894029)
@@ -109,9 +117,9 @@ target_node = NodePath("../../../HeadTarget")
 bone_name = "mixamorig_Head"
 bone = 5
 
-[node name="AnimationPlayer" parent="Crouch Idle" index="1" unique_id=1973819177]
-autoplay = "wiz_anim_lib/idle"
+[node name="AnimationPlayer" parent="Crouch Idle" index="1" unique_id=1607298387]
 libraries/wiz_anim_lib = SubResource("AnimationLibrary_mppho")
+autoplay = &"wiz_anim_lib/idle"
 
 [node name="RightArmIKPole" type="Marker3D" parent="." unique_id=1466250202]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3025, 1.1829305, -0.5630595)

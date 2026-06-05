@@ -1,16 +1,14 @@
 [gd_scene format=4 uid="uid://testuid"]
 
 [ext_resource type="Script" uid="uid://chp41r61qllaa" path="res://checkout_minigame/checkout_minigame_3d.gd" id="1_script"]
-[ext_resource type="Material" uid="uid://c1y6rn3e8ai51" path="res://coupon_game/coupon_book_mat.tres" id="3_bw6vx"]
 [ext_resource type="PackedScene" uid="uid://f0rc7hpsuxb1" path="res://wizard/wiz_ik.tscn" id="4_31rlj"]
 [ext_resource type="AudioStream" uid="uid://djgjob1l0titd" path="res://checkout_minigame/assets/oh boy do i 1.mp3" id="4_fjqjv"]
 [ext_resource type="AudioStream" uid="uid://f23x4v5pxth3" path="res://checkout_minigame/assets/total sir.mp3" id="4_muuro"]
-[ext_resource type="Material" uid="uid://2gvt3age3vb2" path="res://assets/Materials/WallMaterial.tres" id="6_113ia"]
-[ext_resource type="Material" uid="uid://xbyd6ahx687t" path="res://assets/Materials/pillarMaterial.tres" id="7_113ia"]
+[ext_resource type="Material" uid="uid://2gvt3age3vb2" path="res://Assets/Materials/WallMaterial.tres" id="6_113ia"]
+[ext_resource type="Material" uid="uid://xbyd6ahx687t" path="res://Assets/Materials/pillarMaterial.tres" id="7_113ia"]
+[ext_resource type="PackedScene" uid="uid://cxm4xixpjprfy" path="res://checkout_minigame/register.glb" id="7_ws0pn"]
 
 [sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_pn2rc"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_31rlj"]
 
 [sub_resource type="Animation" id="Animation_31rlj"]
 length = 0.001
@@ -65,7 +63,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("WizIK2/HeadTarget:position")
+tracks/4/path = NodePath("Player_Wiz/HeadTarget:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -118,7 +116,7 @@ tracks/1/keys = PackedFloat32Array()
 tracks/2/type = "animation"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("WizIK2/Crouch Idle/AnimationPlayer")
+tracks/2/path = NodePath("Player_Wiz/Crouch Idle/AnimationPlayer")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -164,7 +162,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("WizIK2/HeadTarget:position")
+tracks/6/path = NodePath("Player_Wiz/HeadTarget:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -286,8 +284,9 @@ _data = {
 }
 
 [sub_resource type="Environment" id="Environment_muuro"]
-ambient_light_source = 3
+ambient_light_source = 1
 ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 2.02
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_fjqjv"]
 
@@ -336,18 +335,16 @@ shadow_mesh = SubResource("ArrayMesh_kvnap")
 
 [node name="CheckoutMinigame3D" type="Node3D" unique_id=145500156]
 script = ExtResource("1_script")
-combo_time_limit = 1.0
 arrow_spacing = 0.2
 click_start_time = 3.29
 click_duration = 0.5
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=238308720]
-transform = Transform3D(-0.8660253, -0.4330128, 0.25000003, 0.2945419, -0.03777677, 0.9548917, -0.4040361, 0.9005958, 0.16025606, 0, 5.1363254, 1.8975242)
-visible = false
+transform = Transform3D(-0.59243953, -0.5506514, 0.58804625, -0.14237434, 0.79000986, 0.59633374, -0.79293424, 0.2695691, -0.5464318, 0, 5.1363254, -0.41608346)
 light_energy = 1.95
 
 [node name="GameCamera3D" type="Camera3D" parent="." unique_id=1461574860]
-transform = Transform3D(0.8509488, -0.11741328, 0.5119573, 0.00090913154, 0.9750229, 0.22210255, -0.5252478, -0.18853247, 0.8298013, 0.61882377, 1.5460082, 3.1449811)
+transform = Transform3D(-0.7957887, -0.21663487, 0.56549937, -0.015540876, 0.9408215, 0.33854586, -0.6053748, 0.2606226, -0.75206184, 0.17963636, 1.4044193, 1.291846)
 
 [node name="HitParticles3D" type="CPUParticles3D" parent="." unique_id=880841980]
 visible = false
@@ -383,9 +380,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -200.0
-offset_top = -11.5
+offset_top = -262.5
 offset_right = 200.0
-offset_bottom = 11.5
+offset_bottom = -227.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -441,12 +438,7 @@ mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="ArrowAnchor" type="Marker3D" parent="." unique_id=1178609346]
-transform = Transform3D(1.9168026, 0, 4.617994, 0, 5, 0, -4.617994, 0, 1.9168026, -0.06536162, 1.8288281, 1.6772056)
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=795167420]
-transform = Transform3D(3.651461, 0, 0, 0, 1.4028056, 0, 0, 0, 0.6777836, -0.79344124, 0, 2.3477795)
-material_override = ExtResource("3_bw6vx")
-mesh = SubResource("BoxMesh_31rlj")
+transform = Transform3D(1.9168026, 0, 4.617994, 0, 5, 0, -4.617994, 0, 1.9168026, -0.47927612, 1.0386935, 2.0304418)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1733569405]
 autoplay = true
@@ -455,11 +447,44 @@ autoplay = true
 libraries/ = SubResource("AnimationLibrary_muuro")
 
 [node name="CineCamera3D" type="Camera3D" parent="." unique_id=835367102]
-transform = Transform3D(-1, 1.8003352e-08, -1.4950608e-07, -3.1236078e-09, 0.990134, 0.14012365, 1.5055375e-07, 0.14012365, -0.990134, 0.31360233, 0.91503596, 2.1344423)
+transform = Transform3D(-1, 1.8003352e-08, -1.4950608e-07, -3.1236078e-09, 0.990134, 0.14012365, 1.5055375e-07, 0.14012365, -0.990134, -0.9653343, 0.91503596, 2.1344423)
 current = true
 
 [node name="WizIK" parent="." unique_id=427355988 instance=ExtResource("4_31rlj")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.67514265, -0.5037718, 3.0019348)
+visible = false
+
+[node name="Skeleton3D" parent="WizIK/Crouch Idle" parent_id_path=PackedInt32Array(427355988, 601109509) index="0" unique_id=2128289875]
+bones/0/position = Vector3(0.006008665, 4.8335524, -0.04159585)
+bones/0/rotation = Quaternion(0.073465265, -0.04789681, -0.03842744, 0.99540555)
+bones/1/rotation = Quaternion(0.12774304, 0.09694158, 0.03775286, 0.9863361)
+bones/2/rotation = Quaternion(-0.031521257, 0.012784657, 0.010100093, 0.99937034)
+bones/3/rotation = Quaternion(-0.031328466, 0.012922802, 0.009736957, 0.9993782)
+bones/4/rotation = Quaternion(0.02238741, -0.015060284, -0.027649647, 0.9992536)
+bones/5/rotation = Quaternion(-0.176772, -0.031677548, 0.0005632367, 0.98374176)
+bones/7/rotation = Quaternion(-0.64163667, -0.373555, 0.53585505, -0.4020179)
+bones/8/rotation = Quaternion(0.36516014, 0.3178922, -0.29821682, 0.82259923)
+bones/9/rotation = Quaternion(0.005061188, 2.0222738e-05, 0.5357935, 0.8443339)
+bones/11/rotation = Quaternion(0.6209465, -0.37919015, 0.5578223, 0.39934263)
+bones/12/rotation = Quaternion(0.3179254, 0.03630642, -0.09890733, 0.9422434)
+bones/13/rotation = Quaternion(0.0032916325, 2.387911e-05, -0.6378818, 0.7701273)
+bones/15/rotation = Quaternion(0.077673905, 0.29833564, 0.94810414, -0.077854864)
+bones/16/rotation = Quaternion(-0.9364435, -0.018022219, 0.079515524, 0.34121278)
+bones/17/rotation = Quaternion(0.53365004, -0.029540056, 0.067477524, 0.8424914)
+bones/18/rotation = Quaternion(0.23862524, -0.15103902, 0.037380338, 0.95856565)
+bones/20/rotation = Quaternion(-0.034018602, 0.149246, 0.9862202, -0.06275531)
+bones/21/rotation = Quaternion(-0.38420036, -0.07159873, 0.007853679, 0.9204358)
+bones/22/rotation = Quaternion(0.608823, -0.057875562, -0.06807827, 0.78825784)
+bones/23/rotation = Quaternion(0.38940203, 0.17281568, -0.02365367, 0.9044011)
+
+[node name="RightLegIK" parent="WizIK/Crouch Idle/Skeleton3D" index="4" unique_id=394428729]
+influence = 1.0
+
+[node name="LeftLegIK" parent="WizIK/Crouch Idle/Skeleton3D" index="5" unique_id=750871775]
+influence = 1.0
+
+[node name="AnimationPlayer" parent="WizIK/Crouch Idle" parent_id_path=PackedInt32Array(427355988, 601109509) index="1" unique_id=1607298387]
+autoplay = &""
 
 [node name="LeftArmIKTarget" parent="WizIK" index="4" unique_id=1379972132]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1935451, 1.3663902, 0.3744383)
@@ -476,45 +501,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8651534, 1.1043837, 0.49429
 [node name="LeftLegIKTarget" parent="WizIK" index="8" unique_id=1182172008]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23774767, 0.6040336, 0.09362316)
 
-[node name="WizIK2" parent="." unique_id=279847294 instance=ExtResource("4_31rlj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1)
+[node name="Player_Wiz" parent="." unique_id=279847294 instance=ExtResource("4_31rlj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1321707, -0.1988504, 2.524762)
 
-[node name="Skeleton3D" parent="WizIK2/Crouch Idle" parent_id_path=PackedInt32Array(279847294, 601109509) index="0" unique_id=1737296482]
-bones/0/position = Vector3(-0.03360517, 3.0720382, -0.007881995)
-bones/0/rotation = Quaternion(0.022617018, -0.41602287, -0.049843192, 0.9077054)
-bones/1/rotation = Quaternion(0.14246531, 0.024113502, -0.014289498, 0.9894029)
-bones/2/rotation = Quaternion(0.15291043, 0.04540016, -0.041351665, 0.9863302)
-bones/3/rotation = Quaternion(0.05029877, 0.049439535, -0.036425896, 0.9968445)
-bones/4/rotation = Quaternion(-0.16758104, 0.09705, 0.08825214, 0.9770924)
-bones/5/rotation = Quaternion(-0.08291055, 0.22017099, -0.06806642, 0.969545)
-bones/7/rotation = Quaternion(-0.65968937, -0.33882847, 0.49836165, -0.44904438)
-bones/8/rotation = Quaternion(0.23931955, -0.27161196, -0.10744109, 0.9259641)
-bones/9/rotation = Quaternion(0.045010094, -0.17916323, 0.4957682, 0.84858036)
-bones/11/rotation = Quaternion(0.67594755, -0.2990216, 0.44141626, 0.5087561)
-bones/12/rotation = Quaternion(0.30418745, 0.14506581, 0.28114957, 0.8985437)
-bones/13/rotation = Quaternion(0.09104077, 0.10120862, -0.39804232, 0.90721035)
-bones/15/rotation = Quaternion(0.24060325, 0.6026567, 0.67249346, -0.35590386)
-bones/16/rotation = Quaternion(-0.7335241, 0.1571029, -0.12451514, 0.6494283)
-bones/17/rotation = Quaternion(0.5973927, -0.050248653, 0.020196421, 0.80011827)
-bones/18/rotation = Quaternion(0.24752468, -0.13007993, -0.012211301, 0.9600321)
-bones/20/rotation = Quaternion(-0.0041908887, 0.3975158, 0.9060942, 0.14476512)
-bones/21/rotation = Quaternion(-0.7746621, -0.05053003, -0.042400137, 0.62892586)
-bones/22/rotation = Quaternion(0.808119, 0.112473845, 0.17427093, 0.5512921)
-bones/23/rotation = Quaternion(0.22865559, 0.15957923, -0.010407586, 0.9602826)
-
-[node name="RightArmIK" parent="WizIK2/Crouch Idle/Skeleton3D" index="2" unique_id=220737110]
+[node name="RightArmIK" parent="Player_Wiz/Crouch Idle/Skeleton3D" parent_id_path=PackedInt32Array(279847294, 601109509, 2128289875) index="2" unique_id=220737110]
 influence = 0.0
 
-[node name="LeftArmIK" parent="WizIK2/Crouch Idle/Skeleton3D" index="3" unique_id=582667822]
+[node name="LeftArmIK" parent="Player_Wiz/Crouch Idle/Skeleton3D" parent_id_path=PackedInt32Array(279847294, 601109509, 2128289875) index="3" unique_id=582667822]
 influence = 0.0
 
-[node name="RightLegIK" parent="WizIK2/Crouch Idle/Skeleton3D" index="4" unique_id=394428729]
-influence = 0.0
+[node name="AnimationPlayer" parent="Player_Wiz/Crouch Idle" parent_id_path=PackedInt32Array(279847294, 601109509) index="1" unique_id=1607298387]
+autoplay = &""
 
-[node name="LeftLegIK" parent="WizIK2/Crouch Idle/Skeleton3D" index="5" unique_id=750871775]
-influence = 0.0
-
-[node name="HeadTarget" parent="WizIK2" index="9" unique_id=565674797]
+[node name="HeadTarget" parent="Player_Wiz" index="9" unique_id=565674797]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.011235118, 1.7992816, 0.70451236)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1345895257]
@@ -587,13 +586,58 @@ mesh = SubResource("ArrayMesh_fiixn")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("7_113ia")
 
+[node name="Cube_008" type="MeshInstance3D" parent="walls/Wall6" unique_id=60712794]
+transform = Transform3D(-1.4104632e-08, 0.40206814, 2.1237149e-15, -0.32267636, -1.7574955e-08, 7.946628e-09, 5.128378e-09, 0, 0.5, 1.9706129, 13.077882, 4.8580713)
+mesh = SubResource("ArrayMesh_fiixn")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("7_113ia")
+
+[node name="Cube_009" type="MeshInstance3D" parent="walls/Wall6" unique_id=1403824247]
+transform = Transform3D(-1.4104632e-08, 0.40206814, 2.1237149e-15, -0.32267636, -1.7574955e-08, 7.946628e-09, 5.128378e-09, 0, 0.5, 4.7382345, 6.4917727, 4.8580713)
+mesh = SubResource("ArrayMesh_fiixn")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("7_113ia")
+
+[node name="Cube_010" type="MeshInstance3D" parent="walls/Wall6" unique_id=1630740776]
+transform = Transform3D(-1.4104632e-08, 0.40206814, 2.1237149e-15, -0.32267636, -1.7574955e-08, 7.946628e-09, 5.128378e-09, 0, 0.5, 4.7382345, 10.077882, 4.8580713)
+mesh = SubResource("ArrayMesh_fiixn")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("7_113ia")
+
+[node name="Cube_011" type="MeshInstance3D" parent="walls/Wall6" unique_id=1646094642]
+transform = Transform3D(-1.4104632e-08, 0.40206814, 2.1237149e-15, -0.32267636, -1.7574955e-08, 7.946628e-09, 5.128378e-09, 0, 0.5, 4.7382345, 13.077882, 4.8580713)
+mesh = SubResource("ArrayMesh_fiixn")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("7_113ia")
+
+[node name="Cube_012" type="MeshInstance3D" parent="walls/Wall6" unique_id=1619046169]
+transform = Transform3D(8.407016e-16, 0.40206814, 2.1855696e-08, 1.923301e-08, -1.7574957e-08, 0.5, 0.32267636, -3.5527137e-15, -2.9802322e-08, 1.9706129, 13.077882, 2.8928404)
+mesh = SubResource("ArrayMesh_fiixn")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("7_113ia")
+
+[node name="Cube_013" type="MeshInstance3D" parent="walls/Wall6" unique_id=1853943155]
+transform = Transform3D(8.407016e-16, 0.40206814, 2.1855696e-08, 1.923301e-08, -1.7574957e-08, 0.5, 0.32267636, -3.5527137e-15, -2.9802322e-08, 4.7382345, 13.077882, 2.8928404)
+mesh = SubResource("ArrayMesh_fiixn")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("7_113ia")
+
 [node name="Cube_007" type="MeshInstance3D" parent="walls/Wall6" unique_id=2030721422]
 transform = Transform3D(-1.4104632e-08, 0.40206814, 2.1237149e-15, -0.32267636, -1.7574955e-08, 7.946628e-09, 5.128378e-09, 0, 0.5, 1.9706124, 2.9606051, 4.8580713)
 mesh = SubResource("ArrayMesh_fiixn")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("7_113ia")
 
+[node name="register" parent="." unique_id=1055549685 instance=ExtResource("7_ws0pn")]
+transform = Transform3D(-1.7484556e-08, 0, 0.4, 0, 0.4, 0, -0.4, 0, -1.7484556e-08, -0.95434046, -0.0056633055, 4.1249223)
+
+[node name="register2" parent="." unique_id=1890683800 instance=ExtResource("7_ws0pn")]
+transform = Transform3D(-1.7484556e-08, 0, 0.4, 0, 0.4, 0, -0.4, 0, -1.7484556e-08, -3.2320576, -0.0056633055, 4.1249223)
+
+[node name="register3" parent="." unique_id=87356723 instance=ExtResource("7_ws0pn")]
+transform = Transform3D(-1.7484556e-08, 0, 0.4, 0, 0.4, 0, -0.4, 0, -1.7484556e-08, -5.5358295, -0.0056633055, 4.1249223)
+
 [editable path="WizIK"]
 [editable path="WizIK/Crouch Idle"]
-[editable path="WizIK2"]
-[editable path="WizIK2/Crouch Idle"]
+[editable path="Player_Wiz"]
+[editable path="Player_Wiz/Crouch Idle"]

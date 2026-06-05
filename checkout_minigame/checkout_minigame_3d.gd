@@ -41,6 +41,12 @@ enum MinigameState { WAITING_TO_START, INTRO_CUTSCENE, PLAYING, END_CUTSCENE }
 var current_state: MinigameState = MinigameState.WAITING_TO_START
 @onready var anim_player = $AnimationPlayer
 @onready var arrow_anchor = $ArrowAnchor
+@onready var wiz_anim_player = $"Player_Wiz/Crouch Idle/AnimationPlayer"
+@onready var register = $register
+
+var register_base_pos: Vector3
+var register_base_scale: Vector3
+var register_tween: Tween
 
 var checkout_timer = 0.0
 var checkout_time_limit = 5.0
@@ -55,6 +61,9 @@ var destroyed_items = []
 var displayed_total: int = 0
 
 func _ready():
+	register_base_pos = register.position
+	register_base_scale = register.scale
+	
 	if get_tree().current_scene:
 		GameState.save_current_scene(get_tree().current_scene.scene_file_path)
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -105,20 +114,20 @@ func play_start_cutscene():
 	if vbox_container_2:
 		vbox_container_2.visible = false
 	
-	if anim_player and anim_player.has_animation("start_cutscene"):
-		anim_player.play("start_cutscene")
-		await anim_player.animation_finished
-	
-	var response_anims = []
-	if anim_player:
-		for anim_name in anim_player.get_animation_list():
-			if anim_name.begins_with("response_"):
-				response_anims.append(anim_name)
-	
-	if not response_anims.is_empty():
-		var random_anim = response_anims[randi() % response_anims.size()]
-		anim_player.play(random_anim)
-		await anim_player.animation_finished
+#	if anim_player and anim_player.has_animation("start_cutscene"):
+#		anim_player.play("start_cutscene")
+#		await anim_player.animation_finished
+#	
+#	var response_anims = []
+#	if anim_player:
+#		for anim_name in anim_player.get_animation_list():
+#			if anim_name.begins_with("response_"):
+#				response_anims.append(anim_name)
+#	
+#	if not response_anims.is_empty():
+#		var random_anim = response_anims[randi() % response_anims.size()]
+#		anim_player.play(random_anim)
+#		await anim_player.animation_finished
 	
 	if camera:
 		camera.current = true
@@ -126,6 +135,9 @@ func play_start_cutscene():
 		vbox_container.visible = true
 	if vbox_container_2:
 		vbox_container_2.visible = true
+		
+	if has_node("CanvasLayer/ColorRect"):
+		$CanvasLayer/ColorRect.visible = false
 		
 	arrow_queue.clear()
 	active_sprites.clear()
@@ -374,6 +386,14 @@ func advance_to_next_arrow(success: bool):
 	update_ui()
 
 func hit_arrow():
+	if register_tween and register_tween.is_valid():
+		register_tween.kill()
+	register_tween = create_tween()
+	register.scale = register_base_scale
+	register.position = register_base_pos
+	register_tween.tween_property(register, "scale", register_base_scale * 1.2, 0.05).set_trans(Tween.TRANS_SINE)
+	register_tween.tween_property(register, "scale", register_base_scale, 0.15).set_trans(Tween.TRANS_BOUNCE)
+	
 	successful_items.append(cart_items[current_item_index])
 	
 	hit_particles.restart()
@@ -422,6 +442,16 @@ func hit_arrow():
 	advance_to_next_arrow(true)
 
 func miss_arrow():
+	if register_tween and register_tween.is_valid():
+		register_tween.kill()
+	register_tween = create_tween()
+	register.scale = register_base_scale
+	register.position = register_base_pos
+	register_tween.tween_property(register, "position:x", register_base_pos.x + 0.05, 0.03)
+	register_tween.tween_property(register, "position:x", register_base_pos.x - 0.05, 0.03)
+	register_tween.tween_property(register, "position:x", register_base_pos.x + 0.05, 0.03)
+	register_tween.tween_property(register, "position:x", register_base_pos.x, 0.03)
+	
 	var item = cart_items[current_item_index]
 	var item_price = 0
 	if item != null:
@@ -464,6 +494,15 @@ func _input(event):
 			click_player.play(click_start_time)
 			click_timer_remaining = click_duration
 			
+			if event.is_action_pressed("ui_up"):
+				wiz_anim_player.play("wiz_anim_lib/pose_up", 0.1)
+			elif event.is_action_pressed("ui_down"):
+				wiz_anim_player.play("wiz_anim_lib/pose_down", 0.1)
+			elif event.is_action_pressed("ui_left"):
+				wiz_anim_player.play("wiz_anim_lib/pose_left", 0.1)
+			elif event.is_action_pressed("ui_right"):
+				wiz_anim_player.play("wiz_anim_lib/pose_right", 0.1)
+				
 			if event.is_action_pressed(expected_action):
 				hit_arrow()
 			else:
