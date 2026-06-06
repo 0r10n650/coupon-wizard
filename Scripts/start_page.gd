@@ -5,6 +5,7 @@ const tutorial_scene_path = "res://Scenes/tutorial.tscn"
 const management_path = "res://Scenes/PrepareDay/management_screen.tscn"
 const shopping_path = "res://Scenes/shopping.tscn"
 const checkout_path = "res://checkout_minigame/checkout_minigame_3d.tscn"
+const upgrade_path = "res://Scenes/upgrade_screen.tscn"
 
 @onready var debug_container = $DebugContainer
 
@@ -36,6 +37,9 @@ func _on_o_button_pressed():
 
 func _on_checkout_game_pressed():
 	SceneLoader.load_scene(checkout_path)
+
+func _on_go_to_shop_pressed():
+	SceneLoader.load_scene(upgrade_path)
 
 func _on_reset_save_pressed():
 	GameState.reset_game()

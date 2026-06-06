@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://oni76dmxghaq"]
+
+[node name="CouponEquipSlot" type="Control" unique_id=286763888]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/slot_idx = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1599669634]
+custom_minimum_size = Vector2(90, 120)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="SlotUnlock" type="Label" parent="PanelContainer" unique_id=1722722843]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Slot 1"
+horizontal_alignment = 1
+vertical_alignment = 1

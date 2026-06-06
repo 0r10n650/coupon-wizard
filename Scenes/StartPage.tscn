@@ -91,6 +91,10 @@ visible = false
 layout_mode = 2
 text = "Carpy Demo"
 
+[node name="GoToUpgrade" type="Button" parent="DebugContainer" unique_id=522451354]
+layout_mode = 2
+text = "Go To Upgrades"
+
 [node name="ResetSaveButton" type="Button" parent="DebugContainer" unique_id=1238620701]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.2, 0.2, 1)
@@ -106,4 +110,5 @@ autoplay = true
 [connection signal="pressed" from="DebugContainer/OButton" to="." method="_on_o_button_pressed"]
 [connection signal="pressed" from="DebugContainer/CheckoutGame" to="." method="_on_checkout_game_pressed"]
 [connection signal="pressed" from="DebugContainer/CarpyDemo" to="." method="_on_carpy_demo_pressed"]
+[connection signal="pressed" from="DebugContainer/GoToUpgrade" to="." method="_on_go_to_shop_pressed"]
 [connection signal="pressed" from="DebugContainer/ResetSaveButton" to="." method="_on_reset_save_pressed"]
