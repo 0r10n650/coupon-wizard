@@ -462,7 +462,7 @@ current = true
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.67514265, -0.5037718, 3.0019348)
 visible = false
 
-[node name="Skeleton3D" parent="WizIK/Crouch Idle" parent_id_path=PackedInt32Array(427355988, 601109509) index="0" unique_id=2128289875]
+[node name="Skeleton3D" parent="WizIK/Crouch Idle" parent_id_path=PackedInt32Array(427355988, 601109509) index="0" unique_id=321288847]
 bones/0/position = Vector3(0.006008665, 4.8335524, -0.04159585)
 bones/0/rotation = Quaternion(0.073465265, -0.04789681, -0.03842744, 0.99540555)
 bones/1/rotation = Quaternion(0.12774304, 0.09694158, 0.03775286, 0.9863361)
@@ -485,15 +485,6 @@ bones/21/rotation = Quaternion(-0.38420036, -0.07159873, 0.007853679, 0.9204358)
 bones/22/rotation = Quaternion(0.608823, -0.057875562, -0.06807827, 0.78825784)
 bones/23/rotation = Quaternion(0.38940203, 0.17281568, -0.02365367, 0.9044011)
 
-[node name="RightLegIK" parent="WizIK/Crouch Idle/Skeleton3D" index="4" unique_id=394428729]
-influence = 1.0
-
-[node name="LeftLegIK" parent="WizIK/Crouch Idle/Skeleton3D" index="5" unique_id=750871775]
-influence = 1.0
-
-[node name="AnimationPlayer" parent="WizIK/Crouch Idle" parent_id_path=PackedInt32Array(427355988, 601109509) index="1" unique_id=1607298387]
-autoplay = &""
-
 [node name="LeftArmIKTarget" parent="WizIK" index="4" unique_id=1379972132]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1935451, 1.3663902, 0.3744383)
 
@@ -512,14 +503,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23774767, 0.6040336, 0.0936
 [node name="Player_Wiz" parent="." unique_id=279847294 instance=ExtResource("4_31rlj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1321707, -0.1988504, 2.524762)
 
-[node name="RightArmIK" parent="Player_Wiz/Crouch Idle/Skeleton3D" parent_id_path=PackedInt32Array(279847294, 601109509, 2128289875) index="2" unique_id=220737110]
+[node name="RightArmIK" parent="Player_Wiz/Crouch Idle/Skeleton3D" parent_id_path=PackedInt32Array(279847294, 601109509, 321288847) index="2" unique_id=220737110]
 influence = 0.0
 
-[node name="LeftArmIK" parent="Player_Wiz/Crouch Idle/Skeleton3D" parent_id_path=PackedInt32Array(279847294, 601109509, 2128289875) index="3" unique_id=582667822]
+[node name="LeftArmIK" parent="Player_Wiz/Crouch Idle/Skeleton3D" parent_id_path=PackedInt32Array(279847294, 601109509, 321288847) index="3" unique_id=582667822]
 influence = 0.0
-
-[node name="AnimationPlayer" parent="Player_Wiz/Crouch Idle" parent_id_path=PackedInt32Array(279847294, 601109509) index="1" unique_id=1607298387]
-autoplay = &""
 
 [node name="HeadTarget" parent="Player_Wiz" index="9" unique_id=565674797]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.011235118, 1.7992816, 0.70451236)

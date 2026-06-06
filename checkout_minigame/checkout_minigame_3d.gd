@@ -25,6 +25,8 @@ var left_rune = preload("res://checkout_minigame/assets/coupon_icon_leftarrow.pn
 var right_rune = preload("res://checkout_minigame/assets/coupon_icon_rightarrow.png")
 var click_sound = preload("res://checkout_minigame/assets/click.mp3")
 
+const receipt_scene = preload("res://Scenes/ui/Checkout2dScene.tscn")
+
 @export var click_start_time: float = 0.0
 @export var click_duration: float = 0.1
 var click_timer_remaining: float = 0.0
@@ -246,56 +248,108 @@ func play_end_cutscene():
 	_show_payment_ui()
 
 func _show_payment_ui():
-	var panel = Panel.new()
-	panel.custom_minimum_size = Vector2(480, 360)
-	
-	var vbox = VBoxContainer.new()
-	vbox.set_anchors_preset(Control.PRESET_FULL_RECT)
-	vbox.offset_left = 20
-	vbox.offset_top = 20
-	vbox.offset_right = -20
-	vbox.offset_bottom = -20
-	vbox.add_theme_constant_override("separation", 12)
-	
-	var title = Label.new()
-	title.text = "Checkout Complete"
-	title.add_theme_font_size_override("font_size", 24)
-	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	vbox.add_child(title)
-	
-	var details_grid = GridContainer.new()
-	details_grid.columns = 2
-	details_grid.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	details_grid.add_theme_constant_override("h_separation", 40)
-	details_grid.add_theme_constant_override("v_separation", 8)
-	
-	var create_row = func(label_text: String, val_text: String, color_mode: int = 0):
-		var lbl = Label.new()
-		lbl.text = label_text
-		lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		var val = RichTextLabel.new()
-		val.bbcode_enabled = true
-		val.fit_content = true
-		val.autowrap_mode = TextServer.AUTOWRAP_OFF
-		val.size_flags_horizontal = Control.SIZE_SHRINK_END
-		val.text = val_text.replace("$", "[img=24]res://Assets/gold_coin.png[/img]")
-		if color_mode == 1:
-			val.add_theme_color_override("default_color", Color.GOLD)
-		elif color_mode == 2:
-			val.add_theme_color_override("default_color", Color.RED)
-		elif color_mode == 3:
-			val.add_theme_color_override("default_color", Color.GREEN)
-		details_grid.add_child(lbl)
-		details_grid.add_child(val)
-		
-	var add_separator = func():
-		var sep1 = HSeparator.new()
-		sep1.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		var sep2 = HSeparator.new()
-		sep2.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		details_grid.add_child(sep1)
-		details_grid.add_child(sep2)
+	GameState.successful_items = successful_items
+	GameState.destroyed_items = destroyed_items
+	get_tree().change_scene_to_packed(receipt_scene)
+	#
+	#var panel = Panel.new()
+	#panel.custom_minimum_size = Vector2(480, 360)
+	#
+	#var vbox = VBoxContainer.new()
+	#vbox.set_anchors_preset(Control.PRESET_FULL_RECT)
+	#vbox.offset_left = 20
+	#vbox.offset_top = 20
+	#vbox.offset_right = -20
+	#vbox.offset_bottom = -20
+	#vbox.add_theme_constant_override("separation", 12)
+	#
+	#var title = Label.new()
+	#title.text = "Checkout Complete"
+	#title.add_theme_font_size_override("font_size", 24)
+	#title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	#vbox.add_child(title)
+	#
+	#var details_grid = GridContainer.new()
+	#details_grid.columns = 2
+	#details_grid.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	#details_grid.add_theme_constant_override("h_separation", 40)
+	#details_grid.add_theme_constant_override("v_separation", 8)
+	#
+	#var create_row = func(label_text: String, val_text: String, color_mode: int = 0):
+		#var lbl = Label.new()
+		#lbl.text = label_text
+		#lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		#var val = RichTextLabel.new()
+		#val.bbcode_enabled = true
+		#val.fit_content = true
+		#val.autowrap_mode = TextServer.AUTOWRAP_OFF
+		#val.size_flags_horizontal = Control.SIZE_SHRINK_END
+		#val.text = val_text.replace("$", "[img=24]res://Assets/gold_coin.png[/img]")
+		#if color_mode == 1:
+			#val.add_theme_color_override("default_color", Color.GOLD)
+		#elif color_mode == 2:
+			#val.add_theme_color_override("default_color", Color.RED)
+		#elif color_mode == 3:
+			#val.add_theme_color_override("default_color", Color.GREEN)
+		#details_grid.add_child(lbl)
+		#details_grid.add_child(val)
+		#
+	#var add_separator = func():
+		#var sep1 = HSeparator.new()
+		#sep1.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		#var sep2 = HSeparator.new()
+		#sep2.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		#details_grid.add_child(sep1)
+		#details_grid.add_child(sep2)
+#
+	#var successful_total = 0
+	#for item in successful_items:
+		#if item != null:
+			#var val = item.get("price")
+			#if val != null:
+				#successful_total += int(round(val))
+			#
+	#var destroyed_total = 0
+	#for item in destroyed_items:
+		#if item != null:
+			#var val = item.get("price")
+			#if val != null:
+				#destroyed_total += int(round(val))
+#
+	#var discount_pct = GameState.get_total_discount_percent()
+	#var discount_amount = int(successful_total * (discount_pct / 100.0))
+	#var final_debt_added = (successful_total - discount_amount) + destroyed_total
+	#
+	#total_discount = discount_amount
+	#
+	#create_row.call("Cart Total", "$%d" % int(base_price))
+	#add_separator.call()
+	#
+	#create_row.call("Checked Out Items", "$%d" % successful_total, 3)
+	#create_row.call("Destroyed Items", "$%d" % destroyed_total, 2)
+	#create_row.call("Discount (%d%%)" % discount_pct, "-$%d" % discount_amount, 1)
+	#
+	#add_separator.call()
+	#create_row.call("Added to debt", "$%d" % final_debt_added)
+	#
+	#vbox.add_child(details_grid)
+	#
+	#var credit_btn = Button.new()
+	#credit_btn.text = " Pay with Credit Card ( %d)" % final_debt_added
+	#credit_btn.icon = preload("res://Assets/gold_coin.png")
+	#credit_btn.expand_icon = true
+	#credit_btn.add_theme_constant_override("icon_max_width", 24)
+	#credit_btn.custom_minimum_size = Vector2(0, 50)
+	#credit_btn.pressed.connect(func(): _process_payment(final_debt_added, discount_amount, panel))
+	#vbox.add_child(credit_btn)
+	#
+	#panel.add_child(vbox)
+	#$CanvasLayer.add_child(panel)
+	#
+	#var vp_size = get_viewport().get_visible_rect().size
+	#panel.position = (vp_size - panel.custom_minimum_size) / 2.0
 
+<<<<<<< Updated upstream
 	var successful_total = 0
 	for item in successful_items:
 		if item != null:
@@ -350,6 +404,15 @@ func _process_payment(credit_amount: int, discount_amount: int, ui_panel: Contro
 	
 	ui_panel.queue_free()
 	SceneLoader.load_scene("res://Scenes/upgrade_screen.tscn")
+=======
+#func _process_payment(credit_amount: int, discount_amount: int, ui_panel: Control):
+	#GameState.gold += discount_amount # You still get cash back for the discount
+	#GameState.debt += credit_amount
+	#GameState.advance_day()
+	#
+	#ui_panel.queue_free()
+	#get_tree().change_scene_to_file("res://Scenes/upgrade_screen.tscn")
+>>>>>>> Stashed changes
 
 func advance_to_next_arrow(success: bool):
 	if active_sprites.size() > 0:

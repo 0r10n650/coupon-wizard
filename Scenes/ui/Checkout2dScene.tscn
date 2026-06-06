@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://de5745vrp08d2"]
+
+[ext_resource type="Script" uid="uid://cpuiw3vpdt3k3" path="res://Scenes/ui/checkout_2d_scene.gd" id="1_ebnxp"]
+[ext_resource type="Texture2D" uid="uid://dirlh78rmc5fr" path="res://Assets/2D Assets/CheckoutSceneCheckotBackground.png" id="1_mji1k"]
+[ext_resource type="Texture2D" uid="uid://c4cp7ikg1m1q" path="res://Assets/2D Assets/CheckoutSceneCheckoutGuy.png" id="2_destf"]
+[ext_resource type="Texture2D" uid="uid://b53avsycecu0l" path="res://Assets/2D Assets/CheckoutSceneConveyor.png" id="3_dcu0c"]
+[ext_resource type="Texture2D" uid="uid://bduxo75xbic0e" path="res://Assets/2D Assets/CheckoutSceneForeground.png" id="4_ebnxp"]
+[ext_resource type="PackedScene" uid="uid://u7i2uuw2ubc5" path="res://Scenes/ui/receipt_scene.tscn" id="5_destf"]
+[ext_resource type="Texture2D" uid="uid://bm2sjuj4cqwrt" path="res://Assets/2D Assets/ReceiptPrinter.png" id="6_sux21"]
+
+[sub_resource type="Animation" id="Animation_destf"]
+resource_name = "Checkout"
+length = 1.5333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Art:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33, 1.5333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-933, -613), Vector2(-933, -613), Vector2(-5210.0005, -3087)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Art:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0009999999, 0.331, 1.5333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(2.6, 2.6), Vector2(2.6, 2.6), Vector2(8.145, 8.145)]
+}
+
+[sub_resource type="Animation" id="Animation_dcu0c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Art:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-933, -613)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Art:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2.6, 2.6)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ebnxp"]
+_data = {
+&"Checkout": SubResource("Animation_destf"),
+&"RESET": SubResource("Animation_dcu0c")
+}
+
+[node name="Checkout2dScene" type="Node2D" unique_id=955066458]
+script = ExtResource("1_ebnxp")
+
+[node name="Art" type="Node2D" parent="." unique_id=640003821]
+position = Vector2(-933, -613)
+scale = Vector2(2.6, 2.6)
+
+[node name="CheckoutSceneCheckotBackground" type="Sprite2D" parent="Art" unique_id=375270628]
+position = Vector2(512, 256)
+texture = ExtResource("1_mji1k")
+
+[node name="CheckoutSceneCheckoutGuy" type="Sprite2D" parent="Art" unique_id=1544259468]
+position = Vector2(512, 256)
+texture = ExtResource("2_destf")
+
+[node name="CheckoutSceneConveyor" type="Sprite2D" parent="Art" unique_id=1969027772]
+position = Vector2(512, 256)
+texture = ExtResource("3_dcu0c")
+
+[node name="CheckoutSceneForeground" type="Sprite2D" parent="Art" unique_id=1184920104]
+position = Vector2(512, 256)
+texture = ExtResource("4_ebnxp")
+
+[node name="ReceiptPrinter" type="Sprite2D" parent="Art" unique_id=765407921]
+z_index = 1
+position = Vector2(693.53326, 446.6729)
+texture = ExtResource("6_sux21")
+
+[node name="ReceiptScene" parent="." unique_id=1686562714 instance=ExtResource("5_destf")]
+offset_left = 238.0
+offset_top = 396.0
+offset_right = 488.0
+offset_bottom = 714.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1704826745]
+libraries/ = SubResource("AnimationLibrary_ebnxp")

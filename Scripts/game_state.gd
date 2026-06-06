@@ -35,6 +35,9 @@ var completed_order_ids: Array = []
 var rerolls_remaining: int     = 0
 var orders_generated_day: int  = -1
 
+var successful_items = []
+var destroyed_items = []
+
 func _ready():
 	load_game()
 
@@ -132,6 +135,8 @@ func advance_day():
 		"retries_used": 0,
 		"successful_coupons": []
 	}
+	successful_items.clear()
+	destroyed_items.clear()
 	save_game()
 
 func add_gold(amount: int):
