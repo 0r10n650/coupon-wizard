@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_hc7fo")
+name = "Yeti Fur"
 price = 6
 image = ExtResource("1_1dyip")
 metadata/_custom_type_script = "uid://nkht70761teq"

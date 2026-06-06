@@ -25,14 +25,14 @@ buses/default_bus_layout="uid://dxcvho01iaatn"
 
 [autoload]
 
-GameState="*res://Scripts/game_state.gd"
-SceneLoader="*res://autoloads/scene_loader.tscn"
+GameState="*uid://cmch1idbaf1vc"
+SceneLoader="*uid://cb3s73nqw1y4r"
+OrderManager="*uid://dt65s3ipagp8f"
 OrderGenerator="*uid://b63qcbofmvvdj"
 ShelfRegistry="*uid://dqeh25ohexeyy"
 PauseMenu="*res://Scenes/ui/pause_menu.tscn"
 PsxVisualsGd4AutoLoad="*uid://gr30ktbgmp1i"
 PsxVisualsGd4AutoApply="*uid://d38enjrc45wvo"
-OrderManager="*uid://dt65s3ipagp8f"
 
 [display]
 

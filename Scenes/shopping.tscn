@@ -34,7 +34,7 @@
 [ext_resource type="Resource" uid="uid://docqdhq0wgs2g" path="res://data/ingredients/angry_stuff.tres" id="12_l8kuk"]
 [ext_resource type="PackedScene" uid="uid://bajwh2wh3p8lv" path="res://Scenes/3DAssets/roof.tscn" id="12_qwgoe"]
 [ext_resource type="PackedScene" uid="uid://cegxcbikisok3" path="res://Scenes/3DAssets/pillar.tscn" id="13_o0m22"]
-[ext_resource type="AudioStream" uid="uid://rvsmkqcitpv" path="res://assets/Sounds/CouponWizard - Shopping.wav" id="15_ewwds"]
+[ext_resource type="AudioStream" uid="uid://rvsmkqcitpv" path="res://Assets/Sounds/CouponWizard - Shopping.wav" id="15_ewwds"]
 [ext_resource type="Script" uid="uid://bhtpym5gsckys" path="res://Scenes/ceiling_speakers.gd" id="15_uccpx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iuu1m"]

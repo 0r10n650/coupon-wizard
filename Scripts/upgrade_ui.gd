@@ -9,12 +9,6 @@ var gold_icon = preload("res://Assets/gold_coin.png")
 var upgrade_definitions = [
 	{"id": "coupon_time", "name": "Maze Time Limit", "desc": "Increases time to complete mazes."},
 	{"id": "coupon_retries", "name": "Coupon Retries", "desc": "Allows retrying a failed coupon."},
-	{"id": "coupon_rect_percent", "name": "Rectangle Coupon %", "desc": "Increases Rectangle coupon discount."},
-	{"id": "coupon_circle_percent", "name": "Circle Coupon %", "desc": "Increases Circle coupon discount."},
-	{"id": "coupon_hexagon_percent", "name": "Hexagon Coupon %", "desc": "Increases Hexagon coupon discount."},
-	{"id": "coupon_triangle_percent", "name": "Triangle Coupon %", "desc": "Increases Triangle coupon discount."},
-	{"id": "coupon_star_percent", "name": "Star Coupon %", "desc": "Increases Star coupon discount."},
-	{"id": "coupon_gear_percent", "name": "Gear Coupon %", "desc": "Increases Gear coupon discount."},
 	{"id": "shopping_time", "name": "Shopping Time", "desc": "Increases the time limit for shopping."},
 	{"id": "coupon_slots", "name": "Coupon Slots", "desc": "Unlocks an additional coupon slot (max 5)."},
 	{"id": "checkout_time", "name": "Checkout Time", "desc": "Increases global time limit for checkout."},
@@ -47,7 +41,14 @@ func create_upgrade_item(def: Dictionary) -> Control:
 	name_label.text = "%s (Lv %d)" % [def["name"], current_level]
 	
 	var desc_label = Label.new()
-	desc_label.text = def["desc"]
+	var current_val = GameState.get_upgrade_value(def["id"])
+	var next_val = GameState.get_upgrade_next_value(def["id"])
+	var val_text = ""
+	if next_val != null:
+		val_text = " [%s -> %s]" % [str(current_val), str(next_val)]
+	else:
+		val_text = " [Max]"
+	desc_label.text = def["desc"] + val_text
 	desc_label.add_theme_font_size_override("font_size", 12)
 	desc_label.modulate = Color.GRAY
 	

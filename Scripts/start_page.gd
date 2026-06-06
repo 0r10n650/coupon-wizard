@@ -2,11 +2,9 @@ extends Control
 class_name StartPage
 
 const tutorial_scene_path = "res://Scenes/tutorial.tscn"
-
-const jordo_scene = preload("res://Scenes/PrepareDay/management_screen.tscn")
-const o_scene = preload("res://Scenes/shopping.tscn")
-const checkout_scene = preload("res://checkout_minigame/checkout_minigame_3d.tscn")
-const carpy_scene = preload("res://tests/shoppingfordummies.tscn")
+const management_path = "res://Scenes/PrepareDay/management_screen.tscn"
+const shopping_path = "res://Scenes/shopping.tscn"
+const checkout_path = "res://checkout_minigame/checkout_minigame_3d.tscn"
 
 @onready var debug_container = $DebugContainer
 
@@ -17,29 +15,27 @@ func _ready():
 
 func _on_start_button_pressed():
 	if GameState.has_save_file():
-		get_tree().change_scene_to_file(GameState.last_scene_path)
+		SceneLoader.load_scene(GameState.last_scene_path)
 	else:
 		print("First time play! Loading tutorial (placeholder path)...")
-		var error = get_tree().change_scene_to_file(tutorial_scene_path)
-		if error != OK:
+		if ResourceLoader.exists(tutorial_scene_path):
+			SceneLoader.load_scene(tutorial_scene_path)
+		else:
 			print("Tutorial scene not found, falling back to shopping scene.")
-			get_tree().change_scene_to_file("res://Scenes/shopping.tscn")
+			SceneLoader.load_scene("res://Scenes/shopping.tscn")
 
 func _on_debug_toggle_pressed():
 	if debug_container:
 		debug_container.visible = !debug_container.visible
 
 func _on_jordos_button_pressed():
-	get_tree().change_scene_to_packed(jordo_scene)
+	SceneLoader.load_scene(management_path)
 
 func _on_o_button_pressed():
-	get_tree().change_scene_to_packed(o_scene)
+	SceneLoader.load_scene(shopping_path)
 
 func _on_checkout_game_pressed():
-	get_tree().change_scene_to_packed(checkout_scene)
-
-func _on_carpy_demo_pressed():
-	get_tree().change_scene_to_packed(carpy_scene)
+	SceneLoader.load_scene(checkout_path)
 
 func _on_reset_save_pressed():
 	GameState.reset_game()

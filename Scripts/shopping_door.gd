@@ -18,7 +18,7 @@ func interact():
 	if player and player.has_method("set_movement_locked"):
 		player.set_movement_locked(false)
 		
-	get_tree().change_scene_to_file("res://Scenes/shopping.tscn")
+	SceneLoader.load_scene("res://Scenes/shopping.tscn")
 
 func focus():
 	if mesh_instance and outline_material:

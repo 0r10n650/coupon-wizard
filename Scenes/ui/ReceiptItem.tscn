@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://b102v6w6khjxj"]
+
+[ext_resource type="Script" uid="uid://ccegoix4e4n4m" path="res://Scenes/ui/receipt_item.gd" id="1_85sc0"]
+[ext_resource type="FontFile" uid="uid://fhcymii0bbo5" path="res://Assets/Fonts/Merchant Copy.ttf" id="2_cpwx0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_85sc0"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="ReceiptItem" type="PanelContainer" unique_id=453215197]
+custom_minimum_size = Vector2(250, 25)
+offset_right = 166.0
+offset_bottom = 20.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_85sc0")
+script = ExtResource("1_85sc0")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=236916364]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer" unique_id=1010805128]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 3
+
+[node name="ItemCount" type="Label" parent="HBoxContainer/MarginContainer" unique_id=847029938]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_cpwx0")
+theme_override_font_sizes/font_size = 18
+text = "1"
+
+[node name="ItemName" type="Label" parent="HBoxContainer" unique_id=329833242]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_cpwx0")
+theme_override_font_sizes/font_size = 18
+text = "Dragon Scale"
+autowrap_mode = 2
+
+[node name="Control" type="Control" parent="HBoxContainer" unique_id=1072527229]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer" unique_id=829162220]
+layout_mode = 2
+theme_override_constants/margin_right = 10
+
+[node name="ItemPrice" type="Label" parent="HBoxContainer/MarginContainer2" unique_id=2143189633]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_cpwx0")
+theme_override_font_sizes/font_size = 18
+text = "15.00"

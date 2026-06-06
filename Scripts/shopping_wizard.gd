@@ -1,13 +1,32 @@
 extends CharacterBody3D
 class_name ShoppingWizard
 
-@onready var movementC = $DriftingMovementComponent
+@onready var movementC = $MovementComponent
 @onready var wizard = $WizardMesh
 @onready var camera = $Camera3D
 @onready var leaningC = $LeaningComponent
 @onready var leftCast = $LeftCast
 @onready var rightCast = $RightCast
 @onready var cur_inventory = $Inventory
+
+@onready var anim_player = $"WizIK/Crouch Idle/AnimationPlayer"
+@onready var right_leg_ik = $"WizIK/Crouch Idle/Skeleton3D/RightLegIK"
+@onready var left_leg_ik = $"WizIK/Crouch Idle/Skeleton3D/LeftLegIK"
+
+@onready var left_arm_ik_target = $WizIK/LeftArmIKTarget
+@onready var right_arm_ik_target = $WizIK/RightArmIKTarget
+@onready var left_leg_ik_target = $WizIK/LeftLegIKTarget
+@onready var right_leg_ik_target = $WizIK/RightLegIKTarget
+
+@onready var grab_left_target = $GrabLeftTarget
+@onready var grab_right_target = $GrabRightTarget
+@onready var left_reset_point = $LeftResetPoint
+@onready var right_reset_point = $RightResetPoint
+@onready var left_l_reset_point = $LeftLResetPoint
+@onready var right_l_reset_point = $RightLResetPoint
+
+var left_tween: Tween
+var right_tween: Tween
 
 var inventory : Array[inventory_item_2D]
 
@@ -21,15 +40,38 @@ func _ready():
 	timer_ui = ShoppingTimerUI.new(shopping_timer)
 	timer_ui.timer_finished.connect(_on_timer_finished)
 	add_child(timer_ui)
+	
+	left_leg_ik_target.global_position = left_l_reset_point.global_position
+	right_leg_ik_target.global_position = right_l_reset_point.global_position
+	left_arm_ik_target.global_position = left_reset_point.global_position
+	right_arm_ik_target.global_position = right_reset_point.global_position
 
 func _physics_process(delta):
 	movementC.move(delta)
 	move_and_slide()
+	
+	var horizontal_speed = Vector2(velocity.x, velocity.z).length()
+	
+	if Input.is_action_pressed("move_forward"):
+		if anim_player.current_animation != "wiz_anim_lib/run":
+			anim_player.play("wiz_anim_lib/run", 0.2)
+		right_leg_ik.influence = lerpf(right_leg_ik.influence, 0.0, delta * 10.0)
+		left_leg_ik.influence = lerpf(left_leg_ik.influence, 0.0, delta * 10.0)
+	else:
+		if anim_player.current_animation != "wiz_anim_lib/idle":
+			anim_player.play("wiz_anim_lib/idle", 0.2)
+			
+		if horizontal_speed > 0.5:
+			right_leg_ik.influence = lerpf(right_leg_ik.influence, 1.0, delta * 10.0)
+			left_leg_ik.influence = lerpf(left_leg_ik.influence, 1.0, delta * 10.0)
+		else:
+			right_leg_ik.influence = lerpf(right_leg_ik.influence, 0.0, delta * 10.0)
+			left_leg_ik.influence = lerpf(left_leg_ik.influence, 0.0, delta * 10.0)
 
 func _on_timer_finished():
 	if not has_transitioned:
 		has_transitioned = true
-		get_tree().change_scene_to_file("res://checkout_minigame/checkout_minigame_3d.tscn")
+		SceneLoader.load_scene("res://checkout_minigame/checkout_minigame_3d.tscn")
 
 func _on_gui_input(event):
 	if event is InputEventMouseButton:
@@ -38,31 +80,52 @@ func _on_gui_input(event):
 		if event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
 			grab("right")
 
+func _unhandled_input(event):
+	if event is InputEventKey and event.pressed and not event.echo:
+		if event.keycode == KEY_Q or event.keycode == KEY_LEFT:
+			grab("left")
+		elif event.keycode == KEY_E or event.keycode == KEY_RIGHT:
+			grab("right")
+
 
 func grab(direction):
 	var colliding_object = null
+	var cast = leftCast if direction == "left" else rightCast
 	
-	if direction == "left":
-		if leftCast.is_colliding():
-			colliding_object = leftCast.get_collider()
-	else:
-		if rightCast.is_colliding():
-			colliding_object = rightCast.get_collider()
-	
+	if cast.is_colliding():
+		colliding_object = cast.get_collider()
+		
 	if colliding_object == null:
 		return
-	
+		
 	var col_ob_parent = colliding_object.get_parent()
 	
 	if not col_ob_parent is grocery_Item_3D:
 		return
-	
+		
 	var item = col_ob_parent.item
 	
 	if item == null:
 		return
-	
+		
 	if col_ob_parent.shelf_count > 0:
+		if direction == "left":
+			if left_tween: left_tween.kill()
+			left_tween = create_tween()
+			var parent = left_arm_ik_target.get_parent()
+			var grab_local = parent.to_local(grab_left_target.global_position)
+			var reset_local = parent.to_local(left_reset_point.global_position)
+			left_tween.tween_property(left_arm_ik_target, "position", grab_local, 0.05)
+			left_tween.tween_property(left_arm_ik_target, "position", reset_local, 0.1)
+		else:
+			if right_tween: right_tween.kill()
+			right_tween = create_tween()
+			var parent = right_arm_ik_target.get_parent()
+			var grab_local = parent.to_local(grab_right_target.global_position)
+			var reset_local = parent.to_local(right_reset_point.global_position)
+			right_tween.tween_property(right_arm_ik_target, "position", grab_local, 0.05)
+			right_tween.tween_property(right_arm_ik_target, "position", reset_local, 0.1)
+			
 		cur_inventory.add_item(item)
 		GameState.add_cart_item(item)
 		col_ob_parent._get_item()

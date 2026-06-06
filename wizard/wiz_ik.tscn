@@ -7,6 +7,10 @@
 [ext_resource type="Animation" uid="uid://db4u14rnf4pgk" path="res://wizard/animations/jump.anim" id="4_n8nhb"]
 [ext_resource type="Animation" uid="uid://cbkwrr8hljtik" path="res://wizard/animations/run.anim" id="5_8x3oy"]
 [ext_resource type="Animation" uid="uid://caarl58ylmf7n" path="res://wizard/animations/run_jump.anim" id="6_byhnj"]
+[ext_resource type="Animation" uid="uid://bjvjbhfq25q1m" path="res://wizard/animations/pose_down.anim" id="6_mppho"]
+[ext_resource type="Animation" uid="uid://byjkoh1fxuhbc" path="res://wizard/animations/pose_up.anim" id="7_6pv52"]
+[ext_resource type="Animation" uid="uid://ccf6qb445y1f0" path="res://wizard/animations/pose_right.anim" id="8_cltkt"]
+[ext_resource type="Animation" uid="uid://ddxr6i3g41qct" path="res://wizard/animations/pose_left.anim" id="9_8mtqd"]
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mppho"]
 _data = {
@@ -14,6 +18,10 @@ _data = {
 &"crouch": ExtResource("2_3he5w"),
 &"idle": ExtResource("3_7n8sa"),
 &"jump": ExtResource("4_n8nhb"),
+&"pose_down": ExtResource("6_mppho"),
+&"pose_left": ExtResource("9_8mtqd"),
+&"pose_right": ExtResource("8_cltkt"),
+&"pose_up": ExtResource("7_6pv52"),
 &"run": ExtResource("5_8x3oy"),
 &"run_jump": ExtResource("6_byhnj")
 }
@@ -24,27 +32,27 @@ _data = {
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 
 [node name="Skeleton3D" parent="Crouch Idle" index="0" unique_id=2128289875]
-bones/0/position = Vector3(0.006008665, 4.8335524, -0.04159585)
-bones/0/rotation = Quaternion(0.073465265, -0.04789681, -0.03842744, 0.99540555)
-bones/1/rotation = Quaternion(0.12774304, 0.09694158, 0.03775286, 0.9863361)
-bones/2/rotation = Quaternion(-0.031521257, 0.012784657, 0.010100093, 0.99937034)
-bones/3/rotation = Quaternion(-0.031328466, 0.012922802, 0.009736957, 0.9993782)
-bones/4/rotation = Quaternion(0.02238741, -0.015060284, -0.027649647, 0.9992536)
-bones/5/rotation = Quaternion(-0.176772, -0.031677548, 0.0005632367, 0.98374176)
-bones/7/rotation = Quaternion(-0.64163667, -0.373555, 0.53585505, -0.4020179)
-bones/8/rotation = Quaternion(0.36516014, 0.3178922, -0.29821682, 0.82259923)
-bones/9/rotation = Quaternion(0.005061188, 2.0222738e-05, 0.5357935, 0.8443339)
-bones/11/rotation = Quaternion(0.6209465, -0.37919015, 0.5578223, 0.39934263)
-bones/12/rotation = Quaternion(0.3179254, 0.03630642, -0.09890733, 0.9422434)
-bones/13/rotation = Quaternion(0.0032916325, 2.387911e-05, -0.6378818, 0.7701273)
-bones/15/rotation = Quaternion(0.077673905, 0.29833564, 0.94810414, -0.077854864)
-bones/16/rotation = Quaternion(-0.9364435, -0.018022219, 0.079515524, 0.34121278)
-bones/17/rotation = Quaternion(0.53365004, -0.029540056, 0.067477524, 0.8424914)
-bones/18/rotation = Quaternion(0.23862524, -0.15103902, 0.037380338, 0.95856565)
-bones/20/rotation = Quaternion(-0.034018602, 0.149246, 0.9862202, -0.06275531)
-bones/21/rotation = Quaternion(-0.38420036, -0.07159873, 0.007853679, 0.9204358)
-bones/22/rotation = Quaternion(0.608823, -0.057875562, -0.06807827, 0.78825784)
-bones/23/rotation = Quaternion(0.38940203, 0.17281568, -0.02365367, 0.9044011)
+bones/0/position = Vector3(-0.03360517, 3.0720382, -0.007881995)
+bones/0/rotation = Quaternion(0.022617018, -0.41602287, -0.049843192, 0.9077054)
+bones/1/rotation = Quaternion(0.14246531, 0.024113502, -0.014289498, 0.9894029)
+bones/2/rotation = Quaternion(0.15291043, 0.04540016, -0.041351665, 0.9863302)
+bones/3/rotation = Quaternion(0.05029877, 0.049439535, -0.036425896, 0.9968445)
+bones/4/rotation = Quaternion(-0.16758104, 0.09705, 0.08825214, 0.9770924)
+bones/5/rotation = Quaternion(-0.08291055, 0.22017099, -0.06806642, 0.969545)
+bones/7/rotation = Quaternion(-0.65968937, -0.33882847, 0.49836165, -0.44904438)
+bones/8/rotation = Quaternion(0.23931955, -0.27161196, -0.10744109, 0.9259641)
+bones/9/rotation = Quaternion(0.045010094, -0.17916323, 0.4957682, 0.84858036)
+bones/11/rotation = Quaternion(0.67594755, -0.2990216, 0.44141626, 0.5087561)
+bones/12/rotation = Quaternion(0.30418745, 0.14506581, 0.28114957, 0.8985437)
+bones/13/rotation = Quaternion(0.09104077, 0.10120862, -0.39804232, 0.90721035)
+bones/15/rotation = Quaternion(0.24060325, 0.6026567, 0.67249346, -0.35590386)
+bones/16/rotation = Quaternion(-0.7335241, 0.1571029, -0.12451514, 0.6494283)
+bones/17/rotation = Quaternion(0.5973927, -0.050248653, 0.020196421, 0.80011827)
+bones/18/rotation = Quaternion(0.24752468, -0.13007993, -0.012211301, 0.9600321)
+bones/20/rotation = Quaternion(-0.0041908887, 0.3975158, 0.9060942, 0.14476512)
+bones/21/rotation = Quaternion(-0.7746621, -0.05053003, -0.042400137, 0.62892586)
+bones/22/rotation = Quaternion(0.808119, 0.112473845, 0.17427093, 0.5512921)
+bones/23/rotation = Quaternion(0.22865559, 0.15957923, -0.010407586, 0.9602826)
 
 [node name="RightArmIK" type="TwoBoneIK3D" parent="Crouch Idle/Skeleton3D" index="2" unique_id=220737110]
 setting_count = 1
@@ -75,6 +83,7 @@ settings/0/use_virtual_end = false
 settings/0/extend_end_bone = false
 
 [node name="RightLegIK" type="TwoBoneIK3D" parent="Crouch Idle/Skeleton3D" index="4" unique_id=394428729]
+influence = 0.0
 setting_count = 1
 settings/0/target_node = NodePath("../../../RightLegIKTarget")
 settings/0/pole_node = NodePath("../../../RightLegIKPole")
@@ -89,6 +98,7 @@ settings/0/use_virtual_end = false
 settings/0/extend_end_bone = false
 
 [node name="LeftLegIK" type="TwoBoneIK3D" parent="Crouch Idle/Skeleton3D" index="5" unique_id=750871775]
+influence = 0.0
 setting_count = 1
 settings/0/target_node = NodePath("../../../LeftLegIKTarget")
 settings/0/pole_node = NodePath("../../../LeftLegIKPole")
@@ -109,6 +119,7 @@ bone = 5
 
 [node name="AnimationPlayer" parent="Crouch Idle" index="1" unique_id=1607298387]
 libraries/wiz_anim_lib = SubResource("AnimationLibrary_mppho")
+autoplay = &"wiz_anim_lib/idle"
 
 [node name="RightArmIKPole" type="Marker3D" parent="." unique_id=1466250202]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3025, 1.1829305, -0.5630595)

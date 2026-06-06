@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_c7qb6")
+name = "Goblin Toes"
 price = 3
 image = ExtResource("1_l633y")
 metadata/_custom_type_script = "uid://nkht70761teq"

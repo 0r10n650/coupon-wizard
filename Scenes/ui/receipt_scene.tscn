@@ -1,0 +1,198 @@
+[gd_scene format=3 uid="uid://u7i2uuw2ubc5"]
+
+[ext_resource type="Script" uid="uid://cnvs3pq4p2o58" path="res://Scenes/ui/receipt_scene.gd" id="1_mett4"]
+[ext_resource type="FontFile" uid="uid://fhcymii0bbo5" path="res://Assets/Fonts/Merchant Copy.ttf" id="2_huauf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mett4"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_huauf"]
+thickness = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_huauf"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kprya"]
+bg_color = Color(0.78352344, 0.7835234, 0.7835234, 1)
+
+[node name="ReceiptScene" type="PanelContainer" unique_id=1686562714]
+offset_right = 250.0
+offset_bottom = 248.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_mett4")
+script = ExtResource("1_mett4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=578175094]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=955332430]
+custom_minimum_size = Vector2(250, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_huauf")
+theme_override_font_sizes/font_size = 36
+text = "MART O' MAGIC"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Seperator" type="MarginContainer" parent="VBoxContainer" unique_id=199021168]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/Seperator" unique_id=1197816824]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxLine_huauf")
+
+[node name="itemContainerV" type="VBoxContainer" parent="VBoxContainer" unique_id=236690343]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Seperator2" type="MarginContainer" parent="VBoxContainer" unique_id=1294845278]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/Seperator2" unique_id=1062536213]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxLine_huauf")
+
+[node name="Discount" type="MarginContainer" parent="VBoxContainer" unique_id=567502855]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Discount" unique_id=1025926338]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Discount/HBoxContainer" unique_id=1321474196]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_huauf")
+text = "Discount"
+
+[node name="DiscountLabel" type="Label" parent="VBoxContainer/Discount/HBoxContainer" unique_id=1323717948]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_huauf")
+text = "0.00"
+
+[node name="Success" type="MarginContainer" parent="VBoxContainer" unique_id=1612994790]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Success" unique_id=262483403]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Success/HBoxContainer" unique_id=1078145429]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_huauf")
+text = "Successful Total"
+
+[node name="SuccessLabel" type="Label" parent="VBoxContainer/Success/HBoxContainer" unique_id=474989614]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_huauf")
+text = "0.00"
+
+[node name="Destroyed" type="MarginContainer" parent="VBoxContainer" unique_id=1025813249]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Destroyed" unique_id=1405924672]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Destroyed/HBoxContainer" unique_id=1044224918]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_huauf")
+text = "Destroyed Total"
+
+[node name="DestroyedLabel" type="Label" parent="VBoxContainer/Destroyed/HBoxContainer" unique_id=543656548]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_huauf")
+text = "0.00"
+
+[node name="Seperator3" type="MarginContainer" parent="VBoxContainer" unique_id=201716525]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/Seperator3" unique_id=142064923]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxLine_huauf")
+
+[node name="Total" type="MarginContainer" parent="VBoxContainer" unique_id=1845426196]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Total" unique_id=1370991049]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Total/HBoxContainer" unique_id=318810097]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_huauf")
+text = "Grand Total"
+
+[node name="TotalLabel" type="Label" parent="VBoxContainer/Total/HBoxContainer" unique_id=975513331]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_huauf")
+text = "0.00"
+
+[node name="Seperator4" type="MarginContainer" parent="VBoxContainer" unique_id=531971777]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/Seperator4" unique_id=323669752]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxLine_huauf")
+
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=347996529]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_huauf")
+theme_override_styles/normal = SubResource("StyleBoxFlat_huauf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_kprya")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kprya")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_huauf")
+theme_override_styles/focus = SubResource("StyleBoxFlat_huauf")
+text = "--Click here to pay--"
+
+[node name="Seperator5" type="MarginContainer" parent="VBoxContainer" unique_id=1697036357]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/Seperator5" unique_id=1096899541]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxLine_huauf")
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_process_payment"]

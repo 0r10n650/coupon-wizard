@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cdkqk7v4w03m1"]
 
 [ext_resource type="Script" uid="uid://dwi4jlsrgtcxs" path="res://Scripts/upgrade_ui.gd" id="1_0bs55"]
-[ext_resource type="Texture2D" uid="uid://dpgdmy1fckpan" path="res://Assets/gold_coin.png" id="2_1gpk7"]
+[ext_resource type="Texture2D" uid="uid://k6d1x4o7pc5i" path="res://Assets/gold_coin.png" id="2_1gpk7"]
 
 [node name="UpgradeUI" type="Control" unique_id=773255804]
 layout_mode = 3

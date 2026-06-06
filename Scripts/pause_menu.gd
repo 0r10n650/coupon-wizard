@@ -54,4 +54,4 @@ func _on_resume_button_pressed():
 
 func _on_quit_button_pressed():
 	resume_game()
-	get_tree().change_scene_to_file("res://Scenes/StartPage.tscn")
+	SceneLoader.load_scene("res://Scenes/StartPage.tscn")

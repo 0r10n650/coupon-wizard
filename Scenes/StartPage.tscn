@@ -87,10 +87,11 @@ layout_mode = 2
 text = "Checkout demo"
 
 [node name="CarpyDemo" type="Button" parent="DebugContainer" unique_id=7232995]
+visible = false
 layout_mode = 2
 text = "Carpy Demo"
 
-[node name="ResetSaveButton" type="Button" parent="DebugContainer"]
+[node name="ResetSaveButton" type="Button" parent="DebugContainer" unique_id=1238620701]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.2, 0.2, 1)
 text = "Reset Save (Day 1)"
