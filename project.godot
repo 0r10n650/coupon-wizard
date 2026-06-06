@@ -31,6 +31,7 @@ ShelfRegistry="*uid://dqeh25ohexeyy"
 PauseMenu="*res://Scenes/ui/pause_menu.tscn"
 PsxVisualsGd4AutoLoad="*uid://gr30ktbgmp1i"
 PsxVisualsGd4AutoApply="*uid://d38enjrc45wvo"
+OrderManager="*uid://dt65s3ipagp8f"
 
 [display]
 

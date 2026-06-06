@@ -1,6 +1,7 @@
 extends Node
 
 const SAVE_PATH = "user://save_game.save"
+const REWARD_MULTIPLIER = 1.15
 
 var current_day: int = 2
 var gold: int = 0
@@ -40,6 +41,8 @@ var max_orders: int = 2
 var completed_order_ids: Array = []
 var rerolls_remaining: int     = 0
 var orders_generated_day: int  = -1
+# how many order slots the player has unlocked (2 free on day 1/2, purchasable after)
+var unlocked_order_slots: int  = 2
 
 func _ready():
 	load_game()
@@ -54,6 +57,7 @@ func save_game():
 		"completed_order_ids":  completed_order_ids,
 		"orders_generated_day": orders_generated_day,
 		"rerolls_remaining":    rerolls_remaining,
+		"unlocked_order_slots": unlocked_order_slots,
 		"upgrades": upgrades,
 		"unlocked_coupon_ids": unlocked_coupon_ids,
 		"equipped_coupon_ids": equipped_coupon_ids,
@@ -82,6 +86,7 @@ func load_game():
 			completed_order_ids  = data.get("completed_order_ids", [])
 			orders_generated_day = data.get("orders_generated_day", -1)
 			rerolls_remaining    = data.get("rerolls_remaining", 0)
+			unlocked_order_slots = data.get("unlocked_order_slots", 2)
 			unlocked_coupon_ids = data.get("unlocked_coupon_ids", [])
 			equipped_coupon_ids = data.get("equipped_coupon_ids", [])
 			coupon_slots = data.get("coupon_slots", 2)
@@ -116,6 +121,7 @@ func reset_game():
 	orders_generated_day = -1
 	rerolls_remaining    = 0
 	max_orders           = 2
+	unlocked_order_slots = 2
 	cart_items.clear()
 	unlocked_coupon_ids.clear()
 	equipped_coupon_ids.clear()
@@ -127,7 +133,7 @@ func reset_game():
 	print("Game reset to Day 2 defaults.")
 
 func advance_day():
-	process_incomplete_orders()
+	OrderManager.process_incomplete_orders()
 	# interest
 	# if debt > 0:
 	# 	debt = int(debt * 1.30)
@@ -138,7 +144,33 @@ func advance_day():
 		"retries_used": 0,
 		"successful_coupons": []
 	}
+	# Refresh rerolls from the upgrade level
+	rerolls_remaining = int(get_upgrade_value("order_rerolls"))
 	save_game()
+
+
+# Call once when the upgrade screen opens for the day. Safe to call multiple
+# times — the pool is only generated once per day.
+func begin_day() -> void:
+	if orders_generated_day == current_day:
+		return
+	daily_order_pool     = OrderManager.generate_order_pool()
+	orders_generated_day = current_day
+	rerolls_remaining    = int(get_upgrade_value("order_rerolls"))
+	save_game()
+
+
+func get_unlocked_order_slots() -> int:
+	return unlocked_order_slots
+
+
+func purchase_order_slot(slot_idx: int, cost: int) -> bool:
+	if gold < cost:
+		return false
+	gold -= cost
+	unlocked_order_slots = max(unlocked_order_slots, slot_idx + 1)
+	save_game()
+	return true
 
 func add_gold(amount: int):
 	gold += amount
@@ -417,88 +449,3 @@ func upgrade_coupon_slots() -> bool:
 	if ok:
 		coupon_slots = int(get_upgrade_value("coupon_slots"))
 	return ok
-	
-const INCOMPLETE_REBATE = 0.5
-
-func prepare_daily_orders():
-	if orders_generated_day == current_day:
-		return
-	max_orders = int(get_upgrade_value("orders"))
-	rerolls_remaining = int(get_upgrade_value("order_rerolls"))
-	orders_generated_day = current_day
-	active_orders.clear()
-	completed_order_ids.clear()
-	_generate_pool()
-
-func reroll_orders():
-	if rerolls_remaining <= 0:
-		return
-	rerolls_remaining -= 1
-	active_orders.clear()
-	_generate_pool()
-
-func _generate_pool():
-	if current_day == 1:
-		daily_order_pool = [_make_tutorial_order_day1()]
-	elif current_day == 2:
-		daily_order_pool = [_make_tutorial_order_day2()]
-		if max_orders >= 2:
-			daily_order_pool.append(OrderGenerator.generate_pool(1)[0])
-	else:
-		daily_order_pool = OrderGenerator.generate_pool(max_orders)
-
-func confirm_orders(selected_indices: Array):
-	active_orders.clear()
-	completed_order_ids.clear()
-	for idx in selected_indices:
-		if idx < daily_order_pool.size():
-			active_orders.append(daily_order_pool[idx])
-
-func mark_order_complete(order_idx: int):
-	if order_idx not in completed_order_ids:
-		completed_order_ids.append(order_idx)
-
-func process_incomplete_orders():
-	var rebate: int = 0
-	for i in range(active_orders.size()):
-		if i not in completed_order_ids:
-			rebate += int(round(active_orders[i]["raw_cost"] * INCOMPLETE_REBATE))
-	if rebate > 0:
-		gold += rebate
-	active_orders.clear()
-	completed_order_ids.clear()
-
-func get_order_total() -> int:
-	var total = 0
-	for order in active_orders:
-		for item in order["line_items"]:
-			total += item["price"] * item["quantity"]
-	return total
-
-func _make_tutorial_order_day1() -> Dictionary:
-	return {
-		"size": "small",
-		"line_items": [
-			{"name": "Bread",  "price": 4, "quantity": 2},
-			{"name": "Milk",   "price": 3, "quantity": 1},
-			{"name": "Eggs",   "price": 5, "quantity": 1},
-		],
-		"raw_cost": 15,
-		"reward":   18,
-		"categories": ["bakery", "dairy"],
-		"tutorial": true,
-	}
-
-func _make_tutorial_order_day2() -> Dictionary:
-	return {
-		"size": "small",
-		"line_items": [
-			{"name": "Butter", "price": 4, "quantity": 1},
-			{"name": "Flour",  "price": 2, "quantity": 2},
-			{"name": "Sugar",  "price": 2, "quantity": 1},
-		],
-		"raw_cost": 10,
-		"reward":   13,
-		"categories": ["bakery", "dairy"],
-		"tutorial": true,
-	}

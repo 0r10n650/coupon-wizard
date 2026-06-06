@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://bknrg8b05q522"]
-
-[ext_resource type="Script" uid="uid://cxa14170aw8vw" path="res://Scenes/Prep/orders_panel.gd" id="1_sgnug"]
-
-[node name="OrdersPanel" type="VBoxContainer" unique_id=352629812]
-script = ExtResource("1_sgnug")

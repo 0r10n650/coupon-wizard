@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Order" format=3 uid="uid://ccpsaoapg686r"]
+
+[ext_resource type="Script" uid="uid://nkht70761teq" path="res://Scripts/ingredients/ingredient.gd" id="1_3883y"]
+[ext_resource type="Script" uid="uid://dh14bedsfqfwf" path="res://data/orders/order.gd" id="2_8ivlb"]
+[ext_resource type="Resource" uid="uid://ukjbv1xc7shb" path="res://data/ingredients/frog_eyes.tres" id="2_gyoht"]
+[ext_resource type="Resource" uid="uid://dwdwcf3pp4c3w" path="res://data/ingredients/frog_leg.tres" id="3_gyoht"]
+
+[resource]
+script = ExtResource("2_8ivlb")
+id = "tutorial_frog"
+title = "Frog Munchies"
+line_items = Dictionary[ExtResource("1_3883y"), int]({
+ExtResource("2_gyoht"): 4,
+ExtResource("3_gyoht"): 10
+})
+metadata/_custom_type_script = "uid://dh14bedsfqfwf"

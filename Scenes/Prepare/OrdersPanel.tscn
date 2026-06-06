@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bknrg8b05q522"]
+
+[ext_resource type="Script" uid="uid://cxa14170aw8vw" path="res://Scenes/Prepare/orders_panel.gd" id="1_sgnug"]
+
+[node name="OrdersPanel" type="VBoxContainer" unique_id=352629812]
+script = ExtResource("1_sgnug")
+
+[node name="FlavorLabel" type="Label" parent="." unique_id=719554992]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 20)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "New orders every day!"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="CardRow" type="HBoxContainer" parent="." unique_id=537714470]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = -8
+
+[node name="RerollButton" type="Button" parent="." unique_id=1867266921]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+disabled = true
+text = "↺ x0"
+
+[node name="RerollCountLabel" type="Label" parent="." unique_id=1319023660]
+unique_name_in_owner = true
+layout_mode = 2
