@@ -23,7 +23,7 @@ var up_rune = preload("res://checkout_minigame/assets/coupon_icon_uparrow.png")
 var down_rune = preload("res://checkout_minigame/assets/coupon_icon_downarrow.png")
 var left_rune = preload("res://checkout_minigame/assets/coupon_icon_leftarrow.png")
 var right_rune = preload("res://checkout_minigame/assets/coupon_icon_rightarrow.png")
-var click_sound = preload("res://checkout_minigame/assets/click.mp3")
+var click_sound = preload("res://checkout_minigame/assets/CheckoutBeep.mp3")
 
 const receipt_scene = preload("res://Scenes/ui/coupon_apply_scene.tscn")
 
