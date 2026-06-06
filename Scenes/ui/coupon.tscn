@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bahahltxrkeib"]
+
+[ext_resource type="Script" uid="uid://bvxw6dlqqnp5e" path="res://Scripts/coupons/coupon.gd" id="1_58wru"]
+
+[node name="Coupon" type="Control" unique_id=616560219]
+custom_minimum_size = Vector2(80, 100)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -720.0
+offset_bottom = -500.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_58wru")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=2053634244]
+layout_mode = 0
+offset_right = 88.0
+offset_bottom = 108.0
+
+[node name="Label" type="Label" parent="PanelContainer" unique_id=103016220]
+custom_minimum_size = Vector2(50, 10)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 16
+text = "Effect"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer" unique_id=1412511041]
+layout_mode = 2
+expand_mode = 3

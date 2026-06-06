@@ -43,7 +43,7 @@ parent = NodePath("..")
 metadata/_custom_type_script = "uid://dcc4rfcyx225u"
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1176369]
-transform = Transform3D(1, 0, 0, 0, 0.95323294, 0.3022368, 0, -0.3022368, 0.95323294, 0, 1.9132063, 2.2223866)
+transform = Transform3D(1, 0, 0, 0, 0.96819574, 0.25019413, 0, -0.25019413, 0.96819574, 0, 2.1990983, 2.0723028)
 
 [node name="RightCast" type="RayCast3D" parent="." unique_id=1217983020]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09452355, 0, 0.61662877)

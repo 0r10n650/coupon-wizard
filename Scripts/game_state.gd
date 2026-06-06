@@ -72,6 +72,7 @@ var orders_generated_day: int  = -1
 
 var successful_items = []
 var destroyed_items = []
+var discount = 0
 
 func _ready():
 	load_game()
@@ -172,6 +173,7 @@ func advance_day():
 	}
 	successful_items.clear()
 	destroyed_items.clear()
+	discount = 0
 	save_game()
 
 func add_gold(amount: int):

@@ -101,16 +101,15 @@ func load_total():
 			if val != null:
 				destroyed_total += int(round(val))
 
-	var discount_pct = GameState.get_total_discount_percent()
-	var discount_amount = int(successful_total * (discount_pct / 100.0))
-	var final_debt_added = (successful_total - discount_amount) + destroyed_total
+	var discount_pct = GameState.discount
+	var final_debt_added = (successful_total + destroyed_total - discount_pct)
 	
 	success_total_label.text = "%.2f" % successful_total
 	destroyed_total_label.text = "%.2f" % destroyed_total
-	discount_label.text = "-%.2f" % discount_amount
+	discount_label.text = "-%.2f" % discount_pct
 	total_label.text = "%.2f" % final_debt_added
 	
-	add_discount_amount = discount_amount
+	add_discount_amount = discount_pct
 	add_credit_amount = final_debt_added
 	##_process_payment(final_debt_added, discount_amount, panel)
 

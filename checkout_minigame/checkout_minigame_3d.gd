@@ -25,7 +25,7 @@ var left_rune = preload("res://checkout_minigame/assets/coupon_icon_leftarrow.pn
 var right_rune = preload("res://checkout_minigame/assets/coupon_icon_rightarrow.png")
 var click_sound = preload("res://checkout_minigame/assets/click.mp3")
 
-const receipt_scene = preload("res://Scenes/ui/Checkout2dScene.tscn")
+const receipt_scene = preload("res://Scenes/ui/coupon_apply_scene.tscn")
 
 @export var click_start_time: float = 0.0
 @export var click_duration: float = 0.1

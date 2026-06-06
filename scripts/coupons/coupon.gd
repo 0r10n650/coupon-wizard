@@ -1,37 +1,27 @@
+@tool
+extends Control
 class_name Coupon
-extends Resource
 
-@export var name: String
-@export var description: String
-@export var gates: Array[Condition]
-@export var target: Selector
-@export var discount: Discount
+@export var data: CouponData:
+	set(v):
+		data = v
+		_update_ui()
 
-func quick_apply(cart: Dictionary) -> float:
-	var targeted = target.select(cart) if target else cart
-	return discount.apply(targeted)
-	
-func apply(cart: Array, applied_coupons: Array) -> CouponResult:
-	var result = CouponResult.new()
-	
-	# Check expiration and gates
-	for gate in gates:
-		if not gate.evaluate(cart, applied_coupons):
-			result.was_success = false
-			result.remaining_items = cart
-			return result
-	
-	# Get target items
-	# var targeted = target.select(cart)
-	
-	# Apply discount
-	# result.applied_items = targeted
-	# result.discount_total = discount.apply(targeted)
-	# result.remaining_items = cart.filter(func(item): return item not in targeted)
-	result.was_success = true
-	
-	# Re-evaluate gates against remaining items for MultiplyCoupon
-	result.conditions_still_valid = gates.all(func(g): 
-		return g.evaluate(result.remaining_items, applied_coupons))
-	
-	return result
+@export var image: Texture2D:
+	set(v):
+		image = v
+		_update_ui()
+
+@onready var textrec = $PanelContainer/TextureRect
+@onready var label = $PanelContainer/Label
+
+func _ready():
+	_update_ui()
+
+func _update_ui():
+	if not is_node_ready():
+		return
+	if data:
+		label.text = data.name
+	if image:
+		textrec.texture = image

@@ -40,6 +40,7 @@ var unlocked_order_slots: int  = 2
 
 var successful_items = []
 var destroyed_items = []
+var discount = 0
 
 func _ready():
 	load_game()
