@@ -349,62 +349,6 @@ func _show_payment_ui():
 	#var vp_size = get_viewport().get_visible_rect().size
 	#panel.position = (vp_size - panel.custom_minimum_size) / 2.0
 
-<<<<<<< Updated upstream
-	var successful_total = 0
-	for item in successful_items:
-		if item != null:
-			var val = item.get("price")
-			if val != null:
-				successful_total += int(round(val))
-			
-	var destroyed_total = 0
-	for item in destroyed_items:
-		if item != null:
-			var val = item.get("price")
-			if val != null:
-				destroyed_total += int(round(val))
-
-	var discount_pct = GameState.get_total_discount_percent()
-	var discount_amount = int(successful_total * (discount_pct / 100.0))
-	var final_debt_added = (successful_total - discount_amount) + destroyed_total
-	
-	total_discount = discount_amount
-	
-	create_row.call("Cart Total", "$%d" % int(base_price))
-	add_separator.call()
-	
-	create_row.call("Checked Out Items", "$%d" % successful_total, 3)
-	create_row.call("Destroyed Items", "$%d" % destroyed_total, 2)
-	create_row.call("Discount (%d%%)" % discount_pct, "-$%d" % discount_amount, 1)
-	
-	add_separator.call()
-	create_row.call("Added to debt", "$%d" % final_debt_added)
-	
-	vbox.add_child(details_grid)
-	
-	var credit_btn = Button.new()
-	credit_btn.text = " Pay with Credit Card ( %d)" % final_debt_added
-	credit_btn.icon = preload("res://Assets/gold_coin.png")
-	credit_btn.expand_icon = true
-	credit_btn.add_theme_constant_override("icon_max_width", 24)
-	credit_btn.custom_minimum_size = Vector2(0, 50)
-	credit_btn.pressed.connect(func(): _process_payment(final_debt_added, discount_amount, panel))
-	vbox.add_child(credit_btn)
-	
-	panel.add_child(vbox)
-	$CanvasLayer.add_child(panel)
-	
-	var vp_size = get_viewport().get_visible_rect().size
-	panel.position = (vp_size - panel.custom_minimum_size) / 2.0
-
-func _process_payment(credit_amount: int, discount_amount: int, ui_panel: Control):
-	GameState.gold += discount_amount # You still get cash back for the discount
-	GameState.debt += credit_amount
-	GameState.advance_day()
-	
-	ui_panel.queue_free()
-	SceneLoader.load_scene("res://Scenes/upgrade_screen.tscn")
-=======
 #func _process_payment(credit_amount: int, discount_amount: int, ui_panel: Control):
 	#GameState.gold += discount_amount # You still get cash back for the discount
 	#GameState.debt += credit_amount
@@ -412,7 +356,6 @@ func _process_payment(credit_amount: int, discount_amount: int, ui_panel: Contro
 	#
 	#ui_panel.queue_free()
 	#get_tree().change_scene_to_file("res://Scenes/upgrade_screen.tscn")
->>>>>>> Stashed changes
 
 func advance_to_next_arrow(success: bool):
 	if active_sprites.size() > 0:
