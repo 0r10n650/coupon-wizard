@@ -12,7 +12,7 @@ signal slot_purchase_requested(slot_idx: int, cost: int)
 # Emitted when the player spends a reroll.
 signal reroll_used()
 
-const OrderCard := preload("res://Scenes/PrepareDay/OrderCard.tscn")
+const ORDER_CARD_SCENE := preload("res://Scenes/PrepareDay/OrderCard.tscn")
 
 const SLOT_COSTS   := [0, 0, 50, 120, 220]  # indices 0-4; first two are free
 const MAX_SLOTS    := 5
@@ -34,14 +34,24 @@ var _rerolls_left:   int              = 0
 var _day:            int              = 1
 
 
+var _pending_setup: Array = []  # stores args if setup() called before _ready
+
+
+func _ready() -> void:
+	if _pending_setup.size() > 0:
+		setup.callv(_pending_setup)
+		_pending_setup.clear()
+
+
 # ---------------------------------------------------------------------------
 # Public API
 # ---------------------------------------------------------------------------
 
-# Call this from PrepScreen (or wherever the panel lives) after the day state
-# is ready. `orders` should be a pre-generated Array[Order] of active orders
-# for this day — the panel doesn't generate them itself.
 func setup(day: int, orders: Array, unlocked_count: int, rerolls: int) -> void:
+	if not is_node_ready():
+		_pending_setup = [day, orders, unlocked_count, rerolls]
+		return
+
 	_day           = day
 	_rerolls_left  = rerolls
 	_selected_idx  = -1
@@ -73,28 +83,26 @@ func confirm_slot_purchase(slot_idx: int) -> void:
 func _build_slots(orders: Array, unlocked_count: int) -> void:
 	_slots.clear()
 
-	# Active slots first.
+	# Active slots — pool orders 0..unlocked_count-1.
 	for i in unlocked_count:
 		if i < orders.size() and orders[i] != null:
 			_slots.append(OrderSlot.new(OrderSlot.State.ACTIVE, orders[i]))
 		else:
-			# Pool came up short — treat as hidden rather than crash.
 			_slots.append(OrderSlot.new(OrderSlot.State.LOCKED_HIDDEN))
 
-	# The remainder up to MAX_SLOTS.
+	# Locked slots — still assigned their pool order (revealed on unlock).
 	var remaining = MAX_SLOTS - unlocked_count
 	for i in remaining:
 		var abs_idx = unlocked_count + i
 		var cost    = SLOT_COSTS[abs_idx]
+		var order   = orders[abs_idx] if abs_idx < orders.size() else null
 
 		if i == 0 and _day >= 3:
-			# First locked slot after the active ones is BUYABLE on day 3+.
-			_slots.append(OrderSlot.new(OrderSlot.State.BUYABLE, null, cost))
+			_slots.append(OrderSlot.new(OrderSlot.State.BUYABLE, order, cost))
 		elif i == 1 and _day >= 3:
-			# One slot ahead of BUYABLE shows its price but can't be bought yet.
-			_slots.append(OrderSlot.new(OrderSlot.State.LOCKED_VISIBLE, null, cost))
+			_slots.append(OrderSlot.new(OrderSlot.State.LOCKED_VISIBLE, order, cost))
 		else:
-			_slots.append(OrderSlot.new(OrderSlot.State.LOCKED_HIDDEN, null, cost))
+			_slots.append(OrderSlot.new(OrderSlot.State.LOCKED_HIDDEN, order, cost))
 
 
 func _promote_next_slot(from_idx: int) -> void:
@@ -120,7 +128,7 @@ func _rebuild_cards() -> void:
 	_cards.clear()
 
 	for i in _slots.size():
-		var card: OrderCard = OrderCard.instantiate()
+		var card: OrderCard = ORDER_CARD_SCENE.instantiate()
 		_card_row.add_child(card)
 		card.setup(_slots[i], i)
 		card.selection_toggled.connect(_on_card_selection_toggled)

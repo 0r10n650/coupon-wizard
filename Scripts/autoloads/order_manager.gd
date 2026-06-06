@@ -34,8 +34,8 @@ func _day2_pool() -> Array[Order]:
 	return pool
 
 
-func _load_tutorial(name: String) -> Order:
-	var path  = "res://data/orders/easy_orders/%s.tres" % name
+func _load_tutorial(order_name: String) -> Order:
+	var path  = "res://data/orders/easy_orders/%s.tres" % order_name
 	var order = load(path)
 	if not order is Order:
 		push_error("OrderManager: tutorial resource missing or wrong type: %s" % path)

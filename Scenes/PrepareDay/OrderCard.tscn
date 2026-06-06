@@ -3,7 +3,8 @@
 [ext_resource type="Script" uid="uid://1ai33326i8j4" path="res://Scenes/PrepareDay/order_card.gd" id="1_6y5bw"]
 [ext_resource type="Texture2D" uid="uid://cm5xyao3l5ww4" path="res://Assets/2D Assets/order_background.png" id="1_aonxc"]
 [ext_resource type="FontFile" uid="uid://clt5mltil3hr2" path="res://Assets/Fonts/Rindu Hujan.otf" id="2_4pekc"]
-[ext_resource type="Texture2D" uid="uid://dpgdmy1fckpan" path="res://Assets/gold_coin.png" id="2_6yfet"]
+[ext_resource type="Texture2D" uid="uid://k6d1x4o7pc5i" path="res://Assets/gold_coin.png" id="2_6yfet"]
+[ext_resource type="Texture2D" uid="uid://cca22l8ac6ufi" path="res://Assets/2D Assets/lock.png" id="3_dxlhd"]
 
 [node name="OrderCard" type="Control" unique_id=1570207839]
 custom_minimum_size = Vector2(160, 220)
@@ -59,6 +60,9 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("3_dxlhd")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="CostLabel" type="Label" parent="LockOverlay" unique_id=1035889433]
 unique_name_in_owner = true
@@ -103,28 +107,21 @@ grow_vertical = 2
 mouse_filter = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="Content" unique_id=1825292262]
-custom_minimum_size = Vector2(11.91, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -110.5
-offset_top = -134.0
-offset_right = 110.5
-offset_bottom = 134.0
+offset_right = 221.0
+offset_bottom = 268.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 163
-theme_override_constants/margin_top = 205
-theme_override_constants/margin_right = 58
-theme_override_constants/margin_bottom = 63
 
 [node name="CardMargin" type="MarginContainer" parent="Content" unique_id=1079797392]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 138.0
+offset_right = 150.0
 offset_bottom = 157.0
 grow_horizontal = 2
 grow_vertical = 2

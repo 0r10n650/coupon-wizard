@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="PotionItem" format=3 uid="uid://toyj2cpts8k8"]
-
-[ext_resource type="Script" uid="uid://32p64o7rbhe7" path="res://scripts/coupons/conditions/potion_item.gd" id="1_u2igc"]
-
-[resource]
-script = ExtResource("1_u2igc")
-metadata/_custom_type_script = "uid://32p64o7rbhe7"

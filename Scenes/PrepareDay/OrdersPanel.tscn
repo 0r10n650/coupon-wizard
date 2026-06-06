@@ -17,7 +17,6 @@ autowrap_mode = 3
 [node name="CardRow" type="HBoxContainer" parent="." unique_id=537714470]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_vertical = 3
 theme_override_constants/separation = -8
 
 [node name="RerollButton" type="Button" parent="." unique_id=1867266921]

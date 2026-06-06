@@ -7,16 +7,15 @@ signal selection_toggled(idx: int)
 # Emitted when the player clicks the buy button on a BUYABLE card.
 signal purchase_requested(idx: int)
 
-@onready var _bg_rect:      TextureRect  = %BgRect
-@onready var _lock_overlay: Control      = %LockOverlay
-@onready var _lock_icon:    TextureRect  = %LockIcon
-@onready var _cost_label:   Label        = %CostLabel
-@onready var _content:      Control      = %Content
-@onready var _title_lbl:    Label        = %TitleLabel
-@onready var _item_list:    VBoxContainer = %ItemList
-@onready var _reward_lbl:   Label        = %RewardLabel
-@onready var _select_btn:   Button       = %SelectButton
-@onready var _buy_btn:      Button       = %BuyButton
+@onready var _lock_overlay: Control       = $LockOverlay
+@onready var _lock_icon:    TextureRect   = $LockOverlay/LockIcon
+@onready var _cost_label:   Label         = $LockOverlay/CostLabel
+@onready var _buy_btn:      Button        = $LockOverlay/BuyButton
+@onready var _content:      Control       = $Content
+@onready var _title_lbl:    Label         = $Content/CardMargin/VBoxContainer/TitleLabel
+@onready var _item_list:    VBoxContainer = $Content/CardMargin/VBoxContainer/ItemList
+@onready var _reward_lbl:   Label         = $Content/CardMargin/VBoxContainer/HBoxContainer/RewardLabel
+@onready var _select_btn:   Button        = $Content/CardMargin/VBoxContainer/SelectButton
 
 var _slot_idx: int = -1
 
