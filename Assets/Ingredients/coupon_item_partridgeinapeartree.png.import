@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bmb3t138al3ms"
-path.s3tc="res://.godot/imported/coupon_item_partridgeinapeartree.png-e815ebac7e772d4bc5c21e81b04a220e.s3tc.ctex"
+path.s3tc="res://.godot/imported/coupon_item_partridgeinapeartree.png-a073b34af67dd86fd39b845751eaa506.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/Ingredients/coupon_item_partridgeinapeartree.png"
-dest_files=["res://.godot/imported/coupon_item_partridgeinapeartree.png-e815ebac7e772d4bc5c21e81b04a220e.s3tc.ctex"]
+source_file="res://Assets/Ingredients/coupon_item_partridgeinapeartree.png"
+dest_files=["res://.godot/imported/coupon_item_partridgeinapeartree.png-a073b34af67dd86fd39b845751eaa506.s3tc.ctex"]
 
 [params]
 

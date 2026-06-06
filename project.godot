@@ -26,6 +26,7 @@ buses/default_bus_layout="uid://dxcvho01iaatn"
 [autoload]
 
 GameState="*res://Scripts/game_state.gd"
+SceneLoader="*res://autoloads/scene_loader.tscn"
 OrderGenerator="*uid://b63qcbofmvvdj"
 ShelfRegistry="*uid://dqeh25ohexeyy"
 PauseMenu="*res://Scenes/ui/pause_menu.tscn"
@@ -37,6 +38,8 @@ OrderManager="*uid://dt65s3ipagp8f"
 
 window/size/viewport_width=800
 window/size/viewport_height=600
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [editor]
 

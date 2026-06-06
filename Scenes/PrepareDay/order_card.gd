@@ -46,6 +46,9 @@ func _apply_state(slot: OrderSlot) -> void:
 
 	match slot.state:
 		OrderSlot.State.ACTIVE:
+			if slot.order == null:
+				push_error("OrderCard: ACTIVE slot has null order at idx %d" % _slot_idx)
+				return
 			_content.visible    = true
 			_select_btn.visible = true
 			_populate_order(slot.order)

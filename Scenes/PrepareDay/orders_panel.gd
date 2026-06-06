@@ -12,7 +12,7 @@ signal slot_purchase_requested(slot_idx: int, cost: int)
 # Emitted when the player spends a reroll.
 signal reroll_used()
 
-const OrderCard := preload("res://Scenes/Prepare/OrderCard.tscn")
+const OrderCard := preload("res://Scenes/PrepareDay/OrderCard.tscn")
 
 const SLOT_COSTS   := [0, 0, 50, 120, 220]  # indices 0-4; first two are free
 const MAX_SLOTS    := 5
@@ -22,10 +22,10 @@ const FLAVOR_TEXT  := {
 }
 const FLAVOR_DEFAULT := "New orders roll in each morning. Unlock more slots to take on bigger days."
 
-@onready var _flavor_lbl:   Label          = %FlavorLabel
-@onready var _card_row:     HBoxContainer  = %CardRow
-@onready var _reroll_btn:   Button         = %RerollButton
-@onready var _reroll_count: Label          = %RerollCountLabel
+@onready var _flavor_lbl:   Label          = $FlavorLabel
+@onready var _card_row:     HBoxContainer  = $CardRow
+@onready var _reroll_btn:   Button         = $RerollButton
+@onready var _reroll_count: Label          = $RerollCountLabel
 
 var _slots:          Array[OrderSlot] = []
 var _cards:          Array[OrderCard] = []
@@ -42,9 +42,6 @@ var _day:            int              = 1
 # is ready. `orders` should be a pre-generated Array[Order] of active orders
 # for this day — the panel doesn't generate them itself.
 func setup(day: int, orders: Array, unlocked_count: int, rerolls: int) -> void:
-	print("_flavor_lbl: ", _flavor_lbl)
-	print("is_node_ready: ", is_node_ready())
-	
 	_day           = day
 	_rerolls_left  = rerolls
 	_selected_idx  = -1
@@ -78,8 +75,11 @@ func _build_slots(orders: Array, unlocked_count: int) -> void:
 
 	# Active slots first.
 	for i in unlocked_count:
-		var order = orders[i] if i < orders.size() else null
-		_slots.append(OrderSlot.new(OrderSlot.State.ACTIVE, order))
+		if i < orders.size() and orders[i] != null:
+			_slots.append(OrderSlot.new(OrderSlot.State.ACTIVE, orders[i]))
+		else:
+			# Pool came up short — treat as hidden rather than crash.
+			_slots.append(OrderSlot.new(OrderSlot.State.LOCKED_HIDDEN))
 
 	# The remainder up to MAX_SLOTS.
 	var remaining = MAX_SLOTS - unlocked_count

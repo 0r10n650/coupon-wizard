@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://b74usl6qvlx6f"]
 
-[ext_resource type="Script" uid="uid://1ai33326i8j4" path="res://Scenes/Prepare/order_card.gd" id="1_6y5bw"]
+[ext_resource type="Script" uid="uid://1ai33326i8j4" path="res://Scenes/PrepareDay/order_card.gd" id="1_6y5bw"]
 [ext_resource type="Texture2D" uid="uid://cm5xyao3l5ww4" path="res://Assets/2D Assets/order_background.png" id="1_aonxc"]
 [ext_resource type="FontFile" uid="uid://clt5mltil3hr2" path="res://Assets/Fonts/Rindu Hujan.otf" id="2_4pekc"]
-[ext_resource type="Texture2D" uid="uid://k6d1x4o7pc5i" path="res://Assets/gold_coin.png" id="2_6yfet"]
+[ext_resource type="Texture2D" uid="uid://dpgdmy1fckpan" path="res://Assets/gold_coin.png" id="2_6yfet"]
 
 [node name="OrderCard" type="Control" unique_id=1570207839]
 custom_minimum_size = Vector2(160, 220)

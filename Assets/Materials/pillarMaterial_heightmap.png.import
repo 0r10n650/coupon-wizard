@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bx8smjr6bkv87"
-path.s3tc="res://.godot/imported/pillarMaterial_heightmap.png-c4de83df167871ed6ba093f3955c4c7d.s3tc.ctex"
+path.s3tc="res://.godot/imported/pillarMaterial_heightmap.png-a29a0165cbff5f4bdc5459c621307615.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/Materials/pillarMaterial_heightmap.png"
-dest_files=["res://.godot/imported/pillarMaterial_heightmap.png-c4de83df167871ed6ba093f3955c4c7d.s3tc.ctex"]
+source_file="res://Assets/Materials/pillarMaterial_heightmap.png"
+dest_files=["res://.godot/imported/pillarMaterial_heightmap.png-a29a0165cbff5f4bdc5459c621307615.s3tc.ctex"]
 
 [params]
 

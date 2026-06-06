@@ -3,7 +3,7 @@ class_name StartPage
 
 const tutorial_scene_path = "res://Scenes/tutorial.tscn"
 
-const jordo_scene = preload("res://Scenes/upgrade_screen.tscn")
+const jordo_scene = preload("res://Scenes/PrepareDay/management_screen.tscn")
 const o_scene = preload("res://Scenes/shopping.tscn")
 const checkout_scene = preload("res://checkout_minigame/checkout_minigame_3d.tscn")
 const carpy_scene = preload("res://tests/shoppingfordummies.tscn")
