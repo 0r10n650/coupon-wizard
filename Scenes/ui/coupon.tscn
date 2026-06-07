@@ -5,15 +5,19 @@
 [node name="Coupon" type="Control" unique_id=616560219]
 custom_minimum_size = Vector2(80, 100)
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -720.0
-offset_bottom = -500.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -50.0
+offset_right = 40.0
+offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_horizontal = 6
+size_flags_vertical = 6
 script = ExtResource("1_58wru")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=2053634244]

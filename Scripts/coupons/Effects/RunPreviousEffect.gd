@@ -12,4 +12,16 @@ func apply(successful: Array,
 	if prev_slot < 0:
 		return total
 	var prev_id = equipped_ids[prev_slot]
-	return prev_id.data.apply(successful,destroyed,total,equipped_ids,current_slot)
+	var prev_coupon = _find_coupon(prev_id)
+	if prev_coupon == null:
+		return total
+	var discount = 0
+	for i in range(amount):
+		discount += prev_coupon.apply(successful, destroyed, total, equipped_ids, prev_slot)
+	return discount
+
+func _find_coupon(id: String):
+	for coupon in GameState.COUPON_DB.coupons:
+		if coupon.id == id:
+			return coupon
+	return null

@@ -4,22 +4,21 @@ class_name CouponApplyScene
 var total
 var successful_items
 var destroyed_items
-var current_coupon
 var discount = 0
 var current_discount = 0
 
 const receipt_scene = preload("res://Scenes/ui/Checkout2dScene.tscn")
 
-@onready var slabel = $SuccessLabel
-@onready var dlabel = $DestroyedLabel
-@onready var disLabel = $DiscountLabel
-@onready var tlabel = $TotalLabel
-@onready var couponsArray = $Coupons
+@onready var coupon_list = $HBoxContainer/CouponList
+@onready var disLabel = $HBoxContainer/VBoxContainer2/DiscountLabel
+@onready var tlabel = $HBoxContainer/VBoxContainer2/TotalLabel
 
 func _ready():
 	successful_items = GameState.successful_items
 	destroyed_items = GameState.destroyed_items
 	load_total()
+	_build_coupon_cards()
+	_apply_coupons()
 
 func load_total():
 	var successful_total = 0
@@ -28,7 +27,7 @@ func load_total():
 			var val = item.get("price")
 			if val != null:
 				successful_total += int(round(val))
-			
+	
 	var destroyed_total = 0
 	for item in destroyed_items:
 		if item != null:
@@ -37,23 +36,50 @@ func load_total():
 				destroyed_total += int(round(val))
 	
 	total = successful_total + destroyed_total
-	
-	slabel.text += " " + str(successful_total) + ".00"
-	dlabel.text += " " + str(destroyed_total) + ".00"
-	tlabel.text += " " + str(total) + ".00"
-	disLabel.text += " 0.00"
+	tlabel.text += " TOTAL: " + str(total) + ".00"
+	disLabel.text = "DISCOUNT: 0.00"
 
-func  _apply_coupons():
+func _build_coupon_cards():
+	print("equipped_coupon_ids: ", GameState.equipped_coupon_ids)
+	for id in GameState.equipped_coupon_ids:
+		if id == "":
+			continue
+		var card = preload("res://Scenes/ui/Coupon.tscn").instantiate()
+		var data = _find_coupon_data(id)
+		print("id: ", id, " | data: ", data)
+		card.data = data
+		coupon_list.add_child(card)
+		print("card added: ", card)
+
+func _apply_coupons():
 	var current_slot = 0
-	for coupon in couponsArray.get_children():
-		current_discount = coupon.data.apply(successful_items, destroyed_items, total, couponsArray.get_children(), current_slot)
-		current_slot += 1
+	var starting_total = total
+	for card in coupon_list.get_children():
+		if card.data == null:
+			current_slot += 1
+			continue
+		await get_tree().create_timer(1.0).timeout
+		current_discount = card.data.apply(successful_items, destroyed_items, starting_total, GameState.equipped_coupon_ids, current_slot)
 		discount += current_discount
+		starting_total -= current_discount
+		current_slot += 1
+		_animate_card(card)
 		update_ui()
-		await get_tree().create_timer(1).timeout
 	GameState.discount = discount
-	get_tree().change_scene_to_packed(receipt_scene)
+	await get_tree().create_timer(1.0).timeout
+	SceneLoader.load_scene(receipt_scene.resource_path)
+
+func _animate_card(card: Control):
+	var tween = create_tween()
+	tween.tween_property(card, "scale", Vector2(1.15, 1.15), 0.1).set_trans(Tween.TRANS_BACK)
+	tween.tween_property(card, "scale", Vector2(1.0, 1.0), 0.1).set_trans(Tween.TRANS_BACK)
 
 func update_ui():
 	tlabel.text = "TOTAL: " + str(total - discount) + ".00"
-	disLabel.text += "\nDISCOUNT: -" + str(current_discount) + ".00"
+	disLabel.text += "\n-" + str(current_discount) + ".00"
+
+func _find_coupon_data(id: String):
+	for coupon in GameState.COUPON_DB.coupons:
+		if coupon.id == id:
+			return coupon
+	return null

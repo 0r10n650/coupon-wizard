@@ -42,6 +42,13 @@ var successful_items = []
 var destroyed_items = []
 var discount = 0
 
+var unlocked_coupon_ids: Array = []
+var equipped_coupon_ids: Array = ["5p", "dub"]
+var coupon_slots: int = 2  # upgradeable to 5
+
+const COUPON_DB = preload("res://data/coupons/CouponDatabase.tres")
+
+
 func _ready():
 	load_game()
 
@@ -87,6 +94,7 @@ func load_game():
 			unlocked_order_slots = data.get("unlocked_order_slots", 2)
 			unlocked_coupon_ids = data.get("unlocked_coupon_ids", [])
 			equipped_coupon_ids = data.get("equipped_coupon_ids", [])
+			equipped_coupon_ids = ["5s", "trip"]
 			coupon_slots = data.get("coupon_slots", 2)
 			if data.has("upgrades"):
 				for key in data["upgrades"]:
@@ -311,81 +319,6 @@ func add_cart_item(item: Ingredient) -> void:
 
 # each coupon: id, name, description, tier, type, value, required_count (opt), multiplier (opt)
 # types: percent_off | flat_off | buy_n_participating_flat | multiply_previous
-var unlocked_coupon_ids: Array = []
-var equipped_coupon_ids: Array = []
-var coupon_slots: int = 2  # upgradeable to 5
-
-const ALL_COUPONS: Array = [
-	# low tier
-	{
-		"id": "low_pct",
-		"name": "5% Off",
-		"description": "5% off scanned total",
-		"tier": "low",
-		"type": "percent_off",
-		"value": 5.0,
-	},
-	{
-		"id": "low_flat",
-		"name": "5G Off",
-		"description": "Flat 5G off",
-		"tier": "low",
-		"type": "flat_off",
-		"value": 5.0,
-	},
-	{
-		"id": "low_buy10",
-		"name": "Bulk Deal",
-		"description": "Buy 10 participating items, get 10G off",
-		"tier": "low",
-		"type": "buy_n_participating_flat",
-		"value": 10.0,
-		"required_count": 10,
-	},
-	# medium tier
-	{
-		"id": "med_pct",
-		"name": "15% Off",
-		"description": "15% off scanned total",
-		"tier": "medium",
-		"type": "percent_off",
-		"value": 15.0,
-	},
-	{
-		"id": "med_buy5",
-		"name": "5-Pack Deal",
-		"description": "Buy 5 participating items, get 5G off",
-		"tier": "medium",
-		"type": "buy_n_participating_flat",
-		"value": 5.0,
-		"required_count": 5,
-	},
-	{
-		"id": "med_double",
-		"name": "Double Up",
-		"description": "Double the effect of the previous coupon",
-		"tier": "medium",
-		"type": "multiply_previous",
-		"multiplier": 2.0,
-	},
-	# high tier
-	{
-		"id": "high_pct",
-		"name": "25% Off",
-		"description": "25% off scanned total",
-		"tier": "high",
-		"type": "percent_off",
-		"value": 25.0,
-	},
-	{
-		"id": "high_triple",
-		"name": "Triple Threat",
-		"description": "Triple the effect of the previous coupon",
-		"tier": "high",
-		"type": "multiply_previous",
-		"multiplier": 3.0,
-	},
-]
 
 func unlock_coupon(id: String):
 	if id not in unlocked_coupon_ids:
@@ -410,7 +343,7 @@ func get_equipped_coupons() -> Array:
 	for id in equipped_coupon_ids:
 		if id == "":
 			continue
-		for c in ALL_COUPONS:
+		for c in COUPON_DB.coupons:
 			if c["id"] == id:
 				result.append(c)
 				break
@@ -420,7 +353,7 @@ func get_equipped_coupons() -> Array:
 func get_unlocked_coupons() -> Array:
 	var result = []
 	for id in unlocked_coupon_ids:
-		for c in ALL_COUPONS:
+		for c in COUPON_DB.coupons:
 			if c["id"] == id:
 				result.append(c)
 				break
