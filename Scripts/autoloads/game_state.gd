@@ -30,12 +30,12 @@ var cart_items: Array = []
 # confirmed orders for today — populated when player hits "Start Shopping"
 var active_orders: Array = []
 # pool generated at start of each day — discarded after selection
-var daily_order_pool: Array = []
+var daily_order_pool: Array[Order] = []
 # how many orders the player can select — driven by upgrade
 var max_orders: int = 2
 var completed_order_ids: Array = []
 var rerolls_remaining: int     = 0
-var unlocked_order_slots: int = 2
+var unlocked_order_slots: int = 1
 
 var successful_items = []
 var destroyed_items = []
@@ -136,14 +136,14 @@ func reset_game(daily_interest: float):
 
 	if FileAccess.file_exists(SAVE_PATH):
 		DirAccess.remove_absolute(SAVE_PATH)
-	
-	print("Game reset to Day 2 defaults.")
 
 func advance_day():
+	current_day += 1
+	if current_day == 2:
+		unlocked_order_slots = 2
 	OrderManager.process_incomplete_orders()
 	if debt > 0:
 		debt += daily_interest * debt
-	current_day += 1
 	# Reset daily state
 	daily_state = {
 		"coupons_tried": [],

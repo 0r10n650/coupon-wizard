@@ -119,4 +119,4 @@ func _process_payment():
 	GameState.advance_day()
 	
 	queue_free()
-	get_tree().change_scene_to_file("res://Scenes/upgrade_screen.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Management/management_screen.tscn")

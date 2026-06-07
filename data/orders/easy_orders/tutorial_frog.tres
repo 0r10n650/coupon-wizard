@@ -8,7 +8,7 @@
 [resource]
 script = ExtResource("2_8ivlb")
 id = "tutorial_frog"
-title = "Frog Munchies"
+title = "The munchies only frogs can satisfy"
 line_items = Dictionary[ExtResource("1_3883y"), int]({
 ExtResource("2_gyoht"): 4,
 ExtResource("3_gyoht"): 10

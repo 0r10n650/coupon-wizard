@@ -1,0 +1,124 @@
+[gd_scene format=3 uid="uid://cwa60teyqb0f8"]
+
+[ext_resource type="PackedScene" uid="uid://2t6puvjnxr8b" path="res://Scenes/Management/order_card.tscn" id="1_ehbio"]
+[ext_resource type="Script" uid="uid://cupu4l5wptjoi" path="res://Scenes/Management/orders_panel.gd" id="1_k3iwa"]
+[ext_resource type="Script" uid="uid://nkht70761teq" path="res://Scripts/ingredients/ingredient.gd" id="2_h0h22"]
+[ext_resource type="Resource" uid="uid://docqdhq0wgs2g" path="res://data/ingredients/angry_stuff.tres" id="3_8le7q"]
+[ext_resource type="Resource" uid="uid://drtywmd5rv8hj" path="res://data/ingredients/dragon_scale.tres" id="4_5ascw"]
+[ext_resource type="Resource" uid="uid://chypn8ots88a3" path="res://data/ingredients/goblin_toes.tres" id="5_rpeo4"]
+[ext_resource type="Script" uid="uid://dh14bedsfqfwf" path="res://data/orders/order.gd" id="6_pkuxa"]
+
+[sub_resource type="Resource" id="Resource_op5db"]
+script = ExtResource("6_pkuxa")
+id = "123"
+title = "Monster Mash"
+line_items = Dictionary[ExtResource("2_h0h22"), int]({
+ExtResource("3_8le7q"): 5,
+ExtResource("4_5ascw"): 2,
+ExtResource("5_rpeo4"): 4
+})
+metadata/_custom_type_script = "uid://dh14bedsfqfwf"
+
+[node name="OrdersPanel" type="VBoxContainer" unique_id=1846504040]
+script = ExtResource("1_k3iwa")
+tutorial1 = SubResource("Resource_op5db")
+
+[node name="FlavorLabel" type="Label" parent="." unique_id=1156094611]
+unique_name_in_owner = true
+layout_mode = 2
+text = "New orders come in every day!"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="." unique_id=1367992131]
+layout_mode = 2
+
+[node name="OrderHolder" type="HBoxContainer" parent="." unique_id=454745928]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer1" type="VBoxContainer" parent="OrderHolder" unique_id=622148714]
+layout_mode = 2
+
+[node name="OrderCard1" parent="OrderHolder/VBoxContainer1" unique_id=1313720409 instance=ExtResource("1_ehbio")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SelectBtn1" type="Button" parent="OrderHolder/VBoxContainer1" unique_id=1877224431]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 14
+text = "Select"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="OrderHolder" unique_id=671045365]
+layout_mode = 2
+
+[node name="OrderCard2" parent="OrderHolder/VBoxContainer2" unique_id=1879112496 instance=ExtResource("1_ehbio")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SelectBtn2" type="Button" parent="OrderHolder/VBoxContainer2" unique_id=1487369291]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 14
+text = "Select"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="OrderHolder" unique_id=780332382]
+layout_mode = 2
+
+[node name="OrderCard3" parent="OrderHolder/VBoxContainer3" unique_id=622262362 instance=ExtResource("1_ehbio")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SelectBtn3" type="Button" parent="OrderHolder/VBoxContainer3" unique_id=1166869591]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 14
+text = "Select"
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="OrderHolder" unique_id=221964076]
+layout_mode = 2
+
+[node name="OrderCard4" parent="OrderHolder/VBoxContainer4" unique_id=807536759 instance=ExtResource("1_ehbio")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SelectBtn4" type="Button" parent="OrderHolder/VBoxContainer4" unique_id=386990155]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 14
+text = "Select"
+
+[node name="VBoxContainer5" type="VBoxContainer" parent="OrderHolder" unique_id=1458532860]
+layout_mode = 2
+
+[node name="OrderCard5" parent="OrderHolder/VBoxContainer5" unique_id=1929411400 instance=ExtResource("1_ehbio")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SelectBtn5" type="Button" parent="OrderHolder/VBoxContainer5" unique_id=928819403]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 14
+text = "Select"
+
+[node name="Control" type="Control" parent="." unique_id=7755746]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RerollButton" type="Button" parent="." unique_id=1738133313]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+disabled = true
+text = "↺ x0"

@@ -1,0 +1,139 @@
+[gd_scene format=3 uid="uid://2t6puvjnxr8b"]
+
+[ext_resource type="Texture2D" uid="uid://bpx236atx2cro" path="res://Assets/2D Assets/order_background.png" id="1_x3y70"]
+[ext_resource type="Script" uid="uid://1ai33326i8j4" path="res://Scenes/Management/order_card.gd" id="2_j0w6k"]
+[ext_resource type="Texture2D" uid="uid://cca22l8ac6ufi" path="res://Assets/2D Assets/lock.png" id="2_rmcd1"]
+[ext_resource type="Texture2D" uid="uid://kb4p7batnd2q" path="res://Assets/2D Assets/gold_coin (1).png" id="3_j0w6k"]
+[ext_resource type="FontFile" uid="uid://clt5mltil3hr2" path="res://Assets/Fonts/Rindu Hujan.otf" id="4_lt40g"]
+
+[node name="OrderCard" type="TextureRect" unique_id=1313720409]
+custom_minimum_size = Vector2(135, 200)
+texture = ExtResource("1_x3y70")
+expand_mode = 5
+script = ExtResource("2_j0w6k")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1850750386]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="LockImage" type="TextureRect" parent="MarginContainer" unique_id=674634729]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_rmcd1")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="TextContainer" type="VBoxContainer" parent="MarginContainer" unique_id=155051139]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="OrderTitle" type="Label" parent="MarginContainer/TextContainer" unique_id=1452463006]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(115, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.07216249, 0.057849273, 0.3166079, 1)
+theme_override_font_sizes/font_size = 16
+text = "Marshmallow Maker 5000"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/TextContainer" unique_id=1072071600]
+layout_mode = 2
+
+[node name="ItemContainer" type="HBoxContainer" parent="MarginContainer/TextContainer" unique_id=1057320536]
+layout_mode = 2
+
+[node name="Item1" type="Label" parent="MarginContainer/TextContainer/ItemContainer" unique_id=2022948185]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "Item 1"
+
+[node name="Control" type="Control" parent="MarginContainer/TextContainer/ItemContainer" unique_id=1449325143]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Count1" type="Label" parent="MarginContainer/TextContainer/ItemContainer" unique_id=1426959515]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "x1"
+
+[node name="ItemContainer2" type="HBoxContainer" parent="MarginContainer/TextContainer" unique_id=514179909]
+layout_mode = 2
+
+[node name="Item2" type="Label" parent="MarginContainer/TextContainer/ItemContainer2" unique_id=2121249641]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "Item 1"
+
+[node name="Control" type="Control" parent="MarginContainer/TextContainer/ItemContainer2" unique_id=535083054]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Count2" type="Label" parent="MarginContainer/TextContainer/ItemContainer2" unique_id=1334536291]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "x1"
+
+[node name="ItemContainer3" type="HBoxContainer" parent="MarginContainer/TextContainer" unique_id=1938859456]
+visible = false
+layout_mode = 2
+
+[node name="Item3" type="Label" parent="MarginContainer/TextContainer/ItemContainer3" unique_id=337185549]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "Item 1"
+
+[node name="Control" type="Control" parent="MarginContainer/TextContainer/ItemContainer3" unique_id=1870753606]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Count3" type="Label" parent="MarginContainer/TextContainer/ItemContainer3" unique_id=1080413812]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "x1"
+
+[node name="Control" type="Control" parent="MarginContainer/TextContainer" unique_id=602320763]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RewardContainer" type="HBoxContainer" parent="MarginContainer/TextContainer" unique_id=949487100]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/TextContainer/RewardContainer" unique_id=1788285310]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_j0w6k")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="RewardLabel" type="Label" parent="MarginContainer/TextContainer/RewardContainer" unique_id=154136031]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.8392157, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("4_lt40g")
+theme_override_font_sizes/font_size = 16
+text = "99 (+10)"

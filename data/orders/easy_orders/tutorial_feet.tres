@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Order" format=3 uid="uid://c1l07h7s7k6l6"]
+
+[ext_resource type="Script" uid="uid://nkht70761teq" path="res://Scripts/ingredients/ingredient.gd" id="1_dnefd"]
+[ext_resource type="Resource" uid="uid://chypn8ots88a3" path="res://data/ingredients/goblin_toes.tres" id="2_dnefd"]
+[ext_resource type="Resource" uid="uid://dwdwcf3pp4c3w" path="res://data/ingredients/frog_leg.tres" id="3_nd0v1"]
+[ext_resource type="Script" uid="uid://dh14bedsfqfwf" path="res://data/orders/order.gd" id="4_2faf3"]
+
+[resource]
+script = ExtResource("4_2faf3")
+id = "tutorial_feet"
+title = "For my collection"
+line_items = Dictionary[ExtResource("1_dnefd"), int]({
+ExtResource("2_dnefd"): 12,
+ExtResource("3_nd0v1"): 6
+})
+metadata/_custom_type_script = "uid://dh14bedsfqfwf"

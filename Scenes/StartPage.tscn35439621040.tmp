@@ -1,0 +1,121 @@
+[gd_scene format=3 uid="uid://dkoqvo2ta35nw"]
+
+[ext_resource type="Script" uid="uid://cw05a46vm8thc" path="res://Scripts/start_page.gd" id="1_wk4w2"]
+[ext_resource type="AudioStream" uid="uid://dip1ltitlw8ci" path="res://coupon_game/May31CouponWizard - Chill.wav" id="2_aot1s"]
+
+[node name="StartPage" type="Control" unique_id=107256115]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wk4w2")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1273810689]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.12, 0.12, 0.15, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=481554301]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=982991342]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Title" type="Label" parent="CenterContainer/VBoxContainer" unique_id=820434513]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.85, 0.4, 1)
+theme_override_font_sizes/font_size = 64
+text = "Coupon Wizard"
+horizontal_alignment = 1
+
+[node name="StartButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1611490747]
+custom_minimum_size = Vector2(250, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 36
+text = "START"
+
+[node name="DebugToggle" type="Button" parent="." unique_id=1600951849]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -90.0
+offset_top = -40.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Debug"
+
+[node name="DebugContainer" type="VBoxContainer" parent="." unique_id=1225136171]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -220.0
+offset_right = 200.0
+offset_bottom = -20.0
+grow_vertical = 0
+
+[node name="JordosButton" type="Button" parent="DebugContainer" unique_id=405533507]
+layout_mode = 2
+text = "Jordos demo"
+
+[node name="OButton" type="Button" parent="DebugContainer" unique_id=1466172417]
+layout_mode = 2
+text = "Orion's Shopping"
+
+[node name="CheckoutGame" type="Button" parent="DebugContainer" unique_id=1478656866]
+layout_mode = 2
+text = "Checkout demo"
+
+[node name="CarpyDemo" type="Button" parent="DebugContainer" unique_id=7232995]
+visible = false
+layout_mode = 2
+text = "Carpy Demo"
+
+[node name="GoToUpgrade" type="Button" parent="DebugContainer" unique_id=522451354]
+layout_mode = 2
+text = "Go To Upgrades"
+
+[node name="ResetSaveButton" type="Button" parent="DebugContainer" unique_id=1238620701]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.2, 0.2, 1)
+text = "Reset Save (Day 1)"
+
+[node name="InterestSlider" type="HSlider" parent="DebugContainer" unique_id=902999023]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 10.0
+max_value = 50.0
+value = 10.0
+rounded = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1782721983]
+stream = ExtResource("2_aot1s")
+autoplay = true
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="DebugToggle" to="." method="_on_debug_toggle_pressed"]
+[connection signal="pressed" from="DebugContainer/JordosButton" to="." method="_on_jordos_button_pressed"]
+[connection signal="pressed" from="DebugContainer/OButton" to="." method="_on_o_button_pressed"]
+[connection signal="pressed" from="DebugContainer/CheckoutGame" to="." method="_on_checkout_game_pressed"]
+[connection signal="pressed" from="DebugContainer/CarpyDemo" to="." method="_on_carpy_demo_pressed"]
+[connection signal="pressed" from="DebugContainer/GoToUpgrade" to="." method="_on_go_to_shop_pressed"]
+[connection signal="pressed" from="DebugContainer/ResetSaveButton" to="." method="_on_reset_save_pressed"]

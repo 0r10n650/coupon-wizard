@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bhtbrxpauk1vv"
+path="res://.godot/imported/Domain Expansion 1.mp3-6f501b8a3522bcbe7ae2ce24f6f7ac24.mp3str"
+
+[deps]
+
+source_file="res://Scenes/Checkout/assets/Domain Expansion 1.mp3"
+dest_files=["res://.godot/imported/Domain Expansion 1.mp3-6f501b8a3522bcbe7ae2ce24f6f7ac24.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

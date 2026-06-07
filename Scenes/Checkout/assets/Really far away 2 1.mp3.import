@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dkg2882k2wgxg"
+path="res://.godot/imported/Really far away 2 1.mp3-4a58672fddd64713f2317613e8f36e9b.mp3str"
+
+[deps]
+
+source_file="res://Scenes/Checkout/assets/Really far away 2 1.mp3"
+dest_files=["res://.godot/imported/Really far away 2 1.mp3-4a58672fddd64713f2317613e8f36e9b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

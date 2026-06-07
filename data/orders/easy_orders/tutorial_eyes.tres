@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Order" format=3 uid="uid://cpesl06tj1kfe"]
+
+[ext_resource type="Script" uid="uid://nkht70761teq" path="res://Scripts/ingredients/ingredient.gd" id="1_xc6yo"]
+[ext_resource type="Resource" uid="uid://ukjbv1xc7shb" path="res://data/ingredients/frog_eyes.tres" id="2_6gmul"]
+[ext_resource type="Resource" uid="uid://btchnl4vpashf" path="res://data/ingredients/unicorn_eyes.tres" id="3_xc6yo"]
+[ext_resource type="Script" uid="uid://dh14bedsfqfwf" path="res://data/orders/order.gd" id="4_k68xx"]
+
+[resource]
+script = ExtResource("4_k68xx")
+id = "tutorial_eyes"
+title = "I see everything!"
+line_items = Dictionary[ExtResource("1_xc6yo"), int]({
+ExtResource("2_6gmul"): 2,
+ExtResource("3_xc6yo"): 2
+})
+metadata/_custom_type_script = "uid://dh14bedsfqfwf"

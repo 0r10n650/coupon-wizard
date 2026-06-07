@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dsl35533gd4qc"]
+
+[ext_resource type="Script" uid="uid://bqq6jtnu1svga" path="res://Scripts/debug_shopping_ui.gd" id="1_usdqm"]
+
+[node name="DebugShoppingUI" type="CanvasLayer" unique_id=2137469054]
+script = ExtResource("1_usdqm")
