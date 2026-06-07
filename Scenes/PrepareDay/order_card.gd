@@ -1,118 +1,66 @@
+@tool
 class_name OrderCard
 extends Control
 
-# Emitted when the player clicks Select / Deselect on an ACTIVE card.
-signal selection_toggled(idx: int)
+var _order: Order = null
+var _pending_args: Array = []
 
-# Emitted when the player clicks the buy button on a BUYABLE card.
-signal purchase_requested(idx: int)
-
-@onready var _lock_overlay: Control       = $LockOverlay
-@onready var _lock_icon:    TextureRect   = $LockOverlay/LockIcon
-@onready var _cost_label:   Label         = $LockOverlay/CostLabel
-@onready var _buy_btn:      Button        = $LockOverlay/BuyButton
-@onready var _content:      Control       = $Content
-@onready var _title_lbl:    Label         = $Content/CardMargin/VBoxContainer/TitleLabel
-@onready var _item_list:    VBoxContainer = $Content/CardMargin/VBoxContainer/ItemList
-@onready var _reward_lbl:   Label         = $Content/CardMargin/VBoxContainer/HBoxContainer/RewardLabel
-@onready var _select_btn:   Button        = $Content/CardMargin/VBoxContainer/SelectButton
-
-var _slot_idx: int = -1
-
-
-func setup(slot: OrderSlot, idx: int) -> void:
-	_slot_idx = idx
-	_apply_state(slot)
+@onready var _lock: TextureRect = %LockImage
+@onready var _text_container: VBoxContainer = %TextContainer
+@onready var _title: Label = $MarginContainer/VBoxContainer/OrderTitle
+@onready var _slot1: HBoxContainer = $MarginContainer/VBoxContainer/ItemContainer
+@onready var _slot2: HBoxContainer = $MarginContainer/VBoxContainer/ItemContainer2
+@onready var _slot3: HBoxContainer = $MarginContainer/VBoxContainer/ItemContainer3
+@onready var _item1: Label  = $MarginContainer/VBoxContainer/ItemContainer/Item1
+@onready var _count1: Label = $MarginContainer/VBoxContainer/ItemContainer/Count1
+@onready var _item2: Label  = $MarginContainer/VBoxContainer/ItemContainer2/Item2
+@onready var _count2: Label = $MarginContainer/VBoxContainer/ItemContainer2/Count2
+@onready var _item3: Label  = $MarginContainer/VBoxContainer/ItemContainer3/Item3
+@onready var _count3: Label = $MarginContainer/VBoxContainer/ItemContainer3/Count3
+@onready var _reward: Label = $MarginContainer/VBoxContainer/RewardContainer/RewardLabel
 
 
+func _ready() -> void:
+	if not _pending_args.is_empty():
+		_populate_order(_pending_args[0], _pending_args[1])
+		_pending_args.clear()
+
+func setup(order: Order, is_locked: bool = false) -> void:
+	if not is_node_ready():
+		_pending_args = [order, is_locked]
+		return
+	_populate_order(order, is_locked)
+	
 func set_selected(selected: bool) -> void:
 	modulate = Color(0.65, 1.0, 0.65) if selected else Color.WHITE
-	_select_btn.text = "Deselect" if selected else "Select"
 
+func _populate_order(order: Order, is_locked: bool) -> void:
+	_lock.visible = is_locked
+	if is_locked:
+		_text_container.visible = false
+		modulate = Color("#1c1c1c")
+		return
+	_order = order
+	_title.text = order.title
 
-# ---------------------------------------------------------------------------
-# Private
-# ---------------------------------------------------------------------------
+	var slots: Array = [
+		[_slot1, _item1, _count1],
+		[_slot2, _item2, _count2],
+		[_slot3, _item3, _count3],
+	]
 
-func _apply_state(slot: OrderSlot) -> void:
-	# Reset first so no stale state leaks between calls.
-	modulate        = Color.WHITE
-	_lock_overlay.visible = false
-	_content.visible      = false
-	_buy_btn.visible      = false
-	_select_btn.visible   = false
-	mouse_default_cursor_shape = Control.CURSOR_ARROW
+	# Hide all slots first, then fill from the top.
+	for row in slots:
+		row[0].visible = false
 
-	match slot.state:
-		OrderSlot.State.ACTIVE:
-			if slot.order == null:
-				push_error("OrderCard: ACTIVE slot has null order at idx %d" % _slot_idx)
-				return
-			_content.visible    = true
-			_select_btn.visible = true
-			_populate_order(slot.order)
+	var idx := 0
+	for ingredient: Ingredient in order.line_items:
+		if idx >= slots.size():
+			break
+		var row = slots[idx]
+		row[0].visible = true
+		row[1].text = ingredient.name
+		row[2].text = "x%d" % order.line_items[ingredient]
+		idx += 1
 
-		OrderSlot.State.BUYABLE:
-			_lock_overlay.visible = true
-			_buy_btn.visible      = true
-			_cost_label.text      = "%d g" % slot.unlock_cost
-			_cost_label.visible   = true
-			_lock_icon.visible    = true
-			mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
-
-		OrderSlot.State.LOCKED_VISIBLE:
-			_lock_overlay.visible = true
-			_cost_label.text      = "%d g" % slot.unlock_cost
-			_cost_label.visible   = true
-			_lock_icon.visible    = true
-			modulate              = Color(0.55, 0.55, 0.60, 0.85)
-
-		OrderSlot.State.LOCKED_HIDDEN:
-			_lock_overlay.visible = true
-			_cost_label.visible   = false
-			_lock_icon.visible    = false
-			modulate              = Color(0.35, 0.35, 0.40, 0.7)
-
-
-func _populate_order(order: Order) -> void:
-	_title_lbl.text = order.title
-
-	match order.difficulty:
-		Order.Difficulty.EASY:   _title_lbl.add_theme_color_override("font_color", Color.LIGHT_BLUE)
-		Order.Difficulty.MEDIUM: _title_lbl.add_theme_color_override("font_color", Color.YELLOW)
-		Order.Difficulty.HARD:   _title_lbl.add_theme_color_override("font_color", Color.ORANGE_RED)
-
-	for child in _item_list.get_children():
-		child.queue_free()
-
-	for ingredient in order.line_items:
-		var row      = HBoxContainer.new()
-		var name_lbl = Label.new()
-		var qty_lbl  = Label.new()
-
-		name_lbl.text = ingredient.name
-		name_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		name_lbl.add_theme_font_size_override("font_size", 10)
-
-		qty_lbl.text = "x%d" % order.line_items[ingredient]
-		qty_lbl.add_theme_font_size_override("font_size", 10)
-		qty_lbl.modulate = Color(0.6, 0.6, 0.6)
-
-		row.add_child(name_lbl)
-		row.add_child(qty_lbl)
-		_item_list.add_child(row)
-
-	var profit = order.reward() - order.raw_cost()
-	_reward_lbl.text = "%d g  (+%d)" % [order.reward(), profit]
-
-
-# ---------------------------------------------------------------------------
-# Signal handlers (connected in the scene)
-# ---------------------------------------------------------------------------
-
-func _on_select_btn_pressed() -> void:
-	selection_toggled.emit(_slot_idx)
-
-
-func _on_buy_btn_pressed() -> void:
-	purchase_requested.emit(_slot_idx)
+	_reward.text = "🪙%d (+%d)" % [order.raw_cost(), order.reward() - order.raw_cost()]

@@ -3,9 +3,10 @@ extends Node
 const SAVE_PATH = "user://save_game.save"
 const REWARD_MULTIPLIER = 1.15
 
-var current_day: int = 2
+var current_day: int = 1
 var gold: int = 0
 var debt: int = 500
+var daily_interest: float = .10
 var last_scene_path: String = "res://Scenes/shopping.tscn"
 
 var upgrades = {
@@ -34,9 +35,7 @@ var daily_order_pool: Array = []
 var max_orders: int = 2
 var completed_order_ids: Array = []
 var rerolls_remaining: int     = 0
-var orders_generated_day: int  = -1
-# how many order slots the player has unlocked (2 free on day 1/2, purchasable after)
-var unlocked_order_slots: int  = 2
+var unlocked_order_slots: int = 2
 
 var successful_items = []
 var destroyed_items = []
@@ -60,7 +59,6 @@ func save_game():
 		"last_scene_path": last_scene_path,
 		"active_orders":        active_orders,
 		"completed_order_ids":  completed_order_ids,
-		"orders_generated_day": orders_generated_day,
 		"rerolls_remaining":    rerolls_remaining,
 		"unlocked_order_slots": unlocked_order_slots,
 		"upgrades": upgrades,
@@ -89,7 +87,6 @@ func load_game():
 			last_scene_path = data.get("last_scene_path", last_scene_path)
 			active_orders        = data.get("active_orders", [])
 			completed_order_ids  = data.get("completed_order_ids", [])
-			orders_generated_day = data.get("orders_generated_day", -1)
 			rerolls_remaining    = data.get("rerolls_remaining", 0)
 			unlocked_order_slots = data.get("unlocked_order_slots", 2)
 			unlocked_coupon_ids = data.get("unlocked_coupon_ids", [])
@@ -110,12 +107,17 @@ func save_current_scene(path: String):
 	last_scene_path = path
 	save_game()
 
-func reset_game():
-	current_day = 2
+func reset_game(daily_interest: float):
+	current_day = 1
 	gold = 0
 	debt = 500
+	daily_interest = daily_interest
+	print("Save reset to Day 1")
+	print("Interest set at %.2f" % daily_interest)
+	
 	for key in upgrades:
 		upgrades[key] = 0
+		
 	daily_state = {
 		"coupons_tried": [],
 		"retries_used": 0,
@@ -124,10 +126,9 @@ func reset_game():
 	active_orders.clear()
 	daily_order_pool.clear()
 	completed_order_ids.clear()
-	orders_generated_day = -1
 	rerolls_remaining    = 0
-	max_orders           = 2
-	unlocked_order_slots = 2
+	max_orders           = 5
+	unlocked_order_slots = 1
 	cart_items.clear()
 	unlocked_coupon_ids.clear()
 	equipped_coupon_ids.clear()
@@ -140,9 +141,8 @@ func reset_game():
 
 func advance_day():
 	OrderManager.process_incomplete_orders()
-	# interest
-	# if debt > 0:
-	# 	debt = int(debt * 1.30)
+	if debt > 0:
+		debt += daily_interest * debt
 	current_day += 1
 	# Reset daily state
 	daily_state = {
@@ -160,10 +160,7 @@ func advance_day():
 # Call once when the upgrade screen opens for the day. Safe to call multiple
 # times — the pool is only generated once per day.
 func begin_day() -> void:
-	if orders_generated_day == current_day:
-		return
 	daily_order_pool     = OrderManager.generate_order_pool()
-	orders_generated_day = current_day
 	rerolls_remaining    = int(get_upgrade_value("order_rerolls"))
 	save_game()
 

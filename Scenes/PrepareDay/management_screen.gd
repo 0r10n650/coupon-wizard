@@ -81,43 +81,44 @@ func _ready():
 
 	# Generate the day's order pool exactly once. After this, daily_order_pool
 	# is stable for the whole session — tab switches don't regenerate it.
-	GameState.begin_day()
-
-	orders_panel.slot_purchase_requested.connect(_on_order_slot_purchase)
-	orders_panel.order_selection_changed.connect(_on_order_selection_changed)
-	orders_panel.reroll_used.connect(_on_order_reroll)
-
-	# start on the orders panel
-	_show_orders()
-	_update_order_count(0)
-	_update_bottom_bar()
-
-	# unlock a few coupons for testing
-	if GameState.unlocked_coupon_ids.is_empty():
-		GameState.unlock_coupon("low_pct")
-		GameState.unlock_coupon("med_double")
-		GameState.unlock_coupon("high_triple")
+	#GameState.begin_day()
+#
+	#orders_panel.slot_purchase_requested.connect(_on_order_slot_purchase)
+	#orders_panel.order_selection_changed.connect(_on_order_selection_changed)
+	#orders_panel.reroll_used.connect(_on_order_reroll)
+#
+	## start on the orders panel
+	#_show_orders()
+	#_update_order_count(0)
+	#_update_bottom_bar()
+#
+	## unlock a few coupons for testing
+	#if GameState.unlocked_coupon_ids.is_empty():
+		#GameState.unlock_coupon("low_pct")
+		#GameState.unlock_coupon("med_double")
+		#GameState.unlock_coupon("high_triple")
 
 
 # ── panel switching ─────────────────────────────
 func _switch_to(active_btn: Button, active_panel: Control):
-	# hide everything
-	for panel in [orders_panel, upgrades_panel, coupons_panel]:
-		panel.visible = false
-	for btn in [orders_btn, upgrades_btn, coupons_btn]:
-		btn.modulate = Color(1, 1, 1, 0.55)
-	# show active
-	active_panel.visible = true
-	active_btn.modulate = Color.WHITE
+	return
+	## hide everything
+	#for panel in [orders_panel, upgrades_panel, coupons_panel]:
+		#panel.visible = false
+	#for btn in [orders_btn, upgrades_btn, coupons_btn]:
+		#btn.modulate = Color(1, 1, 1, 0.55)
+	## show active
+	#active_panel.visible = true
+	#active_btn.modulate = Color.WHITE
 
 func _show_orders():
 	_switch_to(orders_btn, orders_panel)
-	orders_panel.setup(
-		GameState.current_day,
-		GameState.daily_order_pool,
-		GameState.get_unlocked_order_slots(),
-		GameState.rerolls_remaining,
-	)
+	#orders_panel.setup(
+		#GameState.current_day,
+		#GameState.daily_order_pool,
+		#GameState.get_unlocked_order_slots(),
+		#GameState.rerolls_remaining,
+	#)
 	
 func _show_upgrades():
 	_switch_to(upgrades_btn, upgrades_panel)

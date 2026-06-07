@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="CouponDataBase" format=3 uid="uid://cb5a2kcfjp53i"]
 
-[ext_resource type="Script" uid="uid://gjodwe83bcl7" path="res://Scripts/coupons/CouponData.gd" id="1_6moli"]
+[ext_resource type="Script" uid="uid://gjodwe83bcl7" path="res://Scripts/coupons/couponData.gd" id="1_6moli"]
 [ext_resource type="Script" uid="uid://sw3iqask34ex" path="res://data/coupons/CouponDatabase.gd" id="2_48e1o"]
 [ext_resource type="Script" uid="uid://u8ictkroipux" path="res://Scripts/coupons/Effects/PercentOffEffect.gd" id="2_p3ex1"]
 [ext_resource type="Script" uid="uid://c70vd0w17r4xd" path="res://Scripts/coupons/Effects/StaticOffEffect.gd" id="3_ad1j4"]
@@ -17,7 +17,6 @@ script = ExtResource("1_6moli")
 name = "5% Off"
 description = "Gives 5% off total."
 effect = SubResource("Resource_ad1j4")
-id = "5p"
 metadata/_custom_type_script = "uid://gjodwe83bcl7"
 
 [sub_resource type="Resource" id="Resource_p3ex1"]
@@ -29,8 +28,6 @@ metadata/_custom_type_script = "uid://u8ictkroipux"
 script = ExtResource("1_6moli")
 name = "10% Off"
 effect = SubResource("Resource_p3ex1")
-rarity = 1
-id = "10p"
 metadata/_custom_type_script = "uid://gjodwe83bcl7"
 
 [sub_resource type="Resource" id="Resource_mewel"]
@@ -42,8 +39,6 @@ metadata/_custom_type_script = "uid://u8ictkroipux"
 script = ExtResource("1_6moli")
 name = "25% Off"
 effect = SubResource("Resource_mewel")
-rarity = 2
-id = "25p"
 metadata/_custom_type_script = "uid://gjodwe83bcl7"
 
 [sub_resource type="Resource" id="Resource_a20d4"]
@@ -55,8 +50,6 @@ metadata/_custom_type_script = "uid://u8ictkroipux"
 script = ExtResource("1_6moli")
 name = "50% Off"
 effect = SubResource("Resource_a20d4")
-rarity = 3
-id = "50p"
 metadata/_custom_type_script = "uid://gjodwe83bcl7"
 
 [sub_resource type="Resource" id="Resource_fv3y2"]
@@ -68,8 +61,6 @@ metadata/_custom_type_script = "uid://u8ictkroipux"
 script = ExtResource("1_6moli")
 name = "75% Off"
 effect = SubResource("Resource_fv3y2")
-rarity = 4
-id = "75p"
 metadata/_custom_type_script = "uid://gjodwe83bcl7"
 
 [sub_resource type="Resource" id="Resource_vquny"]
@@ -81,7 +72,6 @@ metadata/_custom_type_script = "uid://c70vd0w17r4xd"
 script = ExtResource("1_6moli")
 name = "5G off "
 effect = SubResource("Resource_vquny")
-id = "5s"
 metadata/_custom_type_script = "uid://gjodwe83bcl7"
 
 [sub_resource type="Resource" id="Resource_lipu2"]
@@ -93,8 +83,6 @@ metadata/_custom_type_script = "uid://c70vd0w17r4xd"
 script = ExtResource("1_6moli")
 name = "10G Off"
 effect = SubResource("Resource_lipu2")
-rarity = 1
-id = "10s"
 metadata/_custom_type_script = "uid://gjodwe83bcl7"
 
 [sub_resource type="Resource" id="Resource_s22mc"]
@@ -106,8 +94,6 @@ metadata/_custom_type_script = "uid://c70vd0w17r4xd"
 script = ExtResource("1_6moli")
 name = "20G Off"
 effect = SubResource("Resource_s22mc")
-rarity = 2
-id = "20s"
 metadata/_custom_type_script = "uid://gjodwe83bcl7"
 
 [sub_resource type="Resource" id="Resource_7ukcw"]
@@ -119,8 +105,6 @@ metadata/_custom_type_script = "uid://c70vd0w17r4xd"
 script = ExtResource("1_6moli")
 name = "40G Off"
 effect = SubResource("Resource_7ukcw")
-rarity = 3
-id = "40s"
 metadata/_custom_type_script = "uid://gjodwe83bcl7"
 
 [sub_resource type="Resource" id="Resource_btu5i"]
@@ -132,8 +116,6 @@ metadata/_custom_type_script = "uid://c70vd0w17r4xd"
 script = ExtResource("1_6moli")
 name = "60G Off"
 effect = SubResource("Resource_btu5i")
-rarity = 4
-id = "60s"
 metadata/_custom_type_script = "uid://gjodwe83bcl7"
 
 [sub_resource type="Resource" id="Resource_1ctgn"]
@@ -146,7 +128,6 @@ metadata/_custom_type_script = "uid://c3ayc1w76df76"
 script = ExtResource("1_6moli")
 name = "1G Off per Success"
 effect = SubResource("Resource_1ctgn")
-id = "1ps"
 metadata/_custom_type_script = "uid://gjodwe83bcl7"
 
 [sub_resource type="Resource" id="Resource_w3pfx"]
@@ -159,8 +140,6 @@ metadata/_custom_type_script = "uid://c3ayc1w76df76"
 script = ExtResource("1_6moli")
 name = "2G Off per Success"
 effect = SubResource("Resource_w3pfx")
-rarity = 2
-id = "2ps"
 metadata/_custom_type_script = "uid://gjodwe83bcl7"
 
 [sub_resource type="Resource" id="Resource_3mtl5"]
@@ -173,8 +152,6 @@ metadata/_custom_type_script = "uid://c3ayc1w76df76"
 script = ExtResource("1_6moli")
 name = "3G Off per Success"
 effect = SubResource("Resource_3mtl5")
-rarity = 3
-id = "3ps"
 metadata/_custom_type_script = "uid://gjodwe83bcl7"
 
 [sub_resource type="Resource" id="Resource_mbcv4"]
@@ -187,8 +164,6 @@ metadata/_custom_type_script = "uid://c3ayc1w76df76"
 script = ExtResource("1_6moli")
 name = "2G Back per Destroyed"
 effect = SubResource("Resource_mbcv4")
-rarity = 1
-id = "2pd"
 metadata/_custom_type_script = "uid://gjodwe83bcl7"
 
 [sub_resource type="Resource" id="Resource_idn6o"]
@@ -201,8 +176,6 @@ metadata/_custom_type_script = "uid://c3ayc1w76df76"
 script = ExtResource("1_6moli")
 name = "4G Back per Destroyed"
 effect = SubResource("Resource_idn6o")
-rarity = 2
-id = "4pd"
 metadata/_custom_type_script = "uid://gjodwe83bcl7"
 
 [sub_resource type="Resource" id="Resource_qglfb"]
@@ -213,8 +186,6 @@ metadata/_custom_type_script = "uid://c3ayc1w76df76"
 script = ExtResource("1_6moli")
 name = "1G Off per item"
 effect = SubResource("Resource_qglfb")
-rarity = 1
-id = "1pi"
 metadata/_custom_type_script = "uid://gjodwe83bcl7"
 
 [sub_resource type="Resource" id="Resource_udy5n"]
@@ -226,8 +197,6 @@ metadata/_custom_type_script = "uid://c3ayc1w76df76"
 script = ExtResource("1_6moli")
 name = "2G Off per item"
 effect = SubResource("Resource_udy5n")
-rarity = 2
-id = "2pi"
 metadata/_custom_type_script = "uid://gjodwe83bcl7"
 
 [sub_resource type="Resource" id="Resource_0bexc"]
@@ -239,8 +208,6 @@ metadata/_custom_type_script = "uid://c3ayc1w76df76"
 script = ExtResource("1_6moli")
 name = "3G off per item"
 effect = SubResource("Resource_0bexc")
-rarity = 4
-id = "3pi"
 metadata/_custom_type_script = "uid://gjodwe83bcl7"
 
 [sub_resource type="Resource" id="Resource_0wm27"]
@@ -252,8 +219,6 @@ metadata/_custom_type_script = "uid://ca1tqvck3m8qw"
 script = ExtResource("1_6moli")
 name = "Double Up"
 effect = SubResource("Resource_0wm27")
-rarity = 2
-id = "dub"
 metadata/_custom_type_script = "uid://gjodwe83bcl7"
 
 [sub_resource type="Resource" id="Resource_421eq"]
@@ -265,8 +230,6 @@ metadata/_custom_type_script = "uid://ca1tqvck3m8qw"
 script = ExtResource("1_6moli")
 name = "Triple Up"
 effect = SubResource("Resource_421eq")
-rarity = 4
-id = "trip"
 metadata/_custom_type_script = "uid://gjodwe83bcl7"
 
 [resource]

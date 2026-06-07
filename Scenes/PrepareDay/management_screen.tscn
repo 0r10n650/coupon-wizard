@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://dnp4l6onl027g"]
 
-[ext_resource type="Script" uid="uid://h0lyogj8m768" path="res://Scripts/upgrade_screen.gd" id="1_h2bpu"]
-[ext_resource type="PackedScene" uid="uid://bknrg8b05q522" path="res://Scenes/PrepareDay/OrdersPanel.tscn" id="2_b51pr"]
+[ext_resource type="Script" uid="uid://h0lyogj8m768" path="res://Scenes/PrepareDay/management_screen.gd" id="1_h2bpu"]
+[ext_resource type="PackedScene" uid="uid://cwa60teyqb0f8" path="res://Scenes/PrepareDay/orders_panel.tscn" id="2_h2bpu"]
 [ext_resource type="AudioStream" uid="uid://dip1ltitlw8ci" path="res://coupon_game/May31CouponWizard - Chill.wav" id="3_kc22e"]
 
-[node name="UpgradeScreen" type="Control" unique_id=1818493471]
+[node name="ManagementScene" type="Control" unique_id=1818493471]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -96,10 +96,9 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="OrdersPanel" parent="VBoxContainer/ContentContainer/ColorRect/MarginContainer" instance=ExtResource("2_b51pr")]
+[node name="OrdersPanel" parent="VBoxContainer/ContentContainer/ColorRect/MarginContainer" unique_id=1846504040 instance=ExtResource("2_h2bpu")]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_vertical = 3
 
 [node name="UpgradesPanel" type="VBoxContainer" parent="VBoxContainer/ContentContainer/ColorRect/MarginContainer" unique_id=1994495684]
 unique_name_in_owner = true

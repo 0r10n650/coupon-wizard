@@ -1,49 +1,25 @@
 extends Node
 
-const POOL_SIZE        = 5
+const REWARD_MULT = [1.15, 1.15, 1.25, 1.25, 1.5]
+const POOL_SIZE = 5
 const INCOMPLETE_REBATE = 0.5
-
-
-func _ready():
-	pass  # pools now live in ShelfRegistry / OrderGenerator, nothing to preload
 
 
 # Called by GameState.begin_day() — generates and caches the daily pool exactly once.
 func generate_order_pool() -> Array[Order]:
+	# Day specific pools.
 	if GameState.current_day == 1:
-		return _day1_pool()
-	if GameState.current_day == 2:
-		return _day2_pool()
-	return OrderGenerator.generate_pool(POOL_SIZE)
-
-
-# ── day-specific pools ──────────────────────────────────────────
-
-func _day1_pool() -> Array[Order]:
-	# Slot 0 is the tutorial; remaining 4 are generated but hidden.
-	var pool: Array[Order] = []
-	pool.append(_load_tutorial("tutorial_frog"))
-	pool.append_array(OrderGenerator.generate_pool(POOL_SIZE - 1))
-	return pool
-
-
-func _day2_pool() -> Array[Order]:
-	var pool: Array[Order] = []
-	pool.append(_load_tutorial("tutorial_dust"))
-	pool.append_array(OrderGenerator.generate_pool(POOL_SIZE - 1))
-	return pool
-
-
-func _load_tutorial(order_name: String) -> Order:
-	var path  = "res://data/orders/easy_orders/%s.tres" % order_name
-	var order = load(path)
-	if not order is Order:
-		push_error("OrderManager: tutorial resource missing or wrong type: %s" % path)
-	return order
+		var order1 := load("res://data/orders/easy_orders/tutorial_frog.tres")
+		return [order1]
+	elif GameState.current_day == 2:
+		var order1 := load("res://data/orders/easy_orders/tutorial_frog.tres")
+		var order2 := load("red://data/orders/easy_orders/tutorial_rats.tres")
+		return [order1, order2]
+	else:
+		return OrderGenerator.generate_pool(POOL_SIZE)
 
 
 # ── order lifecycle ─────────────────────────────────────────────
-
 func confirm_orders(selected_indices: Array):
 	GameState.active_orders.clear()
 	GameState.completed_order_ids.clear()

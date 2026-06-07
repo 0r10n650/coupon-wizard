@@ -104,7 +104,7 @@ func _switch_to(active_btn: Button, active_panel: Control):
 
 func _show_orders():
 	_switch_to(orders_btn, orders_panel)
-	#orders_panel.build()
+	# orders_panel.build()
 	
 func _show_upgrades():
 	_switch_to(upgrades_btn, upgrades_panel)
