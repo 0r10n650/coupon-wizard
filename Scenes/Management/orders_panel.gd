@@ -1,4 +1,5 @@
 extends VBoxContainer
+class_name OrdersPanel
 
 signal order_selection_changed(order: Order, selected: bool)
 

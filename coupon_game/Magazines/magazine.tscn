@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://3s22uv18odf2"]
+
+[ext_resource type="Script" uid="uid://ylw1bth2jwv8" path="res://coupon_game/Magazines/magazine.gd" id="1_yxwdh"]
+
+[node name="Magazine" type="PanelContainer" unique_id=1174764826]
+script = ExtResource("1_yxwdh")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1293420897]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer" unique_id=912367890]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+expand_mode = 5
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="VBoxContainer" unique_id=477907113]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Description" type="Label" parent="VBoxContainer" unique_id=1703920325]
+layout_mode = 2
+
+[node name="TryButton" type="Button" parent="VBoxContainer" unique_id=612106403]
+layout_mode = 2
+text = "Attempt 
+Cutout"

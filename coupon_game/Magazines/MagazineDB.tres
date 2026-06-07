@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="MagazineDatabase" format=3 uid="uid://csu275wkxatlq"]
+
+[ext_resource type="Script" uid="uid://0ecoqqtncgso" path="res://coupon_game/Magazines/MagazineData.gd" id="1_u8rp3"]
+[ext_resource type="Script" uid="uid://dw32ou3mdtrdv" path="res://coupon_game/Magazines/MagazineDB.gd" id="2_3ju3p"]
+[ext_resource type="Texture2D" uid="uid://cjgyss7jttwiy" path="res://Assets/2D Assets/image.png" id="2_df5gc"]
+[ext_resource type="Texture2D" uid="uid://dqy8njok7f0cf" path="res://Assets/2D Assets/coupon_magazine_5_1.png" id="3_4c08g"]
+[ext_resource type="Texture2D" uid="uid://c15lho5g04nbf" path="res://coupon_game/coupon_magazine_4_1.png" id="4_x1wbq"]
+
+[sub_resource type="Resource" id="Resource_u8rp3"]
+script = ExtResource("1_u8rp3")
+magazine_name = "Coups for Poor"
+description = "Difficulty: Easy"
+image = ExtResource("2_df5gc")
+common_weight = 70.0
+uncommon_weight = 25.0
+rare_weight = 5.0
+metadata/_custom_type_script = "uid://0ecoqqtncgso"
+
+[sub_resource type="Resource" id="Resource_3ju3p"]
+script = ExtResource("1_u8rp3")
+magazine_name = "Coupons R US"
+description = "Difficulty: Medium"
+image = ExtResource("3_4c08g")
+common_weight = 15.0
+uncommon_weight = 30.0
+rare_weight = 40.0
+mythic_weight = 15.0
+metadata/_custom_type_script = "uid://0ecoqqtncgso"
+
+[sub_resource type="Resource" id="Resource_7gkih"]
+script = ExtResource("1_u8rp3")
+magazine_name = "Wizardly Wonders"
+description = "Difficulty: Hard"
+image = ExtResource("4_x1wbq")
+uncommon_weight = 10.0
+rare_weight = 30.0
+mythic_weight = 40.0
+wizardry_weight = 20.0
+metadata/_custom_type_script = "uid://0ecoqqtncgso"
+
+[resource]
+script = ExtResource("2_3ju3p")
+magazines = Array[ExtResource("1_u8rp3")]([SubResource("Resource_u8rp3"), SubResource("Resource_3ju3p"), SubResource("Resource_7gkih")])
+metadata/_custom_type_script = "uid://dw32ou3mdtrdv"

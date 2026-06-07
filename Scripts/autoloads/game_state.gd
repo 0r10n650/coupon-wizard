@@ -42,13 +42,24 @@ var destroyed_items = []
 var discount = 0
 
 var unlocked_coupon_ids: Array = []
-var equipped_coupon_ids: Array = ["5p", "dub"]
+var equipped_coupon_ids: Array = []
 var coupon_slots: int = 2  # upgradeable to 5
 
 const COUPON_DB = preload("res://data/coupons/CouponDatabase.tres")
+const MAGAZINE_DB = preload("res://coupon_game/Magazines/MagazineDB.tres")
+var pending_coupon: CouponData = null
 
+var coupon_attempts_remaining: int = 1
+var tier_completions: Dictionary = {
+	"COMMON": 0,
+	"UNCOMMON": 0,
+	"RARE": 0,
+	"MYTHIC": 0,
+	"WIZARDRY": 0
+}
 
 func _ready():
+	_add_default_coupons()
 	load_game()
 
 func save_game():
@@ -91,7 +102,6 @@ func load_game():
 			unlocked_order_slots = data.get("unlocked_order_slots", 2)
 			unlocked_coupon_ids = data.get("unlocked_coupon_ids", [])
 			equipped_coupon_ids = data.get("equipped_coupon_ids", [])
-			equipped_coupon_ids = ["5s", "trip"]
 			coupon_slots = data.get("coupon_slots", 2)
 			if data.has("upgrades"):
 				for key in data["upgrades"]:
@@ -131,6 +141,7 @@ func reset_game(daily_interest: float):
 	unlocked_order_slots = 1
 	cart_items.clear()
 	unlocked_coupon_ids.clear()
+	_add_default_coupons()
 	equipped_coupon_ids.clear()
 	coupon_slots = 2
 
@@ -154,8 +165,9 @@ func advance_day():
 	rerolls_remaining = int(get_upgrade_value("order_rerolls"))
 	successful_items.clear()
 	destroyed_items.clear()
+	cart_items.clear()
+	coupon_attempts_remaining = get_max_coupon_attempts()
 	save_game()
-
 
 # Call once when the upgrade screen opens for the day. Safe to call multiple
 # times — the pool is only generated once per day.
@@ -260,6 +272,8 @@ func get_upgrade_next_value(upgrade_name: String) -> Variant:
 	return null
 
 # Helpers for getting upgraded values
+func get_max_coupon_attempts() -> int:
+	return 1  # base, make upgradeable later
 func get_max_retries() -> int: return get_upgrade_value("coupon_retries")
 func get_checkout_time_limit() -> float: return 5.0 if upgrades.get("checkout_time", 0) == 0 else get_upgrade_value("checkout_time")
 func get_checkout_vision() -> int: return 0 if upgrades.get("checkout_vision", 0) == 0 else get_upgrade_value("checkout_vision")
@@ -276,6 +290,41 @@ func get_coupon_percent(coupon_id: int) -> int:
 		0: return 55
 		5: return 80
 		_: return 1
+
+func roll_rarity(magazine: MagazineData) -> CouponData.rarity_levels:
+	var weights = [
+		[CouponData.rarity_levels.COMMON,   magazine.common_weight],
+		[CouponData.rarity_levels.UNCOMMON, magazine.uncommon_weight],
+		[CouponData.rarity_levels.RARE,     magazine.rare_weight],
+		[CouponData.rarity_levels.MYTHIC,   magazine.mythic_weight],
+		[CouponData.rarity_levels.WIZARDRY, magazine.wizardry_weight],
+	]
+	var total = 0.0
+	for w in weights:
+		total += w[1]
+	var roll = randf() * total
+	var cumulative = 0.0
+	for w in weights:
+		cumulative += w[1]
+		if roll <= cumulative:
+			return w[0]
+	return CouponData.rarity_levels.COMMON
+
+func try_unlock_from_magazine(magazine: MagazineData) -> CouponData:
+	var rarity = roll_rarity(magazine)
+	var candidates: Array = []
+	for coupon in GameState.COUPON_DB.coupons:
+		if coupon.rarity == rarity and coupon.id not in GameState.unlocked_coupon_ids:
+			candidates.append(coupon)
+	if candidates.is_empty():
+		for coupon in GameState.COUPON_DB.coupons:
+			if coupon.rarity == rarity:
+				candidates.append(coupon)
+	if candidates.is_empty():
+		return null
+	var chosen: CouponData = candidates[randi() % candidates.size()]
+	GameState.unlock_coupon(chosen.id)
+	return chosen
 
 func record_successful_coupon(coupon_id: int):
 	var disc = get_coupon_percent(coupon_id)
@@ -329,6 +378,10 @@ func equip_coupon(id: String, slot: int):
 		equipped_coupon_ids.append("")
 	equipped_coupon_ids[slot] = id
 
+func _add_default_coupons():
+	unlock_coupon("5p")
+	unlock_coupon("5s")
+	unlock_coupon("1pi")
 
 func unequip_coupon(slot: int):
 	if slot < equipped_coupon_ids.size():

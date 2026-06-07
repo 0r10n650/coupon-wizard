@@ -1,5 +1,13 @@
 [gd_scene format=3 uid="uid://b61mqpnekges7"]
 
+[ext_resource type="Script" uid="uid://e35kymgb6qnu" path="res://Scenes/ui/CouponUpgrades/coupon_upgrade_scene.gd" id="1_cwoqp"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_cwoqp"]
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 4
+vertical = true
+
 [node name="CouponUpgradeScene" type="Control" unique_id=1624896003]
 layout_mode = 3
 anchors_preset = 15
@@ -7,6 +15,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_cwoqp")
 
 [node name="Background" type="ColorRect" parent="." unique_id=596750286]
 layout_mode = 1
@@ -36,17 +45,135 @@ alignment = 1
 layout_mode = 2
 text = "Back"
 
-[node name="VSeparator" type="VSeparator" parent="VBoxContainer/NavigationBar/HBoxContainer" unique_id=868079995]
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/NavigationBar/HBoxContainer" unique_id=980699108]
 layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxLine_cwoqp")
 
-[node name="StartShoppingBtn" type="Button" parent="VBoxContainer/NavigationBar/HBoxContainer" unique_id=785024427]
-unique_name_in_owner = true
+[node name="UnlockCouponsButton" type="Button" parent="VBoxContainer/NavigationBar/HBoxContainer" unique_id=548804716]
+custom_minimum_size = Vector2(150, 60)
 layout_mode = 2
-text = "Start Shopping"
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Unlock Coupons"
 
-[node name="EquipedCoupons" type="Control" parent="VBoxContainer" unique_id=253299570]
+[node name="EquippedCoupons" type="Control" parent="VBoxContainer" unique_id=253299570]
 custom_minimum_size = Vector2(0, 140)
 layout_mode = 2
 
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/EquippedCoupons" unique_id=462692841]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/EquippedCoupons/MarginContainer" unique_id=177394666]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="LoadoutRow" type="HBoxContainer" parent="VBoxContainer/EquippedCoupons/MarginContainer/CenterContainer" unique_id=296641002]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
 [node name="Museum" type="Control" parent="VBoxContainer" unique_id=1549990633]
 layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/Museum" unique_id=520704854]
+custom_minimum_size = Vector2(750, 400)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -375.0
+offset_right = 375.0
+offset_bottom = 400.0
+grow_horizontal = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/Museum/ScrollContainer" unique_id=1781108995]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Museum/ScrollContainer/VBoxContainer2" unique_id=2014598193]
+layout_mode = 2
+
+[node name="CommonHeader" type="Button" parent="VBoxContainer/Museum/ScrollContainer/VBoxContainer2/VBoxContainer" unique_id=711606771]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 18
+text = "COMMON"
+
+[node name="CommonGrid" type="GridContainer" parent="VBoxContainer/Museum/ScrollContainer/VBoxContainer2/VBoxContainer" unique_id=1926635557]
+layout_mode = 2
+columns = 7
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/Museum/ScrollContainer/VBoxContainer2" unique_id=1445571692]
+layout_mode = 2
+
+[node name="UncommonHeader" type="Button" parent="VBoxContainer/Museum/ScrollContainer/VBoxContainer2/VBoxContainer2" unique_id=2114719925]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 18
+text = "UNCOMMON"
+
+[node name="UncommonGrid" type="GridContainer" parent="VBoxContainer/Museum/ScrollContainer/VBoxContainer2/VBoxContainer2" unique_id=447053707]
+layout_mode = 2
+columns = 7
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/Museum/ScrollContainer/VBoxContainer2" unique_id=942766498]
+layout_mode = 2
+
+[node name="RareHeader" type="Button" parent="VBoxContainer/Museum/ScrollContainer/VBoxContainer2/VBoxContainer3" unique_id=624156294]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 18
+text = "RARE"
+
+[node name="RareGrid" type="GridContainer" parent="VBoxContainer/Museum/ScrollContainer/VBoxContainer2/VBoxContainer3" unique_id=845078918]
+layout_mode = 2
+columns = 7
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="VBoxContainer/Museum/ScrollContainer/VBoxContainer2" unique_id=1204492330]
+layout_mode = 2
+
+[node name="MythicHeader" type="Button" parent="VBoxContainer/Museum/ScrollContainer/VBoxContainer2/VBoxContainer4" unique_id=359506441]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 18
+text = "MYTHIC"
+
+[node name="MythicGrid" type="GridContainer" parent="VBoxContainer/Museum/ScrollContainer/VBoxContainer2/VBoxContainer4" unique_id=633905112]
+layout_mode = 2
+columns = 7
+
+[node name="VBoxContainer5" type="VBoxContainer" parent="VBoxContainer/Museum/ScrollContainer/VBoxContainer2" unique_id=1720979562]
+layout_mode = 2
+
+[node name="WizardryHeader" type="Button" parent="VBoxContainer/Museum/ScrollContainer/VBoxContainer2/VBoxContainer5" unique_id=1865999917]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 18
+text = "WIZARDRY"
+
+[node name="WizardryGrid" type="GridContainer" parent="VBoxContainer/Museum/ScrollContainer/VBoxContainer2/VBoxContainer5" unique_id=79605202]
+layout_mode = 2
+columns = 7
+
+[node name="DragLayer" type="Control" parent="." unique_id=560439124]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[connection signal="pressed" from="VBoxContainer/NavigationBar/HBoxContainer/BackButton" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="VBoxContainer/NavigationBar/HBoxContainer/UnlockCouponsButton" to="." method="_on_unlock_coupons_button_pressed"]
