@@ -129,7 +129,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19068253, 0.0696522, 0.802
 [node name="RightLResetPoint" type="Marker3D" parent="." unique_id=334607727]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19665706, 0.07012582, 0.8023772)
 
+[node name="EndDayEarly" type="Button" parent="." unique_id=20122272]
+offset_left = 586.0
+offset_top = 524.0
+offset_right = 781.0
+offset_bottom = 569.0
+text = "Finish Day Early"
+
 [connection signal="gui_input" from="GrabButton" to="." method="_on_gui_input"]
+[connection signal="pressed" from="EndDayEarly" to="." method="_on_timer_finished"]
 
 [editable path="WizIK"]
 [editable path="WizIK/Crouch Idle"]

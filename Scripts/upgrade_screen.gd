@@ -522,8 +522,8 @@ func _bump_card(card: Control):
 
 # ── helpers ───────────────────────────────────────────────────
 
-func _find_coupon(id: String) -> Dictionary:
-	for c in GameState.ALL_COUPONS:
+func _find_coupon(id: String):
+	for c in GameState.COUPON_DB.coupons:
 		if c["id"] == id:
 			return c
 	return {}

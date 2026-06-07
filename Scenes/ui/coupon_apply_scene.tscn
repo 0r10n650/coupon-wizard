@@ -1,59 +1,6 @@
 [gd_scene format=3 uid="uid://doimg4tv4my6h"]
 
 [ext_resource type="Script" uid="uid://bxhaobowkod6b" path="res://Scripts/coupon_apply_scene.gd" id="1_1uicq"]
-[ext_resource type="PackedScene" uid="uid://bahahltxrkeib" path="res://Scenes/ui/coupon.tscn" id="1_kdnm7"]
-[ext_resource type="Script" uid="uid://u8ictkroipux" path="res://Scripts/coupons/Effects/PercentOffEffect.gd" id="2_fjf44"]
-[ext_resource type="Script" uid="uid://gjodwe83bcl7" path="res://Scripts/coupons/couponData.gd" id="2_owfh0"]
-[ext_resource type="Script" uid="uid://ca1tqvck3m8qw" path="res://Scripts/coupons/Effects/RunPreviousEffect.gd" id="4_pmicq"]
-[ext_resource type="Script" uid="uid://c70vd0w17r4xd" path="res://Scripts/coupons/Effects/StaticOffEffect.gd" id="5_wooxm"]
-[ext_resource type="Script" uid="uid://c3ayc1w76df76" path="res://Scripts/coupons/Effects/PerItemOffEffect.gd" id="6_wooxm"]
-
-[sub_resource type="Resource" id="Resource_3u1af"]
-script = ExtResource("2_fjf44")
-percent = 5.0
-metadata/_custom_type_script = "uid://u8ictkroipux"
-
-[sub_resource type="Resource" id="Resource_fjf44"]
-script = ExtResource("2_owfh0")
-name = "5% off"
-description = "Gives 5% off"
-effect = SubResource("Resource_3u1af")
-metadata/_custom_type_script = "uid://gjodwe83bcl7"
-
-[sub_resource type="Resource" id="Resource_1uicq"]
-script = ExtResource("4_pmicq")
-metadata/_custom_type_script = "uid://ca1tqvck3m8qw"
-
-[sub_resource type="Resource" id="Resource_pmicq"]
-script = ExtResource("2_owfh0")
-name = "Double Prev"
-description = "REpeats previous effect"
-effect = SubResource("Resource_1uicq")
-metadata/_custom_type_script = "uid://gjodwe83bcl7"
-
-[sub_resource type="Resource" id="Resource_7v42n"]
-script = ExtResource("5_wooxm")
-amount = 20.0
-metadata/_custom_type_script = "uid://c70vd0w17r4xd"
-
-[sub_resource type="Resource" id="Resource_wooxm"]
-script = ExtResource("2_owfh0")
-name = "- 20"
-description = "subtracts 20"
-effect = SubResource("Resource_7v42n")
-metadata/_custom_type_script = "uid://gjodwe83bcl7"
-
-[sub_resource type="Resource" id="Resource_rgkmp"]
-script = ExtResource("6_wooxm")
-amount = 1.0
-type = 1
-metadata/_custom_type_script = "uid://c3ayc1w76df76"
-
-[sub_resource type="Resource" id="Resource_6sak8"]
-script = ExtResource("2_owfh0")
-name = "1 Per Suc"
-effect = SubResource("Resource_rgkmp")
-metadata/_custom_type_script = "uid://gjodwe83bcl7"
 
 [node name="CouponApplyScene" type="Control" unique_id=1359784144]
 layout_mode = 3
@@ -64,67 +11,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1uicq")
 
-[node name="Coupons" type="Node" parent="." unique_id=871261920]
-
-[node name="Coupon" parent="Coupons" unique_id=616560219 instance=ExtResource("1_kdnm7")]
-offset_left = 162.0
-offset_top = 67.0
-offset_right = -558.0
-offset_bottom = -433.0
-data = SubResource("Resource_fjf44")
-
-[node name="Coupon2" parent="Coupons" unique_id=496424292 instance=ExtResource("1_kdnm7")]
-offset_left = 285.0
-offset_top = 66.0
-offset_right = -435.0
-offset_bottom = -434.0
-data = SubResource("Resource_pmicq")
-
-[node name="Coupon3" parent="Coupons" unique_id=2088290207 instance=ExtResource("1_kdnm7")]
-offset_left = 426.0
-offset_top = 70.0
-offset_right = -294.0
-offset_bottom = -430.0
-data = SubResource("Resource_wooxm")
-
-[node name="Coupon4" parent="Coupons" unique_id=300303154 instance=ExtResource("1_kdnm7")]
-offset_left = 555.0
-offset_top = 68.0
-offset_right = -165.0
-offset_bottom = -432.0
-data = SubResource("Resource_6sak8")
-
-[node name="SuccessLabel" type="Label" parent="." unique_id=2101540771]
-layout_mode = 0
-offset_left = 121.0
-offset_top = 261.0
-offset_right = 333.0
-offset_bottom = 290.0
-text = "SUCCESSFUL TOTAL: "
-
-[node name="DestroyedLabel" type="Label" parent="." unique_id=1472770213]
-layout_mode = 0
-offset_left = 125.0
-offset_top = 323.0
-offset_right = 332.0
-offset_bottom = 352.0
-text = "DESTROYED TOTAL: "
-
-[node name="TotalLabel" type="Label" parent="." unique_id=413866308]
-layout_mode = 0
-offset_left = 524.0
-offset_top = 378.0
-offset_right = 731.0
-offset_bottom = 407.0
-text = "TOTAL: "
-
-[node name="DiscountLabel" type="Label" parent="." unique_id=716173074]
-layout_mode = 0
-offset_left = 142.0
-offset_top = 375.0
-offset_right = 349.0
-offset_bottom = 404.0
-
 [node name="Button" type="Button" parent="." unique_id=1904868416]
 layout_mode = 0
 offset_left = 573.0
@@ -132,5 +18,27 @@ offset_top = 263.0
 offset_right = 605.0
 offset_bottom = 279.0
 text = "Apply Coupon"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=699187607]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=901563135]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CouponList" type="VBoxContainer" parent="HBoxContainer" unique_id=1888945227]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer" unique_id=2073165036]
+layout_mode = 2
+
+[node name="TotalLabel" type="Label" parent="HBoxContainer/VBoxContainer2" unique_id=413866308]
+layout_mode = 2
+
+[node name="DiscountLabel" type="Label" parent="HBoxContainer/VBoxContainer2" unique_id=716173074]
+layout_mode = 2
+
+[node name="FinalLabel" type="Label" parent="HBoxContainer/VBoxContainer2" unique_id=1456765784]
+layout_mode = 2
 
 [connection signal="pressed" from="Button" to="." method="_apply_coupons"]
