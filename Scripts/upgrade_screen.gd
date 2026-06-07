@@ -70,7 +70,7 @@ var collection_cards: Array   = []
 
 
 func _ready():
-	GameState.save_current_scene(get_tree().current_scene.scene_file_path)
+	GameState.save_current_scene(scene_file_path)
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 	orders_btn.pressed.connect(_show_orders)
@@ -79,46 +79,32 @@ func _ready():
 	start_shopping_btn.pressed.connect(_on_start_shopping)
 	pay_debt_btn.pressed.connect(_on_pay_debt)
 
-	# Generate the day's order pool exactly once. After this, daily_order_pool
-	# is stable for the whole session — tab switches don't regenerate it.
-	#GameState.begin_day()
-#
-	#orders_panel.slot_purchase_requested.connect(_on_order_slot_purchase)
-	#orders_panel.order_selection_changed.connect(_on_order_selection_changed)
-	#orders_panel.reroll_used.connect(_on_order_reroll)
-#
-	## start on the orders panel
-	#_show_orders()
-	#_update_order_count(0)
-	#_update_bottom_bar()
-#
-	## unlock a few coupons for testing
-	#if GameState.unlocked_coupon_ids.is_empty():
-		#GameState.unlock_coupon("low_pct")
-		#GameState.unlock_coupon("med_double")
-		#GameState.unlock_coupon("high_triple")
+	# start on the orders panel
+	_show_orders()
+	_update_order_count(0)
+	_update_bottom_bar()
+
+	# unlock a few coupons for testing
+	if GameState.unlocked_coupon_ids.is_empty():
+		GameState.unlock_coupon("low_pct")
+		GameState.unlock_coupon("med_double")
+		GameState.unlock_coupon("high_triple")
 
 
 # ── panel switching ─────────────────────────────
 func _switch_to(active_btn: Button, active_panel: Control):
-	return
-	## hide everything
-	#for panel in [orders_panel, upgrades_panel, coupons_panel]:
-		#panel.visible = false
-	#for btn in [orders_btn, upgrades_btn, coupons_btn]:
-		#btn.modulate = Color(1, 1, 1, 0.55)
-	## show active
-	#active_panel.visible = true
-	#active_btn.modulate = Color.WHITE
+	# hide everything
+	for panel in [orders_panel, upgrades_panel, coupons_panel]:
+		panel.visible = false
+	for btn in [orders_btn, upgrades_btn, coupons_btn]:
+		btn.modulate = Color(1, 1, 1, 0.55)
+	# show active
+	active_panel.visible = true
+	active_btn.modulate = Color.WHITE
 
 func _show_orders():
 	_switch_to(orders_btn, orders_panel)
-	#orders_panel.setup(
-		#GameState.current_day,
-		#GameState.daily_order_pool,
-		#GameState.get_unlocked_order_slots(),
-		#GameState.rerolls_remaining,
-	#)
+	# orders_panel.build()
 	
 func _show_upgrades():
 	_switch_to(upgrades_btn, upgrades_panel)
@@ -536,43 +522,11 @@ func _bump_card(card: Control):
 
 # ── helpers ───────────────────────────────────────────────────
 
-func _find_coupon(id: String) -> Dictionary:
-	for c in GameState.ALL_COUPONS:
+func _find_coupon(id: String):
+	for c in GameState.COUPON_DB.coupons:
 		if c["id"] == id:
 			return c
 	return {}
-
-
-# ── order panel handlers ──────────────────────────────────────
-
-func _on_order_selection_changed(order: Order, selected: bool):
-	if selected:
-		if not GameState.active_orders.has(order):
-			GameState.active_orders.append(order)
-	else:
-		GameState.active_orders.erase(order)
-	_update_order_count(GameState.active_orders.size())
-
-
-func _on_order_slot_purchase(slot_idx: int, cost: int):
-	if not GameState.purchase_order_slot(slot_idx, cost):
-		return
-	orders_panel.confirm_slot_purchase(slot_idx)
-	_update_bottom_bar()
-
-
-func _on_order_reroll():
-	# Regenerate the pool and re-setup the panel. Active selections are cleared
-	# since the orders they pointed to no longer exist.
-	GameState.active_orders.clear()
-	GameState.daily_order_pool = OrderManager.generate_order_pool()
-	orders_panel.setup(
-		GameState.current_day,
-		GameState.daily_order_pool,
-		GameState.get_unlocked_order_slots(),
-		GameState.rerolls_remaining,
-	)
-	_update_order_count(0)
 
 
 func _on_pay_debt():

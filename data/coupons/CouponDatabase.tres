@@ -1,0 +1,238 @@
+[gd_resource type="Resource" script_class="CouponDataBase" format=3 uid="uid://cb5a2kcfjp53i"]
+
+[ext_resource type="Script" uid="uid://gjodwe83bcl7" path="res://Scripts/coupons/couponData.gd" id="1_6moli"]
+[ext_resource type="Script" uid="uid://sw3iqask34ex" path="res://data/coupons/CouponDatabase.gd" id="2_48e1o"]
+[ext_resource type="Script" uid="uid://u8ictkroipux" path="res://Scripts/coupons/Effects/PercentOffEffect.gd" id="2_p3ex1"]
+[ext_resource type="Script" uid="uid://c70vd0w17r4xd" path="res://Scripts/coupons/Effects/StaticOffEffect.gd" id="3_ad1j4"]
+[ext_resource type="Script" uid="uid://c3ayc1w76df76" path="res://Scripts/coupons/Effects/PerItemOffEffect.gd" id="4_4q0e4"]
+[ext_resource type="Script" uid="uid://ca1tqvck3m8qw" path="res://Scripts/coupons/Effects/RunPreviousEffect.gd" id="5_5sd4w"]
+
+[sub_resource type="Resource" id="Resource_ad1j4"]
+script = ExtResource("2_p3ex1")
+percent = 5.0
+metadata/_custom_type_script = "uid://u8ictkroipux"
+
+[sub_resource type="Resource" id="Resource_4q0e4"]
+script = ExtResource("1_6moli")
+name = "5% Off"
+description = "Gives 5% off total."
+effect = SubResource("Resource_ad1j4")
+metadata/_custom_type_script = "uid://gjodwe83bcl7"
+
+[sub_resource type="Resource" id="Resource_p3ex1"]
+script = ExtResource("2_p3ex1")
+percent = 10.0
+metadata/_custom_type_script = "uid://u8ictkroipux"
+
+[sub_resource type="Resource" id="Resource_5sd4w"]
+script = ExtResource("1_6moli")
+name = "10% Off"
+effect = SubResource("Resource_p3ex1")
+metadata/_custom_type_script = "uid://gjodwe83bcl7"
+
+[sub_resource type="Resource" id="Resource_mewel"]
+script = ExtResource("2_p3ex1")
+percent = 25.0
+metadata/_custom_type_script = "uid://u8ictkroipux"
+
+[sub_resource type="Resource" id="Resource_i1jho"]
+script = ExtResource("1_6moli")
+name = "25% Off"
+effect = SubResource("Resource_mewel")
+metadata/_custom_type_script = "uid://gjodwe83bcl7"
+
+[sub_resource type="Resource" id="Resource_a20d4"]
+script = ExtResource("2_p3ex1")
+percent = 50.0
+metadata/_custom_type_script = "uid://u8ictkroipux"
+
+[sub_resource type="Resource" id="Resource_5eyfr"]
+script = ExtResource("1_6moli")
+name = "50% Off"
+effect = SubResource("Resource_a20d4")
+metadata/_custom_type_script = "uid://gjodwe83bcl7"
+
+[sub_resource type="Resource" id="Resource_fv3y2"]
+script = ExtResource("2_p3ex1")
+percent = 75.0
+metadata/_custom_type_script = "uid://u8ictkroipux"
+
+[sub_resource type="Resource" id="Resource_yocbf"]
+script = ExtResource("1_6moli")
+name = "75% Off"
+effect = SubResource("Resource_fv3y2")
+metadata/_custom_type_script = "uid://gjodwe83bcl7"
+
+[sub_resource type="Resource" id="Resource_vquny"]
+script = ExtResource("3_ad1j4")
+amount = 5.0
+metadata/_custom_type_script = "uid://c70vd0w17r4xd"
+
+[sub_resource type="Resource" id="Resource_mvf6b"]
+script = ExtResource("1_6moli")
+name = "5G off "
+effect = SubResource("Resource_vquny")
+metadata/_custom_type_script = "uid://gjodwe83bcl7"
+
+[sub_resource type="Resource" id="Resource_lipu2"]
+script = ExtResource("3_ad1j4")
+amount = 10.0
+metadata/_custom_type_script = "uid://c70vd0w17r4xd"
+
+[sub_resource type="Resource" id="Resource_ju1p5"]
+script = ExtResource("1_6moli")
+name = "10G Off"
+effect = SubResource("Resource_lipu2")
+metadata/_custom_type_script = "uid://gjodwe83bcl7"
+
+[sub_resource type="Resource" id="Resource_s22mc"]
+script = ExtResource("3_ad1j4")
+amount = 20.0
+metadata/_custom_type_script = "uid://c70vd0w17r4xd"
+
+[sub_resource type="Resource" id="Resource_ldigm"]
+script = ExtResource("1_6moli")
+name = "20G Off"
+effect = SubResource("Resource_s22mc")
+metadata/_custom_type_script = "uid://gjodwe83bcl7"
+
+[sub_resource type="Resource" id="Resource_7ukcw"]
+script = ExtResource("3_ad1j4")
+amount = 40.0
+metadata/_custom_type_script = "uid://c70vd0w17r4xd"
+
+[sub_resource type="Resource" id="Resource_yoica"]
+script = ExtResource("1_6moli")
+name = "40G Off"
+effect = SubResource("Resource_7ukcw")
+metadata/_custom_type_script = "uid://gjodwe83bcl7"
+
+[sub_resource type="Resource" id="Resource_btu5i"]
+script = ExtResource("3_ad1j4")
+amount = 60.0
+metadata/_custom_type_script = "uid://c70vd0w17r4xd"
+
+[sub_resource type="Resource" id="Resource_7jj5x"]
+script = ExtResource("1_6moli")
+name = "60G Off"
+effect = SubResource("Resource_btu5i")
+metadata/_custom_type_script = "uid://gjodwe83bcl7"
+
+[sub_resource type="Resource" id="Resource_1ctgn"]
+script = ExtResource("4_4q0e4")
+amount = 1.0
+type = 1
+metadata/_custom_type_script = "uid://c3ayc1w76df76"
+
+[sub_resource type="Resource" id="Resource_btupo"]
+script = ExtResource("1_6moli")
+name = "1G Off per Success"
+effect = SubResource("Resource_1ctgn")
+metadata/_custom_type_script = "uid://gjodwe83bcl7"
+
+[sub_resource type="Resource" id="Resource_w3pfx"]
+script = ExtResource("4_4q0e4")
+amount = 2.0
+type = 1
+metadata/_custom_type_script = "uid://c3ayc1w76df76"
+
+[sub_resource type="Resource" id="Resource_tb7ho"]
+script = ExtResource("1_6moli")
+name = "2G Off per Success"
+effect = SubResource("Resource_w3pfx")
+metadata/_custom_type_script = "uid://gjodwe83bcl7"
+
+[sub_resource type="Resource" id="Resource_3mtl5"]
+script = ExtResource("4_4q0e4")
+amount = 3.0
+type = 1
+metadata/_custom_type_script = "uid://c3ayc1w76df76"
+
+[sub_resource type="Resource" id="Resource_wcpy7"]
+script = ExtResource("1_6moli")
+name = "3G Off per Success"
+effect = SubResource("Resource_3mtl5")
+metadata/_custom_type_script = "uid://gjodwe83bcl7"
+
+[sub_resource type="Resource" id="Resource_mbcv4"]
+script = ExtResource("4_4q0e4")
+amount = 2.0
+type = 2
+metadata/_custom_type_script = "uid://c3ayc1w76df76"
+
+[sub_resource type="Resource" id="Resource_srs6j"]
+script = ExtResource("1_6moli")
+name = "2G Back per Destroyed"
+effect = SubResource("Resource_mbcv4")
+metadata/_custom_type_script = "uid://gjodwe83bcl7"
+
+[sub_resource type="Resource" id="Resource_idn6o"]
+script = ExtResource("4_4q0e4")
+amount = 4.0
+type = 2
+metadata/_custom_type_script = "uid://c3ayc1w76df76"
+
+[sub_resource type="Resource" id="Resource_aojpb"]
+script = ExtResource("1_6moli")
+name = "4G Back per Destroyed"
+effect = SubResource("Resource_idn6o")
+metadata/_custom_type_script = "uid://gjodwe83bcl7"
+
+[sub_resource type="Resource" id="Resource_qglfb"]
+script = ExtResource("4_4q0e4")
+metadata/_custom_type_script = "uid://c3ayc1w76df76"
+
+[sub_resource type="Resource" id="Resource_3a2mc"]
+script = ExtResource("1_6moli")
+name = "1G Off per item"
+effect = SubResource("Resource_qglfb")
+metadata/_custom_type_script = "uid://gjodwe83bcl7"
+
+[sub_resource type="Resource" id="Resource_udy5n"]
+script = ExtResource("4_4q0e4")
+amount = 2.0
+metadata/_custom_type_script = "uid://c3ayc1w76df76"
+
+[sub_resource type="Resource" id="Resource_gq4rl"]
+script = ExtResource("1_6moli")
+name = "2G Off per item"
+effect = SubResource("Resource_udy5n")
+metadata/_custom_type_script = "uid://gjodwe83bcl7"
+
+[sub_resource type="Resource" id="Resource_0bexc"]
+script = ExtResource("4_4q0e4")
+amount = 3.0
+metadata/_custom_type_script = "uid://c3ayc1w76df76"
+
+[sub_resource type="Resource" id="Resource_o3t4e"]
+script = ExtResource("1_6moli")
+name = "3G off per item"
+effect = SubResource("Resource_0bexc")
+metadata/_custom_type_script = "uid://gjodwe83bcl7"
+
+[sub_resource type="Resource" id="Resource_0wm27"]
+script = ExtResource("5_5sd4w")
+amount = 1.0
+metadata/_custom_type_script = "uid://ca1tqvck3m8qw"
+
+[sub_resource type="Resource" id="Resource_1yxrq"]
+script = ExtResource("1_6moli")
+name = "Double Up"
+effect = SubResource("Resource_0wm27")
+metadata/_custom_type_script = "uid://gjodwe83bcl7"
+
+[sub_resource type="Resource" id="Resource_421eq"]
+script = ExtResource("5_5sd4w")
+amount = 2.0
+metadata/_custom_type_script = "uid://ca1tqvck3m8qw"
+
+[sub_resource type="Resource" id="Resource_ygsph"]
+script = ExtResource("1_6moli")
+name = "Triple Up"
+effect = SubResource("Resource_421eq")
+metadata/_custom_type_script = "uid://gjodwe83bcl7"
+
+[resource]
+script = ExtResource("2_48e1o")
+coupons = Array[ExtResource("1_6moli")]([SubResource("Resource_4q0e4"), SubResource("Resource_5sd4w"), SubResource("Resource_i1jho"), SubResource("Resource_5eyfr"), SubResource("Resource_yocbf"), SubResource("Resource_mvf6b"), SubResource("Resource_ju1p5"), SubResource("Resource_ldigm"), SubResource("Resource_yoica"), SubResource("Resource_7jj5x"), SubResource("Resource_btupo"), SubResource("Resource_tb7ho"), SubResource("Resource_wcpy7"), SubResource("Resource_srs6j"), SubResource("Resource_aojpb"), SubResource("Resource_3a2mc"), SubResource("Resource_gq4rl"), SubResource("Resource_o3t4e"), SubResource("Resource_1yxrq"), SubResource("Resource_ygsph")])
+metadata/_custom_type_script = "uid://sw3iqask34ex"

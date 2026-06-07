@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://cwa60teyqb0f8"]
+
+[ext_resource type="PackedScene" uid="uid://2t6puvjnxr8b" path="res://Scenes/PrepareDay/order_card.tscn" id="1_ehbio"]
+[ext_resource type="Script" uid="uid://cupu4l5wptjoi" path="res://Scenes/PrepareDay/orders_panel.gd" id="1_k3iwa"]
+[ext_resource type="Script" uid="uid://nkht70761teq" path="res://Scripts/ingredients/ingredient.gd" id="2_h0h22"]
+[ext_resource type="Resource" uid="uid://docqdhq0wgs2g" path="res://data/ingredients/angry_stuff.tres" id="3_8le7q"]
+[ext_resource type="Resource" uid="uid://drtywmd5rv8hj" path="res://data/ingredients/dragon_scale.tres" id="4_5ascw"]
+[ext_resource type="Resource" uid="uid://chypn8ots88a3" path="res://data/ingredients/goblin_toes.tres" id="5_rpeo4"]
+[ext_resource type="Script" uid="uid://dh14bedsfqfwf" path="res://data/orders/order.gd" id="6_pkuxa"]
+
+[sub_resource type="Resource" id="Resource_op5db"]
+script = ExtResource("6_pkuxa")
+id = "123"
+title = "Monster Mash"
+line_items = Dictionary[ExtResource("2_h0h22"), int]({
+ExtResource("3_8le7q"): 5,
+ExtResource("4_5ascw"): 2,
+ExtResource("5_rpeo4"): 4
+})
+metadata/_custom_type_script = "uid://dh14bedsfqfwf"
+
+[node name="OrdersPanel" type="VBoxContainer" unique_id=1846504040]
+script = ExtResource("1_k3iwa")
+tutorial1 = SubResource("Resource_op5db")
+
+[node name="Label" type="Label" parent="." unique_id=1156094611]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="." unique_id=1367992131]
+layout_mode = 2
+
+[node name="OrderHolder" type="HBoxContainer" parent="." unique_id=454745928]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="OrderCard" parent="OrderHolder" unique_id=1313720409 instance=ExtResource("1_ehbio")]
+layout_mode = 2
+
+[node name="OrderCard2" parent="OrderHolder" unique_id=597299265 instance=ExtResource("1_ehbio")]
+layout_mode = 2
+
+[node name="OrderCard3" parent="OrderHolder" unique_id=578056893 instance=ExtResource("1_ehbio")]
+layout_mode = 2
+
+[node name="OrderCard4" parent="OrderHolder" unique_id=1482771096 instance=ExtResource("1_ehbio")]
+layout_mode = 2
+
+[node name="OrderCard5" parent="OrderHolder" unique_id=80449219 instance=ExtResource("1_ehbio")]
+layout_mode = 2
+
+[node name="RerollButton" type="Button" parent="." unique_id=1738133313]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+disabled = true
+text = "↺ x0"
