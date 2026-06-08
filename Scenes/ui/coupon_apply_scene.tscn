@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://doimg4tv4my6h"]
 
-[ext_resource type="Script" uid="uid://bxhaobowkod6b" path="res://Scripts/coupon_apply_scene.gd" id="1_1uicq"]
+[ext_resource type="Script" uid="uid://2i0gtg4br4i0" path="res://Scripts/coupon_apply.gd" id="1_kdnm7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kdnm7"]
 bg_color = Color(0.76957154, 0.8348045, 0.9462357, 1)
@@ -16,7 +16,7 @@ offset_right = -80.0
 offset_bottom = -200.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_1uicq")
+script = ExtResource("1_kdnm7")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1728892130]
 layout_mode = 1

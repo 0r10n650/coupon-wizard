@@ -1,17 +1,12 @@
-extends Node2D
+extends Control
 
 @onready var anim_player = $AnimationPlayer
 @onready var receipt_scn = $ReceiptScene
 @onready var coupon_apply = $CouponApplyScene
 
-func _ready():
-	receipt_scn.visible = false
-	coupon_apply.coupon_apply_finished.connect(_on_coupons_finished)
-	coupon_apply.start()
-	
-
-func _on_coupons_finished():
+func _on_coupon_apply_scene_is_done():
 	print("coupons finished")
+	coupon_apply.visible = false
 	await get_tree().create_timer(0.5).timeout
 	anim_player.play("Checkout")
 	await anim_player.animation_finished

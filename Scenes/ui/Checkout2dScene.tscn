@@ -8,7 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://u7i2uuw2ubc5" path="res://Scenes/ui/receipt_scene.tscn" id="5_destf"]
 [ext_resource type="Texture2D" uid="uid://bm2sjuj4cqwrt" path="res://Assets/2D Assets/ReceiptPrinter.png" id="6_sux21"]
 [ext_resource type="Texture2D" uid="uid://b8hrxwg5gic3e" path="res://Assets/2D Assets/TransparentScreen.png" id="7_sux21"]
-[ext_resource type="PackedScene" uid="uid://doimg4tv4my6h" path="res://Scenes/ui/coupon_apply_scene.tscn" id="9_soss7"]
+[ext_resource type="Script" uid="uid://bsnjkmqrmjupf" path="res://Scenes/ui/coupon_apply_scene.gd" id="9_soss7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sux21"]
+bg_color = Color(0.76957154, 0.8348045, 0.9462357, 1)
+corner_detail = 1
 
 [sub_resource type="Animation" id="Animation_destf"]
 resource_name = "Checkout"
@@ -71,11 +75,17 @@ _data = {
 &"RESET": SubResource("Animation_dcu0c")
 }
 
-[node name="Checkout2dScene" type="Node2D" unique_id=955066458]
+[node name="Checkout2dScene" type="Control" unique_id=2077563291]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_ebnxp")
 
-[node name="Art" type="Node2D" parent="." unique_id=640003821]
-position = Vector2(-1212, -742)
+[node name="Art" type="Control" parent="." unique_id=975491771]
+anchors_preset = 0
+offset_left = -1212.0
+offset_top = -742.0
+offset_right = -1212.0
+offset_bottom = -742.0
 scale = Vector2(3.22, 3.22)
 
 [node name="CheckoutSceneCheckoutBackground" type="Sprite2D" parent="Art" unique_id=375270628]
@@ -105,17 +115,68 @@ position = Vector2(501, 349)
 texture = ExtResource("7_sux21")
 
 [node name="ReceiptScene" parent="." unique_id=1686562714 instance=ExtResource("5_destf")]
+visible = false
+layout_mode = 0
 offset_left = 238.0
 offset_top = 396.0
 offset_right = 488.0
 offset_bottom = 714.0
 
+[node name="CouponApplyScene" type="Control" parent="." unique_id=1683884346]
+custom_minimum_size = Vector2(700, 400)
+anchors_preset = 0
+offset_left = 58.0
+offset_top = 100.0
+offset_right = 758.0
+offset_bottom = 500.0
+script = ExtResource("9_soss7")
+
+[node name="PanelContainer" type="PanelContainer" parent="CouponApplyScene" unique_id=617190085]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00125
+anchor_right = 1.00125
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_sux21")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CouponApplyScene/PanelContainer" unique_id=2137309515]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="CouponList" type="HBoxContainer" parent="CouponApplyScene/PanelContainer/VBoxContainer" unique_id=1737403879]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CouponApplyScene/PanelContainer/VBoxContainer" unique_id=161261908]
+layout_mode = 2
+alignment = 1
+
+[node name="DiscountLabel" type="Label" parent="CouponApplyScene/PanelContainer/VBoxContainer/VBoxContainer2" unique_id=868587211]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+horizontal_alignment = 1
+
+[node name="TotalLabel" type="Label" parent="CouponApplyScene/PanelContainer/VBoxContainer/VBoxContainer2" unique_id=1282454705]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+horizontal_alignment = 1
+
+[node name="FinalLabel" type="Label" parent="CouponApplyScene/PanelContainer/VBoxContainer/VBoxContainer2" unique_id=1416935516]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="CouponApplyScene/PanelContainer/VBoxContainer/VBoxContainer2" unique_id=2017442122]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Go To Receipt"
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1704826745]
 libraries/ = SubResource("AnimationLibrary_ebnxp")
 
-[node name="CouponApplyScene" parent="." unique_id=1359784144 instance=ExtResource("9_soss7")]
-visible = false
-offset_left = 42.0
-offset_top = 88.0
-offset_right = 762.0
-offset_bottom = 488.0
+[connection signal="pressed" from="CouponApplyScene/PanelContainer/VBoxContainer/VBoxContainer2/Button" to="." method="_on_coupon_apply_scene_is_done"]
