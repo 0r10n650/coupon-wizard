@@ -40,7 +40,7 @@ func _generate_order() -> Order:
 	var chosen_categories = categories.slice(0, cfg["categories"])
 
 	var ingredient_count = randi_range(cfg["ingredients"][0], cfg["ingredients"][1])
-	var per_category     = ceili(float(ingredient_count) / chosen_categories.size())
+	var per_category     = ceili(float(ingredient_count) / max(1, chosen_categories.size()))
 
 	var all_ingredients: Array = []
 	for cat in chosen_categories:

@@ -255,7 +255,7 @@ func play_end_cutscene():
 func _show_payment_ui():
 	GameState.successful_items = successful_items
 	GameState.destroyed_items = destroyed_items
-	get_tree().change_scene_to_packed(checkout_2d)
+	get_tree().call_deferred("change_scene_to_packed", checkout_2d)
 
 func advance_to_next_arrow(success: bool):
 	if active_sprites.size() > 0:
@@ -280,15 +280,16 @@ func advance_to_next_arrow(success: bool):
 		play_end_cutscene()
 		return
 		
-	var move_tween = create_tween()
-	move_tween.set_parallel(true)
-	for i in range(active_sprites.size()):
-		var child = active_sprites[i]
-		var target_scale = Vector2(1, 1) if i == 0 else Vector2(0.7, 0.7)
-		var target_alpha = 1.0 if i == 0 else 0.5
-		move_tween.tween_property(child, "position:x", i * arrow_spacing, 0.2).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-		move_tween.tween_property(child, "scale", target_scale, 0.2).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-		move_tween.tween_property(child, "modulate:a", target_alpha, 0.2)
+	if active_sprites.size() > 0:
+		var move_tween = create_tween()
+		move_tween.set_parallel(true)
+		for i in range(active_sprites.size()):
+			var child = active_sprites[i]
+			var target_scale = Vector2(1, 1) if i == 0 else Vector2(0.7, 0.7)
+			var target_alpha = 1.0 if i == 0 else 0.5
+			move_tween.tween_property(child, "position:x", i * arrow_spacing, 0.2).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+			move_tween.tween_property(child, "scale", target_scale, 0.2).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+			move_tween.tween_property(child, "modulate:a", target_alpha, 0.2)
 	
 	update_visible_arrows()
 	update_ui()

@@ -91,25 +91,28 @@ func load_game():
 		var parse_result = json.parse(json_string)
 		if parse_result == OK:
 			var data = json.get_data()
-			current_day = data.get("current_day", current_day)
-			gold = data.get("gold", gold)
-			debt = data.get("debt", debt)
-			last_scene_path = data.get("last_scene_path", last_scene_path)
-			if last_scene_path == "res://Scenes/shopping.tscn":
-				last_scene_path = "res://Scenes/Shopping/shopping.tscn"
-			completed_order_ids  = data.get("completed_order_ids", [])
-			rerolls_remaining    = data.get("rerolls_remaining", 0)
-			unlocked_order_slots = data.get("unlocked_order_slots", 2)
-			unlocked_coupon_ids = data.get("unlocked_coupon_ids", [])
-			equipped_coupon_ids = data.get("equipped_coupon_ids", [])
-			coupon_slots = data.get("coupon_slots", 2)
-			if data.has("upgrades"):
-				for key in data["upgrades"]:
-					if upgrades.has(key):
-						upgrades[key] = data["upgrades"][key]
-				coupon_slots = int(get_upgrade_value("coupon_slots"))
-				if upgrades.get("orders", 0) > 0:
-					max_orders = int(get_upgrade_value("orders"))
+			if typeof(data) == TYPE_DICTIONARY:
+				current_day = data.get("current_day", current_day)
+				gold = data.get("gold", gold)
+				debt = data.get("debt", debt)
+				last_scene_path = data.get("last_scene_path", last_scene_path)
+				if last_scene_path == "res://Scenes/shopping.tscn":
+					last_scene_path = "res://Scenes/Shopping/shopping.tscn"
+				completed_order_ids  = data.get("completed_order_ids", [])
+				rerolls_remaining    = data.get("rerolls_remaining", 0)
+				unlocked_order_slots = data.get("unlocked_order_slots", 2)
+				unlocked_coupon_ids = data.get("unlocked_coupon_ids", [])
+				equipped_coupon_ids = data.get("equipped_coupon_ids", [])
+				coupon_slots = data.get("coupon_slots", 2)
+				if data.has("upgrades"):
+					for key in data["upgrades"]:
+						if upgrades.has(key):
+							upgrades[key] = data["upgrades"][key]
+					coupon_slots = int(get_upgrade_value("coupon_slots"))
+					if upgrades.get("orders", 0) > 0:
+						max_orders = int(get_upgrade_value("orders"))
+			else:
+				push_error("Save file data is not a valid dictionary. Defaulting game state.")
 		file.close()
 
 func has_save_file() -> bool:
@@ -263,22 +266,25 @@ var upgrade_tiers = {
 }
 
 func get_upgrade_cost(upgrade_name: String) -> int:
+	if not upgrade_tiers.has(upgrade_name): return 999999
 	var level = upgrades.get(upgrade_name, 0)
-	var costs = upgrade_tiers[upgrade_name]["costs"]
+	var costs = upgrade_tiers[upgrade_name].get("costs", [])
 	if level < costs.size():
 		return costs[level]
 	return 999999 # Max level reached
 
 func get_upgrade_value(upgrade_name: String) -> Variant:
+	if not upgrade_tiers.has(upgrade_name): return 0
 	var level = upgrades.get(upgrade_name, 0)
-	var values = upgrade_tiers[upgrade_name]["values"]
+	var values = upgrade_tiers[upgrade_name].get("values", [0])
 	if level < values.size():
 		return values[level]
 	return values[values.size() - 1]
 
 func get_upgrade_next_value(upgrade_name: String) -> Variant:
+	if not upgrade_tiers.has(upgrade_name): return null
 	var level = upgrades.get(upgrade_name, 0) + 1
-	var values = upgrade_tiers[upgrade_name]["values"]
+	var values = upgrade_tiers[upgrade_name].get("values", [])
 	if level < values.size():
 		return values[level]
 	return null
@@ -324,11 +330,11 @@ func roll_rarity(magazine: MagazineData) -> CouponData.rarity_levels:
 func try_unlock_from_magazine(magazine: MagazineData) -> CouponData:
 	var rarity = roll_rarity(magazine)
 	var candidates: Array = []
-	for coupon in GameState.COUPON_DB.coupons:
+	for coupon in COUPON_DB.coupons:
 		if coupon.rarity == rarity and coupon.id not in GameState.unlocked_coupon_ids:
 			candidates.append(coupon)
 	if candidates.is_empty():
-		for coupon in GameState.COUPON_DB.coupons:
+		for coupon in COUPON_DB.coupons:
 			if coupon.rarity == rarity:
 				candidates.append(coupon)
 	if candidates.is_empty():

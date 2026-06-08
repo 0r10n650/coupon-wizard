@@ -21,7 +21,8 @@ func apply(successful: Array,
 	return discount
 
 func _find_coupon(id: String):
-	for coupon in GameState.COUPON_DB.coupons:
+	var db = load("res://data/coupons/CouponDatabase.tres")
+	for coupon in db.coupons:
 		if coupon.id == id:
 			return coupon
 	return null

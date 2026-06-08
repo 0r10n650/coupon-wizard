@@ -25,12 +25,20 @@ func _poll():
 			push_error("SceneLoader: failed to load " + _target_path)
 			hide()
 			_target_path = ""
+			if get_tree().current_scene.scene_file_path != "res://Scenes/StartGame/start_page.tscn":
+				get_tree().change_scene_to_file("res://Scenes/StartGame/start_page.tscn")
 
 func _finish():
 	var packed = ResourceLoader.load_threaded_get(_target_path)
 	_target_path = ""
-	var instance = packed.instantiate()
-	get_tree().current_scene.free()
-	get_tree().root.add_child(instance)
-	get_tree().current_scene = instance
 	hide()
+	
+	if packed and packed is PackedScene:
+		var instance = packed.instantiate()
+		get_tree().current_scene.free()
+		get_tree().root.add_child(instance)
+		get_tree().current_scene = instance
+	else:
+		push_error("SceneLoader: failed to instantiate scene. Returning to start menu.")
+		if get_tree().current_scene.scene_file_path != "res://Scenes/StartGame/start_page.tscn":
+			get_tree().change_scene_to_file("res://Scenes/StartGame/start_page.tscn")

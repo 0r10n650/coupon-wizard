@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://cpulmfxg8xtph"]
+
+[ext_resource type="PackedScene" uid="uid://cfsmos5rhswc" path="res://Scenes/Shopping/shopping_wizard.tscn" id="1_a7yyn"]
+
+[sub_resource type="Environment" id="Environment_exoug"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_8iur8"]
+
+[sub_resource type="Compositor" id="Compositor_dvs4g"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_a7yyn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a7yyn"]
+size = Vector3(1, 0.5029297, 1)
+
+[node name="WizPoser" type="Node3D" unique_id=1886157809]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=592263140]
+environment = SubResource("Environment_exoug")
+camera_attributes = SubResource("CameraAttributesPractical_8iur8")
+compositor = SubResource("Compositor_dvs4g")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=849445092]
+transform = Transform3D(-0.7071068, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, -0.7071068, 1.3363485, 0.6147851, -0.96971965)
+
+[node name="ShoppingWizard" parent="." unique_id=948979824 instance=ExtResource("1_a7yyn")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1743401168]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=2078991442]
+mesh = SubResource("PlaneMesh_a7yyn")
+skeleton = NodePath("../../WorldEnvironment")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1943879365]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.24853516, 0)
+shape = SubResource("BoxShape3D_a7yyn")

@@ -50,10 +50,10 @@ func load_total():
 func _build_coupon_cards():
 	print("equipped_coupon_ids: ", GameState.equipped_coupon_ids)
 	for id in GameState.equipped_coupon_ids:
-		if id == "":
+		if id == null or id == "":
 			continue
 		var card = preload("res://Scenes/ui/Coupon.tscn").instantiate()
-		var data = _find_coupon_data(id)
+		var data = _find_coupon_data(str(id))
 		print("id: ", id, " | data: ", data)
 		card.data = data
 		coupon_list.add_child(card)
@@ -62,10 +62,12 @@ func _build_coupon_cards():
 func _apply_coupons():
 	var current_slot = 0
 	var starting_total = total
+	var has_valid_coupon = false
 	for card in coupon_list.get_children():
 		if card.data == null:
 			current_slot += 1
 			continue
+		has_valid_coupon = true
 		await get_tree().create_timer(1.0).timeout
 		current_discount = card.data.apply(successful_items, destroyed_items, starting_total, GameState.equipped_coupon_ids, current_slot)
 		discount += current_discount
@@ -74,7 +76,12 @@ func _apply_coupons():
 		_animate_card(card)
 		update_ui()
 	GameState.discount = discount
-	await get_tree().create_timer(2.0).timeout
+	
+	if has_valid_coupon:
+		await get_tree().create_timer(2.0).timeout
+	else:
+		await get_tree().process_frame
+		
 	self.visible = false
 	coupon_apply_finished.emit()
 

@@ -16,7 +16,7 @@ extends Control
 @onready var wizardry_grid = $VBoxContainer/Museum/ScrollContainer/VBoxContainer2/VBoxContainer5/WizardryGrid
 @onready var drag_layer = $DragLayer
 
-const COUPON_SCENE = preload("res://Scenes/ui/Coupon.tscn")
+const COUPON_SCENE = preload("res://Scenes/ui/coupon.tscn")
 const SLOT_CARD_SIZE = Vector2(95, 110)
 
 var drag_coupon_id: String = ""
