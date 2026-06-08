@@ -9,16 +9,24 @@ var current_discount = 0
 
 const receipt_scene = preload("res://Scenes/ui/Checkout2dScene.tscn")
 
-@onready var coupon_list = $HBoxContainer/CouponList
-@onready var disLabel = $HBoxContainer/VBoxContainer2/DiscountLabel
-@onready var tlabel = $HBoxContainer/VBoxContainer2/TotalLabel
+@onready var coupon_list = $PanelContainer/VBoxContainer/CouponList
+@onready var disLabel = $PanelContainer/VBoxContainer/VBoxContainer2/DiscountLabel
+@onready var tlabel = $PanelContainer/VBoxContainer/VBoxContainer2/TotalLabel
+
+signal coupon_apply_finished
+
+func start():
+	print("start called")
+	if not is_node_ready():
+		await ready
+	self.visible = true
+	load_total()
+	_build_coupon_cards()
+	_apply_coupons()
 
 func _ready():
 	successful_items = GameState.successful_items
 	destroyed_items = GameState.destroyed_items
-	load_total()
-	_build_coupon_cards()
-	_apply_coupons()
 
 func load_total():
 	var successful_total = 0
@@ -66,8 +74,9 @@ func _apply_coupons():
 		_animate_card(card)
 		update_ui()
 	GameState.discount = discount
-	await get_tree().create_timer(1.0).timeout
-	SceneLoader.load_scene(receipt_scene.resource_path)
+	await get_tree().create_timer(2.0).timeout
+	self.visible = false
+	coupon_apply_finished.emit()
 
 func _animate_card(card: Control):
 	var tween = create_tween()

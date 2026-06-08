@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dnp4l6onl027g"]
 
-[ext_resource type="Script" uid="uid://h0lyogj8m768" path="res://Scenes/Management/management_screen.gd" id="1_h2bpu"]
+[ext_resource type="Script" uid="uid://dbfdghgojivre" path="res://Scenes/Management/management_scene.gd" id="1_grg0v"]
 [ext_resource type="PackedScene" uid="uid://cwa60teyqb0f8" path="res://Scenes/Management/orders_panel.tscn" id="2_h2bpu"]
 [ext_resource type="AudioStream" uid="uid://dip1ltitlw8ci" path="res://coupon_game/May31CouponWizard - Chill.wav" id="3_kc22e"]
 
@@ -11,7 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_h2bpu")
+script = ExtResource("1_grg0v")
 
 [node name="Background" type="ColorRect" parent="." unique_id=1974711357]
 layout_mode = 1

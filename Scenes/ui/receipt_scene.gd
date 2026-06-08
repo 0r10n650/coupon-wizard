@@ -66,19 +66,17 @@ func setup(s_items, d_items):
 	# reveal totals one by one
 	await get_tree().create_timer(0.3).timeout
 	discount.visible = true
-	await get_tree().create_timer(0.2).timeout
+	
+	await get_tree().create_timer(0.4).timeout
 	success.visible = true
-	await get_tree().create_timer(0.2).timeout
+	
 	destroyed.visible = true
-	await get_tree().create_timer(0.2).timeout
 	
 	sep3.visible = true
 	
 	total.visible = true
 	
 	sep4.visible = true
-	
-	await get_tree().create_timer(0.2).timeout
 	
 	button.visible = true
 	

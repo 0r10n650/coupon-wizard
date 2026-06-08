@@ -4,10 +4,9 @@ class_name ShoppingWizard
 @onready var movementC = $MovementComponent
 @onready var wizard = $WizardMesh
 @onready var camera = $Camera3D
-@onready var leaningC = $LeaningComponent
 @onready var leftCast = $LeftCast
 @onready var rightCast = $RightCast
-@onready var cur_inventory = $Inventory
+@onready var cur_inventory = $ScrollContainer/Inventory
 
 @onready var anim_player = $"WizIK/Crouch Idle/AnimationPlayer"
 @onready var right_leg_ik = $"WizIK/Crouch Idle/Skeleton3D/RightLegIK"
@@ -25,6 +24,12 @@ class_name ShoppingWizard
 @onready var left_l_reset_point = $LeftLResetPoint
 @onready var right_l_reset_point = $RightLResetPoint
 
+@onready var orders_container = $OrdersContainer
+var orders_shown: bool = false
+var orders_tween: Tween
+
+const ORDER_CARD_SCENE = preload("res://Scenes/Management/order_card.tscn")
+
 var left_tween: Tween
 var right_tween: Tween
 
@@ -33,6 +38,7 @@ var inventory : Array[inventory_item_2D]
 var shopping_timer: float
 var timer_ui: ShoppingTimerUI
 var has_transitioned: bool = false
+
 
 func _ready():
 	shopping_timer = GameState.get_shopping_time_limit()
@@ -45,6 +51,22 @@ func _ready():
 	right_leg_ik_target.global_position = right_l_reset_point.global_position
 	left_arm_ik_target.global_position = left_reset_point.global_position
 	right_arm_ik_target.global_position = right_reset_point.global_position
+	
+	_build_orders_display()
+	# start hidden up top
+	orders_container.position.y = -orders_container.size.y + 20  # just peek 20px
+
+func _process(delta):
+	var mouse_pos = get_viewport().get_mouse_position()
+	for card in orders_container.get_children():
+		var card_rect = Rect2(
+			Vector2(card.global_position.x, 0),  # check full vertical strip
+			Vector2(card.size.x, 150)  # 150px tall hover zone at top
+		)
+		if card_rect.has_point(mouse_pos):
+			_slide_card_down(card)
+		else:
+			_slide_card_up(card)
 
 func _physics_process(delta):
 	movementC.move(delta)
@@ -129,3 +151,26 @@ func grab(direction):
 		cur_inventory.add_item(item)
 		GameState.add_cart_item(item)
 		col_ob_parent._get_item()
+
+func _build_orders_display():
+	for order in GameState.active_orders:
+		var card = ORDER_CARD_SCENE.instantiate()
+		orders_container.add_child(card)
+		card.setup(order)
+		card.set_meta("shown", false)
+		await get_tree().process_frame  # wait for size to be calculated
+		card.position.y = -card.size.y + 100
+
+func _slide_card_down(card: Control):
+	if card.get_meta("shown", false):
+		return
+	card.set_meta("shown", true)
+	var t = create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	t.tween_property(card, "position:y", 50, 0.3)
+
+func _slide_card_up(card: Control):
+	if not card.get_meta("shown", false):
+		return
+	card.set_meta("shown", false)
+	var t = create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
+	t.tween_property(card, "position:y", -card.size.y + 100, 0.3)

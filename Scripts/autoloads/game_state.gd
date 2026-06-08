@@ -68,7 +68,6 @@ func save_game():
 		"gold": gold,
 		"debt": debt,
 		"last_scene_path": last_scene_path,
-		"active_orders":        active_orders,
 		"completed_order_ids":  completed_order_ids,
 		"rerolls_remaining":    rerolls_remaining,
 		"unlocked_order_slots": unlocked_order_slots,
@@ -96,7 +95,6 @@ func load_game():
 			gold = data.get("gold", gold)
 			debt = data.get("debt", debt)
 			last_scene_path = data.get("last_scene_path", last_scene_path)
-			active_orders        = data.get("active_orders", [])
 			completed_order_ids  = data.get("completed_order_ids", [])
 			rerolls_remaining    = data.get("rerolls_remaining", 0)
 			unlocked_order_slots = data.get("unlocked_order_slots", 2)
@@ -167,6 +165,7 @@ func advance_day():
 	destroyed_items.clear()
 	cart_items.clear()
 	coupon_attempts_remaining = get_max_coupon_attempts()
+	begin_day()
 	save_game()
 
 # Call once when the upgrade screen opens for the day. Safe to call multiple
@@ -273,8 +272,7 @@ func get_upgrade_next_value(upgrade_name: String) -> Variant:
 
 # Helpers for getting upgraded values
 func get_max_coupon_attempts() -> int:
-	return 1  # base, make upgradeable later
-func get_max_retries() -> int: return get_upgrade_value("coupon_retries")
+	return get_upgrade_value("coupon_retries") + 1
 func get_checkout_time_limit() -> float: return 5.0 if upgrades.get("checkout_time", 0) == 0 else get_upgrade_value("checkout_time")
 func get_checkout_vision() -> int: return 0 if upgrades.get("checkout_vision", 0) == 0 else get_upgrade_value("checkout_vision")
 func get_maze_time_limit() -> float: return get_upgrade_value("coupon_time")
@@ -342,7 +340,7 @@ func get_total_discount_percent() -> int:
 func can_try_coupon(coupon_id: int) -> bool:
 	if not daily_state["coupons_tried"].has(coupon_id):
 		return true
-	if daily_state["retries_used"] < get_max_retries():
+	if daily_state["retries_used"] < get_max_coupon_attempts():
 		return true
 	return false
 

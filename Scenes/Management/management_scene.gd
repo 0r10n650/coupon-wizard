@@ -10,10 +10,9 @@ extends Control
 # content panels (only one visible at a time)
 @onready var orders_panel = %OrdersPanel
 @onready var upgrades_panel = %UpgradesPanel
-@onready var coupons_panel = %CouponsPanel
 
 # upgrades list lives inside UpgradesPanel
-@onready var upgrades_vbox  = %UpgradesVBox
+@onready var upgrades_vbox = %UpgradesVBox
 
 # -- bottom bar
 @onready var day_label   = %DayLabel
@@ -21,36 +20,24 @@ extends Control
 @onready var debt_label  = %DebtLabel
 @onready var pay_debt_btn = %PayDebtBtn
 
-# signals
 signal gold_changed(new_value: int)
 signal debt_changed(new_value: int)
 
 var gold_icon = preload("res://Assets/gold_coin.png")
-const COIN    = "[img=16]res://Assets/gold_coin.png[/img]"
-
-const COUPON_IMAGES = {
-	"low_pct":    "res://assets/Coupons/circle_coupon.png",
-	"low_flat":   "res://assets/Coupons/circle_coupon.png",
-	"low_buy10":  "res://assets/Coupons/rectangle_coupon.png",
-	"med_pct":    "res://assets/Coupons/hexagon_coupon.png",
-	"med_buy5":   "res://assets/Coupons/hexagon_coupon.png",
-	"med_double": "res://assets/Coupons/star_coupon.png",
-	"high_pct":   "res://assets/Coupons/circle_coupon.png",
-	"high_triple":"res://assets/Coupons/gear_coupon.png",
-}
+const COIN = "[img=16]res://Assets/gold_coin.png[/img]"
 
 var upgrade_definitions = [
-	{"id": "coupon_time",             "name": "Maze Time Limit",    "desc": "Increases time to complete mazes."},
-	{"id": "coupon_retries",          "name": "Coupon Retries",     "desc": "Allows retrying a failed coupon."},
-	{"id": "shopping_time",           "name": "Shopping Time",      "desc": "Increases the time limit for shopping."},
-	{"id": "checkout_time",           "name": "Checkout Time",      "desc": "Increases global time limit for checkout."},
-	{"id": "checkout_vision",         "name": "Checkout Vision",    "desc": "Allows seeing an extra upcoming arrow."},
-	{"id": "coupon_slots",            "name": "Coupon Slots",       "desc": "Unlocks an additional coupon slot (max 5)."},
-	{"id": "orders",                  "name": "Order Slots",        "desc": "Increases how many orders you can take per day (max 5)."},
-	{"id": "order_rerolls",           "name": "Order Rerolls",      "desc": "Allows rerolling the order pool once or twice per day."},
+	{"id": "coupon_time",     "name": "Maze Time Limit",  "desc": "Increases time to complete mazes."},
+	{"id": "coupon_retries",  "name": "Coupon Retries",   "desc": "Allows retrying a failed coupon."},
+	{"id": "shopping_time",   "name": "Shopping Time",    "desc": "Increases the time limit for shopping."},
+	{"id": "checkout_time",   "name": "Checkout Time",    "desc": "Increases global time limit for checkout."},
+	{"id": "checkout_vision", "name": "Checkout Vision",  "desc": "Allows seeing an extra upcoming arrow."},
+	{"id": "coupon_slots",    "name": "Coupon Slots",     "desc": "Unlocks an additional coupon slot (max 5)."},
+	{"id": "orders",          "name": "Order Slots",      "desc": "Increases how many orders you can take per day (max 5)."},
+	{"id": "order_rerolls",   "name": "Order Rerolls",    "desc": "Allows rerolling the order pool once or twice per day."},
 ]
 
-func _ready():
+func _ready() -> void:
 	GameState.save_current_scene(scene_file_path)
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
@@ -60,30 +47,28 @@ func _ready():
 	start_shopping_btn.pressed.connect(_on_start_shopping)
 	pay_debt_btn.pressed.connect(_on_pay_debt)
 
-	# start on the orders panel
+	orders_panel.order_selection_changed.connect(_on_order_selection_changed)
+
 	_show_orders()
-	_update_order_count(0)
 	_update_bottom_bar()
 
-
 # ── panel switching ─────────────────────────────
+
 func _switch_to(active_btn: Button, active_panel: Control):
-	# hide everything
-	for panel in [orders_panel, upgrades_panel, coupons_panel]:
+	for panel in [orders_panel, upgrades_panel]:
 		panel.visible = false
 	for btn in [orders_btn, upgrades_btn, coupons_btn]:
 		btn.modulate = Color(1, 1, 1, 0.55)
-	# show active
 	active_panel.visible = true
 	active_btn.modulate = Color.WHITE
 
 func _show_orders():
 	_switch_to(orders_btn, orders_panel)
-	
+	orders_panel.refresh()
+
 func _show_upgrades():
 	_switch_to(upgrades_btn, upgrades_panel)
 	_refresh_upgrades()
-
 
 func _update_order_count(count: int):
 	order_count_label.text = "%d / %d" % [count, GameState.max_orders]
@@ -100,7 +85,6 @@ func _update_bottom_bar():
 	debt_label.text = "Debt: %s%d" % [COIN, int(GameState.debt)]
 	pay_debt_btn.disabled = GameState.gold <= 0 or GameState.debt <= 0
 
-
 # ── upgrades panel ────────────────────────────────────────────
 
 func _refresh_upgrades():
@@ -108,7 +92,6 @@ func _refresh_upgrades():
 		child.queue_free()
 	for def in upgrade_definitions:
 		upgrades_vbox.add_child(_make_upgrade_row(def))
-
 
 func _make_upgrade_row(def: Dictionary) -> Control:
 	var hbox = HBoxContainer.new()
@@ -158,7 +141,15 @@ func _make_upgrade_row(def: Dictionary) -> Control:
 	outer.add_child(sep)
 	return outer
 
-# ── helpers ───────────────────────────────────────────────────
+# ── order panel handlers ──────────────────────────────────────
+
+func _on_order_selection_changed(order: Order, selected: bool):
+	if selected:
+		if not GameState.active_orders.has(order):
+			GameState.active_orders.append(order)
+	else:
+		GameState.active_orders.erase(order)
+	_update_order_count(GameState.active_orders.size())
 
 func _on_pay_debt():
 	var amount = min(GameState.gold, GameState.debt)
@@ -166,8 +157,7 @@ func _on_pay_debt():
 		GameState.pay_debt(amount)
 		_update_bottom_bar()
 
-
 func _on_start_shopping():
 	if GameState.active_orders.is_empty():
 		return
-	SceneLoader.load_scene("res://Scenes/shopping.tscn")
+	SceneLoader.load_scene("res://Scenes/Shopping/shopping.tscn")

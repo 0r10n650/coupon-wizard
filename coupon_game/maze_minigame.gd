@@ -134,6 +134,10 @@ func _on_walls_hit(area):
 			trail_line.default_color = Color(1.0, 0.2, 0.2, 0.8)
 			trail_line.gradient = null
 		maze_finished.emit(false, current_coupon_id, false)
+		if GameState.coupon_attempts_remaining > 0:
+			SceneLoader.load_scene("res://coupon_game/Magazines/magazine_shop.tscn")
+		else:
+			SceneLoader.load_scene("res://Scenes/ui/CouponUpgrades/coupon_upgrade_scene.tscn")
 	
 func _on_goal_reached(area):
 	if is_playing and area == cursor_tracker:
@@ -147,4 +151,4 @@ func _on_goal_reached(area):
 		else:
 			print("pending_coupon was null!")
 		maze_finished.emit(true, current_coupon_id, false)
-		SceneLoader.load_scene("res://coupon_game/Magazines/magazine_shop.tscn")
+		SceneLoader.load_scene("res://Scenes/ui/CouponUpgrades/coupon_upgrade_scene.tscn")

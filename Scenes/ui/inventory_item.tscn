@@ -28,7 +28,6 @@ bg_color = Color(0.641285, 0.7593774, 0.51420766, 1)
 corner_detail = 5
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2xdjd"]
-load_path = "res://.godot/imported/dragon_scale.png-ee9ffdbd6c7ff1bc36e01b94bbae922d.ctex"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x6ljg"]
 bg_color = Color(0.40478042, 0.47084355, 0.4220741, 1)
@@ -42,7 +41,7 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 
 [node name="InventoryItem" type="PanelContainer" unique_id=1684245139]
-offset_right = 239.0
+offset_right = 215.0
 offset_bottom = 40.0
 size_flags_horizontal = 0
 size_flags_vertical = 4
@@ -53,17 +52,15 @@ script = ExtResource("1_x6ljg")
 layout_mode = 2
 
 [node name="Panel" type="PanelContainer" parent="PanelContainer" unique_id=1396093744]
-custom_minimum_size = Vector2(40, 40)
+custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_r0k7d")
 
 [node name="AmountLabel" type="Label" parent="PanelContainer/Panel" unique_id=1914660443]
-custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
+size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("1_2xdjd")
 theme_override_font_sizes/font_size = 16
 text = "x1"
@@ -71,22 +68,23 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Panel2" type="PanelContainer" parent="PanelContainer" unique_id=410974297]
-custom_minimum_size = Vector2(40, 40)
+custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_mj6mf")
 
 [node name="Image" type="TextureRect" parent="PanelContainer/Panel2" unique_id=1295418388]
-custom_minimum_size = Vector2(40, 40)
+custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 texture = SubResource("CompressedTexture2D_2xdjd")
 expand_mode = 3
+stretch_mode = 5
 
 [node name="Panel3" type="PanelContainer" parent="PanelContainer" unique_id=292839275]
-custom_minimum_size = Vector2(0, 40)
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
@@ -102,16 +100,15 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Panel4" type="PanelContainer" parent="PanelContainer" unique_id=3473528]
-custom_minimum_size = Vector2(40, 40)
+custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_mc8ov")
 
 [node name="Price" type="Label" parent="PanelContainer/Panel4" unique_id=1032399354]
-custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("1_2xdjd")
 theme_override_font_sizes/font_size = 16
 text = "5G"

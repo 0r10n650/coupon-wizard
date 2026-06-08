@@ -13,6 +13,7 @@ func _ready():
 		debug_container.hide()
 
 func _on_start_button_pressed():
+	GameState.begin_day()
 	if GameState.has_save_file():
 		SceneLoader.load_scene(GameState.last_scene_path)
 	else:

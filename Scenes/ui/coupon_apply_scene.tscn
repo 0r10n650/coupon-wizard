@@ -2,43 +2,53 @@
 
 [ext_resource type="Script" uid="uid://bxhaobowkod6b" path="res://Scripts/coupon_apply_scene.gd" id="1_1uicq"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kdnm7"]
+bg_color = Color(0.76957154, 0.8348045, 0.9462357, 1)
+corner_detail = 1
+
 [node name="CouponApplyScene" type="Control" unique_id=1359784144]
+custom_minimum_size = Vector2(720, 400)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -80.0
+offset_bottom = -200.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1uicq")
 
-[node name="Button" type="Button" parent="." unique_id=1904868416]
-layout_mode = 0
-offset_left = 573.0
-offset_top = 263.0
-offset_right = 605.0
-offset_bottom = 279.0
-text = "Apply Coupon"
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1728892130]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00125
+anchor_right = 1.00125
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kdnm7")
+metadata/_edit_use_anchors_ = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=699187607]
-
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=901563135]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="CouponList" type="VBoxContainer" parent="HBoxContainer" unique_id=1888945227]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=848032697]
 layout_mode = 2
+alignment = 1
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer" unique_id=2073165036]
+[node name="CouponList" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1873917576]
 layout_mode = 2
+alignment = 1
 
-[node name="TotalLabel" type="Label" parent="HBoxContainer/VBoxContainer2" unique_id=413866308]
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=579955236]
 layout_mode = 2
+alignment = 1
 
-[node name="DiscountLabel" type="Label" parent="HBoxContainer/VBoxContainer2" unique_id=716173074]
+[node name="DiscountLabel" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer2" unique_id=716173074]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 
-[node name="FinalLabel" type="Label" parent="HBoxContainer/VBoxContainer2" unique_id=1456765784]
+[node name="TotalLabel" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer2" unique_id=413866308]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 
-[connection signal="pressed" from="Button" to="." method="_apply_coupons"]
+[node name="FinalLabel" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer2" unique_id=1456765784]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)

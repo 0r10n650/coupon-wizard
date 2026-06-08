@@ -20,7 +20,7 @@ func _ready():
 	# Build the professional UI dynamically
 	var margin = MarginContainer.new()
 	margin.set_anchors_and_offsets_preset(Control.PRESET_TOP_WIDE)
-	margin.add_theme_constant_override("margin_top", 40)
+	margin.add_theme_constant_override("margin_top", 500)
 	margin.add_theme_constant_override("margin_left", 40)
 	margin.add_theme_constant_override("margin_right", 40)
 	
@@ -96,9 +96,16 @@ func _ready():
 	
 	update_display()
 	
+	_set_all_mouse_ignore(self)
 	# Wait one frame before setting pivot so size is calculated
 	await get_tree().process_frame
 	panel.pivot_offset = panel.size / 2
+
+func _set_all_mouse_ignore(node: Node):
+	if node is Control:
+		node.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	for child in node.get_children():
+		_set_all_mouse_ignore(child)
 
 func _process(delta):
 	if time_left > 0:

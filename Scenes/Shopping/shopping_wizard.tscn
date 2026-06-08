@@ -2,8 +2,6 @@
 
 [ext_resource type="Script" uid="uid://4kua64x2f77y" path="res://Scripts/shopping_wizard.gd" id="1_fe242"]
 [ext_resource type="Script" uid="uid://dcc4rfcyx225u" path="res://Scripts/Helpers/MovementComponent.gd" id="2_g1rcx"]
-[ext_resource type="Script" uid="uid://rhgwjhkic48s" path="res://Scripts/Helpers/DriftingMovementComponent.gd" id="2_r2q73"]
-[ext_resource type="Script" uid="uid://dt8gnroytki7d" path="res://Scripts/Helpers/LeaningComponent.gd" id="3_k0vdd"]
 [ext_resource type="PackedScene" uid="uid://f0rc7hpsuxb1" path="res://wizard/wiz_ik.tscn" id="4_onab3"]
 [ext_resource type="PackedScene" uid="uid://bgh2ricqbtig0" path="res://cart/cart.glb" id="5_7peig"]
 [ext_resource type="Script" uid="uid://dxkox7umso462" path="res://Scripts/inventory.gd" id="6_7peig"]
@@ -33,17 +31,13 @@ mesh = SubResource("BoxMesh_tiada")
 visible = false
 shape = SubResource("BoxShape3D_fe242")
 
-[node name="DriftingMovementComponent" type="Node" parent="." unique_id=1103846768 node_paths=PackedStringArray("parent")]
-script = ExtResource("2_r2q73")
-parent = NodePath("..")
-
 [node name="MovementComponent" type="Node" parent="." unique_id=1443513065 node_paths=PackedStringArray("parent")]
 script = ExtResource("2_g1rcx")
 parent = NodePath("..")
 metadata/_custom_type_script = "uid://dcc4rfcyx225u"
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1176369]
-transform = Transform3D(1, 0, 0, 0, 0.96819574, 0.25019413, 0, -0.25019413, 0.96819574, 0, 2.1990983, 2.0723028)
+transform = Transform3D(1, 0, 0, 0, 0.96819574, 0.25019413, 0, -0.25019413, 0.96819574, 0, 2.0768447, 2.197196)
 
 [node name="RightCast" type="RayCast3D" parent="." unique_id=1217983020]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09452355, 0, 0.61662877)
@@ -70,11 +64,6 @@ anchors_preset = -1
 anchor_right = 1.00125
 anchor_bottom = 1.0015432
 metadata/_edit_use_anchors_ = true
-
-[node name="LeaningComponent" type="Node" parent="." unique_id=803492732 node_paths=PackedStringArray("parent")]
-script = ExtResource("3_k0vdd")
-parent = NodePath("..")
-metadata/_custom_type_script = "uid://dt8gnroytki7d"
 
 [node name="WizIK" parent="." unique_id=427355988 instance=ExtResource("4_onab3")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.06685907, 1.4546797)
@@ -105,10 +94,16 @@ bones/23/rotation = Quaternion(0.23687558, 0.15565276, -0.038323786, 0.9582241)
 [node name="cart" parent="." unique_id=1108712689 instance=ExtResource("5_7peig")]
 transform = Transform3D(-3.059797e-09, 0, -0.07, 0, 0.07, 0, 0.07, 0, -3.059797e-09, 0, 0.32316363, 0.18098548)
 
-[node name="Inventory" type="VBoxContainer" parent="." unique_id=188617323]
-offset_top = 92.0
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1775430253]
+custom_minimum_size = Vector2(0, 500)
+offset_top = 85.0
 offset_right = 180.0
-offset_bottom = 485.0
+offset_bottom = 85.0
+size_flags_horizontal = 3
+horizontal_scroll_mode = 0
+
+[node name="Inventory" type="VBoxContainer" parent="ScrollContainer" unique_id=188617323]
+layout_mode = 2
 script = ExtResource("6_7peig")
 
 [node name="GrabLeftTarget" type="Marker3D" parent="." unique_id=728549670]
@@ -135,6 +130,11 @@ offset_top = 524.0
 offset_right = 781.0
 offset_bottom = 569.0
 text = "Finish Day Early"
+
+[node name="OrdersContainer" type="HBoxContainer" parent="." unique_id=751741618]
+offset_left = 50.0
+offset_right = 779.0
+offset_bottom = 113.0
 
 [connection signal="gui_input" from="GrabButton" to="." method="_on_gui_input"]
 [connection signal="pressed" from="EndDayEarly" to="." method="_on_timer_finished"]
