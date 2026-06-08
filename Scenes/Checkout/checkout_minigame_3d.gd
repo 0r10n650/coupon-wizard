@@ -188,6 +188,7 @@ func update_visible_arrows():
 		var child_index = active_sprites.size()
 		sprite.position = Vector2(child_index * arrow_spacing, 0)
 		sprite.scale = Vector2.ZERO
+		sprite.modulate.a = 0.0
 		
 		if arrow_data.get("item_icon"):
 			var icon_sprite = Sprite2D.new()
@@ -201,7 +202,11 @@ func update_visible_arrows():
 		active_sprites.push_back(sprite)
 		
 		var spawn_tween = create_tween()
-		spawn_tween.tween_property(sprite, "scale", Vector2(1, 1), 0.2).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+		spawn_tween.set_parallel(true)
+		var target_scale = Vector2(1, 1) if child_index == 0 else Vector2(0.7, 0.7)
+		var target_alpha = 1.0 if child_index == 0 else 0.5
+		spawn_tween.tween_property(sprite, "scale", target_scale, 0.2).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+		spawn_tween.tween_property(sprite, "modulate:a", target_alpha, 0.2)
 
 func _process(delta):
 	if click_timer_remaining > 0:
@@ -279,7 +284,11 @@ func advance_to_next_arrow(success: bool):
 	move_tween.set_parallel(true)
 	for i in range(active_sprites.size()):
 		var child = active_sprites[i]
+		var target_scale = Vector2(1, 1) if i == 0 else Vector2(0.7, 0.7)
+		var target_alpha = 1.0 if i == 0 else 0.5
 		move_tween.tween_property(child, "position:x", i * arrow_spacing, 0.2).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+		move_tween.tween_property(child, "scale", target_scale, 0.2).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+		move_tween.tween_property(child, "modulate:a", target_alpha, 0.2)
 	
 	update_visible_arrows()
 	update_ui()

@@ -48,6 +48,13 @@ size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 36
 text = "START"
 
+[node name="HowToPlayButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=251087294]
+custom_minimum_size = Vector2(250, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 28
+text = "HOW TO PLAY"
+
 [node name="DebugToggle" type="Button" parent="." unique_id=1600951849]
 layout_mode = 1
 anchors_preset = 3
@@ -128,10 +135,119 @@ text = "10%"
 stream = ExtResource("2_aot1s")
 autoplay = true
 
+[node name="HowToPlayPanel" type="ColorRect" parent="." unique_id=621256939]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1, 0.1, 0.12, 0.95)
+
+[node name="MarginContainer" type="MarginContainer" parent="HowToPlayPanel" unique_id=2099058119]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 60
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HowToPlayPanel/MarginContainer" unique_id=279019511]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Title" type="Label" parent="HowToPlayPanel/MarginContainer/VBoxContainer" unique_id=1120327889]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.85, 0.4, 1)
+theme_override_font_sizes/font_size = 48
+text = "How to Play"
+horizontal_alignment = 1
+
+[node name="ContentHBox" type="HBoxContainer" parent="HowToPlayPanel/MarginContainer/VBoxContainer" unique_id=1980875708]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="ShopCol" type="VBoxContainer" parent="HowToPlayPanel/MarginContainer/VBoxContainer/ContentHBox" unique_id=2116996441]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 15
+
+[node name="Title" type="Label" parent="HowToPlayPanel/MarginContainer/VBoxContainer/ContentHBox/ShopCol" unique_id=991349741]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.8, 0.95, 1)
+theme_override_font_sizes/font_size = 32
+text = "Shopping"
+horizontal_alignment = 1
+
+[node name="Text" type="Label" parent="HowToPlayPanel/MarginContainer/VBoxContainer/ContentHBox/ShopCol" unique_id=1139778011]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Use WASD to move.
+
+Left/Right arrow keys (or Q and E) to grab items when you are close enough to the shelf to pick up a shelf item."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="CheckCol" type="VBoxContainer" parent="HowToPlayPanel/MarginContainer/VBoxContainer/ContentHBox" unique_id=1225802819]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 15
+
+[node name="Title" type="Label" parent="HowToPlayPanel/MarginContainer/VBoxContainer/ContentHBox/CheckCol" unique_id=1433515589]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.8, 0.95, 1)
+theme_override_font_sizes/font_size = 32
+text = "Checkout"
+horizontal_alignment = 1
+
+[node name="Text" type="Label" parent="HowToPlayPanel/MarginContainer/VBoxContainer/ContentHBox/CheckCol" unique_id=1385464311]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Use Arrow Keys to match the visuals to checkout items.
+
+Be careful! Messing up can ruin an order costing you greatly!"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="CouponCol" type="VBoxContainer" parent="HowToPlayPanel/MarginContainer/VBoxContainer/ContentHBox" unique_id=873036929]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 15
+
+[node name="Title" type="Label" parent="HowToPlayPanel/MarginContainer/VBoxContainer/ContentHBox/CouponCol" unique_id=1005119146]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.8, 0.95, 1)
+theme_override_font_sizes/font_size = 32
+text = "Coupons"
+horizontal_alignment = 1
+
+[node name="Text" type="Label" parent="HowToPlayPanel/MarginContainer/VBoxContainer/ContentHBox/CouponCol" unique_id=1978535918]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Unlock and equip powerful coupons to help you save and earn more money.
+
+Cut out coupons with your mouse and follow along the safe zone to cut out a coupon!"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="CloseHowToPlay" type="Button" parent="HowToPlayPanel/MarginContainer/VBoxContainer" unique_id=489115388]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 28
+text = "CLOSE"
+
 [connection signal="pressed" from="CenterContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HowToPlayButton" to="." method="_on_how_to_play_button_pressed"]
 [connection signal="pressed" from="DebugToggle" to="." method="_on_debug_toggle_pressed"]
 [connection signal="pressed" from="DebugContainer/ManagementBtn" to="." method="_on_select_scene" binds= ["Management/management_screen.tscn"]]
 [connection signal="pressed" from="DebugContainer/ShoppingBtn" to="." method="_on_select_scene" binds= ["Shopping/shopping.tscn"]]
 [connection signal="pressed" from="DebugContainer/CheckoutBtn" to="." method="_on_select_scene" binds= ["Checkout/checkout_minigame_3d.tscn"]]
 [connection signal="pressed" from="DebugContainer/CarpyDemo" to="." method="_on_carpy_demo_pressed"]
 [connection signal="pressed" from="DebugContainer/ResetSaveButton" to="." method="_on_reset_save_button_pressed"]
+[connection signal="pressed" from="HowToPlayPanel/MarginContainer/VBoxContainer/CloseHowToPlay" to="." method="_on_close_how_to_play_pressed"]

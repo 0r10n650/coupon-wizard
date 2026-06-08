@@ -335,7 +335,7 @@ shadow_mesh = SubResource("ArrayMesh_kvnap")
 
 [node name="CheckoutMinigame3D" type="Node3D" unique_id=145500156]
 script = ExtResource("1_script")
-arrow_spacing = 0.2
+arrow_spacing = -60.0
 click_start_time = 3.29
 click_duration = 0.5
 
@@ -462,7 +462,7 @@ current = true
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.67514265, -0.5037718, 3.0019348)
 visible = false
 
-[node name="Skeleton3D" parent="WizIK/Crouch Idle" parent_id_path=PackedInt32Array(427355988, 601109509) index="0" unique_id=321288847]
+[node name="Skeleton3D" parent="WizIK/Crouch Idle" parent_id_path=PackedInt32Array(427355988, 601109509) index="0" unique_id=2128289875]
 bones/0/position = Vector3(0.006008665, 4.8335524, -0.04159585)
 bones/0/rotation = Quaternion(0.073465265, -0.04789681, -0.03842744, 0.99540555)
 bones/1/rotation = Quaternion(0.12774304, 0.09694158, 0.03775286, 0.9863361)
@@ -503,10 +503,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23774767, 0.6040336, 0.0936
 [node name="Player_Wiz" parent="." unique_id=279847294 instance=ExtResource("4_31rlj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1321707, -0.1988504, 2.524762)
 
-[node name="RightArmIK" parent="Player_Wiz/Crouch Idle/Skeleton3D" parent_id_path=PackedInt32Array(279847294, 601109509, 321288847) index="2" unique_id=220737110]
+[node name="RightArmIK" parent="Player_Wiz/Crouch Idle/Skeleton3D" parent_id_path=PackedInt32Array(279847294, 601109509, 2128289875) index="2" unique_id=220737110]
 influence = 0.0
 
-[node name="LeftArmIK" parent="Player_Wiz/Crouch Idle/Skeleton3D" parent_id_path=PackedInt32Array(279847294, 601109509, 321288847) index="3" unique_id=582667822]
+[node name="LeftArmIK" parent="Player_Wiz/Crouch Idle/Skeleton3D" parent_id_path=PackedInt32Array(279847294, 601109509, 2128289875) index="3" unique_id=582667822]
 influence = 0.0
 
 [node name="HeadTarget" parent="Player_Wiz" index="9" unique_id=565674797]

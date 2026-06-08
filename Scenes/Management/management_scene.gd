@@ -48,6 +48,8 @@ func _ready() -> void:
 	pay_debt_btn.pressed.connect(_on_pay_debt)
 
 	orders_panel.order_selection_changed.connect(_on_order_selection_changed)
+	if orders_panel.has_signal("order_slot_purchased"):
+		orders_panel.order_slot_purchased.connect(_update_bottom_bar)
 
 	_show_orders()
 	_update_bottom_bar()
@@ -157,6 +159,8 @@ func _on_pay_debt():
 	if amount > 0:
 		GameState.pay_debt(amount)
 		_update_bottom_bar()
+		if GameState.debt <= 0:
+			SceneLoader.load_scene("res://Scenes/ui/win_screen.tscn")
 
 func _on_start_shopping():
 	if GameState.active_orders.is_empty():

@@ -7,7 +7,7 @@ var current_day: int = 1
 var gold: int = 0
 var debt: int = 500
 var daily_interest: float = .10
-var last_scene_path: String = "res://Scenes/shopping.tscn"
+var last_scene_path: String = "res://Scenes/Shopping/shopping.tscn"
 
 var upgrades = {
 	"coupon_time": 0,
@@ -95,6 +95,8 @@ func load_game():
 			gold = data.get("gold", gold)
 			debt = data.get("debt", debt)
 			last_scene_path = data.get("last_scene_path", last_scene_path)
+			if last_scene_path == "res://Scenes/shopping.tscn":
+				last_scene_path = "res://Scenes/Shopping/shopping.tscn"
 			completed_order_ids  = data.get("completed_order_ids", [])
 			rerolls_remaining    = data.get("rerolls_remaining", 0)
 			unlocked_order_slots = data.get("unlocked_order_slots", 2)
@@ -181,6 +183,11 @@ func begin_day() -> void:
 func get_unlocked_order_slots() -> int:
 	return unlocked_order_slots
 
+func get_order_slot_cost(slot_idx: int) -> int:
+	var costs = [0, 50, 150, 300, 500]
+	if slot_idx < costs.size():
+		return costs[slot_idx]
+	return 999999
 
 func purchase_order_slot(slot_idx: int, cost: int) -> bool:
 	if gold < cost:

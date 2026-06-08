@@ -10,11 +10,15 @@ func generate_order_pool() -> Array[Order]:
 	# Day specific pools.
 	if GameState.current_day == 1:
 		var order1 := load("res://data/orders/easy_orders/tutorial_frog.tres")
-		return [order1]
+		var pool: Array[Order] = [order1]
+		pool.append_array(OrderGenerator.generate_pool(POOL_SIZE - 1))
+		return pool
 	elif GameState.current_day == 2:
 		var order1 := load("res://data/orders/easy_orders/tutorial_eyes.tres")
 		var order2 := load("res://data/orders/easy_orders/tutorial_feet.tres")
-		return [order1, order2]
+		var pool: Array[Order] = [order1, order2]
+		pool.append_array(OrderGenerator.generate_pool(POOL_SIZE - 2))
+		return pool
 	else:
 		return OrderGenerator.generate_pool(POOL_SIZE)
 
