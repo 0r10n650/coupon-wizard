@@ -33,6 +33,7 @@ func setup(order_results: Array, rebate: int) -> void:
 	GameState.add_gold(grand_total)
 
 func _on_confirm() -> void:
+	GameState.advance_day()
 	SceneLoader.load_scene("res://Scenes/Management/management_screen.tscn")
 
 func _check_orders() -> void:
