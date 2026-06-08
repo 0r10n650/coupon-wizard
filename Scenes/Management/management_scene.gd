@@ -51,6 +51,7 @@ func _ready() -> void:
 
 	_show_orders()
 	_update_bottom_bar()
+	_update_order_count(GameState.active_orders.size())
 
 # ── panel switching ─────────────────────────────
 

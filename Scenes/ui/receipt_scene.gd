@@ -27,10 +27,16 @@ func load_items(item_group, destroyed):
 	var grouped_items = {}
 	
 	for item in item_group:
-		if item.name in grouped_items:
-			grouped_items[item.name]["count"] += 1
+		var item_name = "Unknown Item"
+		if item != null:
+			var val = item.get("name")
+			if val != null and str(val) != "":
+				item_name = str(val)
+				
+		if item_name in grouped_items:
+			grouped_items[item_name]["count"] += 1
 		else:
-			grouped_items[item.name] = {"item": item, "count": 1}
+			grouped_items[item_name] = {"item": item, "count": 1}
 	
 	for key in grouped_items:
 		var new_row = ROW_SCENE.instantiate()

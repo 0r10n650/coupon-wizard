@@ -106,6 +106,8 @@ func load_game():
 					if upgrades.has(key):
 						upgrades[key] = data["upgrades"][key]
 				coupon_slots = int(get_upgrade_value("coupon_slots"))
+				if upgrades.get("orders", 0) > 0:
+					max_orders = int(get_upgrade_value("orders"))
 		file.close()
 
 func has_save_file() -> bool:
@@ -135,7 +137,7 @@ func reset_game(daily_interest: float):
 	daily_order_pool.clear()
 	completed_order_ids.clear()
 	rerolls_remaining    = 0
-	max_orders           = 5
+	max_orders           = 2
 	unlocked_order_slots = 1
 	cart_items.clear()
 	unlocked_coupon_ids.clear()
@@ -210,41 +212,45 @@ func purchase_upgrade(upgrade_name: String) -> bool:
 		if gold >= cost:
 			gold -= cost
 			upgrades[upgrade_name] += 1
+			if upgrade_name == "coupon_slots":
+				coupon_slots = int(get_upgrade_value("coupon_slots"))
+			elif upgrade_name == "orders":
+				max_orders = int(get_upgrade_value("orders"))
 			save_game()
 			return true
 	return false
 
 var upgrade_tiers = {
 	"coupon_time": {
-		"costs": [10, 1000, 5000, 20000],
+		"costs": [5, 10, 25, 50],
 		"values": [5.0, 6.0, 11.0, 20.0, 35.0] # base 5s, +1s, +5s, etc.
 	},
 	"coupon_retries": {
-		"costs": [50, 500, 2500],
+		"costs": [5, 20, 40],
 		"values": [0, 1, 2, 3]
 	},
 	"checkout_time": {
-		"costs": [500, 1500, 3000, 6000],
+		"costs": [10, 25, 50, 100],
 		"values": [7.0, 9.0, 11.0, 15.0] # Base is 5.0
 	},
 	"checkout_vision": {
-		"costs": [1000],
+		"costs": [15],
 		"values": [1] # Base is 0 (1 arrow visible). Upgrade gives +1
 	},
 	"shopping_time": {
-		"costs": [50, 200, 1000, 5000],
+		"costs": [5, 10, 25, 50],
 		"values": [30.0, 45.0, 60.0, 90.0, 120.0]
 	},
 	"orders": {
-		"costs": [100, 200, 500],
+		"costs": [20, 40, 80],
 		"values": [3, 4, 5]
 	},
 	"order_rerolls": {
-		"costs": [300, 800],
+		"costs": [15, 30],
 		"values": [0, 1, 2]
 	},
 	"coupon_slots": {
-		"costs": [200, 500, 1500],
+		"costs": [15, 35, 75],
 		"values": [2, 3, 4, 5]
 	},
 }

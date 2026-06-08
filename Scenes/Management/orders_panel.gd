@@ -29,6 +29,7 @@ func refresh() -> void:
 			_cards[i].lock_empty()
 		else:
 			_cards[i].setup(pool[i], i >= unlocked)
+			_cards[i].set_selected(GameState.active_orders.has(pool[i]))
 
 		# Update buttons in regards to current state.
 		var selectable := i < unlocked and i < pool.size()
