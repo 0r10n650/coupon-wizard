@@ -398,7 +398,7 @@ func equip_coupon(id: String, slot: int):
 func _add_default_coupons():
 	unlock_coupon("5p")
 	unlock_coupon("5s")
-	unlock_coupon("1pi")
+	unlock_coupon("FrogOff")
 
 func unequip_coupon(slot: int):
 	if slot < equipped_coupon_ids.size():

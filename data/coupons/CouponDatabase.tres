@@ -6,6 +6,25 @@
 [ext_resource type="Script" uid="uid://c70vd0w17r4xd" path="res://Scripts/coupons/Effects/StaticOffEffect.gd" id="3_ad1j4"]
 [ext_resource type="Script" uid="uid://c3ayc1w76df76" path="res://Scripts/coupons/Effects/PerItemOffEffect.gd" id="4_4q0e4"]
 [ext_resource type="Script" uid="uid://ca1tqvck3m8qw" path="res://Scripts/coupons/Effects/RunPreviousEffect.gd" id="5_5sd4w"]
+[ext_resource type="Script" uid="uid://nkht70761teq" path="res://Scripts/ingredients/ingredient.gd" id="6_mvf6b"]
+[ext_resource type="Resource" uid="uid://ukjbv1xc7shb" path="res://data/ingredients/frog_eyes.tres" id="7_lipu2"]
+[ext_resource type="Resource" uid="uid://btchnl4vpashf" path="res://data/ingredients/unicorn_eyes.tres" id="8_ju1p5"]
+[ext_resource type="Script" uid="uid://mo84j3p6dqee" path="res://Scripts/coupons/Effects/PerIngredientEffect.gd" id="9_s22mc"]
+[ext_resource type="Resource" uid="uid://dwdwcf3pp4c3w" path="res://data/ingredients/frog_leg.tres" id="10_ldigm"]
+[ext_resource type="Resource" uid="uid://ctgcoiacmywrg" path="res://data/ingredients/moon_dust.tres" id="11_7ukcw"]
+[ext_resource type="Resource" uid="uid://3vhsfo6hu08i" path="res://data/ingredients/human_dust.tres" id="12_yoica"]
+[ext_resource type="Resource" uid="uid://7rufcgyui8jw" path="res://data/ingredients/shroom_dust.tres" id="13_btu5i"]
+[ext_resource type="Resource" uid="uid://bje67gtderi75" path="res://data/ingredients/unicorn_hair.tres" id="14_7ukcw"]
+[ext_resource type="Resource" uid="uid://tr83in12bmev" path="res://data/ingredients/unicorn_horn.tres" id="15_yoica"]
+[ext_resource type="Resource" uid="uid://d2srqma0vn3rl" path="res://data/ingredients/human_teeth.tres" id="16_btu5i"]
+[ext_resource type="Resource" uid="uid://dly6whsy50hdm" path="res://data/ingredients/bat_wings.tres" id="17_7jj5x"]
+[ext_resource type="Resource" uid="uid://chypn8ots88a3" path="res://data/ingredients/goblin_toes.tres" id="18_1ctgn"]
+[ext_resource type="Resource" uid="uid://dfuht500hw6e4" path="res://data/ingredients/dry_stuff.tres" id="19_w3pfx"]
+[ext_resource type="Resource" uid="uid://ns3yacly53bg" path="res://data/ingredients/hot_stuff.tres" id="20_tb7ho"]
+[ext_resource type="Resource" uid="uid://bxpi2s7t3l3ts" path="res://data/ingredients/wet_stuff.tres" id="21_3mtl5"]
+[ext_resource type="Resource" uid="uid://dviokqioknb1t" path="res://data/ingredients/hard_stuff.tres" id="22_wcpy7"]
+[ext_resource type="Resource" uid="uid://docqdhq0wgs2g" path="res://data/ingredients/angry_stuff.tres" id="23_mbcv4"]
+[ext_resource type="Resource" uid="uid://bkkuqdmm4451p" path="res://data/ingredients/light_stuff.tres" id="24_srs6j"]
 
 [sub_resource type="Resource" id="Resource_ad1j4"]
 script = ExtResource("2_p3ex1")
@@ -287,7 +306,113 @@ id = "trip"
 maze_type = 0
 metadata/_custom_type_script = "uid://gjodwe83bcl7"
 
+[sub_resource type="Resource" id="Resource_8le60"]
+script = ExtResource("9_s22mc")
+items = Array[ExtResource("6_mvf6b")]([ExtResource("7_lipu2"), ExtResource("8_ju1p5")])
+amount = 25.0
+percent = true
+metadata/_custom_type_script = "uid://mo84j3p6dqee"
+
+[sub_resource type="Resource" id="Resource_7745x"]
+script = ExtResource("1_6moli")
+name = "Eyes 25% Off"
+effect = SubResource("Resource_8le60")
+id = "EyesOff"
+maze_type = 1
+metadata/_custom_type_script = "uid://gjodwe83bcl7"
+
+[sub_resource type="Resource" id="Resource_h7cab"]
+script = ExtResource("9_s22mc")
+items = Array[ExtResource("6_mvf6b")]([ExtResource("10_ldigm"), ExtResource("7_lipu2")])
+amount = 25.0
+percent = true
+metadata/_custom_type_script = "uid://mo84j3p6dqee"
+
+[sub_resource type="Resource" id="Resource_gk4g6"]
+script = ExtResource("1_6moli")
+name = "Frog 25% Off"
+effect = SubResource("Resource_h7cab")
+id = "FrogOff"
+maze_type = 1
+metadata/_custom_type_script = "uid://gjodwe83bcl7"
+
+[sub_resource type="Resource" id="Resource_mxs7q"]
+script = ExtResource("9_s22mc")
+items = Array[ExtResource("6_mvf6b")]([ExtResource("11_7ukcw"), ExtResource("12_yoica"), ExtResource("13_btu5i")])
+amount = 25.0
+percent = true
+metadata/_custom_type_script = "uid://mo84j3p6dqee"
+
+[sub_resource type="Resource" id="Resource_d81sl"]
+script = ExtResource("1_6moli")
+name = "Dust 25% Off"
+effect = SubResource("Resource_mxs7q")
+id = "DustOff"
+maze_type = 1
+metadata/_custom_type_script = "uid://gjodwe83bcl7"
+
+[sub_resource type="Resource" id="Resource_pw31l"]
+script = ExtResource("9_s22mc")
+items = Array[ExtResource("6_mvf6b")]([ExtResource("8_ju1p5"), ExtResource("14_7ukcw"), ExtResource("15_yoica")])
+amount = 25.0
+percent = true
+metadata/_custom_type_script = "uid://mo84j3p6dqee"
+
+[sub_resource type="Resource" id="Resource_8slt6"]
+script = ExtResource("1_6moli")
+name = "Unicorn 25% Off"
+effect = SubResource("Resource_pw31l")
+id = "UnicornOff"
+maze_type = 1
+metadata/_custom_type_script = "uid://gjodwe83bcl7"
+
+[sub_resource type="Resource" id="Resource_qq2no"]
+script = ExtResource("9_s22mc")
+items = Array[ExtResource("6_mvf6b")]([ExtResource("12_yoica"), ExtResource("16_btu5i")])
+amount = 25.0
+percent = true
+metadata/_custom_type_script = "uid://mo84j3p6dqee"
+
+[sub_resource type="Resource" id="Resource_bwm2q"]
+script = ExtResource("1_6moli")
+name = "Human 25% Off"
+effect = SubResource("Resource_qq2no")
+id = "HumanOff"
+maze_type = 1
+metadata/_custom_type_script = "uid://gjodwe83bcl7"
+
+[sub_resource type="Resource" id="Resource_8x3ye"]
+script = ExtResource("9_s22mc")
+items = Array[ExtResource("6_mvf6b")]([ExtResource("15_yoica"), ExtResource("17_7jj5x"), ExtResource("10_ldigm"), ExtResource("18_1ctgn")])
+amount = 25.0
+percent = true
+metadata/_custom_type_script = "uid://mo84j3p6dqee"
+
+[sub_resource type="Resource" id="Resource_q8xes"]
+script = ExtResource("1_6moli")
+name = "Limbs 25% Off"
+effect = SubResource("Resource_8x3ye")
+id = "LimbsOff"
+maze_type = 2
+metadata/_custom_type_script = "uid://gjodwe83bcl7"
+
+[sub_resource type="Resource" id="Resource_8mfo6"]
+script = ExtResource("9_s22mc")
+items = Array[ExtResource("6_mvf6b")]([ExtResource("19_w3pfx"), ExtResource("20_tb7ho"), ExtResource("21_3mtl5"), ExtResource("22_wcpy7"), ExtResource("23_mbcv4"), ExtResource("24_srs6j")])
+amount = 60.0
+percent = true
+metadata/_custom_type_script = "uid://mo84j3p6dqee"
+
+[sub_resource type="Resource" id="Resource_r1owp"]
+script = ExtResource("1_6moli")
+name = "Stuff 60% Off"
+effect = SubResource("Resource_8mfo6")
+rarity = 3
+id = "Stuff60"
+maze_type = 0
+metadata/_custom_type_script = "uid://gjodwe83bcl7"
+
 [resource]
 script = ExtResource("2_48e1o")
-coupons = Array[ExtResource("1_6moli")]([SubResource("Resource_4q0e4"), SubResource("Resource_5sd4w"), SubResource("Resource_i1jho"), SubResource("Resource_5eyfr"), SubResource("Resource_yocbf"), SubResource("Resource_mvf6b"), SubResource("Resource_ju1p5"), SubResource("Resource_ldigm"), SubResource("Resource_yoica"), SubResource("Resource_7jj5x"), SubResource("Resource_btupo"), SubResource("Resource_tb7ho"), SubResource("Resource_wcpy7"), SubResource("Resource_srs6j"), SubResource("Resource_aojpb"), SubResource("Resource_3a2mc"), SubResource("Resource_gq4rl"), SubResource("Resource_o3t4e"), SubResource("Resource_1yxrq"), SubResource("Resource_ygsph")])
+coupons = Array[ExtResource("1_6moli")]([SubResource("Resource_4q0e4"), SubResource("Resource_5sd4w"), SubResource("Resource_i1jho"), SubResource("Resource_5eyfr"), SubResource("Resource_yocbf"), SubResource("Resource_mvf6b"), SubResource("Resource_ju1p5"), SubResource("Resource_ldigm"), SubResource("Resource_yoica"), SubResource("Resource_7jj5x"), SubResource("Resource_btupo"), SubResource("Resource_tb7ho"), SubResource("Resource_wcpy7"), SubResource("Resource_srs6j"), SubResource("Resource_aojpb"), SubResource("Resource_3a2mc"), SubResource("Resource_gq4rl"), SubResource("Resource_o3t4e"), SubResource("Resource_1yxrq"), SubResource("Resource_ygsph"), SubResource("Resource_7745x"), SubResource("Resource_gk4g6"), SubResource("Resource_d81sl"), SubResource("Resource_8slt6"), SubResource("Resource_bwm2q"), SubResource("Resource_q8xes"), SubResource("Resource_r1owp"), SubResource("Resource_r1owp"), SubResource("Resource_r1owp")])
 metadata/_custom_type_script = "uid://sw3iqask34ex"
