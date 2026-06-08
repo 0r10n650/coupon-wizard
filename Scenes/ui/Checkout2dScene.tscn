@@ -78,7 +78,7 @@ script = ExtResource("1_ebnxp")
 position = Vector2(-1212, -742)
 scale = Vector2(3.22, 3.22)
 
-[node name="CheckoutSceneCheckotBackground" type="Sprite2D" parent="Art" unique_id=375270628]
+[node name="CheckoutSceneCheckoutBackground" type="Sprite2D" parent="Art" unique_id=375270628]
 position = Vector2(512, 256)
 texture = ExtResource("1_mji1k")
 

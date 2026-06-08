@@ -116,10 +116,7 @@ func load_total():
 	add_discount_amount = discount_pct
 	add_credit_amount = final_debt_added
 
-func _process_payment():
-	GameState.gold += add_discount_amount # You still get cash back for the discount
+func _process_payment() -> void:
+	GameState.gold += add_discount_amount
 	GameState.debt += add_credit_amount
-	GameState.advance_day()
-	
-	queue_free()
-	get_tree().change_scene_to_file("res://Scenes/Management/management_screen.tscn")
+	SceneLoader.load_scene("res://Scenes/ui/OrderRewardOverlay.tscn")

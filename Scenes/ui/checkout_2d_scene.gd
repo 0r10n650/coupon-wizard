@@ -8,6 +8,7 @@ func _ready():
 	receipt_scn.visible = false
 	coupon_apply.coupon_apply_finished.connect(_on_coupons_finished)
 	coupon_apply.start()
+	
 
 func _on_coupons_finished():
 	print("coupons finished")

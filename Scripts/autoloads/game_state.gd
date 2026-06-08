@@ -2,12 +2,15 @@ extends Node
 
 const SAVE_PATH = "user://save_game.save"
 const REWARD_MULTIPLIER = 1.15
+const REBATE_FRACTION = 0.25
 
 var current_day: int = 1
 var gold: int = 0
 var debt: int = 500
 var daily_interest: float = .10
 var last_scene_path: String = "res://Scenes/Shopping/shopping.tscn"
+var pending_order_rewards: Array = []
+var pending_rebate: int = 0
 
 var upgrades = {
 	"coupon_time": 0,
@@ -28,7 +31,7 @@ var daily_state = {
 
 var cart_items: Array = []
 # confirmed orders for today — populated when player hits "Start Shopping"
-var active_orders: Array = []
+var active_orders: Array[Order] = []
 # pool generated at start of each day — discarded after selection
 var daily_order_pool: Array[Order] = []
 # how many orders the player can select — driven by upgrade

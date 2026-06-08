@@ -2,7 +2,6 @@ extends Node
 
 const REWARD_MULT = [1.15, 1.15, 1.25, 1.25, 1.5]
 const POOL_SIZE = 5
-const INCOMPLETE_REBATE = 0.5
 
 
 # Called by GameState.begin_day() — generates and caches the daily pool exactly once.
@@ -41,7 +40,7 @@ func process_incomplete_orders():
 	var rebate: int = 0
 	for order in GameState.active_orders:
 		if order.id not in GameState.completed_order_ids:
-			rebate += int(round(order.raw_cost() * INCOMPLETE_REBATE))
+			rebate += int(round(order.raw_cost() * GameState.REBATE_FRACTION))
 	if rebate > 0:
 		GameState.gold += rebate
 	GameState.active_orders.clear()
@@ -53,3 +52,37 @@ func get_order_total() -> int:
 	for order in GameState.active_orders:
 		total += order.raw_cost()
 	return total
+	
+func fulfill_active_orders(successful_items: Array, damaged_items: Array) -> void:
+	var remaining_successful = successful_items.duplicate()
+	var remaining_damaged = damaged_items.duplicate()
+
+	for order in GameState.active_orders:
+		var ok = order.try_fulfill(remaining_successful, remaining_damaged)
+		if not ok:
+			# Caller can decide on penalty; for now just log.
+			push_warning("Order '%s' could not be fulfilled." % order.title)
+			continue
+
+		# Consume the items this order used so they aren't double-counted.
+		for ing in order.line_items:
+			var needed = order.line_items[ing]
+
+			var s_matches = remaining_successful.filter(func(i): return i == ing)
+			for i in mini(s_matches.size(), needed):
+				remaining_successful.erase(s_matches[i])
+				needed -= 1
+
+			if needed > 0:
+				var d_matches = remaining_damaged.filter(func(i): return i == ing)
+				for i in mini(d_matches.size(), needed):
+					remaining_damaged.erase(d_matches[i])
+
+	# Sell leftover items back at rebate value.
+	var rebate = 0
+	for item in remaining_successful + remaining_damaged:
+		if item != null:
+			rebate += int(floor(item.price * GameState.REBATE_FRACTION))
+
+	GameState.gold += rebate
+	GameState.pending_rebate = rebate

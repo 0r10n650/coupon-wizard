@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://8nukbswttbxd"]
+
+[ext_resource type="Script" uid="uid://cyd758u2aw68v" path="res://Scenes/ui/order_reward_overlay.gd" id="1_mcm2h"]
+
+[node name="OrderRewardOverlay" type="PanelContainer" unique_id=333917646]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_mcm2h")
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1411318378]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=2105723229]
+layout_mode = 2
+text = "Order Summary:"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer" unique_id=641282483]
+layout_mode = 2
+
+[node name="OrderList" type="VBoxContainer" parent="VBoxContainer" unique_id=1190659138]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="RewardLabel" type="Label" parent="VBoxContainer" unique_id=2136614795]
+unique_name_in_owner = true
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="RebateLabel" type="Label" parent="VBoxContainer" unique_id=50024077]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Hello there"
+horizontal_alignment = 1
+
+[node name="TotalLabel" type="Label" parent="VBoxContainer" unique_id=1689857700]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Hello there"
+horizontal_alignment = 1
+
+[node name="ConfirmButton" type="Button" parent="VBoxContainer" unique_id=2083926699]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Onward"
+
+[connection signal="pressed" from="VBoxContainer/ConfirmButton" to="." method="_on_confirm"]
