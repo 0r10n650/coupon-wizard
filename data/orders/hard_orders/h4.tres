@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Order" format=3 uid="uid://bkxbrcksuxaom"]
+
+[ext_resource type="Script" uid="uid://nkht70761teq" path="res://Scripts/ingredients/ingredient.gd" id="1_t05u6"]
+[ext_resource type="Resource" uid="uid://bkkuqdmm4451p" path="res://data/ingredients/light_stuff.tres" id="2_lsrsh"]
+[ext_resource type="Script" uid="uid://dh14bedsfqfwf" path="res://data/orders/order.gd" id="2_m2n5s"]
+[ext_resource type="Resource" uid="uid://ns3yacly53bg" path="res://data/ingredients/hot_stuff.tres" id="3_wio3e"]
+[ext_resource type="Resource" uid="uid://dfgsehdlokeiq" path="res://data/ingredients/purple_whatevers.tres" id="4_5nmrk"]
+
+[resource]
+script = ExtResource("2_m2n5s")
+id = "C2"
+title = "Plasma Grapes"
+difficulty = 2
+line_items = Dictionary[ExtResource("1_t05u6"), int]({
+ExtResource("2_lsrsh"): 1,
+ExtResource("3_wio3e"): 1,
+ExtResource("4_5nmrk"): 1
+})
+metadata/_custom_type_script = "uid://dh14bedsfqfwf"

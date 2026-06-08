@@ -10,7 +10,7 @@ script = ExtResource("4_2faf3")
 id = "tutorial_feet"
 title = "For my collection"
 line_items = Dictionary[ExtResource("1_dnefd"), int]({
-ExtResource("2_dnefd"): 12,
-ExtResource("3_nd0v1"): 6
+ExtResource("2_dnefd"): 5,
+ExtResource("3_nd0v1"): 5
 })
 metadata/_custom_type_script = "uid://dh14bedsfqfwf"

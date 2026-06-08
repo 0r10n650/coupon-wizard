@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Order" format=3 uid="uid://cjploodsrdulc"]
+
+[ext_resource type="Script" uid="uid://nkht70761teq" path="res://Scripts/ingredients/ingredient.gd" id="1_5314j"]
+[ext_resource type="Resource" uid="uid://bkkuqdmm4451p" path="res://data/ingredients/light_stuff.tres" id="2_fbqos"]
+[ext_resource type="Script" uid="uid://dh14bedsfqfwf" path="res://data/orders/order.gd" id="2_pryy8"]
+[ext_resource type="Resource" uid="uid://tr83in12bmev" path="res://data/ingredients/unicorn_horn.tres" id="3_enwnm"]
+[ext_resource type="Resource" uid="uid://chypn8ots88a3" path="res://data/ingredients/goblin_toes.tres" id="4_i7n21"]
+
+[resource]
+script = ExtResource("2_pryy8")
+id = "LS2"
+title = "Laser Pointer"
+difficulty = 1
+line_items = Dictionary[ExtResource("1_5314j"), int]({
+ExtResource("2_fbqos"): 1,
+ExtResource("3_enwnm"): 2,
+ExtResource("4_i7n21"): 1
+})
+metadata/_custom_type_script = "uid://dh14bedsfqfwf"

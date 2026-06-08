@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Order" format=3 uid="uid://by0y4geeu88tb"]
+
+[ext_resource type="Script" uid="uid://nkht70761teq" path="res://Scripts/ingredients/ingredient.gd" id="1_u3220"]
+[ext_resource type="Resource" uid="uid://bkkuqdmm4451p" path="res://data/ingredients/light_stuff.tres" id="2_m3xl2"]
+[ext_resource type="Script" uid="uid://dh14bedsfqfwf" path="res://data/orders/order.gd" id="2_xdffj"]
+[ext_resource type="Resource" uid="uid://dly6whsy50hdm" path="res://data/ingredients/bat_wings.tres" id="3_2ract"]
+[ext_resource type="Resource" uid="uid://ctgcoiacmywrg" path="res://data/ingredients/moon_dust.tres" id="4_3x2iv"]
+
+[resource]
+script = ExtResource("2_xdffj")
+id = "LS1"
+title = "LET THERE BE LIGHT"
+difficulty = 1
+line_items = Dictionary[ExtResource("1_u3220"), int]({
+ExtResource("2_m3xl2"): 1,
+ExtResource("3_2ract"): 4,
+ExtResource("4_3x2iv"): 3
+})
+metadata/_custom_type_script = "uid://dh14bedsfqfwf"

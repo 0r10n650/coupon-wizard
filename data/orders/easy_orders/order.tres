@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Order" format=3 uid="uid://bihmhjvrhmda2"]
+
+[ext_resource type="Script" uid="uid://nkht70761teq" path="res://Scripts/ingredients/ingredient.gd" id="1_hhk1f"]
+[ext_resource type="Script" uid="uid://dh14bedsfqfwf" path="res://data/orders/order.gd" id="2_f0xex"]
+[ext_resource type="Resource" uid="uid://drtywmd5rv8hj" path="res://data/ingredients/dragon_scale.tres" id="2_vbnoj"]
+
+[resource]
+script = ExtResource("2_f0xex")
+id = "Scales"
+title = "Dragon Scales, Dragon Scales"
+line_items = Dictionary[ExtResource("1_hhk1f"), int]({
+ExtResource("2_vbnoj"): 2
+})
+metadata/_custom_type_script = "uid://dh14bedsfqfwf"

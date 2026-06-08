@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Order" format=3 uid="uid://b3b4gasxgh6m1"]
+
+[ext_resource type="Script" uid="uid://nkht70761teq" path="res://Scripts/ingredients/ingredient.gd" id="1_iydug"]
+[ext_resource type="Resource" uid="uid://7rufcgyui8jw" path="res://data/ingredients/shroom_dust.tres" id="2_7spkk"]
+[ext_resource type="Script" uid="uid://dh14bedsfqfwf" path="res://data/orders/order.gd" id="2_w3xsy"]
+[ext_resource type="Resource" uid="uid://ctgcoiacmywrg" path="res://data/ingredients/moon_dust.tres" id="3_7y017"]
+[ext_resource type="Resource" uid="uid://3vhsfo6hu08i" path="res://data/ingredients/human_dust.tres" id="4_7y017"]
+
+[resource]
+script = ExtResource("2_w3xsy")
+id = "sneeze"
+title = "A Sneeze"
+line_items = Dictionary[ExtResource("1_iydug"), int]({
+ExtResource("2_7spkk"): 3,
+ExtResource("3_7y017"): 3,
+ExtResource("4_7y017"): 3
+})
+metadata/_custom_type_script = "uid://dh14bedsfqfwf"

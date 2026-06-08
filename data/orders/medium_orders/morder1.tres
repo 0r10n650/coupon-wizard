@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Order" format=3 uid="uid://bku4nnvg2r3sm"]
+
+[ext_resource type="Script" uid="uid://nkht70761teq" path="res://Scripts/ingredients/ingredient.gd" id="1_ejbrr"]
+[ext_resource type="Script" uid="uid://dh14bedsfqfwf" path="res://data/orders/order.gd" id="2_ui6nn"]
+[ext_resource type="Resource" uid="uid://ukjbv1xc7shb" path="res://data/ingredients/frog_eyes.tres" id="2_w4u7g"]
+[ext_resource type="Resource" uid="uid://btchnl4vpashf" path="res://data/ingredients/unicorn_eyes.tres" id="3_1pjhc"]
+[ext_resource type="Resource" uid="uid://dfgsehdlokeiq" path="res://data/ingredients/purple_whatevers.tres" id="4_5gs0t"]
+
+[resource]
+script = ExtResource("2_ui6nn")
+id = "PW1"
+title = "Eyes Plus Plus"
+difficulty = 1
+line_items = Dictionary[ExtResource("1_ejbrr"), int]({
+ExtResource("2_w4u7g"): 3,
+ExtResource("3_1pjhc"): 2,
+ExtResource("4_5gs0t"): 1
+})
+metadata/_custom_type_script = "uid://dh14bedsfqfwf"

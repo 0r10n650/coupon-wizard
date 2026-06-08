@@ -11,6 +11,6 @@ id = "tutorial_frog"
 title = "The munchies only frogs can satisfy"
 line_items = Dictionary[ExtResource("1_3883y"), int]({
 ExtResource("2_gyoht"): 4,
-ExtResource("3_gyoht"): 10
+ExtResource("3_gyoht"): 6
 })
 metadata/_custom_type_script = "uid://dh14bedsfqfwf"

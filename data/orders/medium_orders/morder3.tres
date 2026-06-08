@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Order" format=3 uid="uid://c7s6ix6rw1bar"]
+
+[ext_resource type="Script" uid="uid://nkht70761teq" path="res://Scripts/ingredients/ingredient.gd" id="1_5qq36"]
+[ext_resource type="Resource" uid="uid://bxpi2s7t3l3ts" path="res://data/ingredients/wet_stuff.tres" id="2_4yboy"]
+[ext_resource type="Script" uid="uid://dh14bedsfqfwf" path="res://data/orders/order.gd" id="2_enspu"]
+[ext_resource type="Resource" uid="uid://3vhsfo6hu08i" path="res://data/ingredients/human_dust.tres" id="3_e7rod"]
+[ext_resource type="Resource" uid="uid://dwdwcf3pp4c3w" path="res://data/ingredients/frog_leg.tres" id="4_gsyvs"]
+
+[resource]
+script = ExtResource("2_enspu")
+id = "WS1"
+title = "Water Boi"
+difficulty = 1
+line_items = Dictionary[ExtResource("1_5qq36"), int]({
+ExtResource("2_4yboy"): 1,
+ExtResource("3_e7rod"): 3,
+ExtResource("4_gsyvs"): 4
+})
+metadata/_custom_type_script = "uid://dh14bedsfqfwf"

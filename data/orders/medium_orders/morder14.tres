@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Order" format=3 uid="uid://cieeklus7scc0"]
+
+[ext_resource type="Script" uid="uid://nkht70761teq" path="res://Scripts/ingredients/ingredient.gd" id="1_eq4jl"]
+[ext_resource type="Resource" uid="uid://bxpi2s7t3l3ts" path="res://data/ingredients/wet_stuff.tres" id="2_efxo0"]
+[ext_resource type="Script" uid="uid://dh14bedsfqfwf" path="res://data/orders/order.gd" id="2_nnv10"]
+[ext_resource type="Resource" uid="uid://bje67gtderi75" path="res://data/ingredients/unicorn_hair.tres" id="3_tf6xw"]
+[ext_resource type="Resource" uid="uid://7rufcgyui8jw" path="res://data/ingredients/shroom_dust.tres" id="4_8gv4x"]
+
+[resource]
+script = ExtResource("2_nnv10")
+id = "WS2"
+title = "Gamer Girl Bath Water"
+difficulty = 1
+line_items = Dictionary[ExtResource("1_eq4jl"), int]({
+ExtResource("2_efxo0"): 1,
+ExtResource("3_tf6xw"): 3,
+ExtResource("4_8gv4x"): 3
+})
+metadata/_custom_type_script = "uid://dh14bedsfqfwf"

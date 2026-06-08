@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Order" format=3 uid="uid://dei54jpatdttc"]
+
+[ext_resource type="Script" uid="uid://nkht70761teq" path="res://Scripts/ingredients/ingredient.gd" id="1_mjq43"]
+[ext_resource type="Script" uid="uid://dh14bedsfqfwf" path="res://data/orders/order.gd" id="2_8fj28"]
+[ext_resource type="Resource" uid="uid://dviokqioknb1t" path="res://data/ingredients/hard_stuff.tres" id="2_lj0sy"]
+[ext_resource type="Resource" uid="uid://drtywmd5rv8hj" path="res://data/ingredients/dragon_scale.tres" id="3_m0v1f"]
+[ext_resource type="Resource" uid="uid://ctgcoiacmywrg" path="res://data/ingredients/moon_dust.tres" id="4_jpxuo"]
+
+[resource]
+script = ExtResource("2_8fj28")
+id = "HardS2"
+title = "Meteor Punch"
+difficulty = 1
+line_items = Dictionary[ExtResource("1_mjq43"), int]({
+ExtResource("2_lj0sy"): 1,
+ExtResource("3_m0v1f"): 1,
+ExtResource("4_jpxuo"): 3
+})
+metadata/_custom_type_script = "uid://dh14bedsfqfwf"

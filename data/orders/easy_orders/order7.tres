@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Order" format=3 uid="uid://clhenfs3xqas7"]
+
+[ext_resource type="Script" uid="uid://nkht70761teq" path="res://Scripts/ingredients/ingredient.gd" id="1_dbvk3"]
+[ext_resource type="Resource" uid="uid://ctgcoiacmywrg" path="res://data/ingredients/moon_dust.tres" id="2_wia5h"]
+[ext_resource type="Script" uid="uid://dh14bedsfqfwf" path="res://data/orders/order.gd" id="2_x2b8d"]
+[ext_resource type="Resource" uid="uid://7rufcgyui8jw" path="res://data/ingredients/shroom_dust.tres" id="3_ermj3"]
+[ext_resource type="Resource" uid="uid://chypn8ots88a3" path="res://data/ingredients/goblin_toes.tres" id="4_ty76f"]
+
+[resource]
+script = ExtResource("2_x2b8d")
+id = "dust and toes"
+title = "Spicy Toes"
+line_items = Dictionary[ExtResource("1_dbvk3"), int]({
+ExtResource("2_wia5h"): 3,
+ExtResource("3_ermj3"): 3,
+ExtResource("4_ty76f"): 4
+})
+metadata/_custom_type_script = "uid://dh14bedsfqfwf"

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Order" format=3 uid="uid://sm2g33yljmp4"]
+
+[ext_resource type="Script" uid="uid://nkht70761teq" path="res://Scripts/ingredients/ingredient.gd" id="1_phknp"]
+[ext_resource type="Resource" uid="uid://drtywmd5rv8hj" path="res://data/ingredients/dragon_scale.tres" id="2_shi1s"]
+[ext_resource type="Script" uid="uid://dh14bedsfqfwf" path="res://data/orders/order.gd" id="2_yktos"]
+
+[resource]
+script = ExtResource("2_yktos")
+id = "DRH"
+title = "Where art thou dragon"
+difficulty = 1
+line_items = Dictionary[ExtResource("1_phknp"), int]({
+ExtResource("2_shi1s"): 3
+})
+metadata/_custom_type_script = "uid://dh14bedsfqfwf"

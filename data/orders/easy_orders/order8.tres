@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Order" format=3 uid="uid://71dxsk8oowg4"]
+
+[ext_resource type="Script" uid="uid://nkht70761teq" path="res://Scripts/ingredients/ingredient.gd" id="1_55nn3"]
+[ext_resource type="Resource" uid="uid://btchnl4vpashf" path="res://data/ingredients/unicorn_eyes.tres" id="2_2wc5v"]
+[ext_resource type="Script" uid="uid://dh14bedsfqfwf" path="res://data/orders/order.gd" id="2_w5mfy"]
+[ext_resource type="Resource" uid="uid://bje67gtderi75" path="res://data/ingredients/unicorn_hair.tres" id="3_j5v6h"]
+[ext_resource type="Resource" uid="uid://d2srqma0vn3rl" path="res://data/ingredients/human_teeth.tres" id="4_fhc3p"]
+
+[resource]
+script = ExtResource("2_w5mfy")
+id = "itlookssoreal"
+title = "It Looks So Real"
+line_items = Dictionary[ExtResource("1_55nn3"), int]({
+ExtResource("2_2wc5v"): 2,
+ExtResource("3_j5v6h"): 3,
+ExtResource("4_fhc3p"): 3
+})
+metadata/_custom_type_script = "uid://dh14bedsfqfwf"

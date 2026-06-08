@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Order" format=3 uid="uid://c5dc08y2dd5a5"]
+
+[ext_resource type="Script" uid="uid://nkht70761teq" path="res://Scripts/ingredients/ingredient.gd" id="1_4cndb"]
+[ext_resource type="Resource" uid="uid://cqflmgvna6mps" path="res://data/ingredients/partridge_in_a_pear_tree.tres" id="2_2ge8u"]
+[ext_resource type="Script" uid="uid://dh14bedsfqfwf" path="res://data/orders/order.gd" id="2_y1fp2"]
+
+[resource]
+script = ExtResource("2_y1fp2")
+id = "P1"
+title = "Bird Up"
+difficulty = 2
+line_items = Dictionary[ExtResource("1_4cndb"), int]({
+ExtResource("2_2ge8u"): 1
+})
+metadata/_custom_type_script = "uid://dh14bedsfqfwf"

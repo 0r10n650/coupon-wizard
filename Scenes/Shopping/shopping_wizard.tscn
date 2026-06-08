@@ -95,10 +95,11 @@ bones/23/rotation = Quaternion(0.23687558, 0.15565276, -0.038323786, 0.9582241)
 transform = Transform3D(-3.059797e-09, 0, -0.07, 0, 0.07, 0, 0.07, 0, -3.059797e-09, 0, 0.32316363, 0.18098548)
 
 [node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1775430253]
-custom_minimum_size = Vector2(0, 500)
-offset_top = 85.0
-offset_right = 180.0
-offset_bottom = 85.0
+custom_minimum_size = Vector2(0, 400)
+offset_left = 1.0
+offset_top = 200.0
+offset_right = 181.0
+offset_bottom = 600.0
 size_flags_horizontal = 3
 horizontal_scroll_mode = 0
 

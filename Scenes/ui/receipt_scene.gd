@@ -115,7 +115,6 @@ func load_total():
 	
 	add_discount_amount = discount_pct
 	add_credit_amount = final_debt_added
-	##_process_payment(final_debt_added, discount_amount, panel)
 
 func _process_payment():
 	GameState.gold += add_discount_amount # You still get cash back for the discount

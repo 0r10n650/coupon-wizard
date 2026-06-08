@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Order" format=3 uid="uid://dbkmbghmqwv7t"]
+
+[ext_resource type="Script" uid="uid://nkht70761teq" path="res://Scripts/ingredients/ingredient.gd" id="1_ta0rv"]
+[ext_resource type="Script" uid="uid://dh14bedsfqfwf" path="res://data/orders/order.gd" id="2_b64xj"]
+[ext_resource type="Resource" uid="uid://ns3yacly53bg" path="res://data/ingredients/hot_stuff.tres" id="2_mq1xw"]
+[ext_resource type="Resource" uid="uid://7rufcgyui8jw" path="res://data/ingredients/shroom_dust.tres" id="3_vufxe"]
+[ext_resource type="Resource" uid="uid://chypn8ots88a3" path="res://data/ingredients/goblin_toes.tres" id="4_p1jg5"]
+
+[resource]
+script = ExtResource("2_b64xj")
+id = "HS2"
+title = "Kung Pao Goblin"
+difficulty = 1
+line_items = Dictionary[ExtResource("1_ta0rv"), int]({
+ExtResource("2_mq1xw"): 1,
+ExtResource("3_vufxe"): 3,
+ExtResource("4_p1jg5"): 4
+})
+metadata/_custom_type_script = "uid://dh14bedsfqfwf"

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Order" format=3 uid="uid://c0cserewd08tf"]
+
+[ext_resource type="Script" uid="uid://nkht70761teq" path="res://Scripts/ingredients/ingredient.gd" id="1_72wxo"]
+[ext_resource type="Resource" uid="uid://btchnl4vpashf" path="res://data/ingredients/unicorn_eyes.tres" id="2_em2rd"]
+[ext_resource type="Script" uid="uid://dh14bedsfqfwf" path="res://data/orders/order.gd" id="2_jyiek"]
+[ext_resource type="Resource" uid="uid://bje67gtderi75" path="res://data/ingredients/unicorn_hair.tres" id="3_1rk2c"]
+[ext_resource type="Resource" uid="uid://tr83in12bmev" path="res://data/ingredients/unicorn_horn.tres" id="4_vqdw2"]
+
+[resource]
+script = ExtResource("2_jyiek")
+id = "unicorn"
+title = "Build A Unicorn"
+line_items = Dictionary[ExtResource("1_72wxo"), int]({
+ExtResource("2_em2rd"): 3,
+ExtResource("3_1rk2c"): 3,
+ExtResource("4_vqdw2"): 2
+})
+metadata/_custom_type_script = "uid://dh14bedsfqfwf"

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Order" format=3 uid="uid://iibcu54fupay"]
+
+[ext_resource type="Script" uid="uid://nkht70761teq" path="res://Scripts/ingredients/ingredient.gd" id="1_ofuyq"]
+[ext_resource type="Resource" uid="uid://bje67gtderi75" path="res://data/ingredients/unicorn_hair.tres" id="2_ap8jm"]
+[ext_resource type="Script" uid="uid://dh14bedsfqfwf" path="res://data/orders/order.gd" id="2_aptgk"]
+[ext_resource type="Resource" uid="uid://c40q1yf5b3u7m" path="res://data/ingredients/yeti_fur.tres" id="3_a8ofr"]
+
+[resource]
+script = ExtResource("2_aptgk")
+id = "hairs"
+title = "Hairball"
+line_items = Dictionary[ExtResource("1_ofuyq"), int]({
+ExtResource("2_ap8jm"): 2,
+ExtResource("3_a8ofr"): 2
+})
+metadata/_custom_type_script = "uid://dh14bedsfqfwf"

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Order" format=3 uid="uid://c56cqnl2cwlyx"]
+
+[ext_resource type="Script" uid="uid://nkht70761teq" path="res://Scripts/ingredients/ingredient.gd" id="1_f3b7b"]
+[ext_resource type="Resource" uid="uid://3vhsfo6hu08i" path="res://data/ingredients/human_dust.tres" id="2_6bh7q"]
+[ext_resource type="Script" uid="uid://dh14bedsfqfwf" path="res://data/orders/order.gd" id="2_6q5tx"]
+[ext_resource type="Resource" uid="uid://d2srqma0vn3rl" path="res://data/ingredients/human_teeth.tres" id="3_6bh7q"]
+
+[resource]
+script = ExtResource("2_6q5tx")
+id = "Frank"
+title = "Mini Frankenstein"
+line_items = Dictionary[ExtResource("1_f3b7b"), int]({
+ExtResource("2_6bh7q"): 3,
+ExtResource("3_6bh7q"): 4
+})
+metadata/_custom_type_script = "uid://dh14bedsfqfwf"

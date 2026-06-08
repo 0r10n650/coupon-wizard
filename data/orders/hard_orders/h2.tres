@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Order" format=3 uid="uid://bovjj6qe5nyfn"]
+
+[ext_resource type="Script" uid="uid://nkht70761teq" path="res://Scripts/ingredients/ingredient.gd" id="1_wmarj"]
+[ext_resource type="Resource" uid="uid://cqflmgvna6mps" path="res://data/ingredients/partridge_in_a_pear_tree.tres" id="2_k6ngl"]
+[ext_resource type="Script" uid="uid://dh14bedsfqfwf" path="res://data/orders/order.gd" id="2_o7vqg"]
+[ext_resource type="Resource" uid="uid://dfgsehdlokeiq" path="res://data/ingredients/purple_whatevers.tres" id="3_j2fbw"]
+
+[resource]
+script = ExtResource("2_o7vqg")
+id = "P2"
+title = "Christmas Morning"
+difficulty = 2
+line_items = Dictionary[ExtResource("1_wmarj"), int]({
+ExtResource("2_k6ngl"): 1,
+ExtResource("3_j2fbw"): 1
+})
+metadata/_custom_type_script = "uid://dh14bedsfqfwf"

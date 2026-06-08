@@ -10,7 +10,7 @@ script = ExtResource("4_k68xx")
 id = "tutorial_eyes"
 title = "I see everything!"
 line_items = Dictionary[ExtResource("1_xc6yo"), int]({
-ExtResource("2_6gmul"): 2,
+ExtResource("2_6gmul"): 4,
 ExtResource("3_xc6yo"): 2
 })
 metadata/_custom_type_script = "uid://dh14bedsfqfwf"

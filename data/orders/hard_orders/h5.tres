@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Order" format=3 uid="uid://d1h0hoqo0esgj"]
+
+[ext_resource type="Script" uid="uid://nkht70761teq" path="res://Scripts/ingredients/ingredient.gd" id="1_jjbv6"]
+[ext_resource type="Resource" uid="uid://dfuht500hw6e4" path="res://data/ingredients/dry_stuff.tres" id="2_jjbv6"]
+[ext_resource type="Resource" uid="uid://bxpi2s7t3l3ts" path="res://data/ingredients/wet_stuff.tres" id="3_gwxqx"]
+[ext_resource type="Resource" uid="uid://chypn8ots88a3" path="res://data/ingredients/goblin_toes.tres" id="4_3s61i"]
+[ext_resource type="Script" uid="uid://dh14bedsfqfwf" path="res://data/orders/order.gd" id="5_pr2bq"]
+
+[resource]
+script = ExtResource("5_pr2bq")
+id = "C3"
+title = "Foot fungis"
+difficulty = 2
+line_items = Dictionary[ExtResource("1_jjbv6"), int]({
+ExtResource("2_jjbv6"): 1,
+ExtResource("3_gwxqx"): 1,
+ExtResource("4_3s61i"): 4
+})
+metadata/_custom_type_script = "uid://dh14bedsfqfwf"

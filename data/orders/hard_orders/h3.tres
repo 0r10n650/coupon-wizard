@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Order" format=3 uid="uid://qdf24ua8ja4l"]
+
+[ext_resource type="Script" uid="uid://nkht70761teq" path="res://Scripts/ingredients/ingredient.gd" id="1_ctund"]
+[ext_resource type="Script" uid="uid://dh14bedsfqfwf" path="res://data/orders/order.gd" id="2_fjoqq"]
+[ext_resource type="Resource" uid="uid://dviokqioknb1t" path="res://data/ingredients/hard_stuff.tres" id="2_yv5aw"]
+[ext_resource type="Resource" uid="uid://docqdhq0wgs2g" path="res://data/ingredients/angry_stuff.tres" id="3_x1lm8"]
+[ext_resource type="Resource" uid="uid://dly6whsy50hdm" path="res://data/ingredients/bat_wings.tres" id="4_20rmp"]
+
+[resource]
+script = ExtResource("2_fjoqq")
+id = "C1"
+title = "Voltron Assemble"
+difficulty = 2
+line_items = Dictionary[ExtResource("1_ctund"), int]({
+ExtResource("2_yv5aw"): 1,
+ExtResource("3_x1lm8"): 1,
+ExtResource("4_20rmp"): 4
+})
+metadata/_custom_type_script = "uid://dh14bedsfqfwf"

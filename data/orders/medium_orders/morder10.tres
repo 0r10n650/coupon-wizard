@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Order" format=3 uid="uid://5equne5si4g2"]
+
+[ext_resource type="Script" uid="uid://nkht70761teq" path="res://Scripts/ingredients/ingredient.gd" id="1_foy7v"]
+[ext_resource type="Resource" uid="uid://docqdhq0wgs2g" path="res://data/ingredients/angry_stuff.tres" id="2_fa5nd"]
+[ext_resource type="Script" uid="uid://dh14bedsfqfwf" path="res://data/orders/order.gd" id="2_jxqhj"]
+[ext_resource type="Resource" uid="uid://c40q1yf5b3u7m" path="res://data/ingredients/yeti_fur.tres" id="3_xmbyd"]
+
+[resource]
+script = ExtResource("2_jxqhj")
+id = "AS1"
+title = "Upseti"
+difficulty = 1
+line_items = Dictionary[ExtResource("1_foy7v"), int]({
+ExtResource("2_fa5nd"): 1,
+ExtResource("3_xmbyd"): 3
+})
+metadata/_custom_type_script = "uid://dh14bedsfqfwf"

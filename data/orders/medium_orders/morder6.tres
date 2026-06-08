@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Order" format=3 uid="uid://by6y3lchp107i"]
+
+[ext_resource type="Script" uid="uid://nkht70761teq" path="res://Scripts/ingredients/ingredient.gd" id="1_0ddi5"]
+[ext_resource type="Resource" uid="uid://dfuht500hw6e4" path="res://data/ingredients/dry_stuff.tres" id="2_8bj7h"]
+[ext_resource type="Script" uid="uid://dh14bedsfqfwf" path="res://data/orders/order.gd" id="2_k28pc"]
+[ext_resource type="Resource" uid="uid://bje67gtderi75" path="res://data/ingredients/unicorn_hair.tres" id="3_4lqsr"]
+[ext_resource type="Resource" uid="uid://tr83in12bmev" path="res://data/ingredients/unicorn_horn.tres" id="4_gkgpl"]
+
+[resource]
+script = ExtResource("2_k28pc")
+id = "DS1"
+title = "Hair Dryer"
+difficulty = 1
+line_items = Dictionary[ExtResource("1_0ddi5"), int]({
+ExtResource("2_8bj7h"): 1,
+ExtResource("3_4lqsr"): 3,
+ExtResource("4_gkgpl"): 2
+})
+metadata/_custom_type_script = "uid://dh14bedsfqfwf"

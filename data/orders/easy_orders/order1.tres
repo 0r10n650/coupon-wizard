@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Order" format=3 uid="uid://8osioodwlt66"]
+
+[ext_resource type="Script" uid="uid://nkht70761teq" path="res://Scripts/ingredients/ingredient.gd" id="1_0jr2s"]
+[ext_resource type="Script" uid="uid://dh14bedsfqfwf" path="res://data/orders/order.gd" id="2_77gc5"]
+[ext_resource type="Resource" uid="uid://dly6whsy50hdm" path="res://data/ingredients/bat_wings.tres" id="2_uk07a"]
+[ext_resource type="Resource" uid="uid://c40q1yf5b3u7m" path="res://data/ingredients/yeti_fur.tres" id="3_uk07a"]
+
+[resource]
+script = ExtResource("2_77gc5")
+id = "Cold_Bat"
+title = "Cold Bats"
+line_items = Dictionary[ExtResource("1_0jr2s"), int]({
+ExtResource("2_uk07a"): 3,
+ExtResource("3_uk07a"): 2
+})
+metadata/_custom_type_script = "uid://dh14bedsfqfwf"

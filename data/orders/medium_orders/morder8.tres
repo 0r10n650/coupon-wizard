@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Order" format=3 uid="uid://kt1ht7ked17k"]
+
+[ext_resource type="Script" uid="uid://nkht70761teq" path="res://Scripts/ingredients/ingredient.gd" id="1_0710o"]
+[ext_resource type="Script" uid="uid://dh14bedsfqfwf" path="res://data/orders/order.gd" id="2_iiv2m"]
+[ext_resource type="Resource" uid="uid://dviokqioknb1t" path="res://data/ingredients/hard_stuff.tres" id="2_vnoxu"]
+[ext_resource type="Resource" uid="uid://dwdwcf3pp4c3w" path="res://data/ingredients/frog_leg.tres" id="3_s0dag"]
+[ext_resource type="Resource" uid="uid://ukjbv1xc7shb" path="res://data/ingredients/frog_eyes.tres" id="4_t3ily"]
+
+[resource]
+script = ExtResource("2_iiv2m")
+id = "HardS1"
+title = "Mechafrogzilla"
+difficulty = 1
+line_items = Dictionary[ExtResource("1_0710o"), int]({
+ExtResource("2_vnoxu"): 1,
+ExtResource("3_s0dag"): 3,
+ExtResource("4_t3ily"): 3
+})
+metadata/_custom_type_script = "uid://dh14bedsfqfwf"

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Order" format=3 uid="uid://bl07r7oqgi23e"]
+
+[ext_resource type="Script" uid="uid://nkht70761teq" path="res://Scripts/ingredients/ingredient.gd" id="1_4aadg"]
+[ext_resource type="Resource" uid="uid://dfuht500hw6e4" path="res://data/ingredients/dry_stuff.tres" id="2_akaqs"]
+[ext_resource type="Script" uid="uid://dh14bedsfqfwf" path="res://data/orders/order.gd" id="2_uqlxx"]
+[ext_resource type="Resource" uid="uid://3vhsfo6hu08i" path="res://data/ingredients/human_dust.tres" id="3_qb3n6"]
+[ext_resource type="Resource" uid="uid://d2srqma0vn3rl" path="res://data/ingredients/human_teeth.tres" id="4_gmgkk"]
+
+[resource]
+script = ExtResource("2_uqlxx")
+id = "DS2"
+title = "Chapped Man "
+difficulty = 1
+line_items = Dictionary[ExtResource("1_4aadg"), int]({
+ExtResource("2_akaqs"): 1,
+ExtResource("3_qb3n6"): 3,
+ExtResource("4_gmgkk"): 4
+})
+metadata/_custom_type_script = "uid://dh14bedsfqfwf"
