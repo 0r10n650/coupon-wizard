@@ -39,7 +39,6 @@ var shopping_timer: float
 var timer_ui: ShoppingTimerUI
 var has_transitioned: bool = false
 
-
 func _ready():
 	shopping_timer = GameState.get_shopping_time_limit()
 	
@@ -54,7 +53,7 @@ func _ready():
 	
 	_build_orders_display()
 	# start hidden up top
-	orders_container.position.y = -orders_container.size.y + 20  # just peek 20px
+	orders_container.position.y = -orders_container.size.y + 40  # just peek 20px
 
 func _process(delta):
 	var mouse_pos = get_viewport().get_mouse_position()
@@ -108,7 +107,6 @@ func _unhandled_input(event):
 			grab("left")
 		elif event.keycode == KEY_E or event.keycode == KEY_RIGHT:
 			grab("right")
-
 
 func grab(direction):
 	var colliding_object = null
