@@ -1,7 +1,7 @@
 extends StaticBody3D
 
 var outline_material: ShaderMaterial
-var upgrade_ui_scene = preload("res://Scenes/upgrade_ui.tscn")
+var upgrade_ui_scene = preload("res://Scenes/Management/upgrade_ui.tscn")
 var active_ui = null
 @onready var mesh_instance = $MeshInstance3D
 

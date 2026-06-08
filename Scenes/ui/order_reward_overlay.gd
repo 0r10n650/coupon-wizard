@@ -20,9 +20,10 @@ func setup(order_results: Array, rebate: int) -> void:
 	var grand_total = 0
 	for result in order_results:
 		var row = Label.new()
-		var text = result["title"] + ":  +" + str(result["earned"]) + "g"
+		var text = result["title"] + ": +" + str(result["earned"]) + "g"
 		if result["damaged_count"] > 0:
-			text += "  (-%dg damage penalty)" % result["penalty"]
+			text += " (-%dg damage penalty)" % result["penalty"]
+			grand_total -= result["penalty"]
 		row.text = text
 		order_list.add_child(row)
 		grand_total += result["earned"]

@@ -15,6 +15,7 @@ signal order_slot_purchased()
 
 
 func _ready() -> void:
+	_flavor_lbl.text = GameState.pending_order_text
 	for i in _btns.size():
 		_btns[i].pressed.connect(_on_select_pressed.bind(i))
 	refresh()

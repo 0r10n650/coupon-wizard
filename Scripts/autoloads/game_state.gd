@@ -9,6 +9,7 @@ var gold: int = 0
 var debt: int = 500
 var daily_interest: float = .10
 var last_scene_path: String = "res://Scenes/Shopping/shopping.tscn"
+var pending_order_text: String = "Complete orders to make money, pay off debt, and save Charms!"
 var pending_order_rewards: Array = []
 var pending_rebate: int = 0
 
@@ -127,7 +128,7 @@ func save_current_scene(path: String):
 
 func reset_game(daily_interest: float):
 	current_day = 1
-	gold = 0
+	gold = 1500
 	debt = 500
 	daily_interest = daily_interest
 	print("Save reset to Day 1")
@@ -158,9 +159,17 @@ func reset_game(daily_interest: float):
 
 func advance_day():
 	current_day += 1
+	if current_day == 1:
+		unlocked_order_slots = 1
 	if current_day == 2:
+		pending_order_text = "More orders available! Be careful to not take too many."
 		unlocked_order_slots = 2
-	OrderManager.process_incomplete_orders()
+	elif current_day > 2:
+		pending_order_text = "New orders every day!"
+		
+	GameState.active_orders.clear()
+	GameState.completed_order_ids.clear()
+	
 	if debt > 0:
 		debt += daily_interest * debt
 	# Reset daily state
@@ -243,23 +252,23 @@ var upgrade_tiers = {
 		"values": [0, 1, 2, 3]
 	},
 	"checkout_time": {
-		"costs": [10, 25, 50, 100],
+		"costs": [25, 40, 70, 100],
 		"values": [7.0, 9.0, 11.0, 15.0] # Base is 5.0
 	},
 	"checkout_vision": {
-		"costs": [15],
-		"values": [1] # Base is 0 (1 arrow visible). Upgrade gives +1
+		"costs": [50, 150],
+		"values": [1, 2] # Base is 0 (1 arrow visible). Upgrade gives +1
 	},
 	"shopping_time": {
-		"costs": [5, 10, 25, 50],
-		"values": [30.0, 45.0, 60.0, 90.0, 120.0]
+		"costs": [25, 50, 100, 200],
+		"values": [25, 40, 60, 90, 135]
 	},
 	"orders": {
 		"costs": [20, 40, 80],
 		"values": [3, 4, 5]
 	},
 	"order_rerolls": {
-		"costs": [15, 30],
+		"costs": [50, 100],
 		"values": [0, 1, 2]
 	},
 	"coupon_slots": {

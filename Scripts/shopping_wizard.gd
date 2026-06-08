@@ -90,6 +90,11 @@ func _physics_process(delta):
 			left_leg_ik.influence = lerpf(left_leg_ik.influence, 0.0, delta * 10.0)
 
 func _on_timer_finished():
+	if GameState.cart_items.is_empty():
+		GameState.advance_day()
+		GameState.pending_order_text = "You know there's a tutorial for this game, right?"
+		SceneLoader.load_scene("res://Scenes/Management/management_screen.tscn")
+		return
 	if not has_transitioned:
 		has_transitioned = true
 		SceneLoader.load_scene("res://Scenes/Checkout/checkout_minigame_3d.tscn")

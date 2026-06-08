@@ -68,7 +68,7 @@ metadata/_edit_use_anchors_ = true
 [node name="WizIK" parent="." unique_id=427355988 instance=ExtResource("4_onab3")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.06685907, 1.4546797)
 
-[node name="Skeleton3D" parent="WizIK/Crouch Idle" parent_id_path=PackedInt32Array(427355988, 601109509) index="0" unique_id=321288847]
+[node name="Skeleton3D" parent="WizIK/Crouch Idle" parent_id_path=PackedInt32Array(427355988, 601109509) index="0" unique_id=1737296482]
 bones/0/position = Vector3(0.046810094, 4.794472, 0.004404545)
 bones/0/rotation = Quaternion(0.10598671, 0.06906261, 0.043498497, 0.9910122)
 bones/1/rotation = Quaternion(0.017124288, -0.13145673, -0.07031111, 0.988677)

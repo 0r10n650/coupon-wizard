@@ -8,18 +8,14 @@ const POOL_SIZE = 5
 func generate_order_pool() -> Array[Order]:
 	# Day specific pools.
 	if GameState.current_day == 1:
-		var order1 := load("res://data/orders/easy_orders/tutorial_frog.tres")
-		var pool: Array[Order] = [order1]
-		pool.append_array(OrderGenerator.generate_pool(POOL_SIZE - 1))
-		return pool
+		return [load("res://data/orders/easy_orders/tutorial_frog.tres")]
 	elif GameState.current_day == 2:
-		var order1 := load("res://data/orders/easy_orders/tutorial_eyes.tres")
-		var order2 := load("res://data/orders/easy_orders/tutorial_feet.tres")
-		var pool: Array[Order] = [order1, order2]
-		pool.append_array(OrderGenerator.generate_pool(POOL_SIZE - 2))
-		return pool
+		return [
+			load("res://data/orders/easy_orders/tutorial_eyes.tres"),
+			load("res://data/orders/easy_orders/tutorial_feet.tres")
+		]
 	else:
-		return OrderGenerator.generate_pool(POOL_SIZE)
+		return OrderGenerator.generate_daily_orders()
 
 
 # ── order lifecycle ─────────────────────────────────────────────
@@ -30,22 +26,9 @@ func confirm_orders(selected_indices: Array):
 		if idx < GameState.daily_order_pool.size():
 			GameState.active_orders.append(GameState.daily_order_pool[idx])
 
-
 func mark_order_complete(order_id: String):
 	if order_id not in GameState.completed_order_ids:
 		GameState.completed_order_ids.append(order_id)
-
-
-func process_incomplete_orders():
-	var rebate: int = 0
-	for order in GameState.active_orders:
-		if order.id not in GameState.completed_order_ids:
-			rebate += int(round(order.raw_cost() * GameState.REBATE_FRACTION))
-	if rebate > 0:
-		GameState.gold += rebate
-	GameState.active_orders.clear()
-	GameState.completed_order_ids.clear()
-
 
 func get_order_total() -> int:
 	var total = 0

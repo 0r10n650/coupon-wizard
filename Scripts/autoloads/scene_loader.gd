@@ -32,12 +32,13 @@ func _finish():
 	var packed = ResourceLoader.load_threaded_get(_target_path)
 	_target_path = ""
 	hide()
-	
+
 	if packed and packed is PackedScene:
 		var instance = packed.instantiate()
-		get_tree().current_scene.free()
+		var old_scene = get_tree().current_scene
 		get_tree().root.add_child(instance)
 		get_tree().current_scene = instance
+		old_scene.queue_free()
 	else:
 		push_error("SceneLoader: failed to instantiate scene. Returning to start menu.")
 		if get_tree().current_scene.scene_file_path != "res://Scenes/StartGame/start_page.tscn":
