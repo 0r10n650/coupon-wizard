@@ -31,7 +31,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=848032697]
 layout_mode = 2
-alignment = 1
 
 [node name="CouponList" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1873917576]
 layout_mode = 2
@@ -44,11 +43,14 @@ alignment = 1
 [node name="DiscountLabel" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer2" unique_id=716173074]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+horizontal_alignment = 1
 
 [node name="TotalLabel" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer2" unique_id=413866308]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+horizontal_alignment = 1
 
 [node name="FinalLabel" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer2" unique_id=1456765784]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+horizontal_alignment = 1
