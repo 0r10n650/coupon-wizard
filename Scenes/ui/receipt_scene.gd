@@ -1,4 +1,4 @@
-extends PanelContainer
+extends Node
 class_name receipt
 
 var successful_items
@@ -12,16 +12,20 @@ const ROW_SCENE = preload("res://Scenes/ui/ReceiptItem.tscn")
 @onready var success_total_label = %SuccessLabel
 @onready var destroyed_total_label = %DestroyedLabel
 @onready var total_label = %TotalLabel
+@onready var receipt_box = $Receipt
 
-@onready var discount = $VBoxContainer/Discount
-@onready var success = $VBoxContainer/Success
-@onready var destroyed = $VBoxContainer/Destroyed
-@onready var total = $VBoxContainer/Total
-@onready var button = $VBoxContainer/Button
-@onready var sep2 = $VBoxContainer/Seperator2
-@onready var sep3 = $VBoxContainer/Seperator3
-@onready var sep4 = $VBoxContainer/Seperator4
-@onready var sep5 = $VBoxContainer/Seperator5
+@onready var discount = %Discount
+@onready var success = %Success
+@onready var destroyed = %Destroyed
+@onready var total = %Total
+@onready var button = %Button
+@onready var sep2 = %Seperator2
+@onready var sep3 = %Seperator3
+@onready var sep4 = %Seperator4
+@onready var sep5 = %Seperator5
+
+func _ready():
+	setup(GameState.successful_items, GameState.destroyed_items)
 
 func load_items(item_group, destroyed):
 	var grouped_items = {}
@@ -46,7 +50,7 @@ func load_items(item_group, destroyed):
 
 			# slide the whole receipt up by the height of the new row
 		var tween = create_tween()
-		tween.tween_property(self, "position:y", position.y - new_row.size.y, 0.2)
+		tween.tween_property(receipt_box, "position:y", receipt_box.position.y - new_row.size.y, 0.2)
 		await get_tree().create_timer(0.3).timeout 
 
 func setup(s_items, d_items):
@@ -88,7 +92,7 @@ func setup(s_items, d_items):
 	
 	sep5.visible = true
 	var tween = create_tween()
-	tween.tween_property(self, "position:y", position.y - 230, 0.2)
+	tween.tween_property(receipt_box, "position:y", receipt_box.position.y - 250, 0.2)
 
 func load_total():
 	var successful_total = 0

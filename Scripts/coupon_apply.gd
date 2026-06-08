@@ -7,13 +7,9 @@ var destroyed_items
 var discount = 0
 var current_discount = 0
 
-const receipt_scene = preload("res://Scenes/ui/Checkout2dScene.tscn")
-
-@onready var coupon_list = $PanelContainer/VBoxContainer/CouponList
-@onready var disLabel = $PanelContainer/VBoxContainer/VBoxContainer2/DiscountLabel
-@onready var tlabel = $PanelContainer/VBoxContainer/VBoxContainer2/TotalLabel
-
-signal coupon_apply_finished
+@onready var coupon_list = $MarginContainer/PanelContainer/VBoxContainer/CouponList
+@onready var disLabel = $MarginContainer/PanelContainer/VBoxContainer/VBoxContainer2/DiscountLabel
+@onready var tlabel = $MarginContainer/PanelContainer/VBoxContainer/VBoxContainer2/TotalLabel
 
 func start():
 	print("start called")
@@ -27,6 +23,7 @@ func start():
 func _ready():
 	successful_items = GameState.successful_items
 	destroyed_items = GameState.destroyed_items
+	start()
 
 func load_total():
 	var successful_total = 0
@@ -52,7 +49,7 @@ func _build_coupon_cards():
 	for id in GameState.equipped_coupon_ids:
 		if id == null or id == "":
 			continue
-		var card = preload("res://Scenes/ui/Coupon.tscn").instantiate()
+		var card = preload("res://Scenes/ui/coupon.tscn").instantiate()
 		var data = _find_coupon_data(str(id))
 		print("id: ", id, " | data: ", data)
 		card.data = data
@@ -82,8 +79,7 @@ func _apply_coupons():
 	else:
 		await get_tree().process_frame
 		
-	self.visible = false
-	coupon_apply_finished.emit()
+	SceneLoader.load_scene("res://Scenes/ui/receipt_scene.tscn")
 
 func _animate_card(card: Control):
 	var tween = create_tween()

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://doimg4tv4my6h"]
 
 [ext_resource type="Script" uid="uid://2i0gtg4br4i0" path="res://Scripts/coupon_apply.gd" id="1_kdnm7"]
+[ext_resource type="Texture2D" uid="uid://b8hrxwg5gic3e" path="res://Assets/2D Assets/TransparentScreen.png" id="2_owfh0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kdnm7"]
 bg_color = Color(0.76957154, 0.8348045, 0.9462357, 1)
@@ -18,41 +19,49 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_kdnm7")
 
-[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1728892130]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.00125
-anchor_right = 1.00125
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_kdnm7")
-metadata/_edit_use_anchors_ = true
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=615051390]
+layout_mode = 0
+offset_left = 67.0
+offset_top = 28.0
+offset_right = 767.0
+offset_bottom = 418.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=848032697]
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer" unique_id=1728892130]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kdnm7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer" unique_id=848032697]
 layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="CouponList" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1873917576]
+[node name="CouponList" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=1873917576]
 layout_mode = 2
 alignment = 1
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=579955236]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=579955236]
 layout_mode = 2
 alignment = 1
 
-[node name="DiscountLabel" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer2" unique_id=716173074]
+[node name="DiscountLabel" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/VBoxContainer2" unique_id=716173074]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 horizontal_alignment = 1
 
-[node name="TotalLabel" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer2" unique_id=413866308]
+[node name="TotalLabel" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/VBoxContainer2" unique_id=413866308]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 horizontal_alignment = 1
 
-[node name="FinalLabel" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer2" unique_id=1456765784]
+[node name="FinalLabel" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/VBoxContainer2" unique_id=1456765784]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=742999604]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 7.0
+offset_right = 792.0
+offset_bottom = 602.0
+texture = ExtResource("2_owfh0")

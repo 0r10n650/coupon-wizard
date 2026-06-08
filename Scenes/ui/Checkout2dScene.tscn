@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://u7i2uuw2ubc5" path="res://Scenes/ui/receipt_scene.tscn" id="5_destf"]
 [ext_resource type="Texture2D" uid="uid://bm2sjuj4cqwrt" path="res://Assets/2D Assets/ReceiptPrinter.png" id="6_sux21"]
 [ext_resource type="Texture2D" uid="uid://b8hrxwg5gic3e" path="res://Assets/2D Assets/TransparentScreen.png" id="7_sux21"]
-[ext_resource type="Script" uid="uid://bsnjkmqrmjupf" path="res://Scenes/ui/coupon_apply_scene.gd" id="9_soss7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sux21"]
 bg_color = Color(0.76957154, 0.8348045, 0.9462357, 1)
@@ -129,7 +128,6 @@ offset_left = 58.0
 offset_top = 100.0
 offset_right = 758.0
 offset_bottom = 500.0
-script = ExtResource("9_soss7")
 
 [node name="PanelContainer" type="PanelContainer" parent="CouponApplyScene" unique_id=617190085]
 layout_mode = 1

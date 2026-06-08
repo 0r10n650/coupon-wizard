@@ -25,8 +25,6 @@ var left_rune = preload("res://Scenes/Checkout/assets/coupon_icon_leftarrow.png"
 var right_rune = preload("res://Scenes/Checkout/assets/coupon_icon_rightarrow.png")
 var click_sound = preload("res://Scenes/Checkout/assets/CheckoutBeep.mp3")
 
-const checkout_2d = preload("res://Scenes/ui/Checkout2dScene.tscn")
-
 @export var click_start_time: float = 0.0
 @export var click_duration: float = 0.1
 var click_timer_remaining: float = 0.0
@@ -115,21 +113,6 @@ func play_start_cutscene():
 		vbox_container.visible = false
 	if vbox_container_2:
 		vbox_container_2.visible = false
-	
-#	if anim_player and anim_player.has_animation("start_cutscene"):
-#		anim_player.play("start_cutscene")
-#		await anim_player.animation_finished
-#	
-#	var response_anims = []
-#	if anim_player:
-#		for anim_name in anim_player.get_animation_list():
-#			if anim_name.begins_with("response_"):
-#				response_anims.append(anim_name)
-#	
-#	if not response_anims.is_empty():
-#		var random_anim = response_anims[randi() % response_anims.size()]
-#		anim_player.play(random_anim)
-#		await anim_player.animation_finished
 	
 	if camera:
 		camera.current = true
@@ -255,7 +238,7 @@ func play_end_cutscene():
 func _show_payment_ui():
 	GameState.successful_items = successful_items
 	GameState.destroyed_items = destroyed_items
-	get_tree().call_deferred("change_scene_to_packed", checkout_2d)
+	SceneLoader.load_scene("res://Scenes/ui/coupon_apply_scene.tscn")
 
 func advance_to_next_arrow(success: bool):
 	if active_sprites.size() > 0:
